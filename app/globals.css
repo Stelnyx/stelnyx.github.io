@@ -1,26 +1,110 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-stel-bg: #0A0A14;
+  --color-stel-surface: #0F0F1F;
+  --color-stel-border: #1E1E3A;
+  --color-stel-border-bright: #2D2D5A;
+  --color-stel-indigo: #6C63FF;
+  --color-stel-indigo-bright: #7B73FF;
+  --color-stel-amber: #F59E0B;
+  --color-stel-text-primary: #F8FAFC;
+  --color-stel-text-muted: #94A3B8;
+  --color-stel-text-faint: #4B5563;
+
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background-color: #0A0A14;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0A0A14;
+  color: #F8FAFC;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+/* Skip nav */
+.skip-nav {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: #7B73FF;
+  color: #0A0A14;
+  font-weight: 600;
+  border-radius: 0 0 0.375rem 0.375rem;
+  transition: top 0.1s;
+}
+.skip-nav:focus {
+  top: 0;
+}
+
+/* Fade-up entrance */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out both;
+}
+
+.animate-fade-up-delay-1 {
+  animation: fade-up 0.6s ease-out 0.1s both;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fade-up 0.6s ease-out 0.2s both;
+}
+
+.animate-fade-up-delay-3 {
+  animation: fade-up 0.6s ease-out 0.35s both;
+}
+
+/* Pulse dot for constellation */
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+.pulse-dot {
+  animation: pulse-dot 3s ease-in-out infinite;
+}
+
+/* Reduced motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-fade-up-delay-1,
+  .animate-fade-up-delay-2,
+  .animate-fade-up-delay-3 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .pulse-dot {
+    animation: none;
+    opacity: 0.7;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+  }
 }
