@@ -131,15 +131,83 @@ export function ToolsSection() {
             Infrastructure tools built for engineers. MIT where open, proprietary where not.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
-            {TOOLS.map((tool) => (
-              <ProductCard
-                key={tool.name}
-                product={tool}
-                onLearnMore={setSelected}
-                onRequestAudit={openAuditRequest}
-              />
-            ))}
+          {(() => {
+            const audits = TOOLS.filter((t) => t.audit);
+            const tools = TOOLS.filter((t) => !t.audit);
+            return (
+              <>
+                <div className="mt-16 mb-6 flex items-baseline justify-between gap-4 max-w-[1280px]">
+                  <div>
+                    <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber mb-1">Audited services</p>
+                    <h3 className="font-sans font-semibold text-[20px] text-stel-text-primary tracking-[-0.01em]">
+                      One-hour expert walkthroughs
+                    </h3>
+                    <p className="text-[14px] text-stel-text-muted mt-1 max-w-[560px]">
+                      A senior engineer runs the tool against your repo or site and walks you through every finding. Code never leaves your machine.
+                    </p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {audits.map((tool) => (
+                    <ProductCard
+                      key={tool.name}
+                      product={tool}
+                      onLearnMore={setSelected}
+                      onRequestAudit={openAuditRequest}
+                    />
+                  ))}
+                </div>
+
+                <div className="mt-16 mb-6 flex items-baseline justify-between gap-4 max-w-[1280px]">
+                  <div>
+                    <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-indigo-bright mb-1">Open-source tools</p>
+                    <h3 className="font-sans font-semibold text-[20px] text-stel-text-primary tracking-[-0.01em]">
+                      Drop-in libraries — install and ship
+                    </h3>
+                    <p className="text-[14px] text-stel-text-muted mt-1 max-w-[560px]">
+                      MIT-licensed building blocks for the AI / agent stack. No call needed — install, configure, run.
+                    </p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {tools.map((tool) => (
+                    <ProductCard
+                      key={tool.name}
+                      product={tool}
+                      onLearnMore={setSelected}
+                      onRequestAudit={openAuditRequest}
+                    />
+                  ))}
+                </div>
+              </>
+            );
+          })()}
+
+          <div className="mt-12 max-w-[720px] mx-auto bg-stel-surface border border-stel-border rounded-xl px-6 md:px-8 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5 shadow-[0_1px_3px_rgba(0,0,0,0.4)]">
+            <div className="flex-1">
+              <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber mb-1">Bundle · save $200</p>
+              <h3 className="font-sans font-semibold text-[18px] text-stel-text-primary tracking-[-0.01em] mb-1">
+                Cirrus Full-Surface Audit
+              </h3>
+              <p className="text-[14px] text-stel-text-muted leading-relaxed">
+                All three — Lucen + LuxFaber + SecGate — in a 90-minute walkthrough. For founders prepping a sale, raise, or full handoff. <span className="text-stel-text-primary font-semibold">$799</span> instead of $998.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() =>
+                setContactCtx({
+                  product: "Cirrus Full-Surface Audit",
+                  tier: "$799 · 90-min · 3-in-1",
+                  source: "stelnyx · bundle",
+                  title: "Request · Cirrus Full-Surface Audit",
+                  free: false,
+                })
+              }
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-md text-[14px] font-semibold bg-stel-amber hover:bg-amber-600 text-stel-bg transition-colors duration-150 whitespace-nowrap"
+            >
+              Request bundle · $799 →
+            </button>
           </div>
         </div>
       </section>
