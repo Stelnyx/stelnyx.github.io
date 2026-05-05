@@ -16,6 +16,7 @@ export interface Product {
   status?: string;
   npm?: string;
   github?: string;
+  audit?: { price: string; href: string };
 }
 
 const badgeClasses: Record<BadgeType, string> = {
@@ -60,6 +61,21 @@ export function ProductCard({ product, onLearnMore }: ProductCardProps) {
       <p className="text-[15px] text-stel-text-muted leading-relaxed">
         {product.description}
       </p>
+
+      {product.audit && (() => {
+        const isFree = /free/i.test(product.audit.price);
+        const tone = isFree
+          ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"
+          : "bg-stel-amber/10 border-stel-amber/20 text-stel-amber";
+        const dot = isFree ? "bg-emerald-400" : "bg-stel-amber";
+        const suffix = isFree ? "first 10 teams" : "soon";
+        return (
+          <div className={`mt-4 inline-flex items-center gap-2 px-2.5 py-1 rounded-full border font-mono text-[11px] uppercase tracking-widest ${tone}`}>
+            <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${dot}`} aria-hidden="true" />
+            1-hr audit · {product.audit.price} · {suffix}
+          </div>
+        );
+      })()}
 
       <button
         onClick={() => onLearnMore(product)}

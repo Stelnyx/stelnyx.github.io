@@ -16,24 +16,31 @@ const TOOLS: Product[] = [
     status: "v0.2.4 — MIT · published to npm",
     npm: "https://www.npmjs.com/package/@tinydarkforge/secgate",
     github: "https://github.com/tinydarkforge/SecGate",
+    audit: { price: "Free", href: "/audit/secgate.html" },
   },
   {
-    name: "Lumen",
+    name: "Lucen",
     badge: "Codebase Intel",
+    mit: true,
     tagline: "Codebase intelligence for engineers.",
     description:
-      "AST analysis, risk scoring, architecture diagrams, docs generation, and MCP support. Local-first — bring your own AI key. No cloud required.",
+      "AST analysis, risk scoring, architecture diagrams, docs generation, and MCP support. Local-first — deterministic static analysis, no LLM in the loop. Your code never leaves your machine.",
     stack: ["AST", "Risk scoring", "Diagrams", "Docs", "MCP"],
-    status: "Early release — coming soon",
+    status: "Open source — early release",
+    github: "https://github.com/tinydarkforge/lucen",
+    audit: { price: "$499", href: "/audit/lucen.html" },
   },
   {
     name: "LuxFaber",
     badge: "Agent Readiness",
+    mit: true,
     tagline: "Lighthouse for the agent web.",
     description:
       "Scans any URL and returns a scored report on how readable and usable the page is for LLM-driven agents. Static HTTP fetch — no JS rendering, no telemetry, no account.",
     stack: ["CLI", "HTTP", "LLM scoring"],
-    status: "Coming soon",
+    status: "Open source — coming soon",
+    github: "https://github.com/tinydarkforge/LuxFaber",
+    audit: { price: "$499", href: "/audit/luxfaber.html" },
   },
   {
     name: "Intake",
@@ -158,9 +165,9 @@ export function ToolsSection() {
             </p>
           )}
 
-          {(selected.github || selected.npm) && (
-            <div className="flex gap-3 pt-2 border-t border-stel-border">
-              {selected.github && (
+          {(selected.npm || selected.audit || (!selected.audit && selected.github)) && (
+            <div className="flex gap-3 pt-2 border-t border-stel-border flex-wrap">
+              {!selected.audit && selected.github && (
                 <a
                   href={selected.github}
                   target="_blank"
@@ -180,6 +187,18 @@ export function ToolsSection() {
                   npm →
                 </a>
               )}
+              {selected.audit && (() => {
+                const isFree = /free/i.test(selected.audit.price);
+                const cls = isFree
+                  ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"
+                  : "bg-stel-amber/10 border-stel-amber/30 text-stel-amber";
+                const suffix = isFree ? "first 10 teams" : "launching soon";
+                return (
+                  <span className={`px-4 py-2.5 rounded-md text-[14px] font-semibold border ${cls}`}>
+                    1-hr audit · {selected.audit.price} · {suffix}
+                  </span>
+                );
+              })()}
             </div>
           )}
         </Modal>
