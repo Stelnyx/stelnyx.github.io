@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 const EFFECTIVE_DATE = "May 4, 2026";
-const CONTACT_EMAIL = "daniel@hellocirrus.com";
+const CONTACT_EMAIL = "hello@stelnyx.com";
 
 export default function PrivacyPage() {
   return (

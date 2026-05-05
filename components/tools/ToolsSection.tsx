@@ -5,6 +5,9 @@ import { ProductCard, type Product } from "@/components/products/ProductCard";
 import { Modal } from "@/components/ui/Modal";
 import { ContactModal, type ContactContext } from "@/components/contact/ContactModal";
 
+const PAID_AUDITS_OPEN = false;
+const BUNDLE_OPEN = false;
+
 const TOOLS: Product[] = [
   {
     name: "SecGate",
@@ -154,6 +157,7 @@ export function ToolsSection() {
                       product={tool}
                       onLearnMore={setSelected}
                       onRequestAudit={openAuditRequest}
+                      paidAuditsOpen={PAID_AUDITS_OPEN}
                     />
                   ))}
                 </div>
@@ -176,6 +180,7 @@ export function ToolsSection() {
                       product={tool}
                       onLearnMore={setSelected}
                       onRequestAudit={openAuditRequest}
+                      paidAuditsOpen={PAID_AUDITS_OPEN}
                     />
                   ))}
                 </div>
@@ -183,32 +188,34 @@ export function ToolsSection() {
             );
           })()}
 
-          <div className="mt-12 max-w-[720px] mx-auto bg-stel-surface border border-stel-border rounded-xl px-6 md:px-8 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5 shadow-[0_1px_3px_rgba(0,0,0,0.4)]">
-            <div className="flex-1">
-              <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber mb-1">Bundle · save $200</p>
-              <h3 className="font-sans font-semibold text-[18px] text-stel-text-primary tracking-[-0.01em] mb-1">
-                Cirrus Full-Surface Audit
-              </h3>
-              <p className="text-[14px] text-stel-text-muted leading-relaxed">
-                All three — Lucen + LuxFaber + SecGate — in a 90-minute walkthrough. For founders prepping a sale, raise, or full handoff. <span className="text-stel-text-primary font-semibold">$799</span> instead of $998.
-              </p>
+          {BUNDLE_OPEN && (
+            <div className="mt-12 max-w-[720px] mx-auto bg-stel-surface border border-stel-border rounded-xl px-6 md:px-8 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5 shadow-[0_1px_3px_rgba(0,0,0,0.4)]">
+              <div className="flex-1">
+                <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber mb-1">Bundle · save $200</p>
+                <h3 className="font-sans font-semibold text-[18px] text-stel-text-primary tracking-[-0.01em] mb-1">
+                  Stelnyx Full-Surface Audit
+                </h3>
+                <p className="text-[14px] text-stel-text-muted leading-relaxed">
+                  All three — Lucen + LuxFaber + SecGate — in a 90-minute walkthrough. For founders prepping a sale, raise, or full handoff. <span className="text-stel-text-primary font-semibold">$799</span> instead of $998.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() =>
+                  setContactCtx({
+                    product: "Stelnyx Full-Surface Audit",
+                    tier: "$799 · 90-min · 3-in-1",
+                    source: "stelnyx · bundle",
+                    title: "Request · Stelnyx Full-Surface Audit",
+                    free: false,
+                  })
+                }
+                className="inline-flex items-center justify-center px-5 py-2.5 rounded-md text-[14px] font-semibold bg-stel-amber hover:bg-amber-600 text-stel-bg transition-colors duration-150 whitespace-nowrap"
+              >
+                Request bundle · $799 →
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={() =>
-                setContactCtx({
-                  product: "Cirrus Full-Surface Audit",
-                  tier: "$799 · 90-min · 3-in-1",
-                  source: "stelnyx · bundle",
-                  title: "Request · Cirrus Full-Surface Audit",
-                  free: false,
-                })
-              }
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-md text-[14px] font-semibold bg-stel-amber hover:bg-amber-600 text-stel-bg transition-colors duration-150 whitespace-nowrap"
-            >
-              Request bundle · $799 →
-            </button>
-          </div>
+          )}
         </div>
       </section>
 
@@ -249,46 +256,52 @@ export function ToolsSection() {
             </p>
           )}
 
-          {(selected.npm || selected.audit || (!selected.audit && selected.github)) && (
-            <div className="flex gap-3 pt-2 border-t border-stel-border flex-wrap">
-              {!selected.audit && selected.github && (
-                <a
-                  href={selected.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2.5 rounded-md border border-stel-border text-[14px] text-stel-text-muted hover:border-stel-border-bright hover:text-stel-text-primary transition-colors duration-150 font-medium"
-                >
-                  GitHub →
-                </a>
-              )}
-              {selected.npm && (
-                <a
-                  href={selected.npm}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`px-4 py-2.5 rounded-md text-[14px] font-semibold transition-colors duration-150 ${npmButtonColor[selected.badge] ?? "bg-stel-amber hover:bg-amber-600 text-stel-bg"}`}
-                >
-                  npm →
-                </a>
-              )}
-              {selected.audit && (() => {
-                const isFree = /free/i.test(selected.audit.price);
-                const cls = isFree
-                  ? "bg-emerald-500 hover:bg-emerald-600 text-stel-bg"
-                  : "bg-stel-amber hover:bg-amber-600 text-stel-bg";
-                const label = isFree ? "Request free audit" : `Request 1-hr audit · ${selected.audit.price}`;
-                return (
-                  <button
-                    type="button"
-                    onClick={() => openAuditRequest(selected)}
-                    className={`px-4 py-2.5 rounded-md text-[14px] font-semibold transition-colors duration-150 ${cls}`}
+          {(() => {
+            const isFree = selected.audit ? /free/i.test(selected.audit.price) : false;
+            const auditPillVisible = !!selected.audit && (isFree || PAID_AUDITS_OPEN);
+            const showGithub = !auditPillVisible && !!selected.github;
+            const showNpm = !!selected.npm;
+            if (!showGithub && !showNpm && !auditPillVisible) return null;
+            return (
+              <div className="flex gap-3 pt-2 border-t border-stel-border flex-wrap">
+                {showGithub && selected.github && (
+                  <a
+                    href={selected.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2.5 rounded-md border border-stel-border text-[14px] text-stel-text-muted hover:border-stel-border-bright hover:text-stel-text-primary transition-colors duration-150 font-medium"
                   >
-                    {label} →
-                  </button>
-                );
-              })()}
-            </div>
-          )}
+                    GitHub →
+                  </a>
+                )}
+                {showNpm && selected.npm && (
+                  <a
+                    href={selected.npm}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`px-4 py-2.5 rounded-md text-[14px] font-semibold transition-colors duration-150 ${npmButtonColor[selected.badge] ?? "bg-stel-amber hover:bg-amber-600 text-stel-bg"}`}
+                  >
+                    npm →
+                  </a>
+                )}
+                {auditPillVisible && selected.audit && (() => {
+                  const cls = isFree
+                    ? "bg-emerald-500 hover:bg-emerald-600 text-stel-bg"
+                    : "bg-stel-amber hover:bg-amber-600 text-stel-bg";
+                  const label = isFree ? "Request free audit" : `Request 1-hr audit · ${selected.audit.price}`;
+                  return (
+                    <button
+                      type="button"
+                      onClick={() => openAuditRequest(selected)}
+                      className={`px-4 py-2.5 rounded-md text-[14px] font-semibold transition-colors duration-150 ${cls}`}
+                    >
+                      {label} →
+                    </button>
+                  );
+                })()}
+              </div>
+            );
+          })()}
         </Modal>
       )}
 

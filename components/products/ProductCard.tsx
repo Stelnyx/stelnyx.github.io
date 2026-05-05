@@ -32,9 +32,10 @@ interface ProductCardProps {
   product: Product;
   onLearnMore: (product: Product) => void;
   onRequestAudit?: (product: Product) => void;
+  paidAuditsOpen?: boolean;
 }
 
-export function ProductCard({ product, onLearnMore, onRequestAudit }: ProductCardProps) {
+export function ProductCard({ product, onLearnMore, onRequestAudit, paidAuditsOpen = true }: ProductCardProps) {
   return (
     <article className="group relative bg-stel-surface border border-stel-border rounded-xl p-6 overflow-hidden transition-all duration-200 ease-out shadow-[0_1px_3px_rgba(0,0,0,0.4)] hover:border-stel-border-bright hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(108,99,255,0.09)]">
       <div
@@ -65,6 +66,7 @@ export function ProductCard({ product, onLearnMore, onRequestAudit }: ProductCar
 
       {product.audit && (() => {
         const isFree = /free/i.test(product.audit.price);
+        if (!isFree && !paidAuditsOpen) return null;
         const tone = isFree
           ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20"
           : "bg-stel-amber/10 border-stel-amber/20 text-stel-amber hover:bg-stel-amber/20";
