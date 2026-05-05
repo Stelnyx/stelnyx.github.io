@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ProductCard, type Product } from "@/components/products/ProductCard";
 import { Modal } from "@/components/ui/Modal";
+import { ContactModal, type ContactContext } from "@/components/contact/ContactModal";
 
 const TOOLS: Product[] = [
   {
@@ -91,6 +92,20 @@ const npmButtonColor: Record<string, string> = {
 
 export function ToolsSection() {
   const [selected, setSelected] = useState<Product | null>(null);
+  const [contactCtx, setContactCtx] = useState<ContactContext | null>(null);
+
+  function openAuditRequest(product: Product) {
+    if (!product.audit) return;
+    const isFree = /free/i.test(product.audit.price);
+    setContactCtx({
+      product: product.name,
+      tier: `1-hr audit · ${product.audit.price}`,
+      source: `stelnyx · ${product.name}`,
+      title: `Request · ${product.name} 1-hr audit`,
+      free: isFree,
+    });
+    setSelected(null);
+  }
 
   return (
     <>
@@ -122,6 +137,7 @@ export function ToolsSection() {
                 key={tool.name}
                 product={tool}
                 onLearnMore={setSelected}
+                onRequestAudit={openAuditRequest}
               />
             ))}
           </div>
@@ -190,19 +206,29 @@ export function ToolsSection() {
               {selected.audit && (() => {
                 const isFree = /free/i.test(selected.audit.price);
                 const cls = isFree
-                  ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"
-                  : "bg-stel-amber/10 border-stel-amber/30 text-stel-amber";
-                const suffix = isFree ? "first 10 teams" : "launching soon";
+                  ? "bg-emerald-500 hover:bg-emerald-600 text-stel-bg"
+                  : "bg-stel-amber hover:bg-amber-600 text-stel-bg";
+                const label = isFree ? "Request free audit" : `Request 1-hr audit · ${selected.audit.price}`;
                 return (
-                  <span className={`px-4 py-2.5 rounded-md text-[14px] font-semibold border ${cls}`}>
-                    1-hr audit · {selected.audit.price} · {suffix}
-                  </span>
+                  <button
+                    type="button"
+                    onClick={() => openAuditRequest(selected)}
+                    className={`px-4 py-2.5 rounded-md text-[14px] font-semibold transition-colors duration-150 ${cls}`}
+                  >
+                    {label} →
+                  </button>
                 );
               })()}
             </div>
           )}
         </Modal>
       )}
+
+      <ContactModal
+        isOpen={!!contactCtx}
+        onClose={() => setContactCtx(null)}
+        context={contactCtx ?? undefined}
+      />
     </>
   );
 }

@@ -1,3 +1,8 @@
+"use client";
+
+import { useState } from "react";
+import { ContactModal } from "@/components/contact/ContactModal";
+
 const FOOTER_LINKS = [
   { label: "Tools", href: "/#products" },
   { label: "GitHub", href: "https://github.com/tinydarkforge", external: true },
@@ -33,6 +38,7 @@ function StarMark() {
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const [contactOpen, setContactOpen] = useState(false);
 
   return (
     <footer className="bg-stel-bg border-t border-stel-border py-12">
@@ -68,6 +74,15 @@ export function Footer() {
                 </a>
               </li>
             ))}
+            <li>
+              <button
+                type="button"
+                onClick={() => setContactOpen(true)}
+                className="text-[14px] text-stel-text-faint hover:text-stel-text-muted transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
+              >
+                Contact
+              </button>
+            </li>
           </ul>
         </nav>
 
@@ -76,6 +91,12 @@ export function Footer() {
           &copy; {year} Stelnyx. All rights reserved.
         </p>
       </div>
+
+      <ContactModal
+        isOpen={contactOpen}
+        onClose={() => setContactOpen(false)}
+        context={{ source: "stelnyx · footer" }}
+      />
     </footer>
   );
 }

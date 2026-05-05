@@ -31,9 +31,10 @@ const badgeClasses: Record<BadgeType, string> = {
 interface ProductCardProps {
   product: Product;
   onLearnMore: (product: Product) => void;
+  onRequestAudit?: (product: Product) => void;
 }
 
-export function ProductCard({ product, onLearnMore }: ProductCardProps) {
+export function ProductCard({ product, onLearnMore, onRequestAudit }: ProductCardProps) {
   return (
     <article className="group relative bg-stel-surface border border-stel-border rounded-xl p-6 overflow-hidden transition-all duration-200 ease-out shadow-[0_1px_3px_rgba(0,0,0,0.4)] hover:border-stel-border-bright hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(108,99,255,0.09)]">
       <div
@@ -65,15 +66,20 @@ export function ProductCard({ product, onLearnMore }: ProductCardProps) {
       {product.audit && (() => {
         const isFree = /free/i.test(product.audit.price);
         const tone = isFree
-          ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"
-          : "bg-stel-amber/10 border-stel-amber/20 text-stel-amber";
+          ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20"
+          : "bg-stel-amber/10 border-stel-amber/20 text-stel-amber hover:bg-stel-amber/20";
         const dot = isFree ? "bg-emerald-400" : "bg-stel-amber";
-        const suffix = isFree ? "first 10 teams" : "soon";
+        const suffix = isFree ? "request" : "request slot";
         return (
-          <div className={`mt-4 inline-flex items-center gap-2 px-2.5 py-1 rounded-full border font-mono text-[11px] uppercase tracking-widest ${tone}`}>
+          <button
+            type="button"
+            onClick={() => onRequestAudit?.(product)}
+            className={`mt-4 inline-flex items-center gap-2 px-2.5 py-1 rounded-full border font-mono text-[11px] uppercase tracking-widest cursor-pointer transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright ${tone}`}
+            aria-label={`Request ${product.name} audit`}
+          >
             <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${dot}`} aria-hidden="true" />
-            1-hr audit · {product.audit.price} · {suffix}
-          </div>
+            1-hr audit · {product.audit.price} · {suffix} →
+          </button>
         );
       })()}
 
