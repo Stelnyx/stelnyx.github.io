@@ -152,3 +152,17 @@
 [INFO] 2026-05-06T11:01:10.416Z [session=893e213a-c41a-40e3-bf9c-e78c754fe830] Resolved stateDir: /Users/doceno/.a5c/state
 [INFO] 2026-05-06T11:01:10.416Z [session=893e213a-c41a-40e3-bf9c-e78c754fe830] Checking session file at: /Users/doceno/.a5c/state/893e213a-c41a-40e3-bf9c-e78c754fe830.md
 [INFO] 2026-05-06T11:01:10.416Z [session=893e213a-c41a-40e3-bf9c-e78c754fe830] No active loop found for session 893e213a-c41a-40e3-bf9c-e78c754fe830 — allowing exit
+[INFO] 2026-05-06T11:01:44.508Z handleHookRunStop started
+[INFO] 2026-05-06T11:01:44.510Z Hook input received
+[INFO] 2026-05-06T11:01:44.510Z [session=893e213a-c41a-40e3-bf9c-e78c754fe830] Session ID: 893e213a-c41a-40e3-bf9c-e78c754fe830
+[INFO] 2026-05-06T11:01:44.510Z [session=893e213a-c41a-40e3-bf9c-e78c754fe830] Resolved pluginRoot: /Users/doceno/.claude/plugins/cache/a5c-ai/babysitter/4.0.157
+[INFO] 2026-05-06T11:01:44.510Z [session=893e213a-c41a-40e3-bf9c-e78c754fe830] Resolved stateDir: /Users/doceno/.a5c/state
+[INFO] 2026-05-06T11:01:44.510Z [session=893e213a-c41a-40e3-bf9c-e78c754fe830] Checking session file at: /Users/doceno/.a5c/state/893e213a-c41a-40e3-bf9c-e78c754fe830.md
+[INFO] 2026-05-06T11:01:44.510Z [session=893e213a-c41a-40e3-bf9c-e78c754fe830] No active loop found for session 893e213a-c41a-40e3-bf9c-e78c754fe830 — allowing exit
+[INFO] 2026-05-06T12:06:32.868Z handleHookRunStop started
+[INFO] 2026-05-06T12:06:32.870Z Hook input received
+[INFO] 2026-05-06T12:06:32.870Z [session=893e213a-c41a-40e3-bf9c-e78c754fe830] Session ID: 893e213a-c41a-40e3-bf9c-e78c754fe830
+[INFO] 2026-05-06T12:06:32.870Z [session=893e213a-c41a-40e3-bf9c-e78c754fe830] Resolved pluginRoot: /Users/doceno/.claude/plugins/cache/a5c-ai/babysitter/4.0.157
+[INFO] 2026-05-06T12:06:32.870Z [session=893e213a-c41a-40e3-bf9c-e78c754fe830] Resolved stateDir: /Users/doceno/.a5c/state
+[INFO] 2026-05-06T12:06:32.870Z [session=893e213a-c41a-40e3-bf9c-e78c754fe830] Checking session file at: /Users/doceno/.a5c/state/893e213a-c41a-40e3-bf9c-e78c754fe830.md
+[INFO] 2026-05-06T12:06:32.870Z [session=893e213a-c41a-40e3-bf9c-e78c754fe830] No active loop found for session 893e213a-c41a-40e3-bf9c-e78c754fe830 — allowing exit

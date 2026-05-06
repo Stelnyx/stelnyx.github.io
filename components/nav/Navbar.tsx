@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/Button";
+import { ContactModal } from "@/components/contact/ContactModal";
 
 const NAV_LINKS = [
   { label: "Products", href: "#products" },
@@ -38,6 +39,7 @@ function StarMark() {
 export function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 8);
@@ -91,7 +93,14 @@ export function Navbar() {
         </nav>
 
         {/* Desktop CTA */}
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-4">
+          <button
+            type="button"
+            onClick={() => setContactOpen(true)}
+            className="text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 text-[15px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
+          >
+            Contact
+          </button>
           <Button variant="outline-indigo" as="a" href="#early-access">
             Get early access
           </Button>
@@ -151,6 +160,13 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
+          <button
+            type="button"
+            onClick={() => { setDrawerOpen(false); setContactOpen(true); }}
+            className="text-left text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 text-[18px] py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
+          >
+            Contact
+          </button>
         </nav>
         <div className="mt-auto">
           <Button
@@ -164,6 +180,11 @@ export function Navbar() {
           </Button>
         </div>
       </div>
+      <ContactModal
+        isOpen={contactOpen}
+        onClose={() => setContactOpen(false)}
+        context={{ source: "stelnyx · navbar" }}
+      />
     </header>
   );
 }
