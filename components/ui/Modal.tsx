@@ -7,9 +7,10 @@ interface ModalProps {
   onClose: () => void;
   title: string;
   children: React.ReactNode;
+  wide?: boolean;
 }
 
-export function Modal({ isOpen, onClose, title, children }: ModalProps) {
+export function Modal({ isOpen, onClose, title, children, wide = false }: ModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -30,7 +31,7 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
   return (
     <dialog
       ref={dialogRef}
-      className="fixed inset-0 z-50 m-auto w-full max-w-lg rounded-xl bg-stel-surface border border-stel-border p-0 backdrop:bg-black/70 backdrop:backdrop-blur-sm open:flex open:flex-col"
+      className={`fixed inset-0 z-50 m-auto w-full rounded-xl bg-stel-surface border border-stel-border p-0 backdrop:bg-black/70 backdrop:backdrop-blur-sm open:flex open:flex-col ${wide ? "max-w-2xl" : "max-w-lg"}`}
       onClick={(e) => {
         if (e.target === dialogRef.current) onClose();
       }}
@@ -40,7 +41,7 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
       }}
     >
       <div className="flex items-center justify-between px-8 pt-8 pb-0">
-        <h2 className="font-mono text-[20px] text-stel-text-primary tracking-[-0.01em]">
+        <h2 className="text-[20px] font-semibold text-stel-text-primary tracking-[-0.01em]">
           {title}
         </h2>
         <button

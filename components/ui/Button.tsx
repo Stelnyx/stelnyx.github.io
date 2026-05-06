@@ -13,7 +13,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
     "bg-stel-amber text-stel-bg font-semibold px-6 py-3.5 rounded-md " +
-    "hover:bg-amber-400 hover:scale-[1.02] active:scale-[0.98] transition-all duration-150 " +
+    "hover:bg-amber-400 transition-colors duration-150 " +
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber focus-visible:ring-offset-2 focus-visible:ring-offset-stel-bg",
   ghost:
     "text-stel-text-primary px-6 py-3.5 rounded-md hover:bg-stel-surface transition-colors duration-150 " +

@@ -16,7 +16,7 @@ export default function PrivacyPage() {
       <Navbar />
       <main id="main-content" className="bg-stel-bg min-h-screen">
         <div className="max-w-[720px] mx-auto px-6 md:px-12 py-24">
-          <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-text-muted mb-4">
+          <p className="text-[13px] text-stel-text-muted mb-4">
             Legal
           </p>
           <h1 className="text-stel-text-primary font-semibold tracking-[-0.03em] mb-2" style={{ fontSize: "clamp(32px, 5vw, 48px)" }}>

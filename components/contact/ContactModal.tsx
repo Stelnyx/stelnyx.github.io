@@ -99,13 +99,13 @@ export function ContactModal({ isOpen, onClose, context }: ContactModalProps) {
           <p className="text-[14px] text-stel-text-muted">{intro}</p>
 
           {context?.product && (
-            <div className="text-[12px] font-mono uppercase tracking-widest text-stel-text-faint">
+            <div className="text-[13px] text-stel-text-faint">
               Subject: <span className="text-stel-text-muted">{context.product}{context.tier ? ` · ${context.tier}` : ""}</span>
             </div>
           )}
 
           <div>
-            <label htmlFor="contact-name" className="block text-[12px] font-mono uppercase tracking-widest text-stel-text-faint mb-1">
+            <label htmlFor="contact-name" className="block text-[13px] text-stel-text-muted mb-1">
               Name
             </label>
             <input
@@ -121,7 +121,7 @@ export function ContactModal({ isOpen, onClose, context }: ContactModalProps) {
           </div>
 
           <div>
-            <label htmlFor="contact-email" className="block text-[12px] font-mono uppercase tracking-widest text-stel-text-faint mb-1">
+            <label htmlFor="contact-email" className="block text-[13px] text-stel-text-muted mb-1">
               Email <span className="text-stel-amber">*</span>
             </label>
             <input
@@ -138,7 +138,7 @@ export function ContactModal({ isOpen, onClose, context }: ContactModalProps) {
           </div>
 
           <div>
-            <label htmlFor="contact-company" className="block text-[12px] font-mono uppercase tracking-widest text-stel-text-faint mb-1">
+            <label htmlFor="contact-company" className="block text-[13px] text-stel-text-muted mb-1">
               Company / Repo
             </label>
             <input
@@ -154,7 +154,7 @@ export function ContactModal({ isOpen, onClose, context }: ContactModalProps) {
           </div>
 
           <div>
-            <label htmlFor="contact-message" className="block text-[12px] font-mono uppercase tracking-widest text-stel-text-faint mb-1">
+            <label htmlFor="contact-message" className="block text-[13px] text-stel-text-muted mb-1">
               Message <span className="text-stel-amber">*</span>
             </label>
             <textarea

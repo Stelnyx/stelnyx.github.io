@@ -19,7 +19,7 @@ export function PhilosophySection() {
           <div className="flex-[3] min-w-0">
             <p
               id="philosophy-heading"
-              className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-text-muted mb-6"
+              className="text-[13px] text-stel-text-muted mb-6"
             >
               Philosophy
             </p>
