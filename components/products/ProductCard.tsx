@@ -80,7 +80,8 @@ export function ProductCard({ product, onLearnMore, onRequestAudit, paidAuditsOp
             aria-label={`Request ${product.name} audit`}
           >
             <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${dot}`} aria-hidden="true" />
-            1-hr audit · {product.audit.price} · {suffix} →
+            {/* 1-hr audit · {product.audit.price} · {suffix} → */}
+            1-hr audit · {suffix} →
           </button>
         );
       })()}

@@ -102,7 +102,8 @@ export function ToolsSection() {
     const isFree = /free/i.test(product.audit.price);
     setContactCtx({
       product: product.name,
-      tier: `1-hr audit · ${product.audit.price}`,
+      // tier: `1-hr audit · ${product.audit.price}`,
+      tier: "1-hr audit",
       source: `stelnyx · ${product.name}`,
       title: `Request · ${product.name} 1-hr audit`,
       free: isFree,
@@ -288,7 +289,8 @@ export function ToolsSection() {
                   const cls = isFree
                     ? "bg-emerald-500 hover:bg-emerald-600 text-stel-bg"
                     : "bg-stel-amber hover:bg-amber-600 text-stel-bg";
-                  const label = isFree ? "Request free audit" : `Request 1-hr audit · ${selected.audit.price}`;
+                  // const label = isFree ? "Request free audit" : `Request 1-hr audit · ${selected.audit.price}`;
+                  const label = isFree ? "Request free audit" : "Request 1-hr audit";
                   return (
                     <button
                       type="button"
