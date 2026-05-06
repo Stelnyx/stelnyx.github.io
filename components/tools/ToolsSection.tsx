@@ -292,7 +292,7 @@ export function ToolsSection() {
           {(() => {
             const isFree = selected.audit ? /free/i.test(selected.audit.price) : false;
             const auditPillVisible = !!selected.audit && (isFree || PAID_AUDITS_OPEN);
-            const showGithub = !auditPillVisible && !!selected.github;
+            const showGithub = !selected.audit && !!selected.github;
             const showNpm = !!selected.npm;
             if (!showGithub && !showNpm && !auditPillVisible) return null;
             return (
