@@ -37,14 +37,14 @@ export function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4 mt-10">
               <a
-                href="#tools"
+                href="#products"
                 className="inline-flex items-center justify-center bg-stel-amber text-stel-bg font-semibold px-6 py-3.5 rounded-md hover:bg-amber-400 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber focus-visible:ring-offset-2 focus-visible:ring-offset-stel-bg"
                 style={{ minHeight: "44px" }}
               >
                 See the tools
               </a>
               <a
-                href="#early-access"
+                href="mailto:hello@stelnyx.com?subject=Stelnyx%20%E2%80%94%20early%20access&body=Hi%20Daniel%2C%0A%0AI%27d%20like%20early%20access%20to%20Stelnyx%20%2F%20LuxFaber.%0A%0A"
                 className="inline-flex items-center justify-center text-stel-text-primary border border-stel-border px-6 py-3.5 rounded-md hover:border-stel-border-bright hover:text-stel-text-primary transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright focus-visible:ring-offset-2 focus-visible:ring-offset-stel-bg"
                 style={{ minHeight: "44px" }}
               >
