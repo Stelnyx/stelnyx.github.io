@@ -17,7 +17,7 @@ export interface Product {
   tagline: string;
   description: string;
   badge: BadgeType;
-  mit?: boolean;
+  license?: "MIT" | "Apache-2.0";
   stack?: string[];
   status?: string;
   npm?: string;
@@ -50,8 +50,8 @@ export function ProductCard({ product, onLearnMore, onRequestAudit, paidAuditsOp
           <span className="w-1.5 h-1.5 rounded-full bg-current" aria-hidden="true" />
           {product.badge}
         </span>
-        {product.mit && (
-          <span className="text-[11px] text-stel-text-faint">MIT</span>
+        {product.license && (
+          <span className="text-[11px] text-stel-text-faint">{product.license}</span>
         )}
       </div>
 

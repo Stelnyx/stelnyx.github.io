@@ -12,7 +12,7 @@ const TOOLS: Product[] = [
   {
     name: "SecGate",
     badge: "Security",
-    mit: true,
+    license: "MIT",
     tagline: "One command. One report. One exit code.",
     description:
       "Runs Semgrep, Gitleaks, osv-scanner, Trivy, and npm audit in one command. Normalizes findings into one report and fails the pipeline on CRITICAL or HIGH.",
@@ -25,7 +25,7 @@ const TOOLS: Product[] = [
   {
     name: "Lucen",
     badge: "Codebase Intel",
-    mit: true,
+    license: "Apache-2.0",
     tagline: "Know your code before you change it.",
     description:
       "Your codebase grows faster than anyone can track — AI tools make it worse. Lucen performs deterministic static analysis, locally, without LLMs, to produce accurate architecture maps, dependency graphs, and risk scores. Before you change a system you don't fully understand, Lucen tells you what you're actually touching.",
@@ -42,24 +42,24 @@ const TOOLS: Product[] = [
   {
     name: "LuxFaber",
     badge: "Agent Readiness",
-    mit: true,
+    license: "Apache-2.0",
     tagline: "Agent-readability is the new SEO.",
     description:
-      "AI agents are replacing traditional browsers and search — most of the web is invisible to them. LuxFaber scores any URL for agent compatibility — semantic structure, schemas, action affordances — and gives you a prioritized fix list. Be readable. Be usable. Be found.",
+      "AI agents are replacing traditional browsers and search — most of the web is invisible to them. LuxFaber scores any URL for agent compatibility — crawl access, structured data, semantic HTML, content clarity, and UA-cloaking determinism — and gives you a prioritized fix list. Be readable. Be usable. Be found.",
     stack: ["CLI", "HTTP", "Agent scoring"],
     status: "Open source — coming soon",
     github: "https://github.com/tinydarkforge/LuxFaber",
     audit: { price: "$499", href: "/audit/luxfaber.html" },
     audiences: {
-      dev: "LuxFaber analyzes any URL and scores agent-readability across a structured rubric: semantic HTML quality, structured data completeness, link graph navigability, content extractability, and action affordances. Output is a scored report with specific, actionable fixes — not vague recommendations.\n\nThink Lighthouse, but for AI agent compatibility. Runs on-demand or via API. Integrate into your deploy pipeline to catch regressions before they cost you agent traffic. As LLM-based agents replace traditional crawlers and search interfaces, the markup choices you make today determine whether you exist in that layer.",
-      ceo: "Search engines sent you traffic because they could crawl you. AI agents work the same way — except the rules changed and most companies haven't noticed.\n\nLuxFaber audits your web presence for AI agent compatibility: whether agents can find your content, parse your offers, and take action on your site. Companies that optimize now will capture agent-driven traffic before competitors realize the channel exists. LuxFaber gives you a score, a prioritized fix list, and a clear path to becoming the default result when an agent acts on a user's behalf.",
+      dev: "LuxFaber analyzes any URL and scores agent-readability across a structured rubric: crawl accessibility (robots.txt, sitemap, llms.txt, AI-bot allow-rules, canonical), structured data (JSON-LD, OpenGraph, schema.org), semantic HTML (landmarks, heading hierarchy, alt coverage), content clarity (signal:noise, boilerplate density), and determinism (UA-cloaking diff between browser, Luxfaber, and GPTBot). Output is a scored report with specific, actionable fixes — not vague recommendations.\n\nThink Lighthouse, but for AI agent compatibility. Runs as a CLI, GitHub Action, or hosted API. Integrate into your deploy pipeline to catch regressions before they cost you agent traffic. As LLM-based agents replace traditional crawlers and search interfaces, the markup choices you make today determine whether you exist in that layer.",
+      ceo: "Search engines sent you traffic because they could crawl you. AI agents work the same way — except the rules changed and most companies haven't noticed.\n\nLuxFaber audits your web presence for AI agent compatibility: whether agents can crawl your site, parse your structure, and extract your content. Companies that optimize now will capture agent-driven traffic before competitors realize the channel exists. LuxFaber gives you a score, a prioritized fix list, and a clear path to becoming the default result when an agent acts on a user's behalf.",
       investor: "Search is being disintermediated. AI agents — ChatGPT shopping, Operator-style task completion, Google's agentic layer — are becoming the primary interface between users and web services. Most of the web is invisible to them: unstructured markup, JavaScript-rendered content, missing semantic signals.\n\nLuxFaber is the first tool purpose-built to score and fix agent-readability. The market is every business that depends on web-driven distribution. The timing mirrors early SEO (2003–2006): the channel exists, best practices don't, and first-mover tooling vendors capture the category.",
     },
   },
   {
     name: "Intake",
     badge: "Issue Forge",
-    mit: true,
+    license: "MIT",
     tagline: "Paste anything. Get a structured issue.",
     description:
       "Paste a Slack thread, bug report, or vague complaint — Intake uses local AI via Ollama to return a structured GitHub issue in one command. No cloud, no account.",
@@ -70,7 +70,7 @@ const TOOLS: Product[] = [
   {
     name: "Engram",
     badge: "Memory Layer",
-    mit: true,
+    license: "MIT",
     tagline: "One ledger. One confidence model.",
     description:
       "Memory ledger for AI systems. Sessions, facts, confidence scoring, and MCP support. Local-first — one context budget, no account, no telemetry.",
@@ -81,7 +81,7 @@ const TOOLS: Product[] = [
   {
     name: "Arbiter",
     badge: "Agent Guard",
-    mit: true,
+    license: "MIT",
     tagline: "One guard. One verdict. Sub-5ms.",
     description:
       "Agent guard layer — enforces limits, validates schemas, checks tool allowlists, tracks cost, and detects loops. No LLM required. Deterministic and fast.",
