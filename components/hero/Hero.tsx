@@ -20,9 +20,9 @@ export function Hero() {
   return (
     <section
       aria-labelledby="hero-headline"
-      className="relative min-h-[calc(100vh-64px)] flex items-center bg-stel-bg"
+      className="relative bg-stel-bg"
     >
-      <div className="relative w-full max-w-[1280px] mx-auto px-6 md:px-12 xl:px-20 py-20 md:py-0">
+      <div className="relative w-full max-w-[1280px] mx-auto px-6 md:px-12 xl:px-20 py-12 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
 
           {/* Left column — headline + CTAs */}
