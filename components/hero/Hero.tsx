@@ -1,43 +1,124 @@
+const TERMINAL_LINES = [
+  { type: "cmd", text: "$ npx luxfaber https://stripe.com" },
+  { type: "score", text: "Score: 91 / 100   ARO · rule v1" },
+  { type: "blank", text: "" },
+  { type: "rule", label: "  Crawl Accessibility", score: "96 / 100" },
+  { type: "rule", label: "  Structured Data    ", score: "86 / 100" },
+  { type: "rule", label: "  Semantic HTML      ", score: "100 / 100" },
+  { type: "rule", label: "  Content Clarity    ", score: "72 / 100" },
+  { type: "rule", label: "  Determinism        ", score: "100 / 100" },
+];
+
 export function Hero() {
   return (
     <section
       aria-labelledby="hero-headline"
-      className="relative min-h-[calc(100vh-64px)] flex items-center justify-center bg-stel-bg"
+      className="relative min-h-[calc(100vh-64px)] flex items-center bg-stel-bg"
     >
-      <div className="relative text-center px-6 md:px-12 xl:px-20 max-w-[1280px] mx-auto w-full">
-        <h1
-          id="hero-headline"
-          className="text-stel-text-primary font-semibold tracking-[-0.04em] leading-[1.05] text-balance"
-          style={{ fontSize: "clamp(40px, 6vw, 64px)" }}
-        >
-          Security infrastructure built for
-          <br />
-          engineers who ship.
-        </h1>
+      <div className="relative w-full max-w-[1280px] mx-auto px-6 md:px-12 xl:px-20 py-20 md:py-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
 
-        <p
-          className="text-stel-text-muted max-w-[560px] mx-auto mt-5 leading-[1.7] text-balance"
-          style={{ fontSize: "18px" }}
-        >
-          Stelnyx gives you scanning, memory, and agent tooling that doesn&apos;t
-          slow your team down.
-        </p>
+          {/* Left column — headline + CTAs */}
+          <div className="animate-fade-up">
+            <h1
+              id="hero-headline"
+              className="text-stel-text-primary font-semibold tracking-[-0.04em] leading-[1.05] text-balance"
+              style={{ fontSize: "clamp(36px, 5vw, 60px)" }}
+            >
+              Infrastructure for engineers who ship.
+            </h1>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
-          <a
-            href="#early-access"
-            id="early-access"
-            className="bg-stel-amber text-stel-bg font-semibold px-6 py-3.5 rounded-md hover:bg-amber-400 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber focus-visible:ring-offset-2 focus-visible:ring-offset-stel-bg"
+            <p
+              className="text-stel-text-muted mt-5 leading-[1.7] max-w-[480px] text-balance"
+              style={{ fontSize: "18px" }}
+            >
+              Six open-source tools — security scanning, agent memory, ARO scoring, and more. Drop them in without slowing the team down.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 mt-10">
+              <a
+                href="#tools"
+                className="inline-flex items-center justify-center bg-stel-amber text-stel-bg font-semibold px-6 py-3.5 rounded-md hover:bg-amber-400 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber focus-visible:ring-offset-2 focus-visible:ring-offset-stel-bg"
+                style={{ minHeight: "44px" }}
+              >
+                See the tools
+              </a>
+              <a
+                href="#early-access"
+                className="inline-flex items-center justify-center text-stel-text-primary border border-stel-border px-6 py-3.5 rounded-md hover:border-stel-border-bright hover:text-stel-text-primary transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright focus-visible:ring-offset-2 focus-visible:ring-offset-stel-bg"
+                style={{ minHeight: "44px" }}
+              >
+                Get early access
+              </a>
+            </div>
+          </div>
+
+          {/* Right column — LuxFaber terminal block */}
+          <div
+            className="animate-fade-up-delay-2"
+            role="img"
+            aria-label="LuxFaber ARO scanner output for stripe.com: score 91 out of 100"
           >
-            Get early access
-          </a>
-          <a
-            href="#docs"
-            id="docs"
-            className="text-stel-text-primary px-6 py-3.5 rounded-md hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright focus-visible:ring-offset-2 focus-visible:ring-offset-stel-bg"
-          >
-            Read the docs
-          </a>
+            <figure className="m-0">
+              <figcaption className="sr-only">
+                LuxFaber — Agent Readiness Optimization scanner. Example run against stripe.com.
+              </figcaption>
+              <div
+                className="rounded-lg border border-stel-border bg-stel-surface overflow-hidden"
+                aria-hidden="true"
+              >
+                {/* Terminal title bar — plain, no traffic lights */}
+                <div className="flex items-center gap-2 px-4 py-2.5 border-b border-stel-border">
+                  <span className="font-mono text-stel-text-faint" style={{ fontSize: "11px" }}>
+                    terminal
+                  </span>
+                  <span className="ml-auto font-mono text-stel-text-faint" style={{ fontSize: "11px" }}>
+                    luxfaber v0.2
+                  </span>
+                </div>
+
+                {/* Terminal body */}
+                <div className="px-5 py-5 space-y-1" style={{ fontFamily: "var(--font-jetbrains-mono), monospace", fontSize: "13px", lineHeight: "1.7" }}>
+                  {TERMINAL_LINES.map((line, i) => {
+                    if (line.type === "blank") {
+                      return <div key={i} className="h-1" />;
+                    }
+                    if (line.type === "cmd") {
+                      return (
+                        <div key={i} className="text-stel-text-muted">
+                          {line.text}
+                        </div>
+                      );
+                    }
+                    if (line.type === "score") {
+                      return (
+                        <div key={i} className="text-stel-text-primary font-semibold">
+                          {line.text}
+                        </div>
+                      );
+                    }
+                    if (line.type === "rule") {
+                      const numericScore = parseInt(line.score ?? "0", 10);
+                      const scoreColor =
+                        numericScore >= 90
+                          ? "text-emerald-400"
+                          : numericScore >= 70
+                          ? "text-stel-amber"
+                          : "text-red-400";
+                      return (
+                        <div key={i} className="flex items-center justify-between gap-8">
+                          <span className="text-stel-text-muted whitespace-pre">{line.label}</span>
+                          <span className={scoreColor}>{line.score}</span>
+                        </div>
+                      );
+                    }
+                    return null;
+                  })}
+                </div>
+              </div>
+            </figure>
+          </div>
+
         </div>
       </div>
     </section>

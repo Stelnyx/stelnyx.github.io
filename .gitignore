@@ -40,3 +40,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .a5c/
+
+# investor / partner artifacts (commit explicitly if you want to version these)
+INVESTOR-PITCH-*.md
+PARTNER-MEMO-*.md
+FRIEND-PITCH-*.md
