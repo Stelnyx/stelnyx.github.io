@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ContactModal } from "@/components/contact/ContactModal";
 
 const FOOTER_LINKS = [
-  { label: "Tools", href: "/#products" },
+  { label: "Tools", href: "/#tools" },
   { label: "GitHub", href: "https://github.com/tinydarkforge", external: true },
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },

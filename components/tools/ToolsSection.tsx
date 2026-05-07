@@ -151,7 +151,7 @@ export function ToolsSection() {
   return (
     <>
       <section
-        id="products"
+        id="tools"
         aria-labelledby="tools-heading"
         className="bg-stel-bg py-16 md:py-24"
       >

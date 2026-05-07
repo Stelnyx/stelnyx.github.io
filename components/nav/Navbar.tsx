@@ -50,9 +50,9 @@ return (
 
     {/* Desktop CTA */}
     <div className="hidden md:flex items-center gap-8">
-      <a href="#products"
+      <a href="#tools"
         className="text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 text-[15px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm">
-        Products
+        Tools
       </a>
       <button type="button" onClick={()=> setContactOpen(true)}
         className="text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 text-[15px]
@@ -87,11 +87,11 @@ return (
       bottom-0 z-50 w-72 bg-stel-surface border-l border-stel-border md:hidden flex flex-col px-6 py-8 gap-6
       transition-transform duration-200 ${ drawerOpen ? "translate-x-0" : "translate-x-full" }`}>
       <nav aria-label="Mobile navigation" className="flex flex-col gap-4">
-        <a href="#products"
+        <a href="#tools"
           className="text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 text-[18px] py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
           onClick={()=> setDrawerOpen(false)}
           >
-          Products
+          Tools
         </a>
         <button type="button" onClick={()=> { setDrawerOpen(false); setContactOpen(true); }}
           className="text-left text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150
