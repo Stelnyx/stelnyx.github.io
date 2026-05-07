@@ -26,15 +26,6 @@ export interface Product {
   audiences?: AudienceContent;
 }
 
-const badgeDotColor: Record<BadgeType, string> = {
-  Security:          "text-stel-indigo-bright",
-  "Codebase Intel":  "text-stel-indigo-bright",
-  "Memory Layer":    "text-stel-indigo-bright",
-  "Agent Readiness": "text-stel-amber",
-  "Issue Forge":     "text-emerald-400",
-  "Agent Guard":     "text-emerald-400",
-};
-
 interface ProductCardProps {
   product: Product;
   onLearnMore: (product: Product) => void;
@@ -46,8 +37,7 @@ export function ProductCard({ product, onLearnMore, onRequestAudit, paidAuditsOp
   return (
     <article className="bg-stel-surface border border-stel-border rounded-lg p-6 transition-colors duration-150 hover:border-stel-border-bright">
       <div className="flex items-start justify-between gap-3">
-        <span className={`inline-flex items-center gap-1.5 text-[12px] font-medium ${badgeDotColor[product.badge]}`}>
-          <span className="w-1.5 h-1.5 rounded-full bg-current" aria-hidden="true" />
+        <span className="text-[11px] uppercase tracking-[0.08em] text-stel-text-faint">
           {product.badge}
         </span>
         {product.license && (

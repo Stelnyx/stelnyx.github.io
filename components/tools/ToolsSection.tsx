@@ -43,17 +43,17 @@ const TOOLS: Product[] = [
     name: "LuxFaber",
     badge: "Agent Readiness",
     license: "Apache-2.0",
-    tagline: "Agent-readability is the new SEO.",
+    tagline: "ARO is the new SEO.",
     description:
-      "AI agents are replacing traditional browsers and search — most of the web is invisible to them. LuxFaber scores any URL for agent compatibility — crawl access, structured data, semantic HTML, content clarity, and UA-cloaking determinism — and gives you a prioritized fix list. Be readable. Be usable. Be found.",
+      "Agent Readiness Optimization (ARO) — the score for whether AI agents can crawl, parse, and operate your site. GEO got you cited; ARO gets you operated. LuxFaber scores any URL across crawl access, structured data, semantic HTML, content clarity, and UA-cloaking determinism — and gives you a prioritized fix list. Be readable. Be usable. Be found.",
     stack: ["CLI", "HTTP", "Agent scoring"],
     status: "Open source — coming soon",
     github: "https://github.com/tinydarkforge/LuxFaber",
     audit: { price: "$499", href: "/audit/luxfaber.html" },
     audiences: {
-      dev: "LuxFaber analyzes any URL and scores agent-readability across a structured rubric: crawl accessibility (robots.txt, sitemap, llms.txt, AI-bot allow-rules, canonical), structured data (JSON-LD, OpenGraph, schema.org), semantic HTML (landmarks, heading hierarchy, alt coverage), content clarity (signal:noise, boilerplate density), and determinism (UA-cloaking diff between browser, Luxfaber, and GPTBot). Output is a scored report with specific, actionable fixes — not vague recommendations.\n\nThink Lighthouse, but for AI agent compatibility. Runs as a CLI, GitHub Action, or hosted API. Integrate into your deploy pipeline to catch regressions before they cost you agent traffic. As LLM-based agents replace traditional crawlers and search interfaces, the markup choices you make today determine whether you exist in that layer.",
-      ceo: "Search engines sent you traffic because they could crawl you. AI agents work the same way — except the rules changed and most companies haven't noticed.\n\nLuxFaber audits your web presence for AI agent compatibility: whether agents can crawl your site, parse your structure, and extract your content. Companies that optimize now will capture agent-driven traffic before competitors realize the channel exists. LuxFaber gives you a score, a prioritized fix list, and a clear path to becoming the default result when an agent acts on a user's behalf.",
-      investor: "Search is being disintermediated. AI agents — ChatGPT shopping, Operator-style task completion, Google's agentic layer — are becoming the primary interface between users and web services. Most of the web is invisible to them: unstructured markup, JavaScript-rendered content, missing semantic signals.\n\nLuxFaber is the first tool purpose-built to score and fix agent-readability. The market is every business that depends on web-driven distribution. The timing mirrors early SEO (2003–2006): the channel exists, best practices don't, and first-mover tooling vendors capture the category.",
+      dev: "LuxFaber is the first ARO scanner — Agent Readiness Optimization. It analyzes any URL and scores agent-readability across a structured rubric: crawl accessibility (robots.txt, sitemap, llms.txt, AI-bot allow-rules, canonical), structured data (JSON-LD, OpenGraph, schema.org), semantic HTML (landmarks, heading hierarchy, alt coverage), content clarity (signal:noise, boilerplate density), and determinism (UA-cloaking diff between browser, Luxfaber, and GPTBot). Output is a scored report with specific, actionable fixes — not vague recommendations.\n\nThink Lighthouse, but for AI agent compatibility. Runs as a CLI, GitHub Action, or hosted API. Integrate into your deploy pipeline to catch regressions before they cost you agent traffic. ARO sits one layer beyond GEO and AEO: GEO measures whether your content gets cited in answers; ARO measures whether agents can actually operate on your site.",
+      ceo: "Search engines sent you traffic because they could crawl you. AI agents work the same way — except the rules changed and most companies haven't noticed.\n\nWe call this Agent Readiness Optimization — ARO. It's where SEO is going next: not just being indexed (SEO), not just being cited in answers (GEO / AEO), but being operable by autonomous agents that browse and act on a user's behalf. LuxFaber audits your web presence for ARO and gives you a score, a prioritized fix list, and a clear path to becoming the default result when an agent acts. Companies that optimize now will capture agent-driven traffic before competitors realize the channel exists.",
+      investor: "Search is being disintermediated. AI agents — ChatGPT shopping, Operator-style task completion, Google's agentic layer — are becoming the primary interface between users and web services. Most of the web is invisible to them: unstructured markup, JavaScript-rendered content, missing semantic signals.\n\nWe coined the category: ARO — Agent Readiness Optimization. It's the layer beyond GEO and AEO: GEO/AEO measure whether you get cited; ARO measures whether agents can operate. LuxFaber is the first tool purpose-built to score and fix ARO. The market is every business that depends on web-driven distribution. The timing mirrors early SEO (2003–2006): the channel exists, best practices don't, and first-mover tooling vendors capture the category.",
     },
   },
   {
@@ -255,8 +255,7 @@ export function ToolsSection() {
           wide={!!selected.audiences}
         >
           <div className="flex items-center gap-3 mb-5">
-            <span className="inline-flex items-center gap-1.5 text-[12px] font-medium text-stel-text-muted">
-              <span className="w-1.5 h-1.5 rounded-full bg-current" aria-hidden="true" />
+            <span className="text-[11px] uppercase tracking-[0.08em] text-stel-text-faint">
               {selected.badge}
             </span>
             <p className="text-[13px] text-stel-text-muted italic">{selected.tagline}</p>

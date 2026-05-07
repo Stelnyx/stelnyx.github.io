@@ -56,7 +56,7 @@ export function Footer() {
         </a>
 
         {/* Tagline */}
-        <p className="font-mono text-[13px] tracking-[0.04em] text-stel-text-faint text-center uppercase">
+        <p className="text-[13px] text-stel-text-faint text-center">
           Built in the dark. Works in the light.
         </p>
 

@@ -66,7 +66,7 @@ export function ContactModal({ isOpen, onClose, context }: ContactModalProps) {
       const json = (await res.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
       if (!res.ok || !json?.ok) {
         setStatus("error");
-        setErrorText(json?.error ?? "Something went wrong. Try again or email daniel.oceno@gmail.com directly.");
+        setErrorText(json?.error ?? "Something went wrong. Try again or email hello@stelnyx.com directly.");
         return;
       }
       setStatus("sent");
@@ -76,7 +76,7 @@ export function ContactModal({ isOpen, onClose, context }: ContactModalProps) {
       setMessage("");
     } catch {
       setStatus("error");
-      setErrorText("Network error. Try again or email daniel.oceno@gmail.com directly.");
+      setErrorText("Network error. Try again or email hello@stelnyx.com directly.");
     }
   }
 
