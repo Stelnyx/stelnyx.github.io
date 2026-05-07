@@ -1,5 +1,5 @@
 const TERMINAL_LINES = [
-  { type: "cmd", text: "$ npx luxfaber https://stripe.com" },
+  { type: "cmd", text: "$ npx luxfaber https://stelnyx.com" },
   { type: "score", text: "Score: 91 / 100   ARO · rule v1" },
   { type: "blank", text: "" },
   { type: "rule", label: "  Crawl Accessibility", score: "96 / 100" },
@@ -57,11 +57,11 @@ export function Hero() {
           <div
             className="animate-fade-up-delay-2"
             role="img"
-            aria-label="LuxFaber ARO scanner output for stripe.com: score 91 out of 100"
+            aria-label="LuxFaber ARO scanner output for stelnyx.com: score 91 out of 100"
           >
             <figure className="m-0">
               <figcaption className="sr-only">
-                LuxFaber — Agent Readiness Optimization scanner. Example run against stripe.com.
+                LuxFaber — Agent Readiness Optimization scanner. Dogfood run against stelnyx.com.
               </figcaption>
               <div
                 className="rounded-lg border border-stel-border bg-stel-surface overflow-hidden"
