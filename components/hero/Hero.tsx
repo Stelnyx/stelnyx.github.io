@@ -1,3 +1,8 @@
+"use client";
+
+import { useState } from "react";
+import { ContactModal } from "@/components/contact/ContactModal";
+
 const TERMINAL_LINES = [
   { type: "cmd", text: "$ npx luxfaber https://stelnyx.com" },
   { type: "score", text: "Score: 91 / 100   ARO · rule v1" },
@@ -10,6 +15,8 @@ const TERMINAL_LINES = [
 ];
 
 export function Hero() {
+  const [contactOpen, setContactOpen] = useState(false);
+
   return (
     <section
       aria-labelledby="hero-headline"
@@ -43,13 +50,14 @@ export function Hero() {
               >
                 See the tools
               </a>
-              <a
-                href="mailto:hello@stelnyx.com?subject=Stelnyx%20%E2%80%94%20early%20access&body=Hi%20Daniel%2C%0A%0AI%27d%20like%20early%20access%20to%20Stelnyx%20%2F%20LuxFaber.%0A%0A"
-                className="inline-flex items-center justify-center text-stel-text-primary border border-stel-border px-6 py-3.5 rounded-md hover:border-stel-border-bright hover:text-stel-text-primary transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright focus-visible:ring-offset-2 focus-visible:ring-offset-stel-bg"
+              <button
+                type="button"
+                onClick={() => setContactOpen(true)}
+                className="inline-flex items-center justify-center text-stel-text-primary border border-stel-border px-6 py-3.5 rounded-md hover:border-stel-border-bright hover:text-stel-text-primary transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright focus-visible:ring-offset-2 focus-visible:ring-offset-stel-bg cursor-pointer"
                 style={{ minHeight: "44px" }}
               >
                 Get early access
-              </a>
+              </button>
             </div>
           </div>
 
@@ -121,6 +129,16 @@ export function Hero() {
 
         </div>
       </div>
+
+      <ContactModal
+        isOpen={contactOpen}
+        onClose={() => setContactOpen(false)}
+        context={{
+          source: "stelnyx · hero",
+          title: "Request early access",
+          intro: "Tell us a bit about your site or stack and we'll get back to you within a day.",
+        }}
+      />
     </section>
   );
 }
