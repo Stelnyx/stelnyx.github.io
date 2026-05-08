@@ -23,20 +23,20 @@ const TOOLS: Product[] = [
     audit: { price: "Free", href: "/audit/secgate.html" },
   },
   {
-    name: "Lucen",
+    name: "Luxscope",
     badge: "Codebase Intel",
     license: "Apache-2.0",
     tagline: "Know your code before you change it.",
     description:
-      "Your codebase grows faster than anyone can track — AI tools make it worse. Lucen performs deterministic static analysis, locally, without LLMs, to produce accurate architecture maps, dependency graphs, and risk scores. Before you change a system you don't fully understand, Lucen tells you what you're actually touching.",
+      "Your codebase grows faster than anyone can track — AI tools make it worse. Luxscope performs deterministic static analysis, locally, without LLMs, to produce accurate architecture maps, dependency graphs, and risk scores. Before you change a system you don't fully understand, Luxscope tells you what you're actually touching.",
     stack: ["AST", "Risk scoring", "Diagrams", "Docs", "MCP"],
     status: "Open source — early release",
-    github: "https://github.com/tinydarkforge/lucen",
-    audit: { price: "$499", href: "/audit/lucen.html" },
+    github: "https://github.com/tinydarkforge/luxscope",
+    audit: { price: "$499", href: "/audit/luxscope.html" },
     audiences: {
-      dev: "Lucen runs deterministic static analysis across your entire codebase — no LLMs, no network calls, no hallucinations. It builds accurate dependency graphs, surfaces architectural risk, and generates documentation that reflects what the code actually does. Everything runs locally; nothing leaves your machine.\n\nOutput: call graphs, module ownership maps, dead code detection, risk-scored change impact. Accurate because it's deterministic. Fast because it's local. When you're about to touch a system you don't fully understand, Lucen tells you what you're actually touching — before you break it. Works on inherited codebases and AI-generated code alike.",
-      ceo: "Your engineers spend 40–60% of their time reverse-engineering code before they can safely change it. Lucen eliminates that. It gives teams an on-demand map of their systems: what depends on what, what's risky to touch, what's documented versus assumed.\n\nNo setup, no external service, no code leaving your environment. AI-assisted development is widening the gap between \"code that exists\" and \"code anyone understands.\" Lucen closes it. Fewer outages. Faster reviews. Engineers who move instead of stall.",
-      investor: "AI coding tools produce code 3–5× faster than teams can absorb it. The result: opaque systems, undocumented dependencies, compounding risk — at every engineering org, simultaneously.\n\nLucen is deterministic static analysis infrastructure, local-first, LLM-free, that turns codebases into navigable knowledge graphs. TAM: every software company with more than 5 engineers. Urgency: AI-generated code compounds complexity today, not in three years. Defensibility is technical — the architecture map gets stickier the longer teams use it. First mover in verifiable codebase intelligence.",
+      dev: "Luxscope runs deterministic static analysis across your entire codebase — no LLMs, no network calls, no hallucinations. It builds accurate dependency graphs, surfaces architectural risk, and generates documentation that reflects what the code actually does. Everything runs locally; nothing leaves your machine.\n\nOutput: call graphs, module ownership maps, dead code detection, risk-scored change impact. Accurate because it's deterministic. Fast because it's local. When you're about to touch a system you don't fully understand, Luxscope tells you what you're actually touching — before you break it. Works on inherited codebases and AI-generated code alike.",
+      ceo: "Your engineers spend 40–60% of their time reverse-engineering code before they can safely change it. Luxscope eliminates that. It gives teams an on-demand map of their systems: what depends on what, what's risky to touch, what's documented versus assumed.\n\nNo setup, no external service, no code leaving your environment. AI-assisted development is widening the gap between \"code that exists\" and \"code anyone understands.\" Luxscope closes it. Fewer outages. Faster reviews. Engineers who move instead of stall.",
+      investor: "AI coding tools produce code 3–5× faster than teams can absorb it. The result: opaque systems, undocumented dependencies, compounding risk — at every engineering org, simultaneously.\n\nLuxscope is deterministic static analysis infrastructure, local-first, LLM-free, that turns codebases into navigable knowledge graphs. TAM: every software company with more than 5 engineers. Urgency: AI-generated code compounds complexity today, not in three years. Defensibility is technical — the architecture map gets stickier the longer teams use it. First mover in verifiable codebase intelligence.",
     },
   },
   {
@@ -224,7 +224,7 @@ export function ToolsSection() {
                   Stelnyx Full-Surface Audit
                 </h3>
                 <p className="text-[14px] text-stel-text-muted leading-relaxed">
-                  All three — Lucen + LuxFaber + SecGate — in a 90-minute walkthrough. For founders prepping a sale, raise, or full handoff. <span className="text-stel-text-primary font-semibold">$799</span> instead of $998.
+                  All three — Luxscope + LuxFaber + SecGate — in a 90-minute walkthrough. For founders prepping a sale, raise, or full handoff. <span className="text-stel-text-primary font-semibold">$799</span> instead of $998.
                 </p>
               </div>
               <button
