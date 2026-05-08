@@ -15,11 +15,11 @@ interface ScoreBlock {
 const LUXSCOPE: ScoreBlock = {
   title: "luxscope v0.1",
   version: "rule v0.1.0",
-  ariaLabel: "Luxscope Score for example codebase: 84 out of 100",
-  caption: "Luxscope — codebase intelligence scanner. Sample run.",
+  ariaLabel: "LuxScope Score for example codebase: 84 out of 100",
+  caption: "LuxScope — codebase intelligence scanner. Sample run.",
   lines: [
     { type: "cmd", text: "$ npx luxscope analyze ." },
-    { type: "score", text: "Luxscope Score: 84 / 100   rule v0.1.0" },
+    { type: "score", text: "LuxScope Score: 84 / 100   rule v0.1.0" },
     { type: "blank" },
     { type: "rule", label: "  Security          ", score: "92 / 100" },
     { type: "rule", label: "  Dead Code         ", score: "78 / 100" },
@@ -131,7 +131,7 @@ export function ScoresShowcase() {
             className="text-stel-text-muted mt-4 leading-[1.7] text-balance"
             style={{ fontSize: "16px" }}
           >
-            LuxFaber scores your web surface for AI agents. Luxscope scores your codebase. SecGate scores your security posture. Same scoring discipline, three different angles on the same buyer. Run any of them in 30 seconds.
+            LuxFaber scores your web surface for AI agents. LuxScope scores your codebase. SecGate scores your security posture. Same scoring discipline, three different angles on the same buyer. Run any of them in 30 seconds.
           </p>
         </div>
 

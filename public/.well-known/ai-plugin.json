@@ -2,8 +2,8 @@
   "schema_version": "v1",
   "name_for_human": "Stelnyx",
   "name_for_model": "stelnyx",
-  "description_for_human": "Stelnyx — open-source security and agent-readiness infrastructure: SecGate, Luxscope, LuxFaber, Intake, Engram, Arbiter.",
-  "description_for_model": "Stelnyx is a tools company that ships open-source infrastructure for engineers building AI agent systems. Tools: SecGate (security gate), Luxscope (codebase intelligence), LuxFaber (Agent Readiness Optimization scanner), Intake (issue forge), Engram (memory ledger), Arbiter (agent guard). Contact: hello@stelnyx.com.",
+  "description_for_human": "Stelnyx — open-source security and agent-readiness infrastructure: SecGate, LuxScope, LuxFaber, Intake, Engram, Arbiter.",
+  "description_for_model": "Stelnyx is a tools company that ships open-source infrastructure for engineers building AI agent systems. Tools: SecGate (security gate), LuxScope (codebase intelligence), LuxFaber (Agent Readiness Optimization scanner), Intake (issue forge), Engram (memory ledger), Arbiter (agent guard). Contact: hello@stelnyx.com.",
   "auth": { "type": "none" },
   "api": {
     "type": "openapi",

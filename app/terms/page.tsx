@@ -38,7 +38,7 @@ export default function TermsPage() {
                 SecGate, Intake, Engram, and Arbiter are open source software released under the MIT License. Your use of these tools is governed by the MIT License, not these terms. The MIT License is permissive — you can use, modify, and distribute these tools freely, with attribution.
               </p>
               <p>
-                Luxscope and LuxFaber are proprietary software currently in development. Access is restricted. Do not redistribute, reverse engineer, or use these tools without explicit written permission from Stelnyx.
+                LuxScope and LuxFaber are proprietary software currently in development. Access is restricted. Do not redistribute, reverse engineer, or use these tools without explicit written permission from Stelnyx.
               </p>
             </Section>
 

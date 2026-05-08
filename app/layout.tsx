@@ -47,7 +47,7 @@ const ORG_JSONLD = {
   url: SITE_URL,
   logo: `${SITE_URL}/icon.svg`,
   description:
-    "Security infrastructure for engineers who ship. Stelnyx builds SecGate, Luxscope, LuxFaber, Intake, Engram, and Arbiter.",
+    "Security infrastructure for engineers who ship. Stelnyx builds SecGate, LuxScope, LuxFaber, Intake, Engram, and Arbiter.",
   sameAs: [
     "https://github.com/tinydarkforge",
     "https://github.com/Stelnyx",
