@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LuxFaber Report — stelnyx.com · Sample</title>
+<meta name="description" content="Sample LuxFaber AEO report against stelnyx.com. Score 91/100 across crawl access, structured data, semantic HTML, content clarity, and determinism.">
+<meta name="robots" content="noindex">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0A0A14;
+  --surface:#0F0F1F;
+  --surface-2:#13132a;
+  --border:#1E1E3A;
+  --border-bright:#2D2D5A;
+  --indigo:#6C63FF;
+  --indigo-bright:#7B73FF;
+  --amber:#F59E0B;
+  --green:#10B981;
+  --red:#EF4444;
+  --text:#F8FAFC;
+  --muted:#94A3B8;
+  --faint:#4B5563;
+  --max-w:960px;
+  --font:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+html,body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased}
+a{color:var(--indigo-bright);text-decoration:none}
+a:hover{text-decoration:underline}
+main{max-width:var(--max-w);margin:0 auto;padding:48px 24px 96px}
+.banner{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 24px;text-align:center;font-size:13px;color:var(--muted)}
+.banner strong{color:var(--text)}
+header.report-header{border-bottom:1px solid var(--border);padding-bottom:32px;margin-bottom:40px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:24px}
+.brand-mark{width:24px;height:24px;border-radius:5px;background:linear-gradient(135deg,var(--indigo) 0%,var(--indigo-bright) 100%);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px}
+.report-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:24px;padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:13px}
+.report-meta dt{color:var(--faint);font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.report-meta dd{color:var(--text);font-weight:500}
+h1{font-size:34px;line-height:1.15;font-weight:600;letter-spacing:-.02em;margin-bottom:12px}
+.tagline{font-size:16px;color:var(--muted)}
+.score-block{display:flex;align-items:center;gap:32px;margin:40px 0;padding:28px;background:var(--surface);border:1px solid var(--border);border-radius:10px}
+.score-num{font-family:var(--mono);font-size:64px;line-height:1;font-weight:700;color:var(--green);letter-spacing:-.02em}
+.score-num.amber{color:var(--amber)}
+.score-num.red{color:var(--red)}
+.score-meta h2{font-size:18px;font-weight:600;margin-bottom:6px}
+.score-meta p{font-size:14px;color:var(--muted);margin:0}
+.rule-bars{display:grid;grid-template-columns:1fr;gap:10px;margin:32px 0 8px}
+.rule-bar{display:grid;grid-template-columns:200px 1fr 60px;gap:14px;align-items:center;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:14px}
+.rule-bar .label{color:var(--muted);font-weight:500}
+.rule-bar .track{height:6px;background:var(--surface-2);border-radius:3px;overflow:hidden}
+.rule-bar .fill{height:100%;border-radius:3px}
+.rule-bar .pct{font-family:var(--mono);font-size:13px;font-weight:600;text-align:right}
+.fill.green{background:var(--green)} .pct.green{color:var(--green)}
+.fill.amber{background:var(--amber)} .pct.amber{color:var(--amber)}
+.fill.red{background:var(--red)} .pct.red{color:var(--red)}
+section{margin-top:56px}
+section h2{font-size:22px;font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
+section h2 .lead{font-size:13px;color:var(--faint);font-family:var(--mono);font-weight:400;margin-left:10px;text-transform:uppercase;letter-spacing:.06em}
+section .blurb{color:var(--muted);margin-bottom:20px;max-width:640px}
+.findings{display:flex;flex-direction:column;gap:12px}
+.finding{padding:18px 20px;background:var(--surface);border:1px solid var(--border);border-radius:8px;border-left-width:3px}
+.finding.high{border-left-color:var(--red)}
+.finding.med{border-left-color:var(--amber)}
+.finding.low{border-left-color:var(--indigo)}
+.finding-head{display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+.sev{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:4px}
+.sev.high{background:rgba(239,68,68,.12);color:var(--red)}
+.sev.med{background:rgba(245,158,11,.12);color:var(--amber)}
+.sev.low{background:rgba(108,99,255,.14);color:var(--indigo-bright)}
+.finding-id{font-family:var(--mono);font-size:11px;color:var(--faint)}
+.finding-title{font-size:15px;font-weight:600;color:var(--text);flex:1;min-width:200px}
+.finding-loc{font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:8px}
+.finding-body{font-size:14px;color:var(--muted)}
+.finding-fix{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);font-size:13px;color:var(--text)}
+.finding-fix strong{color:var(--green);font-weight:600}
+.summary-box{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--indigo-bright);padding:20px 24px;border-radius:8px;margin-top:8px}
+.summary-box p{font-size:15px;color:var(--text);margin-bottom:12px}
+.summary-box p:last-child{margin-bottom:0}
+table.fixes{width:100%;border-collapse:collapse;margin-top:8px;font-size:13px}
+table.fixes th{text-align:left;padding:10px 12px;background:var(--surface);border-bottom:1px solid var(--border);font-weight:600;color:var(--muted);font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+table.fixes td{padding:12px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:top}
+table.fixes td.eta{font-family:var(--mono);color:var(--muted);white-space:nowrap}
+table.fixes td.gain{font-family:var(--mono);color:var(--green);white-space:nowrap;font-weight:600}
+.method{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:8px}
+.method .card{padding:16px;background:var(--surface);border:1px solid var(--border);border-radius:6px}
+.method .card h4{font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.04em}
+.method .card p{font-size:13px;color:var(--muted)}
+footer{margin-top:80px;padding-top:24px;border-top:1px solid var(--border);color:var(--faint);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+footer a{color:var(--muted)}
+@media (max-width:640px){
+  h1{font-size:26px}
+  .score-block{flex-direction:column;align-items:flex-start;gap:16px}
+  .rule-bar{grid-template-columns:120px 1fr 50px;gap:10px}
+  .rule-bar .label{font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <strong>Sample report</strong> &mdash; representative output of a LuxFaber v0.2 scan. Generated for demonstration. Real scans run locally on your machine.
+</div>
+
+<main>
+
+<header class="report-header">
+  <div class="brand">
+    <span class="brand-mark">L</span>
+    <span>LuxFaber · TinyDarkForge</span>
+  </div>
+  <h1>AEO Report &mdash; stelnyx.com</h1>
+  <p class="tagline">Answer Engine Optimization audit. Crawl access, structured data, semantic HTML, content clarity, and UA-cloaking determinism.</p>
+  <dl class="report-meta">
+    <div><dt>Target</dt><dd>https://stelnyx.com</dd></div>
+    <div><dt>Tool</dt><dd>luxfaber v0.2 &middot; rule v1</dd></div>
+    <div><dt>Scan date</dt><dd>2026-05-09 14:22 UTC</dd></div>
+    <div><dt>Pages crawled</dt><dd>14 / 14</dd></div>
+    <div><dt>Runtime</dt><dd>3.4 s</dd></div>
+    <div><dt>Bytes scanned</dt><dd>412 KB</dd></div>
+  </dl>
+</header>
+
+<div class="score-block">
+  <div class="score-num green">91</div>
+  <div class="score-meta">
+    <h2>Overall AEO Score &mdash; 91 / 100</h2>
+    <p>Strong agent operability. Two MED findings drag the content-clarity rule. No HIGH findings.</p>
+  </div>
+</div>
+
+<section>
+  <h2>Executive summary <span class="lead">3 paragraphs</span></h2>
+  <div class="summary-box">
+    <p>stelnyx.com scores 91/100 on the LuxFaber AEO rubric (rule v1). The site is highly operable for autonomous agents: robots.txt explicitly allows GPTBot, ClaudeBot, and PerplexityBot; sitemap is current; structured data is parseable across all 14 product and content pages; and three independent fetches (Chromium, LuxFaber UA, GPTBot UA) returned byte-identical HTML &mdash; no cloaking.</p>
+    <p>Two MED findings reduce the content-clarity score to 72/100: (1) the hero copy uses metaphor (&ldquo;Infrastructure for engineers who ship&rdquo;) without a literal first-paragraph restatement, which reduces extraction quality for short-form answer engines; and (2) the LuxScope and LuxFaber descriptions are identical-length, making them harder to disambiguate in agent retrieval. Both have specific, low-effort fixes listed below.</p>
+    <p>Estimated time to push the overall score to 96+: <strong style="color:var(--text)">~2 hours</strong> of copy and JSON-LD work, no engineering required.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Rule breakdown <span class="lead">5 rules · weighted</span></h2>
+  <div class="rule-bars">
+    <div class="rule-bar"><span class="label">Crawl Accessibility</span><div class="track"><div class="fill green" style="width:96%"></div></div><span class="pct green">96 / 100</span></div>
+    <div class="rule-bar"><span class="label">Structured Data</span><div class="track"><div class="fill amber" style="width:86%"></div></div><span class="pct amber">86 / 100</span></div>
+    <div class="rule-bar"><span class="label">Semantic HTML</span><div class="track"><div class="fill green" style="width:100%"></div></div><span class="pct green">100 / 100</span></div>
+    <div class="rule-bar"><span class="label">Content Clarity</span><div class="track"><div class="fill amber" style="width:72%"></div></div><span class="pct amber">72 / 100</span></div>
+    <div class="rule-bar"><span class="label">Determinism</span><div class="track"><div class="fill green" style="width:100%"></div></div><span class="pct green">100 / 100</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Findings <span class="lead">2 MED · 3 LOW</span></h2>
+  <div class="findings">
+
+    <div class="finding med">
+      <div class="finding-head">
+        <span class="sev med">MED</span>
+        <span class="finding-id">LF-031</span>
+        <span class="finding-title">Hero copy lacks literal restatement of value prop</span>
+      </div>
+      <div class="finding-loc">/ &middot; &lt;h1&gt; + first &lt;p&gt;</div>
+      <div class="finding-body">The H1 (&ldquo;Infrastructure for engineers who ship&rdquo;) is metaphorical. Short-form answer engines (Perplexity, ChatGPT search) prefer one-sentence literal restatements within the first 200 chars of body text. Current first paragraph leads with &ldquo;Six open-source tools&rdquo; without naming the audience or outcome literally.</div>
+      <div class="finding-fix"><strong>Fix:</strong> Add one sentence after the hero paragraph: &ldquo;TinyDarkForge ships open-source tools for security scanning, codebase analysis, and AI agent infrastructure &mdash; for engineering teams.&rdquo; ETA: 5 min.</div>
+    </div>
+
+    <div class="finding med">
+      <div class="finding-head">
+        <span class="sev med">MED</span>
+        <span class="finding-id">LF-044</span>
+        <span class="finding-title">Tool descriptions too similar in shape and length</span>
+      </div>
+      <div class="finding-loc">#tools &middot; ProductCard descriptions (LuxScope, LuxFaber)</div>
+      <div class="finding-body">Both LuxScope and LuxFaber descriptions are 280-310 chars with similar opening structure (&ldquo;Your codebase grows&rdquo; / &ldquo;AEO scanner &mdash; Answer Engine&rdquo;). Embedding-based retrieval will rank them as near-duplicates. Agents asked &ldquo;which TinyDarkForge tool maps a codebase&rdquo; may surface either.</div>
+      <div class="finding-fix"><strong>Fix:</strong> Lead each description with the verb-object form (&ldquo;Maps your codebase before you change it&rdquo; / &ldquo;Scores your site for AI agent operability&rdquo;). ETA: 15 min.</div>
+    </div>
+
+    <div class="finding low">
+      <div class="finding-head">
+        <span class="sev low">LOW</span>
+        <span class="finding-id">LF-012</span>
+        <span class="finding-title">No llms.txt at root</span>
+      </div>
+      <div class="finding-loc">/llms.txt &middot; HTTP 404</div>
+      <div class="finding-body">Optional but emerging standard for agent-facing site summaries. Improves citation rates on Perplexity/Cline. Not weighted heavily in v1 rubric.</div>
+      <div class="finding-fix"><strong>Fix:</strong> Add /llms.txt with site purpose, key URLs, and contact. Template at llmstxt.org. ETA: 10 min.</div>
+    </div>
+
+    <div class="finding low">
+      <div class="finding-head">
+        <span class="sev low">LOW</span>
+        <span class="finding-id">LF-019</span>
+        <span class="finding-title">JSON-LD missing on /audit/* pages</span>
+      </div>
+      <div class="finding-loc">/audit/luxscope.html, /audit/luxfaber.html, /audit/secgate.html</div>
+      <div class="finding-body">Audit landing pages have OpenGraph but no schema.org Service or Product markup. Reduces extractability for &ldquo;what does TinyDarkForge sell&rdquo; queries.</div>
+      <div class="finding-fix"><strong>Fix:</strong> Add Service JSON-LD with name, description, provider, offers.price. ETA: 20 min for all three pages. </div>
+    </div>
+
+    <div class="finding low">
+      <div class="finding-head">
+        <span class="sev low">LOW</span>
+        <span class="finding-id">LF-027</span>
+        <span class="finding-title">No canonical link on tool detail modals</span>
+      </div>
+      <div class="finding-loc">#tools modal anchors</div>
+      <div class="finding-body">Modals are client-rendered without dedicated URLs. Agents that snapshot the page see modal content out of context. Cosmetic for now &mdash; weighted 0.05 in rubric.</div>
+      <div class="finding-fix"><strong>Fix:</strong> Either route modals (e.g. /tools/luxscope) or remove modal-only content from agent-visible HTML. ETA: dev-scoped.</div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Prioritized fix order <span class="lead">2 hours total · ranked by score gain per minute</span></h2>
+  <table class="fixes">
+    <thead>
+      <tr><th>#</th><th>Fix</th><th>Owner</th><th>ETA</th><th>Score gain</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>LF-031 &mdash; Add literal restatement after hero H1</td><td>Marketing / founder</td><td class="eta">5 min</td><td class="gain">+3</td></tr>
+      <tr><td>2</td><td>LF-044 &mdash; Reshape LuxScope/LuxFaber descriptions to verb-first</td><td>Marketing / founder</td><td class="eta">15 min</td><td class="gain">+2</td></tr>
+      <tr><td>3</td><td>LF-019 &mdash; JSON-LD Service schema on /audit/*</td><td>Frontend</td><td class="eta">20 min</td><td class="gain">+1</td></tr>
+      <tr><td>4</td><td>LF-012 &mdash; /llms.txt</td><td>Frontend</td><td class="eta">10 min</td><td class="gain">+0.5</td></tr>
+      <tr><td>5</td><td>LF-027 &mdash; Route tool modals to URLs</td><td>Frontend</td><td class="eta">~1 hr</td><td class="gain">+0.5</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Methodology <span class="lead">deterministic · local · LLM-free</span></h2>
+  <div class="method">
+    <div class="card">
+      <h4>Crawl</h4>
+      <p>BFS crawl up to depth 3 from root and sitemap entries. Honors robots.txt. Three parallel fetches per URL: Chromium (headless), LuxFaber UA, GPTBot UA.</p>
+    </div>
+    <div class="card">
+      <h4>Parse</h4>
+      <p>Static HTML parser (no JS execution unless --render flag set). Extracts &lt;head&gt; meta, JSON-LD, OpenGraph, schema.org, microdata, semantic landmarks, alt coverage, heading tree.</p>
+    </div>
+    <div class="card">
+      <h4>Score</h4>
+      <p>Five rules, weighted: Crawl 0.25, Structured 0.25, Semantic 0.15, Clarity 0.20, Determinism 0.15. Each rule is a deterministic checklist of sub-checks, no model calls. Same input &rarr; same score.</p>
+    </div>
+    <div class="card">
+      <h4>Privacy</h4>
+      <p>No telemetry. No code or HTML leaves your machine unless you explicitly export the report. Open source: github.com/tinydarkforge/LuxFaber.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>LuxFaber v0.2 &middot; rule v1 &middot; 2026-05-09</span>
+  <span>Generated by <a href="https://github.com/tinydarkforge/LuxFaber">tinydarkforge/LuxFaber</a></span>
+</footer>
+
+</main>
+</body>
+</html>

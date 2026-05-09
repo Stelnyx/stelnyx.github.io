@@ -10,6 +10,7 @@ interface ScoreBlock {
   ariaLabel: string;
   caption: string;
   lines: Line[];
+  reportHref?: string;
 }
 
 const LUXSCOPE: ScoreBlock = {
@@ -17,8 +18,8 @@ const LUXSCOPE: ScoreBlock = {
   version: "rule v0.1.0",
   ariaLabel: "LuxScope Score for example codebase: 84 out of 100",
   caption: "LuxScope — codebase intelligence scanner. Sample run.",
+  reportHref: "/reports/luxscope-sample.html",
   lines: [
-    { type: "cmd", text: "$ npx luxscope analyze ." },
     { type: "score", text: "LuxScope Score: 84 / 100   rule v0.1.0" },
     { type: "blank" },
     { type: "rule", label: "  Security          ", score: "92 / 100" },
@@ -48,6 +49,7 @@ const SECGATE: ScoreBlock = {
 
 function Terminal({ block }: { block: ScoreBlock }) {
   return (
+    <div>
     <figure
       className="m-0"
       role="img"
@@ -109,6 +111,20 @@ function Terminal({ block }: { block: ScoreBlock }) {
         </div>
       </div>
     </figure>
+    {block.reportHref && (
+      <div className="mt-3 flex items-center justify-between gap-3 text-[12px] text-stel-text-faint">
+        <span>Score is the headline. Report ships findings, fix order, ETAs.</span>
+        <a
+          href={block.reportHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-stel-text-muted hover:text-stel-text-primary underline-offset-2 hover:underline whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
+        >
+          View sample report →
+        </a>
+      </div>
+    )}
+    </div>
   );
 }
 

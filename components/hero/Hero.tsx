@@ -4,7 +4,6 @@ import { useState } from "react";
 import { ContactModal } from "@/components/contact/ContactModal";
 
 const TERMINAL_LINES = [
-  { type: "cmd", text: "$ npx luxfaber https://stelnyx.com" },
   { type: "score", text: "Score: 91 / 100   AEO · rule v1" },
   { type: "blank", text: "" },
   { type: "rule", label: "  Crawl Accessibility", score: "96 / 100" },
@@ -125,6 +124,17 @@ export function Hero() {
                 </div>
               </div>
             </figure>
+            <div className="mt-3 flex items-center justify-between gap-3 text-[12px] text-stel-text-faint">
+              <span>Score is the headline. Report ships findings, fix order, ETAs.</span>
+              <a
+                href="/reports/luxfaber-sample.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-stel-text-muted hover:text-stel-text-primary underline-offset-2 hover:underline whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
+              >
+                View sample report →
+              </a>
+            </div>
           </div>
 
         </div>
