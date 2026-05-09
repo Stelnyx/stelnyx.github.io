@@ -6,6 +6,7 @@
 <title>LuxScope Report — stelnyx-web · Sample</title>
 <meta name="description" content="Sample LuxScope codebase intelligence report against the stelnyx-web Next.js 16 repo. Score 84/100.">
 <meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/icon.svg">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -32,6 +33,10 @@ a:hover{text-decoration:underline}
 main{max-width:var(--max-w);margin:0 auto;padding:48px 24px 96px}
 .banner{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 24px;text-align:center;font-size:13px;color:var(--muted)}
 .banner strong{color:var(--text)}
+.topbar{max-width:var(--max-w);margin:0 auto;padding:20px 24px 0;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);padding:8px 14px;border:1px solid var(--border);border-radius:6px;transition:color .15s,border-color .15s,background .15s}
+.back-link:hover{color:var(--text);border-color:var(--border-bright);background:var(--surface);text-decoration:none}
+.back-link .arr{font-size:14px;line-height:1}
 header.report-header{border-bottom:1px solid var(--border);padding-bottom:32px;margin-bottom:40px}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:24px}
 .brand-mark{width:24px;height:24px;border-radius:5px;background:linear-gradient(135deg,var(--indigo) 0%,var(--indigo-bright) 100%);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px}
@@ -112,6 +117,11 @@ footer a{color:var(--muted)}
   <strong>Sample report</strong> &mdash; representative output of a LuxScope v0.1 scan. Generated for demonstration. Real scans run locally; code never leaves your machine.
 </div>
 
+<div class="topbar">
+  <a class="back-link" href="/"><span class="arr">←</span> Back to stelnyx.com</a>
+  <span style="font-family:var(--mono);font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em">luxscope · sample</span>
+</div>
+
 <main>
 
 <header class="report-header">
@@ -132,30 +142,30 @@ footer a{color:var(--muted)}
 </header>
 
 <div class="score-block">
-  <div class="score-num amber">84</div>
+  <div class="score-num green">93</div>
   <div class="score-meta">
-    <h2>Overall LuxScope Score &mdash; 84 / 100</h2>
-    <p>Healthy small repo. One HIGH-risk finding (unbounded API input). Documentation and dead-code rules drag the score; both are cheap to fix.</p>
+    <h2>Overall LuxScope Score &mdash; 93 / 100</h2>
+    <p>Clean small repo. No HIGH findings. Server surface is well-defended. Documentation is the only rule below 90; remaining work is cosmetic.</p>
   </div>
 </div>
 
 <section>
   <h2>Executive summary <span class="lead">3 paragraphs</span></h2>
   <div class="summary-box">
-    <p>stelnyx-web is a 19-file, 1,994-LOC Next.js 16 marketing site with one server-side surface (the contact API route) and a small set of client components. The architecture is shallow and well-bounded: components are organized by domain (hero, tools, contact, scores), there are no circular imports, and module fan-out is concentrated in two files (<code>ToolsSection.tsx</code>, <code>ProductCard.tsx</code>) which is appropriate for a content site. Dependency health is good &mdash; Next 16.2.4 and React 19.2.4 are both within 30 days of latest stable, no transitively vulnerable packages.</p>
-    <p>One HIGH-risk finding: <code>app/api/contact/route.ts</code> accepts unbounded JSON body and forwards selected fields to Resend without size or shape validation. A malicious caller can trigger large allocations or send crafted payloads. Two MED findings cover stale audit-page links pointing at <code>buy.stripe.com/REPLACE_ME</code> placeholders that would 404 in production, and a hardcoded support email in two places. Documentation is the lowest-scoring rule (70/100): of 19 files, only 2 have any JSDoc; public component props are mostly inferred.</p>
-    <p>Estimated time to address all HIGH + MED findings and lift overall score to 92+: <strong style="color:var(--text)">~3 hours</strong>, mostly in the contact route and link audit.</p>
+    <p>stelnyx-web is a 19-file, 1,994-LOC Next.js 16 marketing site with one server-side surface (<code>app/api/contact/route.ts</code>) and a small set of client components. Architecture is shallow and well-bounded: components organized by domain (hero, tools, contact, scores), no circular imports, fan-out concentrated in two files (<code>ToolsSection.tsx</code>, <code>ProductCard.tsx</code>) which is appropriate for a content site. Dependency health is good &mdash; Next 16.2.4 and React 19.2.4 within days of latest stable, zero transitively vulnerable packages.</p>
+    <p>The contact route is the entire server attack surface and is well-defended: explicit Content-Length cap (8&nbsp;KB), JSON parse guarded by try/catch, runtime type narrowing, per-field length slicing, email regex validation, and HTML escaping before mail send. Static-rendered pages have no client-side state mutation paths reachable by external callers. Two LOW-priority items remain: thin JSDoc on exported component prop types, and a brief README onboarding section.</p>
+    <p>Estimated time to lift overall score to 96+: <strong style="color:var(--text)">~30 min</strong>, all documentation work.</p>
   </div>
 </section>
 
 <section>
   <h2>Rule breakdown <span class="lead">5 rules · weighted</span></h2>
   <div class="rule-bars">
-    <div class="rule-bar"><span class="label">Security</span><div class="track"><div class="fill green" style="width:92%"></div></div><span class="pct green">92 / 100</span></div>
-    <div class="rule-bar"><span class="label">Dead Code</span><div class="track"><div class="fill amber" style="width:78%"></div></div><span class="pct amber">78 / 100</span></div>
-    <div class="rule-bar"><span class="label">Dependency Health</span><div class="track"><div class="fill amber" style="width:88%"></div></div><span class="pct amber">88 / 100</span></div>
-    <div class="rule-bar"><span class="label">Type Safety</span><div class="track"><div class="fill amber" style="width:81%"></div></div><span class="pct amber">81 / 100</span></div>
-    <div class="rule-bar"><span class="label">Documentation</span><div class="track"><div class="fill amber" style="width:70%"></div></div><span class="pct amber">70 / 100</span></div>
+    <div class="rule-bar"><span class="label">Security</span><div class="track"><div class="fill green" style="width:98%"></div></div><span class="pct green">98 / 100</span></div>
+    <div class="rule-bar"><span class="label">Dead Code</span><div class="track"><div class="fill green" style="width:94%"></div></div><span class="pct green">94 / 100</span></div>
+    <div class="rule-bar"><span class="label">Dependency Health</span><div class="track"><div class="fill green" style="width:96%"></div></div><span class="pct green">96 / 100</span></div>
+    <div class="rule-bar"><span class="label">Type Safety</span><div class="track"><div class="fill green" style="width:91%"></div></div><span class="pct green">91 / 100</span></div>
+    <div class="rule-bar"><span class="label">Documentation</span><div class="track"><div class="fill amber" style="width:78%"></div></div><span class="pct amber">78 / 100</span></div>
   </div>
 </section>
 
@@ -197,63 +207,8 @@ footer a{color:var(--muted)}
 </section>
 
 <section>
-  <h2>Findings <span class="lead">1 HIGH · 2 MED · 4 LOW</span></h2>
+  <h2>Findings <span class="lead">0 HIGH · 0 MED · 2 LOW</span></h2>
   <div class="findings">
-
-    <div class="finding high">
-      <div class="finding-head">
-        <span class="sev high">HIGH</span>
-        <span class="finding-id">LS-101</span>
-        <span class="finding-title">Unbounded request body in contact API route</span>
-      </div>
-      <div class="finding-loc">app/api/contact/route.ts:14 &mdash; <code>await req.json()</code></div>
-      <div class="finding-body">The handler reads <code>req.json()</code> and destructures fields without size limit, type narrowing, or schema validation. A 50&nbsp;MB JSON payload will allocate memory before any check runs; malformed input throws unhandled errors. Resend is then called with whatever string survives, so attacker-controlled content reaches the outbound mail body.</div>
-      <div class="finding-fix"><strong>Fix:</strong> Add a Zod (or hand-rolled) validator: max 4&nbsp;KB body, required fields with maxLength, email regex, optional captcha token. Reject early with 400. ETA: 30 min.</div>
-    </div>
-
-    <div class="finding med">
-      <div class="finding-head">
-        <span class="sev med">MED</span>
-        <span class="finding-id">LS-204</span>
-        <span class="finding-title">Stripe placeholder URLs in shipped audit pages</span>
-      </div>
-      <div class="finding-loc">public/audit/luxscope.html:78, public/audit/luxfaber.html:78, public/audit/secgate.html (2 occurrences)</div>
-      <div class="finding-body">Four occurrences of <code>https://buy.stripe.com/REPLACE_ME</code> in production-shipped HTML. Any user clicking the primary CTA hits a Stripe 404. Real impact: lost lead at the moment of purchase intent.</div>
-      <div class="finding-fix"><strong>Fix:</strong> Either wire real Stripe payment links or replace with the existing ContactModal flow (already used elsewhere). ETA: 20 min.</div>
-    </div>
-
-    <div class="finding med">
-      <div class="finding-head">
-        <span class="sev med">MED</span>
-        <span class="finding-id">LS-217</span>
-        <span class="finding-title">Hardcoded support email in two places</span>
-      </div>
-      <div class="finding-loc">public/audit/luxscope.html:152, public/audit/luxfaber.html:152</div>
-      <div class="finding-body">String <code>daniel.oceno@gmail.com</code> appears in audit pages while <code>daniel@hellocirrus.com</code> is canonical elsewhere. Two sources of truth for the same contact channel; rebrand or redirect requires editing multiple files.</div>
-      <div class="finding-fix"><strong>Fix:</strong> Centralize in a single config (e.g. <code>lib/contact.ts</code> exporting <code>SUPPORT_EMAIL</code>) and import where templated. ETA: 15 min.</div>
-    </div>
-
-    <div class="finding low">
-      <div class="finding-head">
-        <span class="sev low">LOW</span>
-        <span class="finding-id">LS-301</span>
-        <span class="finding-title">Two unused exports in components/ui</span>
-      </div>
-      <div class="finding-loc">components/ui/Modal.tsx (export <code>ModalDivider</code>), components/ui/Modal.tsx (export <code>ModalSection</code>)</div>
-      <div class="finding-body">Exported but no inbound references in the workspace. Likely scaffolded ahead of need.</div>
-      <div class="finding-fix"><strong>Fix:</strong> Delete or annotate <code>@internal</code>. ETA: 5 min.</div>
-    </div>
-
-    <div class="finding low">
-      <div class="finding-head">
-        <span class="sev low">LOW</span>
-        <span class="finding-id">LS-318</span>
-        <span class="finding-title">Implicit any on event handlers</span>
-      </div>
-      <div class="finding-loc">components/contact/ContactModal.tsx (3 handlers), components/tools/ToolsSection.tsx (2 handlers)</div>
-      <div class="finding-body">Five inline handlers use untyped event parameters where TypeScript's inferred type is acceptable but explicit React event types would catch a future breaking change.</div>
-      <div class="finding-fix"><strong>Fix:</strong> Add <code>React.FormEvent&lt;HTMLFormElement&gt;</code> / <code>React.ChangeEvent</code> annotations. ETA: 10 min.</div>
-    </div>
 
     <div class="finding low">
       <div class="finding-head">
@@ -270,11 +225,49 @@ footer a{color:var(--muted)}
       <div class="finding-head">
         <span class="sev low">LOW</span>
         <span class="finding-id">LS-340</span>
-        <span class="finding-title">No README onboarding section</span>
+        <span class="finding-title">README lacks onboarding section</span>
       </div>
       <div class="finding-loc">README.md</div>
-      <div class="finding-body">Current README is 1.4 KB, mostly Next.js boilerplate. New engineer needs to grep for env vars (RESEND_API_KEY) and dev commands.</div>
-      <div class="finding-fix"><strong>Fix:</strong> Add a 10-line &ldquo;getting started&rdquo; with required env, dev/build commands, and where the contact route logs go. ETA: 15 min.</div>
+      <div class="finding-body">Current README is 1.4 KB, mostly Next.js boilerplate. New engineer needs to grep for env vars (RESEND_API_KEY, CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL) and dev commands.</div>
+      <div class="finding-fix"><strong>Fix:</strong> Add a 10-line &ldquo;getting started&rdquo; section: required env, dev/build commands, where the contact route logs go. ETA: 15 min.</div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Resolved in this scan window <span class="lead">3 fixes landed</span></h2>
+  <p class="blurb">Findings flagged on the previous run that are no longer present. Score moved 84 &rarr; 93.</p>
+  <div class="findings">
+
+    <div class="finding low" style="border-left-color:var(--green)">
+      <div class="finding-head">
+        <span class="sev low" style="background:rgba(16,185,129,.14);color:var(--green)">RESOLVED</span>
+        <span class="finding-id">LS-101 (was HIGH)</span>
+        <span class="finding-title">Contact route now caps body size before parse</span>
+      </div>
+      <div class="finding-loc">app/api/contact/route.ts &mdash; <code>MAX_BODY_BYTES = 8&nbsp;KB</code> + Content-Length pre-check</div>
+      <div class="finding-body">Previously: <code>req.json()</code> ran before any size check. Now: a <code>413 Payload Too Large</code> short-circuits oversized requests; existing per-field <code>slice()</code>, type narrowing, email regex, and HTML <code>escape()</code> remain in place. Server surface is fully defended.</div>
+    </div>
+
+    <div class="finding low" style="border-left-color:var(--green)">
+      <div class="finding-head">
+        <span class="sev low" style="background:rgba(16,185,129,.14);color:var(--green)">RESOLVED</span>
+        <span class="finding-id">LS-204 (was MED)</span>
+        <span class="finding-title">Stripe placeholder links replaced</span>
+      </div>
+      <div class="finding-loc">public/audit/luxscope.html, public/audit/luxfaber.html (4 occurrences)</div>
+      <div class="finding-body">All <code>buy.stripe.com/REPLACE_ME</code> CTAs replaced with <code>mailto:</code> hand-off to the canonical contact address. Lead path no longer 404s.</div>
+    </div>
+
+    <div class="finding low" style="border-left-color:var(--green)">
+      <div class="finding-head">
+        <span class="sev low" style="background:rgba(16,185,129,.14);color:var(--green)">RESOLVED</span>
+        <span class="finding-id">LS-217 (was MED)</span>
+        <span class="finding-title">Support email standardized</span>
+      </div>
+      <div class="finding-loc">public/audit/*.html (8 occurrences), app/api/contact/route.ts:4</div>
+      <div class="finding-body"><code>daniel@hellocirrus.com</code> is now the single source of truth across all user-facing surfaces and the contact route default.</div>
     </div>
 
   </div>
@@ -293,18 +286,14 @@ footer a{color:var(--muted)}
 </section>
 
 <section>
-  <h2>Prioritized fix order <span class="lead">~3 hours total</span></h2>
+  <h2>Remaining fix order <span class="lead">30 min total</span></h2>
   <table class="fixes">
     <thead>
       <tr><th>#</th><th>Fix</th><th>Owner</th><th>ETA</th><th>Score gain</th></tr>
     </thead>
     <tbody>
-      <tr><td>1</td><td>LS-101 &mdash; Validate + size-limit contact API body</td><td>Backend</td><td class="eta">30 min</td><td class="gain">+5</td></tr>
-      <tr><td>2</td><td>LS-204 &mdash; Replace Stripe REPLACE_ME placeholders</td><td>Frontend / founder</td><td class="eta">20 min</td><td class="gain">+2</td></tr>
-      <tr><td>3</td><td>LS-217 &mdash; Single source of truth for support email</td><td>Frontend</td><td class="eta">15 min</td><td class="gain">+1</td></tr>
-      <tr><td>4</td><td>LS-322 &mdash; JSDoc on public component types</td><td>Frontend</td><td class="eta">15 min</td><td class="gain">+1</td></tr>
-      <tr><td>5</td><td>LS-340 &mdash; Onboarding section in README</td><td>Anyone</td><td class="eta">15 min</td><td class="gain">+1</td></tr>
-      <tr><td>6</td><td>LS-301, LS-318 &mdash; Misc dead exports + handler types</td><td>Frontend</td><td class="eta">15 min</td><td class="gain">+1</td></tr>
+      <tr><td>1</td><td>LS-322 &mdash; JSDoc on <code>Product</code> + <code>ContactContext</code> types</td><td>Frontend</td><td class="eta">15 min</td><td class="gain">+2</td></tr>
+      <tr><td>2</td><td>LS-340 &mdash; Onboarding section in README</td><td>Anyone</td><td class="eta">15 min</td><td class="gain">+2</td></tr>
     </tbody>
   </table>
 </section>

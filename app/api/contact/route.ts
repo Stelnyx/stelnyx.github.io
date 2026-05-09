@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "daniel.oceno@gmail.com";
+const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "daniel@hellocirrus.com";
 const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL ?? "Stelnyx Contact <onboarding@resend.dev>";
 const RESEND_KEY = process.env.RESEND_API_KEY;
 
@@ -25,7 +25,14 @@ function escape(s: string): string {
   );
 }
 
+const MAX_BODY_BYTES = 8 * 1024;
+
 export async function POST(req: Request) {
+  const lenHeader = req.headers.get("content-length");
+  const len = lenHeader ? parseInt(lenHeader, 10) : NaN;
+  if (Number.isFinite(len) && len > MAX_BODY_BYTES) {
+    return NextResponse.json({ ok: false, error: "Payload too large" }, { status: 413 });
+  }
   let body: unknown;
   try {
     body = await req.json();
