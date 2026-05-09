@@ -24,6 +24,8 @@ export interface Product {
   github?: string;
   audit?: { price: string; href: string };
   audiences?: AudienceContent;
+  tier?: "lux" | "tool";
+  cli?: string;
 }
 
 interface ProductCardProps {
@@ -34,8 +36,12 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, onLearnMore, onRequestAudit, paidAuditsOpen = true }: ProductCardProps) {
+  const isLux = product.tier === "lux";
+  const cardClasses = isLux
+    ? "relative bg-stel-surface border border-stel-amber/30 rounded-lg p-6 transition-colors duration-150 hover:border-stel-amber/70 before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-stel-amber before:to-transparent before:rounded-t-lg"
+    : "bg-stel-surface border border-stel-border rounded-lg p-6 transition-colors duration-150 hover:border-stel-border-bright";
   return (
-    <article className="bg-stel-surface border border-stel-border rounded-lg p-6 transition-colors duration-150 hover:border-stel-border-bright">
+    <article className={cardClasses}>
       <div className="flex items-start justify-between gap-3">
         <span className="text-[11px] uppercase tracking-[0.08em] text-stel-text-faint">
           {product.badge}
@@ -50,6 +56,12 @@ export function ProductCard({ product, onLearnMore, onRequestAudit, paidAuditsOp
       </h3>
 
       <p className="text-[13px] text-stel-text-muted italic mb-3">{product.tagline}</p>
+
+      {product.cli && (
+        <pre className="text-[12px] font-mono text-stel-text-primary bg-stel-bg border border-stel-border rounded px-3 py-2 mb-3 overflow-x-auto">
+          <span className="text-stel-text-faint select-none">$ </span>{product.cli}
+        </pre>
+      )}
 
       <p className="text-[15px] text-stel-text-muted leading-relaxed">
         {product.description}

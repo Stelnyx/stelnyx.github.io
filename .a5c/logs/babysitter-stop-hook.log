@@ -334,3 +334,38 @@
 [INFO] 2026-05-07T20:07:14.165Z [session=0b8d7d17-7cd0-401a-aeb5-87437d4a27b1] Resolved stateDir: /Users/doceno/.a5c/state
 [INFO] 2026-05-07T20:07:14.165Z [session=0b8d7d17-7cd0-401a-aeb5-87437d4a27b1] Checking session file at: /Users/doceno/.a5c/state/0b8d7d17-7cd0-401a-aeb5-87437d4a27b1.md
 [INFO] 2026-05-07T20:07:14.166Z [session=0b8d7d17-7cd0-401a-aeb5-87437d4a27b1] No active loop found for session 0b8d7d17-7cd0-401a-aeb5-87437d4a27b1 — allowing exit
+[INFO] 2026-05-09T09:52:20.062Z handleHookRunStop started
+[INFO] 2026-05-09T09:52:20.065Z Hook input received
+[INFO] 2026-05-09T09:52:20.065Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Session ID: 82ce35f3-9258-4dd0-add6-9ee04d9f2abf
+[INFO] 2026-05-09T09:52:20.065Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Resolved pluginRoot: /Users/doceno/.claude/plugins/cache/a5c-ai/babysitter/4.0.157
+[INFO] 2026-05-09T09:52:20.065Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Resolved stateDir: /Users/doceno/.a5c/state
+[INFO] 2026-05-09T09:52:20.065Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Checking session file at: /Users/doceno/.a5c/state/82ce35f3-9258-4dd0-add6-9ee04d9f2abf.md
+[INFO] 2026-05-09T09:52:20.066Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] No active loop found for session 82ce35f3-9258-4dd0-add6-9ee04d9f2abf — allowing exit
+[INFO] 2026-05-09T09:54:55.817Z handleHookRunStop started
+[INFO] 2026-05-09T09:54:55.819Z Hook input received
+[INFO] 2026-05-09T09:54:55.819Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Session ID: 82ce35f3-9258-4dd0-add6-9ee04d9f2abf
+[INFO] 2026-05-09T09:54:55.819Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Resolved pluginRoot: /Users/doceno/.claude/plugins/cache/a5c-ai/babysitter/4.0.157
+[INFO] 2026-05-09T09:54:55.819Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Resolved stateDir: /Users/doceno/.a5c/state
+[INFO] 2026-05-09T09:54:55.819Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Checking session file at: /Users/doceno/.a5c/state/82ce35f3-9258-4dd0-add6-9ee04d9f2abf.md
+[INFO] 2026-05-09T09:54:55.819Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] No active loop found for session 82ce35f3-9258-4dd0-add6-9ee04d9f2abf — allowing exit
+[INFO] 2026-05-09T09:57:09.659Z handleHookRunStop started
+[INFO] 2026-05-09T09:57:09.662Z Hook input received
+[INFO] 2026-05-09T09:57:09.662Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Session ID: 82ce35f3-9258-4dd0-add6-9ee04d9f2abf
+[INFO] 2026-05-09T09:57:09.662Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Resolved pluginRoot: /Users/doceno/.claude/plugins/cache/a5c-ai/babysitter/4.0.157
+[INFO] 2026-05-09T09:57:09.662Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Resolved stateDir: /Users/doceno/.a5c/state
+[INFO] 2026-05-09T09:57:09.662Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Checking session file at: /Users/doceno/.a5c/state/82ce35f3-9258-4dd0-add6-9ee04d9f2abf.md
+[INFO] 2026-05-09T09:57:09.662Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] No active loop found for session 82ce35f3-9258-4dd0-add6-9ee04d9f2abf — allowing exit
+[INFO] 2026-05-09T10:05:47.431Z handleHookRunStop started
+[INFO] 2026-05-09T10:05:47.433Z Hook input received
+[INFO] 2026-05-09T10:05:47.433Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Session ID: 82ce35f3-9258-4dd0-add6-9ee04d9f2abf
+[INFO] 2026-05-09T10:05:47.433Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Resolved pluginRoot: /Users/doceno/.claude/plugins/cache/a5c-ai/babysitter/4.0.157
+[INFO] 2026-05-09T10:05:47.433Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Resolved stateDir: /Users/doceno/.a5c/state
+[INFO] 2026-05-09T10:05:47.433Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Checking session file at: /Users/doceno/.a5c/state/82ce35f3-9258-4dd0-add6-9ee04d9f2abf.md
+[INFO] 2026-05-09T10:05:47.433Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] No active loop found for session 82ce35f3-9258-4dd0-add6-9ee04d9f2abf — allowing exit
+[INFO] 2026-05-09T10:08:17.471Z handleHookRunStop started
+[INFO] 2026-05-09T10:08:17.473Z Hook input received
+[INFO] 2026-05-09T10:08:17.473Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Session ID: 82ce35f3-9258-4dd0-add6-9ee04d9f2abf
+[INFO] 2026-05-09T10:08:17.473Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Resolved pluginRoot: /Users/doceno/.claude/plugins/cache/a5c-ai/babysitter/4.0.157
+[INFO] 2026-05-09T10:08:17.473Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Resolved stateDir: /Users/doceno/.a5c/state
+[INFO] 2026-05-09T10:08:17.473Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] Checking session file at: /Users/doceno/.a5c/state/82ce35f3-9258-4dd0-add6-9ee04d9f2abf.md
+[INFO] 2026-05-09T10:08:17.474Z [session=82ce35f3-9258-4dd0-add6-9ee04d9f2abf] No active loop found for session 82ce35f3-9258-4dd0-add6-9ee04d9f2abf — allowing exit

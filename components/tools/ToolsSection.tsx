@@ -13,7 +13,9 @@ const TOOLS: Product[] = [
     name: "SecGate",
     badge: "Security",
     license: "MIT",
+    tier: "tool",
     tagline: "One command. One report. One exit code.",
+    cli: "npx @tinydarkforge/secgate",
     description:
       "Runs Semgrep, Gitleaks, osv-scanner, Trivy, and npm audit in one command. Normalizes findings into one report and fails the pipeline on CRITICAL or HIGH.",
     stack: ["Semgrep", "Gitleaks", "osv-scanner", "Trivy", "npm audit"],
@@ -26,6 +28,7 @@ const TOOLS: Product[] = [
     name: "LuxScope",
     badge: "Codebase Intel",
     license: "Apache-2.0",
+    tier: "lux",
     tagline: "Know your code before you change it.",
     description:
       "Your codebase grows faster than anyone can track — AI tools make it worse. LuxScope performs deterministic static analysis, locally, without LLMs, to produce accurate architecture maps, dependency graphs, and risk scores. Before you change a system you don't fully understand, LuxScope tells you what you're actually touching.",
@@ -43,6 +46,7 @@ const TOOLS: Product[] = [
     name: "LuxFaber",
     badge: "Agent Readiness",
     license: "Apache-2.0",
+    tier: "lux",
     tagline: "AEO that goes beyond citation.",
     description:
       "AEO scanner — Answer Engine Optimization, but one layer deeper. Most AEO tools score whether your content gets cited in AI answers; LuxFaber scores whether agents can actually crawl, parse, and operate your site. Score any URL across crawl access, structured data, semantic HTML, content clarity, and UA-cloaking determinism — with a prioritized fix list. Be readable. Be usable. Be operable.",
@@ -60,6 +64,7 @@ const TOOLS: Product[] = [
     name: "Intake",
     badge: "Issue Forge",
     license: "MIT",
+    tier: "tool",
     tagline: "Paste anything. Get a structured issue.",
     description:
       "Paste a Slack thread, bug report, or vague complaint — Intake uses local AI via Ollama to return a structured GitHub issue in one command. No cloud, no account.",
@@ -71,6 +76,7 @@ const TOOLS: Product[] = [
     name: "Engram",
     badge: "Memory Layer",
     license: "MIT",
+    tier: "tool",
     tagline: "One ledger. One confidence model.",
     description:
       "Memory ledger for AI systems. Sessions, facts, confidence scoring, and MCP support. Local-first — one context budget, no account, no telemetry.",
@@ -82,6 +88,7 @@ const TOOLS: Product[] = [
     name: "Arbiter",
     badge: "Agent Guard",
     license: "MIT",
+    tier: "tool",
     tagline: "One guard. One verdict. Sub-5ms.",
     description:
       "Agent guard layer — enforces limits, validates schemas, checks tool allowlists, tracks cost, and detects loops. No LLM required. Deterministic and fast.",
@@ -91,6 +98,8 @@ const TOOLS: Product[] = [
     github: "https://github.com/tinydarkforge/Arbiter",
   },
 ];
+
+const SHOW_OSS_TOOLS = false;
 
 type AudienceTab = "dev" | "ceo" | "investor";
 
@@ -170,7 +179,7 @@ export function ToolsSection() {
 
           {(() => {
             const audits = TOOLS.filter((t) => t.audit);
-            const tools = TOOLS.filter((t) => !t.audit);
+            const ossOnly = TOOLS.filter((t) => !t.audit);
             return (
               <>
                 <div className="mt-16 mb-6 max-w-[1280px]">
@@ -193,57 +202,61 @@ export function ToolsSection() {
                   ))}
                 </div>
 
-                <div className="mt-16 mb-6 max-w-[1280px]">
-                  <h3 className="font-sans font-semibold text-[20px] text-stel-text-primary tracking-[-0.01em]">
-                    Open-source tools
-                  </h3>
-                  <p className="text-[14px] text-stel-text-muted mt-1 max-w-[560px]">
-                    Drop-in libraries — install and ship. MIT-licensed building blocks for the AI / agent stack. No call needed.
-                  </p>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {tools.map((tool) => (
-                    <ProductCard
-                      key={tool.name}
-                      product={tool}
-                      onLearnMore={setSelected}
-                      onRequestAudit={openAuditRequest}
-                      paidAuditsOpen={PAID_AUDITS_OPEN}
-                    />
-                  ))}
-                </div>
+                {BUNDLE_OPEN && (
+                  <div className="mt-8 max-w-[1280px] bg-stel-surface border border-stel-amber/30 rounded-xl px-6 md:px-8 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5 shadow-[0_1px_3px_rgba(0,0,0,0.4)]">
+                    <div className="flex-1">
+                      <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber mb-1">Bundle · save $200</p>
+                      <h3 className="font-sans font-semibold text-[18px] text-stel-text-primary tracking-[-0.01em] mb-1">
+                        Stelnyx Full-Surface Audit
+                      </h3>
+                      <p className="text-[14px] text-stel-text-muted leading-relaxed">
+                        LuxScope + LuxFaber + free SecGate baseline — 90-minute walkthrough. For founders prepping a sale, raise, or full handoff. <span className="text-stel-text-primary font-semibold">$799</span> instead of $998.
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setContactCtx({
+                          product: "Stelnyx Full-Surface Audit",
+                          tier: "$799 · 90-min · 3-in-1",
+                          source: "stelnyx · bundle",
+                          title: "Request · Stelnyx Full-Surface Audit",
+                          free: false,
+                        })
+                      }
+                      className="inline-flex items-center justify-center px-5 py-2.5 rounded-md text-[14px] font-semibold bg-stel-amber hover:bg-amber-600 text-stel-bg transition-colors duration-150 whitespace-nowrap"
+                    >
+                      Request bundle · $799 →
+                    </button>
+                  </div>
+                )}
+
+                {SHOW_OSS_TOOLS && (
+                  <>
+                    <div className="mt-20 mb-6 max-w-[1280px]">
+                      <h3 className="font-sans font-semibold text-[20px] text-stel-text-primary tracking-[-0.01em]">
+                        Open-source tools
+                      </h3>
+                      <p className="text-[14px] text-stel-text-muted mt-1 max-w-[560px]">
+                        Drop-in libraries — install and ship. MIT-licensed building blocks for the AI / agent stack. No call needed.
+                      </p>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {ossOnly.map((tool) => (
+                        <ProductCard
+                          key={tool.name}
+                          product={tool}
+                          onLearnMore={setSelected}
+                          onRequestAudit={openAuditRequest}
+                          paidAuditsOpen={PAID_AUDITS_OPEN}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
               </>
             );
           })()}
-
-          {BUNDLE_OPEN && (
-            <div className="mt-12 max-w-[720px] mx-auto bg-stel-surface border border-stel-border rounded-xl px-6 md:px-8 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5 shadow-[0_1px_3px_rgba(0,0,0,0.4)]">
-              <div className="flex-1">
-                <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber mb-1">Bundle · save $200</p>
-                <h3 className="font-sans font-semibold text-[18px] text-stel-text-primary tracking-[-0.01em] mb-1">
-                  Stelnyx Full-Surface Audit
-                </h3>
-                <p className="text-[14px] text-stel-text-muted leading-relaxed">
-                  All three — LuxScope + LuxFaber + SecGate — in a 90-minute walkthrough. For founders prepping a sale, raise, or full handoff. <span className="text-stel-text-primary font-semibold">$799</span> instead of $998.
-                </p>
-              </div>
-              <button
-                type="button"
-                onClick={() =>
-                  setContactCtx({
-                    product: "Stelnyx Full-Surface Audit",
-                    tier: "$799 · 90-min · 3-in-1",
-                    source: "stelnyx · bundle",
-                    title: "Request · Stelnyx Full-Surface Audit",
-                    free: false,
-                  })
-                }
-                className="inline-flex items-center justify-center px-5 py-2.5 rounded-md text-[14px] font-semibold bg-stel-amber hover:bg-amber-600 text-stel-bg transition-colors duration-150 whitespace-nowrap"
-              >
-                Request bundle · $799 →
-              </button>
-            </div>
-          )}
         </div>
       </section>
 

@@ -44,7 +44,7 @@ export function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4 mt-10">
               <a
-                href="#products"
+                href="#tools"
                 className="inline-flex items-center justify-center bg-stel-amber text-stel-bg font-semibold px-6 py-3.5 rounded-md hover:bg-amber-400 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber focus-visible:ring-offset-2 focus-visible:ring-offset-stel-bg"
                 style={{ minHeight: "44px" }}
               >
