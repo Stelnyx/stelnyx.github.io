@@ -5,7 +5,7 @@ import { ContactModal } from "@/components/contact/ContactModal";
 
 const TERMINAL_LINES = [
   { type: "cmd", text: "$ npx luxfaber https://stelnyx.com" },
-  { type: "score", text: "Score: 91 / 100   ARO · rule v1" },
+  { type: "score", text: "Score: 91 / 100   AEO · rule v1" },
   { type: "blank", text: "" },
   { type: "rule", label: "  Crawl Accessibility", score: "96 / 100" },
   { type: "rule", label: "  Structured Data    ", score: "86 / 100" },
@@ -39,7 +39,7 @@ export function Hero() {
               className="text-stel-text-muted mt-5 leading-[1.7] max-w-[480px] text-balance"
               style={{ fontSize: "18px" }}
             >
-              Six open-source tools — security scanning, agent memory, ARO scoring, and more. Drop them in without slowing the team down.
+              Six open-source tools — security scanning, agent memory, AEO scoring, and more. Drop them in without slowing the team down.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-10">
@@ -65,11 +65,11 @@ export function Hero() {
           <div
             className="animate-fade-up-delay-2"
             role="img"
-            aria-label="LuxFaber ARO scanner output for stelnyx.com: score 91 out of 100"
+            aria-label="LuxFaber AEO scanner output for stelnyx.com: score 91 out of 100"
           >
             <figure className="m-0">
               <figcaption className="sr-only">
-                LuxFaber — Agent Readiness Optimization scanner. Dogfood run against stelnyx.com.
+                LuxFaber — Answer Engine Optimization scanner. Dogfood run against stelnyx.com.
               </figcaption>
               <div
                 className="rounded-lg border border-stel-border bg-stel-surface overflow-hidden"

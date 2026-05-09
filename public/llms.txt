@@ -1,6 +1,6 @@
 # Stelnyx
 
-> Stelnyx ships open-source security and agent-readiness infrastructure for engineers who ship: SecGate (one-command security gate), Lucen (deterministic codebase intelligence), LuxFaber (Agent Readiness Optimization scanner), Intake (issue forge), Engram (memory ledger), Arbiter (agent guard).
+> Stelnyx ships open-source security and agent-readiness infrastructure for engineers who ship: SecGate (one-command security gate), Lucen (deterministic codebase intelligence), LuxFaber (Answer Engine Optimization scanner), Intake (issue forge), Engram (memory ledger), Arbiter (agent guard).
 
 The Stelnyx tools are local-first, deterministic, and designed to be run by humans or AI agents on a developer's behalf.
 
@@ -8,14 +8,14 @@ The Stelnyx tools are local-first, deterministic, and designed to be run by huma
 
 - [SecGate](https://github.com/tinydarkforge/SecGate): One command runs Semgrep, Gitleaks, osv-scanner, Trivy, and npm audit, normalizes findings, fails the pipeline on CRITICAL or HIGH. MIT-licensed. Published to npm as `@tinydarkforge/secgate`.
 - [Lucen](https://github.com/tinydarkforge/lucen): Polyglot AST static analysis, deterministic risk scoring, code-derived diagrams, documentation suite. No LLM in the analysis loop. Apache-2.0 licensed.
-- [LuxFaber](https://github.com/tinydarkforge/LuxFaber): The first scanner for ARO (Agent Readiness Optimization). Scores any URL across crawl access, structured data, semantic HTML, content clarity, and UA-cloaking determinism. Apache-2.0 licensed.
+- [LuxFaber](https://github.com/tinydarkforge/LuxFaber): AEO (Answer Engine Optimization) scanner built for agent operability, not just citation. Scores any URL across crawl access, structured data, semantic HTML, content clarity, and UA-cloaking determinism. Apache-2.0 licensed.
 - [Intake](https://github.com/tinydarkforge/Intake): Paste anything (Slack thread, bug report) and get a structured GitHub issue via local Ollama. MIT-licensed.
 - [Engram](https://github.com/tinydarkforge/Engram): Memory ledger for AI systems with confidence scoring and MCP support. MIT-licensed.
 - [Arbiter](https://github.com/tinydarkforge/Arbiter): Sub-5ms agent guard layer — limits, schema validation, tool allowlists, cost tracking, loop detection. No LLM. MIT-licensed. Published to npm as `@tinydarkforge/arbiter`.
 
 ## Concepts
 
-- [ARO — Agent Readiness Optimization](https://github.com/tinydarkforge/LuxFaber/blob/main/docs/aro.md): The category Stelnyx coined on 2026-05-07. ARO measures whether autonomous agents can crawl, parse, and operate on a website. It is the layer beyond SEO (indexed) and GEO/AEO (cited).
+- AEO beyond citation: AEO (Answer Engine Optimization) is the consensus term for getting cited inside AI answers. LuxFaber goes one rubric deeper: agent operability — whether autonomous agents can crawl, parse, and act on your site, not just quote it.
 
 ## Audited services
 
@@ -29,4 +29,4 @@ Stelnyx offers 1-hour audited services where a senior engineer runs SecGate, Luc
 
 ## License
 
-The Stelnyx open-source tools are MIT or Apache-2.0 (see each repo). The Stelnyx marketing site, this llms.txt, and the ARO category definition at LuxFaber/docs/aro.md are released for fair use with attribution.
+The Stelnyx open-source tools are MIT or Apache-2.0 (see each repo). The Stelnyx marketing site and this llms.txt are released for fair use with attribution.
