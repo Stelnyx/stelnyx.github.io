@@ -81,11 +81,83 @@ export default function RevenuePreviewPage() {
             >
               Why this makes money — and how much, by when.
             </h1>
-            <p className="text-stel-text-muted mt-5 leading-[1.7] max-w-[720px]" style={{ fontSize: "17px" }}>
+
+            {/* Dogfood proof — live, verifiable in 60s */}
+            <div className="mt-8 rounded-xl border border-stel-amber/40 bg-stel-surface p-6 md:p-7 shadow-[0_2px_24px_rgba(245,158,11,0.06)]">
+              <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber mb-3">
+                Live proof — verify in 60 seconds
+              </p>
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5">
+                <div className="flex flex-wrap gap-x-8 gap-y-3">
+                  <div>
+                    <div className="font-sans font-semibold text-stel-text-primary tracking-[-0.02em]" style={{ fontSize: "clamp(28px, 3.4vw, 36px)" }}>
+                      91 / 100
+                    </div>
+                    <p className="text-[12px] text-stel-text-muted mt-0.5">Agent-readiness (LuxFaber)</p>
+                  </div>
+                  <div>
+                    <div className="font-sans font-semibold text-stel-text-primary tracking-[-0.02em]" style={{ fontSize: "clamp(28px, 3.4vw, 36px)" }}>
+                      84 / 100
+                    </div>
+                    <p className="text-[12px] text-stel-text-muted mt-0.5">Codebase health (LuxScope)</p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-3 md:gap-2">
+                  <a
+                    href="https://stelnyx.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center bg-stel-amber text-stel-bg font-semibold px-4 py-2.5 rounded-md text-[13px] hover:bg-amber-400 transition-colors duration-150"
+                  >
+                    See live score →
+                  </a>
+                  <a
+                    href="/reports/luxfaber-sample.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center text-stel-text-primary border border-stel-border px-4 py-2.5 rounded-md text-[13px] font-medium hover:border-stel-border-bright transition-colors duration-150"
+                  >
+                    Full sample report →
+                  </a>
+                </div>
+              </div>
+              <p className="text-[12px] text-stel-text-faint mt-4">
+                Stelnyx scores itself in public. Same scoring path the audits ship. Deterministic — same URL same score, every time.
+              </p>
+            </div>
+
+            {/* State of product — what exists vs not */}
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <div className="rounded-lg border border-stel-border bg-stel-surface p-4">
+                <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-emerald-400 mb-1.5">Shipped</p>
+                <p className="text-[13px] text-stel-text-primary leading-snug">
+                  Both CLIs run locally · dogfood scores live · audit deliverable templates
+                </p>
+              </div>
+              <div className="rounded-lg border border-stel-border bg-stel-surface p-4">
+                <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-red-400 mb-1.5">Not shipped</p>
+                <p className="text-[13px] text-stel-text-primary leading-snug">
+                  No auth, no Stripe, no SaaS infra · Team / Org tiers are roadmap
+                </p>
+              </div>
+              <div className="rounded-lg border border-stel-border bg-stel-surface p-4">
+                <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-stel-amber mb-1.5">30-day trip-wire</p>
+                <p className="text-[13px] text-stel-text-primary leading-snug">
+                  ≥3 paid audits + ≥10 trial-waitlist signups · else pivot
+                </p>
+              </div>
+              <div className="rounded-lg border border-stel-border bg-stel-surface p-4">
+                <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-stel-text-faint mb-1.5">Updated</p>
+                <p className="text-[13px] text-stel-text-primary leading-snug">
+                  2026-05-10 · numbers pulled from <code className="font-mono text-[12px]">stelyx.md</code>
+                </p>
+              </div>
+            </div>
+
+            <p className="text-stel-text-muted mt-8 leading-[1.7] max-w-[720px]" style={{ fontSize: "17px" }}>
               Three scenarios, the assumptions behind each, and the comparable category economics that
               put a floor under the model. Pre-seed, pre-revenue, dated category claim, working
-              scanners. Verifiable in 60 seconds — see <Link href="/preview/luxfaber" className="text-stel-amber hover:underline">/preview/luxfaber</Link>{" "}
-              for the dogfood score.
+              scanners.
             </p>
           </div>
         </section>
@@ -245,10 +317,41 @@ export default function RevenuePreviewPage() {
             <h2 className="text-stel-text-primary font-semibold tracking-[-0.02em] mb-2" style={{ fontSize: "clamp(22px, 3vw, 30px)" }}>
               Cumulative revenue + MRR / ARR run-rate at horizon
             </h2>
-            <p className="text-[14px] text-stel-text-muted mb-8 max-w-[720px]">
+            <p className="text-[14px] text-stel-text-muted mb-6 max-w-[720px]">
               All USD. Cumulative revenue at horizon. MRR / ARR is the run-rate on the last day of the
               horizon. Assumptions and conversion math below the table.
             </p>
+
+            {/* Unit economics — anchor what makes the table credible */}
+            <div className="mb-8 rounded-xl border border-stel-border bg-stel-surface p-5 md:p-6 max-w-[1080px]">
+              <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber mb-3">
+                The unit that compounds
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-4">
+                <div>
+                  <div className="font-sans font-semibold text-stel-text-primary tracking-[-0.02em]" style={{ fontSize: "clamp(22px, 2.4vw, 28px)" }}>$499</div>
+                  <p className="text-[12px] text-stel-text-muted mt-0.5">One audit price (LuxScope · floor)</p>
+                </div>
+                <div>
+                  <div className="font-sans font-semibold text-stel-text-primary tracking-[-0.02em]" style={{ fontSize: "clamp(22px, 2.4vw, 28px)" }}>90 min</div>
+                  <p className="text-[12px] text-stel-text-muted mt-0.5">Founder time per audit</p>
+                </div>
+                <div>
+                  <div className="font-sans font-semibold text-stel-text-primary tracking-[-0.02em]" style={{ fontSize: "clamp(22px, 2.4vw, 28px)" }}>$0</div>
+                  <p className="text-[12px] text-stel-text-muted mt-0.5">Infrastructure cost</p>
+                </div>
+                <div>
+                  <div className="font-sans font-semibold text-stel-text-primary tracking-[-0.02em]" style={{ fontSize: "clamp(22px, 2.4vw, 28px)" }}>100%</div>
+                  <p className="text-[12px] text-stel-text-muted mt-0.5">Gross margin on audit</p>
+                </div>
+              </div>
+              <p className="text-[14px] text-stel-text-muted leading-[1.7] mt-5">
+                The 30-day balanced row below is <span className="text-stel-text-primary">4 invoices and 4 calendar blocks</span> —
+                not a sales pipeline to forecast. Each audit ships a follow-up scan that primes the 25%
+                audit-to-Team conversion once Phase 3 infra ships. Founder ceiling is ~8 audits/mo, which is
+                the runway gate before infra build starts. The table compounds from there.
+              </p>
+            </div>
             <div className="overflow-x-auto rounded-xl border border-stel-border">
               <table className="w-full text-[13.5px]">
                 <thead className="bg-stel-surface text-stel-text-muted">
@@ -299,6 +402,39 @@ export default function RevenuePreviewPage() {
               Realistic exit: <span className="text-stel-text-primary">$5–12M strategic acquisition by
               Snyk / SonarSource / GitHub / Vercel</span> at $50–100K MRR, 18–24 months.
             </p>
+
+            {/* CTA — book a call */}
+            <div className="mt-10 rounded-xl border border-stel-amber/40 bg-stel-surface p-6 md:p-7 shadow-[0_2px_24px_rgba(245,158,11,0.06)]">
+              <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber mb-2">
+                Next step
+              </p>
+              <h3 className="text-stel-text-primary font-semibold tracking-[-0.02em] mb-2" style={{ fontSize: "clamp(18px, 2.2vw, 22px)" }}>
+                Read it. Want a 20-min call?
+              </h3>
+              <p className="text-[14px] text-stel-text-muted leading-relaxed mb-5">
+                I&apos;ll walk through the model, answer the un-asked questions, and show the scanners running live. Reply to the email I sent you, or email me directly.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="mailto:daniel@hellocirrus.com?subject=Stelnyx%20%E2%80%94%2020-min%20investor%20call&body=Hi%20Daniel%2C%0A%0ARead%20the%20revenue%20preview.%20Want%20to%20book%2020%20min%20to%20walk%20through%20it.%0A%0A%5Byour%20availability%5D%0A"
+                  className="inline-flex items-center justify-center bg-stel-amber text-stel-bg font-semibold px-5 py-3 rounded-md text-[14px] hover:bg-amber-400 transition-colors duration-150"
+                  style={{ minHeight: "44px" }}
+                >
+                  Book 20-min call →
+                </a>
+                <a
+                  href="mailto:daniel@hellocirrus.com?subject=Stelnyx%20%E2%80%94%20question"
+                  className="inline-flex items-center justify-center text-stel-text-primary border border-stel-border px-5 py-3 rounded-md text-[14px] font-medium hover:border-stel-border-bright transition-colors duration-150"
+                  style={{ minHeight: "44px" }}
+                >
+                  Send a question →
+                </a>
+              </div>
+              <p className="text-[12px] text-stel-text-faint mt-4">
+                Daniel Oceno · daniel@hellocirrus.com · founder, sole IC
+              </p>
+            </div>
+
             <div className="mt-8 rounded-xl border border-stel-border bg-stel-surface p-5 text-[13.5px] text-stel-text-faint">
               <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber mb-2">Source notes</p>
               <p>
