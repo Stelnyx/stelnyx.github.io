@@ -137,7 +137,7 @@ export function Hero() {
               <span>Score is the headline. Report ships findings, fix order, ETAs.</span>
               {FEATURE_PUBLIC_REPOS && (
                 <a
-                  href="/reports/luxfaber-sample.html"
+                  href="/preview/reports/luxfaber-sample.html"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-stel-text-muted hover:text-stel-text-primary underline-offset-2 hover:underline whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"

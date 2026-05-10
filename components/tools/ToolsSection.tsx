@@ -23,7 +23,7 @@ const TOOLS: Product[] = [
     status: "v0.2.4 — MIT · published to npm",
     npm: "https://www.npmjs.com/package/@tinydarkforge/secgate",
     github: "https://github.com/tinydarkforge/SecGate",
-    audit: { price: "Free", href: "/audit/secgate.html" },
+    audit: { price: "Free", href: "/preview/audit/secgate.html" },
   },
   {
     name: "LuxScope",
@@ -37,7 +37,7 @@ const TOOLS: Product[] = [
     status: "Open source — early release",
     github: "https://github.com/tinydarkforge/luxscope",
     page: "/preview/luxscope",
-    audit: { price: "$499", href: "/audit/luxscope.html" },
+    audit: { price: "$499", href: "/preview/audit/luxscope.html" },
     audiences: {
       dev: "LuxScope runs deterministic static analysis across your entire codebase — no LLMs, no network calls, no hallucinations. It builds accurate dependency graphs, surfaces architectural risk, and generates documentation that reflects what the code actually does. Everything runs locally; nothing leaves your machine.\n\nOutput: call graphs, module ownership maps, dead code detection, risk-scored change impact. Accurate because it's deterministic. Fast because it's local. When you're about to touch a system you don't fully understand, LuxScope tells you what you're actually touching — before you break it. Works on inherited codebases and AI-generated code alike.",
       ceo: "Your engineers spend 40–60% of their time reverse-engineering code before they can safely change it. LuxScope eliminates that. It gives teams an on-demand map of their systems: what depends on what, what's risky to touch, what's documented versus assumed.\n\nNo setup, no external service, no code leaving your environment. AI-assisted development is widening the gap between \"code that exists\" and \"code anyone understands.\" LuxScope closes it. Fewer outages. Faster reviews. Engineers who move instead of stall.",
@@ -56,7 +56,7 @@ const TOOLS: Product[] = [
     status: "Open source — coming soon",
     github: "https://github.com/tinydarkforge/LuxFaber",
     page: "/preview/luxfaber",
-    audit: { price: "$499", href: "/audit/luxfaber.html" },
+    audit: { price: "$499", href: "/preview/audit/luxfaber.html" },
     audiences: {
       dev: "LuxFaber is an AEO scanner built for agent operability, not just citation. It analyzes any URL and scores agent-readability across a structured rubric: crawl accessibility (robots.txt, sitemap, llms.txt, AI-bot allow-rules, canonical), structured data (JSON-LD, OpenGraph, schema.org), semantic HTML (landmarks, heading hierarchy, alt coverage), content clarity (signal:noise, boilerplate density), and determinism (UA-cloaking diff between browser, Luxfaber, and GPTBot). Output is a scored report with specific, actionable fixes — not vague recommendations.\n\nThink Lighthouse, but for AI agent compatibility. Runs as a CLI, GitHub Action, or hosted API. Integrate into your deploy pipeline to catch regressions before they cost you agent traffic. Most AEO tooling stops at citation readiness — whether your content gets quoted inside an answer. LuxFaber goes one rubric deeper: whether an agent that follows the open standards can actually operate on your site.",
       ceo: "Search engines sent you traffic because they could crawl you. AI agents work the same way — except the rules changed and most companies haven't noticed.\n\nAEO (Answer Engine Optimization) is the consensus term for getting cited inside AI answers. LuxFaber goes one layer further: not just being cited, but being operable by autonomous agents that browse and act on a user's behalf. We audit your web presence across the full AEO surface and score it, give you a prioritized fix list, and a clear path to becoming the default result when an agent acts. Companies that optimize now will capture agent-driven traffic before competitors realize the channel exists.",
