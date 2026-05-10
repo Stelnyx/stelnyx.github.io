@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/nav/Navbar";
 import { Footer } from "@/components/footer/Footer";
+import { FEATURE_PRICING } from "@/lib/features";
 // Note: /preview/* pages share the Cloudflare Access PIN gate + noindex,nofollow (set in app/preview/layout.tsx).
 
 export const metadata: Metadata = {
@@ -77,7 +78,7 @@ export default function RevenuePreviewPage() {
             <p className="text-stel-text-muted mt-5 leading-[1.7] max-w-[720px]" style={{ fontSize: "17px" }}>
               Three scenarios, the assumptions behind each, and the comparable category economics that
               put a floor under the model. Pre-seed, pre-revenue, dated category claim, working
-              scanners. Verifiable in 60 seconds — see <Link href="/luxfaber" className="text-stel-amber hover:underline">/luxfaber</Link>{" "}
+              scanners. Verifiable in 60 seconds — see <Link href="/preview/luxfaber" className="text-stel-amber hover:underline">/preview/luxfaber</Link>{" "}
               for the dogfood score.
             </p>
           </div>
@@ -196,38 +197,40 @@ export default function RevenuePreviewPage() {
         </section>
 
         {/* Comps */}
-        <section className="bg-stel-bg border-t border-stel-border py-14 md:py-20">
-          <div className="max-w-[1080px] mx-auto px-6 md:px-12 xl:px-20">
-            <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber mb-2">Category economics</p>
-            <h2 className="text-stel-text-primary font-semibold tracking-[-0.02em] mb-2" style={{ fontSize: "clamp(22px, 3vw, 30px)" }}>
-              Public comps that put a floor under the model
-            </h2>
-            <p className="text-[14px] text-stel-text-muted mb-8 max-w-[720px]">
-              Pricing comparables drive the SKU floors; valuation comparables put a floor under the exit
-              math. Numbers below are public reports at the dates noted; dollar figures rounded.
-            </p>
-            <div className="overflow-x-auto rounded-xl border border-stel-border">
-              <table className="w-full text-[14px]">
-                <thead className="bg-stel-surface text-stel-text-muted">
-                  <tr>
-                    <th className="text-left px-4 py-3 font-medium">Company</th>
-                    <th className="text-left px-4 py-3 font-medium">Pricing pattern we mirror</th>
-                    <th className="text-left px-4 py-3 font-medium">Signal</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {COMPS.map((c, i) => (
-                    <tr key={c.name} className={i % 2 === 0 ? "bg-stel-bg" : "bg-stel-surface/40"}>
-                      <td className="px-4 py-3 text-stel-text-primary font-medium">{c.name}</td>
-                      <td className="px-4 py-3 text-stel-text-muted">{c.pricing}</td>
-                      <td className="px-4 py-3 text-stel-text-muted">{c.signal}</td>
+        {FEATURE_PRICING && (
+          <section className="bg-stel-bg border-t border-stel-border py-14 md:py-20">
+            <div className="max-w-[1080px] mx-auto px-6 md:px-12 xl:px-20">
+              <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber mb-2">Category economics</p>
+              <h2 className="text-stel-text-primary font-semibold tracking-[-0.02em] mb-2" style={{ fontSize: "clamp(22px, 3vw, 30px)" }}>
+                Public comps that put a floor under the model
+              </h2>
+              <p className="text-[14px] text-stel-text-muted mb-8 max-w-[720px]">
+                Pricing comparables drive the SKU floors; valuation comparables put a floor under the exit
+                math. Numbers below are public reports at the dates noted; dollar figures rounded.
+              </p>
+              <div className="overflow-x-auto rounded-xl border border-stel-border">
+                <table className="w-full text-[14px]">
+                  <thead className="bg-stel-surface text-stel-text-muted">
+                    <tr>
+                      <th className="text-left px-4 py-3 font-medium">Company</th>
+                      <th className="text-left px-4 py-3 font-medium">Pricing pattern we mirror</th>
+                      <th className="text-left px-4 py-3 font-medium">Signal</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {COMPS.map((c, i) => (
+                      <tr key={c.name} className={i % 2 === 0 ? "bg-stel-bg" : "bg-stel-surface/40"}>
+                        <td className="px-4 py-3 text-stel-text-primary font-medium">{c.name}</td>
+                        <td className="px-4 py-3 text-stel-text-muted">{c.pricing}</td>
+                        <td className="px-4 py-3 text-stel-text-muted">{c.signal}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* Projections */}
         <section className="bg-stel-bg border-t border-stel-border py-14 md:py-20">

@@ -5,13 +5,14 @@ export const metadata: Metadata = {
   title: "LuxScope — deterministic codebase intelligence | Stelnyx",
   description:
     "LuxScope reads your codebase deterministically — no LLMs, no cloud, runs locally. Dependency graphs, risk-scored change impact, module ownership, generated docs. Open source (Apache-2.0). Founder-led audit $499.",
-  alternates: { canonical: "/luxscope" },
+  alternates: { canonical: "/preview/luxscope" },
+  robots: { index: false, follow: false },
   openGraph: {
     title: "LuxScope — know what breaks before you change it",
     description:
       "Deterministic, LLM-free codebase intelligence. Dependency graphs, change-impact risk, module ownership, docs that match the code. Open source. Audit $499.",
     type: "website",
-    url: "https://stelnyx.com/luxscope",
+    url: "https://stelnyx.com/preview/luxscope",
     siteName: "Stelnyx",
   },
 };

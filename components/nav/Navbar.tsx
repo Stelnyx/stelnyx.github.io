@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ContactModal } from "@/components/contact/ContactModal";
+import { FEATURE_PRICING } from "@/lib/features";
 
 function StarMark() {
 return (
@@ -55,10 +56,12 @@ return (
         className="text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 text-[15px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm">
         Tools
       </Link>
-      <Link href="/#pricing"
-        className="text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 text-[15px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm">
-        Pricing
-      </Link>
+      {FEATURE_PRICING && (
+        <Link href="/#pricing"
+          className="text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 text-[15px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm">
+          Pricing
+        </Link>
+      )}
       <button type="button" onClick={()=> setContactOpen(true)}
         className="text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 text-[15px]
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
@@ -98,12 +101,14 @@ return (
           >
           Tools
         </Link>
-        <Link href="/#pricing"
-          className="text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 text-[18px] py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
-          onClick={()=> setDrawerOpen(false)}
-          >
-          Pricing
-        </Link>
+        {FEATURE_PRICING && (
+          <Link href="/#pricing"
+            className="text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 text-[18px] py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
+            onClick={()=> setDrawerOpen(false)}
+            >
+            Pricing
+          </Link>
+        )}
         <button type="button" onClick={()=> { setDrawerOpen(false); setContactOpen(true); }}
           className="text-left text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150
           text-[18px] py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright

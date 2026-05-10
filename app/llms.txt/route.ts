@@ -1,4 +1,11 @@
-# Stelnyx
+// Flag-gated /llms.txt. Static export pre-renders to out/llms.txt at build.
+// Toggle via NEXT_PUBLIC_FEATURE_PUBLIC_REPOS = rebuild + redeploy.
+// Original full content backed up at public/llms.full.txt.bak — keep in sync.
+import { FEATURE_PUBLIC_REPOS } from "@/lib/features";
+
+export const dynamic = "force-static";
+
+const FULL = `# Stelnyx
 
 > Stelnyx ships deterministic engineering intelligence for AI-built systems. Two open-source scanners: LuxScope reads your codebase (change-impact risk, dependency drift, architecture maps, generated docs); LuxFaber reads your agent surface (crawl access, structured data, semantic HTML, content clarity, UA-cloaking determinism). Both local-first, both LLM-free in the scoring path, both versioned. Free CLI forever; founder-led audits for teams who need a senior engineer's read on the result. Part of the TinyDarkForge open-source umbrella.
 
@@ -15,8 +22,8 @@ A senior engineer runs the scanner against your repo or site and walks you throu
 
 ## Other TinyDarkForge open-source tools
 
-- [SecGate](https://github.com/tinydarkforge/SecGate): One command runs Semgrep, Gitleaks, osv-scanner, Trivy, and npm audit, normalizes findings, fails the pipeline on CRITICAL or HIGH. MIT. Published to npm as `@tinydarkforge/secgate`.
-- [Arbiter](https://github.com/tinydarkforge/Arbiter): Sub-5ms agent guard layer — limits, schema validation, tool allowlists, cost tracking, loop detection. No LLM. MIT. Published to npm as `@tinydarkforge/arbiter`.
+- [SecGate](https://github.com/tinydarkforge/SecGate): One command runs Semgrep, Gitleaks, osv-scanner, Trivy, and npm audit, normalizes findings, fails the pipeline on CRITICAL or HIGH. MIT. Published to npm as \`@tinydarkforge/secgate\`.
+- [Arbiter](https://github.com/tinydarkforge/Arbiter): Sub-5ms agent guard layer — limits, schema validation, tool allowlists, cost tracking, loop detection. No LLM. MIT. Published to npm as \`@tinydarkforge/arbiter\`.
 - [Engram](https://github.com/tinydarkforge/Engram): Memory ledger for AI systems with confidence scoring and MCP support. MIT.
 - [Intake](https://github.com/tinydarkforge/Intake): Paste anything (Slack thread, bug report) and get a structured GitHub issue via local Ollama. MIT.
 
@@ -40,3 +47,17 @@ Pre-seed, pre-revenue as of 2026-05. Working scanners, dated category claim, dog
 ## License
 
 The Stelnyx open-source tools are MIT or Apache-2.0 (see each repo). The Stelnyx marketing site and this llms.txt are released for fair use with attribution.
+`;
+
+const STUB = `# Stelnyx
+
+Site is under construction. Public product pages and pricing are not yet available.
+
+Contact: hello@stelnyx.com
+`;
+
+export function GET() {
+  return new Response(FEATURE_PUBLIC_REPOS ? FULL : STUB, {
+    headers: { "Content-Type": "text/plain; charset=utf-8" },
+  });
+}

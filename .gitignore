@@ -52,3 +52,4 @@ FRIEND-PITCH-*.html
 # Claude /export conversation dumps
 /continue.md
 /continue-*.md
+.archive/

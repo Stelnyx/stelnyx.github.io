@@ -3,13 +3,22 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ContactModal } from "@/components/contact/ContactModal";
+import { FEATURE_PRICING, FEATURE_PUBLIC_REPOS } from "@/lib/features";
 
 const FOOTER_LINKS: { label: string; href: string; external?: boolean }[] = [
-  { label: "LuxScope", href: "/luxscope" },
-  { label: "LuxFaber", href: "/luxfaber" },
-  { label: "Pricing", href: "/#pricing" },
-  { label: "GitHub", href: "https://github.com/tinydarkforge", external: true },
-  { label: "Discussions", href: "https://github.com/orgs/tinydarkforge/discussions", external: true },
+  ...(FEATURE_PUBLIC_REPOS
+    ? [
+        { label: "LuxScope", href: "/preview/luxscope" },
+        { label: "LuxFaber", href: "/preview/luxfaber" },
+      ]
+    : []),
+  ...(FEATURE_PRICING ? [{ label: "Pricing", href: "/#pricing" }] : []),
+  ...(FEATURE_PUBLIC_REPOS
+    ? [
+        { label: "GitHub", href: "https://github.com/tinydarkforge", external: true },
+        { label: "Discussions", href: "https://github.com/orgs/tinydarkforge/discussions", external: true },
+      ]
+    : []),
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
 ];

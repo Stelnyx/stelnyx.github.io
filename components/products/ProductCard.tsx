@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FEATURE_PUBLIC_REPOS } from "@/lib/features";
 
 export type BadgeType =
   | "Security"
@@ -61,7 +62,7 @@ export function ProductCard({ product, onLearnMore, onRequestAudit, paidAuditsOp
 
       <p className="text-[13px] text-stel-text-muted italic mb-3">{product.tagline}</p>
 
-      {product.cli && (
+      {FEATURE_PUBLIC_REPOS && product.cli && (
         <pre className="text-[12px] font-mono text-stel-text-primary bg-stel-bg border border-stel-border rounded px-3 py-2 mb-3 overflow-x-auto">
           <span className="text-stel-text-faint select-none">$ </span>{product.cli}
         </pre>

@@ -1,3 +1,5 @@
+import { FEATURE_PUBLIC_REPOS } from "@/lib/features";
+
 type RuleLine = { type: "rule"; label: string; score: string };
 type CmdLine = { type: "cmd"; text: string };
 type HeadLine = { type: "score"; text: string };
@@ -81,6 +83,7 @@ function Terminal({ block }: { block: ScoreBlock }) {
               return <div key={i} className="h-1" />;
             }
             if (line.type === "cmd") {
+              if (!FEATURE_PUBLIC_REPOS) return null;
               return (
                 <div key={i} className="text-stel-text-muted">
                   {line.text}
@@ -111,7 +114,7 @@ function Terminal({ block }: { block: ScoreBlock }) {
         </div>
       </div>
     </figure>
-    {block.reportHref && (
+    {block.reportHref && FEATURE_PUBLIC_REPOS && (
       <div className="mt-3 flex items-center justify-between gap-3 text-[12px] text-stel-text-faint">
         <span>Score is the headline. Report ships findings, fix order, ETAs.</span>
         <a

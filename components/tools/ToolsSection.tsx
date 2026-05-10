@@ -4,8 +4,9 @@ import { useState } from "react";
 import { ProductCard, type Product } from "@/components/products/ProductCard";
 import { Modal } from "@/components/ui/Modal";
 import { ContactModal, type ContactContext } from "@/components/contact/ContactModal";
+import { FEATURE_PRICING, FEATURE_PUBLIC_REPOS } from "@/lib/features";
 
-const PAID_AUDITS_OPEN = true;
+const PAID_AUDITS_OPEN = FEATURE_PRICING;
 const BUNDLE_OPEN = false;
 
 const TOOLS: Product[] = [
@@ -35,7 +36,7 @@ const TOOLS: Product[] = [
     stack: ["AST", "Risk scoring", "Diagrams", "Docs", "MCP"],
     status: "Open source — early release",
     github: "https://github.com/tinydarkforge/luxscope",
-    page: "/luxscope",
+    page: "/preview/luxscope",
     audit: { price: "$499", href: "/audit/luxscope.html" },
     audiences: {
       dev: "LuxScope runs deterministic static analysis across your entire codebase — no LLMs, no network calls, no hallucinations. It builds accurate dependency graphs, surfaces architectural risk, and generates documentation that reflects what the code actually does. Everything runs locally; nothing leaves your machine.\n\nOutput: call graphs, module ownership maps, dead code detection, risk-scored change impact. Accurate because it's deterministic. Fast because it's local. When you're about to touch a system you don't fully understand, LuxScope tells you what you're actually touching — before you break it. Works on inherited codebases and AI-generated code alike.",
@@ -54,7 +55,7 @@ const TOOLS: Product[] = [
     stack: ["CLI", "HTTP", "Agent scoring"],
     status: "Open source — coming soon",
     github: "https://github.com/tinydarkforge/LuxFaber",
-    page: "/luxfaber",
+    page: "/preview/luxfaber",
     audit: { price: "$499", href: "/audit/luxfaber.html" },
     audiences: {
       dev: "LuxFaber is an AEO scanner built for agent operability, not just citation. It analyzes any URL and scores agent-readability across a structured rubric: crawl accessibility (robots.txt, sitemap, llms.txt, AI-bot allow-rules, canonical), structured data (JSON-LD, OpenGraph, schema.org), semantic HTML (landmarks, heading hierarchy, alt coverage), content clarity (signal:noise, boilerplate density), and determinism (UA-cloaking diff between browser, Luxfaber, and GPTBot). Output is a scored report with specific, actionable fixes — not vague recommendations.\n\nThink Lighthouse, but for AI agent compatibility. Runs as a CLI, GitHub Action, or hosted API. Integrate into your deploy pipeline to catch regressions before they cost you agent traffic. Most AEO tooling stops at citation readiness — whether your content gets quoted inside an answer. LuxFaber goes one rubric deeper: whether an agent that follows the open standards can actually operate on your site.",
@@ -306,8 +307,8 @@ export function ToolsSection() {
           {(() => {
             const isFree = selected.audit ? /free/i.test(selected.audit.price) : false;
             const auditPillVisible = !!selected.audit && (isFree || PAID_AUDITS_OPEN);
-            const showGithub = !selected.audit && !!selected.github;
-            const showNpm = !!selected.npm;
+            const showGithub = FEATURE_PUBLIC_REPOS && !selected.audit && !!selected.github;
+            const showNpm = FEATURE_PUBLIC_REPOS && !!selected.npm;
             if (!showGithub && !showNpm && !auditPillVisible) return null;
             return (
               <div className="flex gap-3 pt-2 border-t border-stel-border flex-wrap">

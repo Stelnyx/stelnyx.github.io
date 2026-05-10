@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Modal } from "@/components/ui/Modal";
+import { FEATURE_PRICING, FEATURE_PUBLIC_REPOS } from "@/lib/features";
 
 interface InstallModalProps {
   isOpen: boolean;
@@ -63,63 +64,73 @@ function CopyButton({ value }: { value: string }) {
 export function InstallModal({ isOpen, onClose }: InstallModalProps) {
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Get the CLI" wide>
-      <p className="text-[14px] text-stel-text-muted leading-relaxed mb-2">
-        LuxScope and LuxFaber are open source, Apache-2.0 — no account, no telemetry, runs entirely
-        on your machine. Needs Node 20+ and pnpm.
-      </p>
-      <p className="text-[13px] text-stel-text-faint leading-relaxed mb-6">
-        The published <code className="font-mono text-stel-text-muted">npx</code> one-liner and GitHub
-        Action are shipping shortly. Until then: clone and build from source below, or book a
-        founder-led audit.
-      </p>
+      {FEATURE_PUBLIC_REPOS ? (
+        <>
+          <p className="text-[14px] text-stel-text-muted leading-relaxed mb-2">
+            LuxScope and LuxFaber are open source, Apache-2.0 — no account, no telemetry, runs entirely
+            on your machine. Needs Node 20+ and pnpm.
+          </p>
+          <p className="text-[13px] text-stel-text-faint leading-relaxed mb-6">
+            The published <code className="font-mono text-stel-text-muted">npx</code> one-liner and GitHub
+            Action are shipping shortly. Until then: clone and build from source below, or book a
+            founder-led audit.
+          </p>
 
-      <div className="space-y-6">
-        {TOOLS.map((t) => (
-          <div key={t.name} className="rounded-lg border border-stel-border p-5">
-            <h3 className="font-sans font-semibold text-[16px] text-stel-text-primary tracking-[-0.01em]">
-              {t.name}
-            </h3>
-            <p className="text-[13px] text-stel-text-muted leading-relaxed mt-1 mb-3">{t.blurb}</p>
-            <div className="flex items-start gap-2 rounded-md bg-stel-bg border border-stel-border px-3 py-2.5">
-              <code className="flex-1 font-mono text-[12px] text-stel-text-primary overflow-x-auto whitespace-pre-wrap break-all leading-relaxed">
-                {t.fromSource}
-              </code>
-              <CopyButton value={t.fromSource} />
-            </div>
-            <div className="flex flex-wrap gap-x-5 gap-y-1 mt-3">
-              <a
-                href={t.repo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[12.5px] text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber rounded-sm"
-              >
-                GitHub repo →
-              </a>
-              <a
-                href={t.discussions}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[12.5px] text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber rounded-sm"
-              >
-                Ask a question →
-              </a>
-            </div>
+          <div className="space-y-6">
+            {TOOLS.map((t) => (
+              <div key={t.name} className="rounded-lg border border-stel-border p-5">
+                <h3 className="font-sans font-semibold text-[16px] text-stel-text-primary tracking-[-0.01em]">
+                  {t.name}
+                </h3>
+                <p className="text-[13px] text-stel-text-muted leading-relaxed mt-1 mb-3">{t.blurb}</p>
+                <div className="flex items-start gap-2 rounded-md bg-stel-bg border border-stel-border px-3 py-2.5">
+                  <code className="flex-1 font-mono text-[12px] text-stel-text-primary overflow-x-auto whitespace-pre-wrap break-all leading-relaxed">
+                    {t.fromSource}
+                  </code>
+                  <CopyButton value={t.fromSource} />
+                </div>
+                <div className="flex flex-wrap gap-x-5 gap-y-1 mt-3">
+                  <a
+                    href={t.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[12.5px] text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber rounded-sm"
+                  >
+                    GitHub repo →
+                  </a>
+                  <a
+                    href={t.discussions}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[12.5px] text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber rounded-sm"
+                  >
+                    Ask a question →
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </>
+      ) : (
+        <p className="text-[14px] text-stel-text-muted leading-relaxed">
+          The CLI isn&apos;t public yet. Want early access? Use the contact form below.
+        </p>
+      )}
 
-      <p className="text-[12px] text-stel-text-faint mt-6">
-        Want continuous monitoring, private-repo scans, or a senior-engineer read on the result? See
-        the audit options under{" "}
-        <a
-          href="#pricing"
-          onClick={onClose}
-          className="text-stel-amber hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber rounded-sm"
-        >
-          Pricing
-        </a>
-        .
-      </p>
+      {FEATURE_PRICING && (
+        <p className="text-[12px] text-stel-text-faint mt-6">
+          Want continuous monitoring, private-repo scans, or a senior-engineer read on the result? See
+          the audit options under{" "}
+          <a
+            href="#pricing"
+            onClick={onClose}
+            className="text-stel-amber hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber rounded-sm"
+          >
+            Pricing
+          </a>
+          .
+        </p>
+      )}
     </Modal>
   );
 }

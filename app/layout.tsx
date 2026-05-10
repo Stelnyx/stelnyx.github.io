@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { FEATURE_PUBLIC_REPOS } from "@/lib/features";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -48,10 +49,9 @@ const ORG_JSONLD = {
   logo: `${SITE_URL}/icon.svg`,
   description:
     "Security infrastructure for engineers who ship. Stelnyx builds SecGate, LuxScope, LuxFaber, Intake, Engram, and Arbiter.",
-  sameAs: [
-    "https://github.com/tinydarkforge",
-    "https://github.com/Stelnyx",
-  ],
+  sameAs: FEATURE_PUBLIC_REPOS
+    ? ["https://github.com/tinydarkforge", "https://github.com/Stelnyx"]
+    : [],
 };
 
 const SITE_JSONLD = {

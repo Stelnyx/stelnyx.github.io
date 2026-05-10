@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ContactModal, type ContactContext } from "@/components/contact/ContactModal";
 import { InstallModal } from "@/components/pricing/InstallModal";
+import { FEATURE_PRICING } from "@/lib/features";
 
 interface AuditCard {
   key: "luxscope" | "luxfaber" | "combined";
@@ -59,6 +60,8 @@ export function PricingSectionPublic() {
       title: `Request · ${card.name}`,
     });
   }
+
+  if (!FEATURE_PRICING) return null;
 
   return (
     <>

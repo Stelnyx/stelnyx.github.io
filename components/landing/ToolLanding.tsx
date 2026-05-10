@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/nav/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { ContactModal, type ContactContext } from "@/components/contact/ContactModal";
+import { FEATURE_PRICING } from "@/lib/features";
 
 export interface ToolLandingData {
   slug: "luxscope" | "luxfaber";
@@ -184,11 +185,15 @@ export function ToolLanding({ data }: { data: ToolLandingData }) {
               </button>
             </div>
             <p className="text-center text-[13px] text-stel-text-faint mt-8">
-              See all pricing on the{" "}
-              <Link href="/#pricing" className="text-stel-text-muted hover:text-stel-text-primary underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber rounded-sm">
-                main page
-              </Link>
-              {" · "}
+              {FEATURE_PRICING && (
+                <>
+                  See all pricing on the{" "}
+                  <Link href="/#pricing" className="text-stel-text-muted hover:text-stel-text-primary underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber rounded-sm">
+                    main page
+                  </Link>
+                  {" · "}
+                </>
+              )}
               <button type="button" onClick={openContact} className="text-stel-text-muted hover:text-stel-text-primary underline-offset-2 hover:underline cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber rounded-sm">
                 talk to the founder
               </button>

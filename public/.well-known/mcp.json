@@ -2,33 +2,8 @@
   "version": "0.1",
   "schema_version": "0.1",
   "name": "Stelnyx",
-  "description": "Stelnyx tools and concepts. The MCP servers themselves live in each tool repository (Engram, LuxScope). This manifest declares discoverability of Stelnyx as an organization.",
+  "description": "Manifest under construction.",
   "homepage": "https://stelnyx.com",
   "contact": "hello@stelnyx.com",
-  "tools": [
-    {
-      "name": "SecGate",
-      "repository": "https://github.com/tinydarkforge/SecGate",
-      "npm": "https://www.npmjs.com/package/@tinydarkforge/secgate"
-    },
-    {
-      "name": "LuxScope",
-      "repository": "https://github.com/tinydarkforge/luxscope",
-      "mcp": true
-    },
-    {
-      "name": "LuxFaber",
-      "repository": "https://github.com/tinydarkforge/LuxFaber"
-    },
-    {
-      "name": "Engram",
-      "repository": "https://github.com/tinydarkforge/Engram",
-      "mcp": true
-    },
-    {
-      "name": "Arbiter",
-      "repository": "https://github.com/tinydarkforge/Arbiter",
-      "npm": "https://www.npmjs.com/package/@tinydarkforge/arbiter"
-    }
-  ]
+  "tools": []
 }

@@ -5,13 +5,14 @@ export const metadata: Metadata = {
   title: "LuxFaber — agent-readiness scanner (AEO) | Stelnyx",
   description:
     "LuxFaber scores any URL for AI-agent readiness: crawl access, structured data, semantic HTML, content clarity, and UA-cloaking determinism — with a prioritized fix list. Lighthouse for the agent web. Open source (Apache-2.0). Founder-led audit $699.",
-  alternates: { canonical: "/luxfaber" },
+  alternates: { canonical: "/preview/luxfaber" },
+  robots: { index: false, follow: false },
   openGraph: {
     title: "LuxFaber — score your site for the agents already using it",
     description:
       "Agent-readiness scanner. Crawl access, structured data, semantic HTML, content clarity, UA-cloaking determinism — prioritized fixes. Open source. Audit $699.",
     type: "website",
-    url: "https://stelnyx.com/luxfaber",
+    url: "https://stelnyx.com/preview/luxfaber",
     siteName: "Stelnyx",
   },
 };

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ContactModal } from "@/components/contact/ContactModal";
+import { FEATURE_PRICING, FEATURE_PUBLIC_REPOS } from "@/lib/features";
 
 const TERMINAL_LINES = [
   { type: "cmd", text: "$ luxfaber https://stelnyx.com" },
@@ -47,13 +48,15 @@ export function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-10">
-              <a
-                href="#pricing"
-                className="inline-flex items-center justify-center bg-stel-amber text-stel-bg font-semibold px-6 py-3.5 rounded-md hover:bg-amber-400 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber focus-visible:ring-offset-2 focus-visible:ring-offset-stel-bg"
-                style={{ minHeight: "44px" }}
-              >
-                See pricing
-              </a>
+              {FEATURE_PRICING && (
+                <a
+                  href="#pricing"
+                  className="inline-flex items-center justify-center bg-stel-amber text-stel-bg font-semibold px-6 py-3.5 rounded-md hover:bg-amber-400 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber focus-visible:ring-offset-2 focus-visible:ring-offset-stel-bg"
+                  style={{ minHeight: "44px" }}
+                >
+                  See pricing
+                </a>
+              )}
               <button
                 type="button"
                 onClick={() => setContactOpen(true)}
@@ -96,6 +99,7 @@ export function Hero() {
                       return <div key={i} className="h-1" />;
                     }
                     if (line.type === "cmd") {
+                      if (!FEATURE_PUBLIC_REPOS) return null;
                       return (
                         <div key={i} className="text-stel-text-muted">
                           {line.text}
@@ -131,14 +135,16 @@ export function Hero() {
             </figure>
             <div className="mt-3 flex items-center justify-between gap-3 text-[12px] text-stel-text-faint">
               <span>Score is the headline. Report ships findings, fix order, ETAs.</span>
-              <a
-                href="/reports/luxfaber-sample.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-stel-text-muted hover:text-stel-text-primary underline-offset-2 hover:underline whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
-              >
-                View sample report →
-              </a>
+              {FEATURE_PUBLIC_REPOS && (
+                <a
+                  href="/reports/luxfaber-sample.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-stel-text-muted hover:text-stel-text-primary underline-offset-2 hover:underline whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
+                >
+                  View sample report →
+                </a>
+              )}
             </div>
           </div>
 
