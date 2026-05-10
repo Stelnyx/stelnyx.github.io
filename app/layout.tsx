@@ -62,6 +62,8 @@ const SITE_JSONLD = {
   publisher: { "@type": "Organization", name: "Stelnyx" },
 };
 
+const PLAUSIBLE_DOMAIN = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -81,6 +83,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_JSONLD) }}
         />
+        {PLAUSIBLE_DOMAIN && (
+          <script defer data-domain={PLAUSIBLE_DOMAIN} src="https://plausible.io/js/script.js" />
+        )}
       </head>
       <body className="min-h-full antialiased">
         <a href="#main-content" className="skip-nav">

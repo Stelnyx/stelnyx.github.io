@@ -11,25 +11,27 @@ interface InstallModalProps {
 interface ToolBlock {
   name: string;
   blurb: string;
-  command: string;
   repo: string;
   discussions: string;
+  fromSource: string;
 }
 
 const TOOLS: ToolBlock[] = [
   {
     name: "LuxScope",
     blurb: "Codebase intelligence — change-impact risk, dependency drift, architecture map. Run it on any repo.",
-    command: "npx @tinydarkforge/luxscope analyze . --format json",
     repo: "https://github.com/tinydarkforge/luxscope",
     discussions: "https://github.com/tinydarkforge/luxscope/discussions",
+    fromSource:
+      "git clone https://github.com/tinydarkforge/luxscope && cd luxscope && pnpm i && pnpm build && node packages/cli/dist/index.js analyze .",
   },
   {
     name: "LuxFaber",
     blurb: "Agent-readiness score — crawl, structured data, semantic HTML, UA-cloaking determinism. Run it on any URL.",
-    command: "npx @tinydarkforge/luxfaber https://stelnyx.com",
     repo: "https://github.com/tinydarkforge/luxfaber",
     discussions: "https://github.com/tinydarkforge/luxfaber/discussions",
+    fromSource:
+      "git clone https://github.com/tinydarkforge/luxfaber && cd luxfaber && pnpm i && pnpm build && node packages/cli/dist/index.js https://stelnyx.com",
   },
 ];
 
@@ -61,9 +63,14 @@ function CopyButton({ value }: { value: string }) {
 export function InstallModal({ isOpen, onClose }: InstallModalProps) {
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Get the CLI" wide>
-      <p className="text-[14px] text-stel-text-muted leading-relaxed mb-6">
-        Apache-2.0, no account, no telemetry. Needs Node 20+. Code never leaves your machine — the
-        CLI runs entirely locally.
+      <p className="text-[14px] text-stel-text-muted leading-relaxed mb-2">
+        LuxScope and LuxFaber are open source, Apache-2.0 — no account, no telemetry, runs entirely
+        on your machine. Needs Node 20+ and pnpm.
+      </p>
+      <p className="text-[13px] text-stel-text-faint leading-relaxed mb-6">
+        The published <code className="font-mono text-stel-text-muted">npx</code> one-liner and GitHub
+        Action are shipping shortly. Until then: clone and build from source below, or book a
+        founder-led audit.
       </p>
 
       <div className="space-y-6">
@@ -73,11 +80,11 @@ export function InstallModal({ isOpen, onClose }: InstallModalProps) {
               {t.name}
             </h3>
             <p className="text-[13px] text-stel-text-muted leading-relaxed mt-1 mb-3">{t.blurb}</p>
-            <div className="flex items-center gap-2 rounded-md bg-stel-bg border border-stel-border px-3 py-2.5">
-              <code className="flex-1 font-mono text-[12.5px] text-stel-text-primary overflow-x-auto whitespace-nowrap">
-                {t.command}
+            <div className="flex items-start gap-2 rounded-md bg-stel-bg border border-stel-border px-3 py-2.5">
+              <code className="flex-1 font-mono text-[12px] text-stel-text-primary overflow-x-auto whitespace-pre-wrap break-all leading-relaxed">
+                {t.fromSource}
               </code>
-              <CopyButton value={t.command} />
+              <CopyButton value={t.fromSource} />
             </div>
             <div className="flex flex-wrap gap-x-5 gap-y-1 mt-3">
               <a
