@@ -26,28 +26,31 @@ export function Hero() {
 
           {/* Left column — headline + CTAs */}
           <div className="animate-fade-up">
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-stel-amber mb-5">
+              Engineering intelligence · Local-first · Deterministic
+            </p>
             <h1
               id="hero-headline"
               className="text-stel-text-primary font-semibold tracking-[-0.04em] leading-[1.05] text-balance"
               style={{ fontSize: "clamp(36px, 5vw, 60px)" }}
             >
-              Infrastructure for engineers who ship.
+              Score the systems you can&apos;t afford to ship blind.
             </h1>
 
             <p
-              className="text-stel-text-muted mt-5 leading-[1.7] max-w-[480px] text-balance"
+              className="text-stel-text-muted mt-5 leading-[1.7] max-w-[520px] text-balance"
               style={{ fontSize: "18px" }}
             >
-              Six open-source tools — security scanning, agent memory, AEO scoring, and more. Drop them in without slowing the team down.
+              AI ships code faster than humans review it. Agents already buy and act on sites that weren&apos;t built for them. <span className="text-stel-text-primary font-semibold">LuxScope</span> tells you what breaks before you change it. <span className="text-stel-text-primary font-semibold">LuxFaber</span> tells you what agents can&apos;t use before they try. Both deterministic, both local-first. Stelnyx scores itself in public: <span className="text-stel-text-primary font-semibold">91/100</span> agent-readiness · <span className="text-stel-text-primary font-semibold">84/100</span> codebase health.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-10">
               <a
-                href="#tools"
+                href="#pricing"
                 className="inline-flex items-center justify-center bg-stel-amber text-stel-bg font-semibold px-6 py-3.5 rounded-md hover:bg-amber-400 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber focus-visible:ring-offset-2 focus-visible:ring-offset-stel-bg"
                 style={{ minHeight: "44px" }}
               >
-                See the tools
+                See pricing
               </a>
               <button
                 type="button"
@@ -55,7 +58,7 @@ export function Hero() {
                 className="inline-flex items-center justify-center text-stel-text-primary border border-stel-border px-6 py-3.5 rounded-md hover:border-stel-border-bright hover:text-stel-text-primary transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright focus-visible:ring-offset-2 focus-visible:ring-offset-stel-bg cursor-pointer"
                 style={{ minHeight: "44px" }}
               >
-                Get early access
+                Talk to founder
               </button>
             </div>
           </div>
@@ -145,8 +148,8 @@ export function Hero() {
         onClose={() => setContactOpen(false)}
         context={{
           source: "stelnyx · hero",
-          title: "Request early access",
-          intro: "Tell us a bit about your site or stack and we'll get back to you within a day.",
+          title: "Talk to founder",
+          intro: "15-minute call with Daniel. Tell us about your stack, what you're shipping, and what you'd want scored. We reply within a day.",
         }}
       />
     </section>

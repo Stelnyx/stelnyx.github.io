@@ -29,9 +29,9 @@ const TOOLS: Product[] = [
     badge: "Codebase Intel",
     license: "Apache-2.0",
     tier: "lux",
-    tagline: "Know your code before you change it.",
+    tagline: "Know what breaks before you change it.",
     description:
-      "Your codebase grows faster than anyone can track — AI tools make it worse. LuxScope performs deterministic static analysis, locally, without LLMs, to produce accurate architecture maps, dependency graphs, and risk scores. Before you change a system you don't fully understand, LuxScope tells you what you're actually touching.",
+      "Know which files will break before you touch them. Identify the tech debt due-diligence will surface — before the investor does. Give a new hire a working mental model in one report instead of two weeks of context-gathering. Audit AI-generated code you didn't write and can't fully vouch for. LuxScope reads your codebase deterministically — no LLMs, no cloud, runs on your machine.",
     stack: ["AST", "Risk scoring", "Diagrams", "Docs", "MCP"],
     status: "Open source — early release",
     github: "https://github.com/tinydarkforge/luxscope",
@@ -47,9 +47,9 @@ const TOOLS: Product[] = [
     badge: "Agent Readiness",
     license: "Apache-2.0",
     tier: "lux",
-    tagline: "AEO that goes beyond citation.",
+    tagline: "Score your site for the agents already using it.",
     description:
-      "AEO scanner — Answer Engine Optimization, but one layer deeper. Most AEO tools score whether your content gets cited in AI answers; LuxFaber scores whether agents can actually crawl, parse, and operate your site. Score any URL across crawl access, structured data, semantic HTML, content clarity, and UA-cloaking determinism — with a prioritized fix list. Be readable. Be usable. Be operable.",
+      "Know whether AI agents can traverse and use your site — before they silently can't. ChatGPT shopping, Operator, and Claude computer use are already buying and acting on behalf of users; most sites quietly fail when they try. LuxFaber scores any URL across crawl access, structured data, semantic HTML, content clarity, and UA-cloaking determinism — with a prioritized fix list. Be readable. Be usable. Be operable.",
     stack: ["CLI", "HTTP", "Agent scoring"],
     status: "Open source — coming soon",
     github: "https://github.com/tinydarkforge/LuxFaber",

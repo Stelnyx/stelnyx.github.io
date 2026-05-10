@@ -43,5 +43,8 @@ next-env.d.ts
 
 # investor / partner artifacts (commit explicitly if you want to version these)
 INVESTOR-PITCH-*.md
+INVESTOR-PITCH-*.html
 PARTNER-MEMO-*.md
+PARTNER-MEMO-*.html
 FRIEND-PITCH-*.md
+FRIEND-PITCH-*.html

@@ -54,6 +54,10 @@ return (
         className="text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 text-[15px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm">
         Tools
       </a>
+      <a href="#pricing"
+        className="text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 text-[15px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm">
+        Pricing
+      </a>
       <button type="button" onClick={()=> setContactOpen(true)}
         className="text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 text-[15px]
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
@@ -92,6 +96,12 @@ return (
           onClick={()=> setDrawerOpen(false)}
           >
           Tools
+        </a>
+        <a href="#pricing"
+          className="text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 text-[18px] py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
+          onClick={()=> setDrawerOpen(false)}
+          >
+          Pricing
         </a>
         <button type="button" onClick={()=> { setDrawerOpen(false); setContactOpen(true); }}
           className="text-left text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150

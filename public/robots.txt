@@ -1,55 +1,73 @@
 User-agent: *
 Allow: /
+Disallow: /preview/
 
 User-agent: GPTBot
 Allow: /
+Disallow: /preview/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /preview/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /preview/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /preview/
 
 User-agent: Claude-Web
 Allow: /
+Disallow: /preview/
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /preview/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /preview/
 
 User-agent: Perplexity-User
 Allow: /
+Disallow: /preview/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /preview/
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /preview/
 
 User-agent: Bytespider
 Allow: /
+Disallow: /preview/
 
 User-agent: CCBot
 Allow: /
+Disallow: /preview/
 
 User-agent: cohere-ai
 Allow: /
+Disallow: /preview/
 
 User-agent: DuckAssistBot
 Allow: /
+Disallow: /preview/
 
 User-agent: FacebookBot
 Allow: /
+Disallow: /preview/
 
 User-agent: meta-externalagent
 Allow: /
+Disallow: /preview/
 
 User-agent: Diffbot
 Allow: /
+Disallow: /preview/
 
 Sitemap: https://stelnyx.com/sitemap.xml
