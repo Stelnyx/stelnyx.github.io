@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export type BadgeType =
   | "Security"
   | "Codebase Intel"
@@ -26,6 +28,8 @@ export interface Product {
   audiences?: AudienceContent;
   tier?: "lux" | "tool";
   cli?: string;
+  /** Internal landing page route, e.g. "/luxscope". When set, card renders a "Full page →" link. */
+  page?: string;
 }
 
 interface ProductCardProps {
@@ -86,14 +90,23 @@ export function ProductCard({ product, onLearnMore, onRequestAudit, paidAuditsOp
         );
       })()}
 
-      <div>
+      <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
         <button
           onClick={() => onLearnMore(product)}
-          className="mt-4 inline-flex items-center gap-1.5 text-[13px] text-stel-text-primary font-medium hover:underline focus-visible:outline-none focus-visible:underline cursor-pointer"
+          className="inline-flex items-center gap-1.5 text-[13px] text-stel-text-primary font-medium hover:underline focus-visible:outline-none focus-visible:underline cursor-pointer"
           aria-label={`Learn more about ${product.name}`}
         >
           Learn more →
         </button>
+        {product.page && (
+          <Link
+            href={product.page}
+            className="inline-flex items-center gap-1.5 text-[13px] text-stel-amber font-medium hover:underline focus-visible:outline-none focus-visible:underline"
+            aria-label={`Full page for ${product.name}`}
+          >
+            Full page →
+          </Link>
+        )}
       </div>
     </article>
   );

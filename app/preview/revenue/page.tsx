@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/nav/Navbar";
 import { Footer } from "@/components/footer/Footer";
+// Note: /preview/* pages share the Cloudflare Access PIN gate + noindex,nofollow (set in app/preview/layout.tsx).
 
 export const metadata: Metadata = {
   title: "Stelnyx — revenue model & projections (preview)",
@@ -48,10 +49,16 @@ export default function RevenuePreviewPage() {
       <Navbar />
       <main id="main-content">
         <div className="bg-stel-amber/10 border-b border-stel-amber/30">
-          <div className="max-w-[1280px] mx-auto px-6 md:px-12 xl:px-20 py-3">
+          <div className="max-w-[1280px] mx-auto px-6 md:px-12 xl:px-20 py-3 flex flex-wrap items-center justify-between gap-x-6 gap-y-1">
             <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber">
               Preview · not public · forward-looking · Cloudflare-gated to allowlisted reviewers
             </p>
+            <Link
+              href="/preview/saas"
+              className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber hover:text-amber-300 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber rounded-sm"
+            >
+              See full hybrid pricing →
+            </Link>
           </div>
         </div>
 
