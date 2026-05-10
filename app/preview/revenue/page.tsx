@@ -127,7 +127,7 @@ export default function RevenuePreviewPage() {
               <p className="text-[16px] text-stel-text-muted leading-[1.75]">
                 Stelnyx&apos;s paid layer is the same pattern: <span className="text-stel-text-primary">scan
                 history, drift alerts, cross-repo architecture maps, hosted private-repo scans, the GitHub
-                App + CI gate, and the $499 / $799 senior-engineer audit interpretation</span>. The CLI runs
+                App + CI gate, and the $499 / $699 / $799 senior-engineer audit interpretation</span>. The CLI runs
                 free forever. The data layer and the interpretation are what scales.
               </p>
             </div>
@@ -138,13 +138,16 @@ export default function RevenuePreviewPage() {
               </h2>
               <p className="text-[16px] text-stel-text-muted leading-[1.75] mb-3">
                 One $499 audit grosses more in 90 minutes than 2.5 months of a $199 Team subscription.
-                Six audits a month at the bundle mix (avg ~$549) is{" "}
-                <span className="text-stel-text-primary">~$3.3K MRR-equivalent of audit revenue</span>{" "}
-                with zero infrastructure cost — and every audit ships with a 30-day Team trial,
-                converting at <span className="text-stel-text-primary">10% / 25% / 40%</span> across
-                the three scenarios. That&apos;s how the audit funds the SaaS without dilution: the founder
-                bandwidth ceiling is ~8 audits/mo, which is exactly the runway needed to gate Phase 3
-                infra build until ≥3 paid audits + ≥10 trial-waitlist signups land.
+                Six audits/mo at the balanced mix (~$659 avg) is{" "}
+                <span className="text-stel-text-primary">~$4K MRR-equivalent of audit revenue</span>{" "}
+                with zero infrastructure cost — and every audit ships with a{" "}
+                <span className="text-stel-text-primary">30-day follow-up scan + findings diff</span>{" "}
+                that shows the buyer what continuous monitoring would catch. While Team is roadmap, the
+                follow-up scan is the trial-equivalent that primes the{" "}
+                <span className="text-stel-text-primary">10% / 25% / 40% audit-to-Team conversion</span>{" "}
+                the model assumes once Phase 3 ships. That&apos;s how the audit funds the SaaS without
+                dilution: founder bandwidth ceiling ~8 audits/mo, which is exactly the runway needed to
+                gate Phase 3 infra build until ≥3 paid audits + ≥10 trial-waitlist signups land.
               </p>
               <p className="text-[16px] text-stel-text-muted leading-[1.75]">
                 <span className="text-stel-text-primary">Trigger to hire</span>: $20K MRR or 6+
@@ -262,7 +265,7 @@ export default function RevenuePreviewPage() {
 
             <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3 text-[14px] text-stel-text-muted leading-relaxed max-w-[1080px]">
               <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber col-span-full mb-1">Key assumptions</p>
-              <p><span className="text-stel-text-primary">Audit mix:</span> P 100% single-tool ($499 avg) · B 70/30 single/full ($549 avg) · O 50/50 ($599 avg)</p>
+              <p><span className="text-stel-text-primary">Audit mix:</span> P 100% single-tool (~$599 avg, weighted LuxScope $499 + LuxFaber $699) · B 70/30 single/full (~$659 avg) · O 50/50 single/full (~$699 avg)</p>
               <p><span className="text-stel-text-primary">Team mix:</span> P 80% LuxScope ($220 avg) · B 50% bundle ($260 avg) · O 65% bundle ($275 avg)</p>
               <p><span className="text-stel-text-primary">Org pricing:</span> $1,500/mo avg first logos</p>
               <p><span className="text-stel-text-primary">Founder ceiling:</span> ~8 audits/mo solo; contractor needed above</p>

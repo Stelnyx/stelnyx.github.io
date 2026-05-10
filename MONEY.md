@@ -20,11 +20,11 @@ The Free CLI is the funnel. Compare:
 
 Distribution is what these companies have in common. The paid layer in every case is **accumulated data + interpretation over time**, not the scanner itself.
 
-Stelnyx's paid layer is the same pattern: scan history, drift alerts, cross-repo architecture maps, hosted private-repo scans, the GitHub App + CI gate, and the **$499 / $799 senior-engineer audit interpretation**. The CLI runs free forever. The data layer and the interpretation are what scales.
+Stelnyx's paid layer is the same pattern: scan history, drift alerts, cross-repo architecture maps, hosted private-repo scans, the GitHub App + CI gate, and the **$499 / $699 / $799 senior-engineer audit interpretation**. The CLI runs free forever. The data layer and the interpretation are what scales.
 
 ## The audit is the cash machine while the SaaS bakes
 
-One $499 audit grosses more in 90 minutes than 2.5 months of a $199 Team subscription. Six audits/mo at the bundle mix (~$549 avg) is **~$3.3K MRR-equivalent of audit revenue with zero infrastructure cost** — and every audit ships with a 30-day Team trial that converts at **10% / 25% / 40%** across our three scenarios. That's how the audit funds the SaaS without dilution: the founder bandwidth ceiling is ~8 audits/mo, which is exactly the runway needed to gate Phase 3 SaaS infra build until ≥3 paid audits + ≥10 trial-waitlist signups land.
+One $499 audit grosses more in 90 minutes than 2.5 months of a $199 Team subscription. Six audits/mo at the balanced mix (~$659 avg) is **~$4K MRR-equivalent of audit revenue with zero infrastructure cost** — and every audit ships with a **30-day follow-up scan + findings diff** that shows the buyer what continuous monitoring would catch. While Team is roadmap, the follow-up scan is the trial-equivalent that primes the **10% / 25% / 40% audit-to-Team conversion** the model assumes once Phase 3 ships. That's how the audit funds the SaaS without dilution: the founder bandwidth ceiling is ~8 audits/mo, which is exactly the runway needed to gate Phase 3 SaaS infra build until ≥3 paid audits + ≥10 trial-waitlist signups land.
 
 **Trigger to hire**: $20K MRR, or 6+ audits/mo three months running with turnaround >7 days. Not before.
 
@@ -66,7 +66,7 @@ All USD. Cumulative revenue at horizon. MRR / ARR is the run-rate on the last da
 
 ### Key assumptions
 
-- **Audit mix**: P 100% single-tool ($499 avg) · B 70/30 single/full ($549 avg) · O 50/50 ($599 avg)
+- **Audit mix**: P 100% single-tool (~$599 avg, weighted across LuxScope $499 + LuxFaber $699) · B 70/30 single/full (~$659 avg) · O 50/50 single/full (~$699 avg)
 - **Team mix**: P 80% LuxScope ($220 avg) · B 50% bundle ($260 avg) · O 65% bundle ($275 avg)
 - **Org pricing**: $1,500/mo avg first logos
 - **Founder ceiling**: ~8 audits/mo solo; contractor needed above

@@ -28,11 +28,11 @@ const AUDIT_CARDS: AuditCard[] = [
   {
     key: "luxfaber",
     name: "LuxFaber Audit",
-    price: "$499",
+    price: "$699",
     tagline: "Agent traffic · growth recovery · CMO/Head of Growth",
     description:
       "Agent-readiness score across crawl, structured data, semantic HTML, content clarity, and UA-cloaking determinism. Prioritized fix list, conversion-recovery framing. 60-min debrief with the author.",
-    ctaTier: "LuxFaber Audit · $499",
+    ctaTier: "LuxFaber Audit · $699",
   },
   {
     key: "combined",
@@ -40,10 +40,10 @@ const AUDIT_CARDS: AuditCard[] = [
     price: "$799",
     tagline: "Both scanners · founders prepping a sale, raise, or full handoff",
     description:
-      "LuxScope + LuxFaber together. 90-min architecture + agent-readiness debrief. Save $200 vs separate audits.",
+      "LuxScope + LuxFaber together. 90-min architecture + agent-readiness debrief. Save $399 vs separate audits.",
     ctaTier: "Stelnyx Full Audit · $799",
     emphasis: true,
-    badge: "Save $200",
+    badge: "Save $399",
   },
 ];
 

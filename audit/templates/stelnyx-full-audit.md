@@ -4,7 +4,7 @@
 **Site:** {{SITE_URL}}  (scanned pages: {{PAGES}})
 **Prepared by:** Daniel Oceno · Stelnyx
 **Date:** {{DATE}}
-**Engagement:** Stelnyx Full Audit ($799) — codebase + agent-readiness, both surfaces, one debrief. ($200 off vs. separate audits.)
+**Engagement:** Stelnyx Full Audit ($799) — codebase + agent-readiness, both surfaces, one debrief. ($399 off vs. separate audits — $499 LuxScope + $699 LuxFaber = $1,198 standalone.)
 **Confidential.** Prepared for {{CLIENT_NAME}} under NDA dated {{NDA_DATE}}. Scan artifacts deleted on {{ARTIFACT_DELETE_DATE}}.
 
 ---

@@ -86,17 +86,17 @@ const AUDIT_CARDS: AuditCard[] = [
     price: "$499",
     tagline: "Codebase · acquisition prep · CTO due diligence",
     description:
-      "Full architecture map, risk-scored change impact, dependency drift, prioritized fix list, PDF report. 60-min architecture debrief with the author. Includes 30-day LuxScope Team trial.",
+      "Full architecture map, risk-scored change impact, dependency drift, prioritized fix list, PDF report. 60-min architecture debrief with the author. Includes 30-day follow-up scan + findings diff.",
     ctaTier: "LuxScope Audit · $499",
   },
   {
     key: "luxfaber",
     name: "LuxFaber Audit",
-    price: "$499",
+    price: "$699",
     tagline: "Agent traffic · growth recovery · CMO/Head of Growth",
     description:
-      "Agent-readiness score across crawl, structured data, semantic HTML, content clarity, and UA-cloaking determinism. Prioritized fix list, conversion-recovery framing. 60-min debrief with the author. Includes 30-day LuxFaber Team trial.",
-    ctaTier: "LuxFaber Audit · $499",
+      "Agent-readiness score across crawl, structured data, semantic HTML, content clarity, and UA-cloaking determinism. Prioritized fix list, conversion-recovery framing. 60-min debrief with the author. Includes 30-day follow-up scan + findings diff.",
+    ctaTier: "LuxFaber Audit · $699",
   },
   {
     key: "combined",
@@ -104,10 +104,10 @@ const AUDIT_CARDS: AuditCard[] = [
     price: "$799",
     tagline: "Both scanners · founders prepping a sale, raise, or full handoff",
     description:
-      "LuxScope + LuxFaber together. 90-min architecture + agent-readiness debrief. Save $200 vs separate audits. Includes 30-day Stelnyx Team trial.",
+      "LuxScope + LuxFaber together. 90-min architecture + agent-readiness debrief. Save $399 vs separate audits. Includes 30-day follow-up scan + findings diff.",
     ctaTier: "Stelnyx Full Audit · $799",
     emphasis: true,
-    badge: "Save $200",
+    badge: "Save $399",
   },
 ];
 
@@ -332,7 +332,7 @@ export function PricingSection() {
               Architecture debrief with the author. Pick your surface.
             </h3>
             <p className="text-[14px] text-stel-text-muted mt-2 max-w-[640px]">
-              For founders, due-diligence teams, and acquisition prep. Each audit includes a 30-day Team trial — what continuous monitoring would catch next.
+              For founders, due-diligence teams, and acquisition prep. Each audit includes a 30-day follow-up scan with a findings diff — see what continuous monitoring would catch next.
             </p>
           </div>
 

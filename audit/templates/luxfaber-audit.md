@@ -3,7 +3,7 @@
 **Site:** {{SITE_URL}}  (scanned pages: {{PAGES}})
 **Prepared by:** Daniel Oceno · Stelnyx
 **Date:** {{DATE}}
-**Engagement:** LuxFaber Audit ($499) — agent-readiness (AEO), one-time, with a live debrief
+**Engagement:** LuxFaber Audit ($699) — agent-readiness (AEO), one-time, with a live debrief
 **Confidential.** Prepared for {{CLIENT_NAME}}. No credentials or private data accessed — public-URL scan only. Scan artifacts deleted on {{ARTIFACT_DELETE_DATE}}.
 
 ---

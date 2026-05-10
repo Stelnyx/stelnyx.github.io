@@ -4,12 +4,12 @@ import { ToolLanding, type ToolLandingData } from "@/components/landing/ToolLand
 export const metadata: Metadata = {
   title: "LuxFaber — agent-readiness scanner (AEO) | Stelnyx",
   description:
-    "LuxFaber scores any URL for AI-agent readiness: crawl access, structured data, semantic HTML, content clarity, and UA-cloaking determinism — with a prioritized fix list. Lighthouse for the agent web. Open source (Apache-2.0). Founder-led audit $499.",
+    "LuxFaber scores any URL for AI-agent readiness: crawl access, structured data, semantic HTML, content clarity, and UA-cloaking determinism — with a prioritized fix list. Lighthouse for the agent web. Open source (Apache-2.0). Founder-led audit $699.",
   alternates: { canonical: "/luxfaber" },
   openGraph: {
     title: "LuxFaber — score your site for the agents already using it",
     description:
-      "Agent-readiness scanner. Crawl access, structured data, semantic HTML, content clarity, UA-cloaking determinism — prioritized fixes. Open source. Audit $499.",
+      "Agent-readiness scanner. Crawl access, structured data, semantic HTML, content clarity, UA-cloaking determinism — prioritized fixes. Open source. Audit $699.",
     type: "website",
     url: "https://stelnyx.com/luxfaber",
     siteName: "Stelnyx",
@@ -25,7 +25,7 @@ const DATA: ToolLandingData = {
     "ChatGPT shopping, Operator-style task completion, and Claude computer use already buy and act on sites that weren't built for them — and most quietly fail when they try. LuxFaber scores any URL across crawl access, structured data, semantic HTML, content clarity, and UA-cloaking determinism, and hands back a prioritized fix list. Think Lighthouse, but for AI-agent compatibility.",
   github: "https://github.com/tinydarkforge/luxfaber",
   auditName: "LuxFaber Audit",
-  auditPrice: "$499",
+  auditPrice: "$699",
   auditBlurb:
     "A senior engineer runs LuxFaber against your site and walks you through every finding on a call — then ships a PDF: agent-readiness score across every axis, the determinism diff (what GPTBot sees vs. a browser), prioritized fixes, and conversion-recovery framing. For CMOs, heads of growth, and ecommerce ops watching agent traffic leak.",
   body: [

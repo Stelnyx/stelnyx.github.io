@@ -7,7 +7,7 @@ How to deliver a Stelnyx audit end-to-end. Internal. Update on every audit you s
 | SKU | Price | Time budget (founder) | Live debrief | Template |
 |---|---|---|---|---|
 | LuxScope Audit | $499 | 90 min | 60 min | `audit/templates/luxscope-audit.md` |
-| LuxFaber Audit | $499 | 60 min | 60 min | `audit/templates/luxfaber-audit.md` |
+| LuxFaber Audit | $699 | 60 min | 60 min | `audit/templates/luxfaber-audit.md` |
 | Stelnyx Full Audit | $799 | 2.5 hr | 90 min | `audit/templates/stelnyx-full-audit.md` |
 
 If a single audit takes more than 1.5× its budget two times in a row, raise the price or narrow the scope. Don't normalize losing money.
@@ -41,7 +41,7 @@ intake → NDA → scope confirm → scan → write → debrief → deliver → 
 
 ### 5. Write (the actual audit time)
 - Copy the template, fill in each `{{}}`. Don't ship a deliverable with `{{}}` left in it. (Search for `{{` in the final doc; should find none.)
-- The score is the machine's. The fix order, effort estimates, and revenue framing are yours — that's what the client paid $499/$799 for. Don't just paste the JSON.
+- The score is the machine's. The fix order, effort estimates, and revenue framing are yours — that's what the client paid $499/$699/$799 for. Don't just paste the JSON.
 - Common findings I always look for — see "Findings checklist" below.
 
 ### 6. Debrief (live call)
@@ -111,7 +111,7 @@ intake → NDA → scope confirm → scan → write → debrief → deliver → 
 
 ## Refund / scope dispute
 
-- If the client claims the audit didn't cover what was promised: pull the §3 "Scope confirm" message. If you're at fault → full refund, no argument, log it. If they expanded scope mid-stream → offer scope-extension at $499 incremental, or refund the difference.
+- If the client claims the audit didn't cover what was promised: pull the §3 "Scope confirm" message. If you're at fault → full refund, no argument, log it. If they expanded scope mid-stream → offer scope-extension at the relevant audit's price ($499 / $699) incremental, or refund the difference.
 - Refund threshold: I refund if (a) the deliverable has unfilled `{{}}` placeholders, (b) the scan didn't actually run on the agreed input, or (c) the live debrief didn't happen within 14 days of payment. No discretionary refunds beyond that — this isn't a free consultation.
 
 ---
