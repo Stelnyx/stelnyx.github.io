@@ -1,0 +1,299 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Navbar } from "@/components/nav/Navbar";
+import { Footer } from "@/components/footer/Footer";
+
+export const metadata: Metadata = {
+  title: "Stelnyx — revenue model & projections (preview)",
+  description:
+    "Internal preview: why Stelnyx makes money, the 3-scenario revenue model (pessimistic / balanced / optimistic), and the assumptions behind each. Not public.",
+  robots: { index: false, follow: false },
+};
+
+interface Row {
+  horizon: string;
+  pessimistic: string;
+  balanced: string;
+  optimistic: string;
+}
+
+const PROJECTIONS: Row[] = [
+  { horizon: "30 days", pessimistic: "$500 · 1 audit", balanced: "$2,200 · 4 audits", optimistic: "$4,800 · 8 audits + 3 trials" },
+  { horizon: "3 months", pessimistic: "$2,700 + MRR $199", balanced: "$10,000 + MRR $1,250", optimistic: "$22,000 + MRR $3,300" },
+  { horizon: "6 months", pessimistic: "$10,200 + MRR $660", balanced: "$30,000 + MRR $3,120", optimistic: "$55,000 + MRR $8,375 + 1 Org" },
+  { horizon: "12 months", pessimistic: "$25,000 · ARR $13K", balanced: "$80,000 · ARR $78K", optimistic: "$200,000 · ARR $252K + 3 Org" },
+  { horizon: "18 months", pessimistic: "$45K · ARR $15K · lifestyle", balanced: "$170K · ARR $125K · seed extension", optimistic: "$500K · ARR $440K · Series A target" },
+  { horizon: "24 months", pessimistic: "Acqui-hire $1–3M", balanced: "Strategic acq. $5–12M", optimistic: "Series A $5–8M @ $25–40M val" },
+];
+
+interface Comp {
+  name: string;
+  pricing: string;
+  signal: string;
+}
+
+const COMPS: Comp[] = [
+  { name: "Snyk", pricing: "Team $52/dev/mo", signal: "Reached ~$7.4B private valuation (2022). Code-security adjacent." },
+  { name: "Sentry", pricing: "Team $26/mo", signal: "~$3B private valuation. Open-core dev-tooling." },
+  { name: "SonarQube / Sonar", pricing: "Per-LOC SaaS + on-prem", signal: "300K+ deployments worldwide. Code-quality category leader." },
+  { name: "CodeClimate", pricing: "$20/dev/mo (now retired)", signal: "Indie-tier WTP died — confirms why we killed Solo $29-79." },
+  { name: "Ahrefs", pricing: "Lite $99 / Std $199 / Adv $399 / mo", signal: "$100M+ ARR. Per-domain pricing, marketing-budget owner." },
+  { name: "GitLab", pricing: "Public co", signal: "~$11B IPO valuation (2021). Open-core to public." },
+  { name: "HashiCorp", pricing: "Public co → IBM", signal: "Acquired by IBM for $6.4B (2024). Source-available pivot survived + paid out." },
+];
+
+export default function RevenuePreviewPage() {
+  return (
+    <>
+      <Navbar />
+      <main id="main-content">
+        <div className="bg-stel-amber/10 border-b border-stel-amber/30">
+          <div className="max-w-[1280px] mx-auto px-6 md:px-12 xl:px-20 py-3">
+            <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber">
+              Preview · not public · forward-looking · Cloudflare-gated to allowlisted reviewers
+            </p>
+          </div>
+        </div>
+
+        {/* Header */}
+        <section className="bg-stel-bg border-b border-stel-border py-14 md:py-20">
+          <div className="max-w-[1080px] mx-auto px-6 md:px-12 xl:px-20">
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-stel-amber mb-4">
+              Stelnyx · revenue model
+            </p>
+            <h1
+              className="text-stel-text-primary font-semibold tracking-[-0.04em] leading-[1.05] text-balance"
+              style={{ fontSize: "clamp(34px, 4.6vw, 54px)" }}
+            >
+              Why this makes money — and how much, by when.
+            </h1>
+            <p className="text-stel-text-muted mt-5 leading-[1.7] max-w-[720px]" style={{ fontSize: "17px" }}>
+              Three scenarios, the assumptions behind each, and the comparable category economics that
+              put a floor under the model. Pre-seed, pre-revenue, dated category claim, working
+              scanners. Verifiable in 60 seconds — see <Link href="/luxfaber" className="text-stel-amber hover:underline">/luxfaber</Link>{" "}
+              for the dogfood score.
+            </p>
+          </div>
+        </section>
+
+        {/* Why this makes money */}
+        <section className="bg-stel-bg py-14 md:py-20">
+          <div className="max-w-[820px] mx-auto px-6 md:px-12 xl:px-20 space-y-10">
+
+            <div>
+              <h2 className="text-stel-text-primary font-semibold tracking-[-0.02em] mb-4" style={{ fontSize: "clamp(22px, 3vw, 28px)" }}>
+                Two ICPs, two budget owners, one backend
+              </h2>
+              <p className="text-[16px] text-stel-text-muted leading-[1.75] mb-3">
+                LuxScope sells to <span className="text-stel-text-primary">CTOs / VPs of Engineering</span>:
+                same buyer pattern as Snyk ($52/dev/mo), Sentry ($26/mo), CodeClimate ($20/dev/mo).
+                LuxFaber sells to <span className="text-stel-text-primary">CMOs / Heads of Growth</span>:
+                same pattern as Ahrefs ($99–$399/mo per domain). Two ICPs means two funnels — and
+                marketing budgets are structurally larger than engineering-tooling budgets, so we capture
+                that arbitrage instead of pricing the whole company against eng-only comps.
+              </p>
+              <p className="text-[16px] text-stel-text-muted leading-[1.75]">
+                The <span className="text-stel-text-primary">Stelnyx Team bundle ($299/mo)</span> anchors
+                the decision — $199 + $249 = $448 standalone vs. $299 bundle = save $149/mo. The bundle
+                converts single-tool intent into double-tool spend without doubling our acquisition cost.
+                One auth, one DB, one scanner queue: a <code className="font-mono text-stel-text-primary text-[14px]">plan</code>{" "}
+                column on the <code className="font-mono text-stel-text-primary text-[14px]">subscriptions</code>{" "}
+                table gates feature access. Pre-seed infra burden = small.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-stel-text-primary font-semibold tracking-[-0.02em] mb-4" style={{ fontSize: "clamp(22px, 3vw, 28px)" }}>
+                Open-core: distribution is the moat, data is the revenue
+              </h2>
+              <p className="text-[16px] text-stel-text-muted leading-[1.75] mb-3">
+                The Free CLI is the funnel. <span className="text-stel-text-primary">Snyk</span> built
+                a ~$7.4B private valuation (2022) on top of a free OSS scanner.{" "}
+                <span className="text-stel-text-primary">GitLab</span> IPO&apos;d at ~$11B (2021) on open core.{" "}
+                <span className="text-stel-text-primary">HashiCorp</span> exited to IBM at $6.4B (2024)
+                after a source-available pivot. <span className="text-stel-text-primary">Ahrefs</span>{" "}
+                runs $100M+ ARR in a category Google has been adjacent to for 20 years. Distribution is
+                what these companies have in common; the paid layer in every case is{" "}
+                <span className="text-stel-text-primary">accumulated data + interpretation over time</span>,
+                not the scanner itself.
+              </p>
+              <p className="text-[16px] text-stel-text-muted leading-[1.75]">
+                Stelnyx&apos;s paid layer is the same pattern: <span className="text-stel-text-primary">scan
+                history, drift alerts, cross-repo architecture maps, hosted private-repo scans, the GitHub
+                App + CI gate, and the $499 / $799 senior-engineer audit interpretation</span>. The CLI runs
+                free forever. The data layer and the interpretation are what scales.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-stel-text-primary font-semibold tracking-[-0.02em] mb-4" style={{ fontSize: "clamp(22px, 3vw, 28px)" }}>
+                The audit is the cash machine while the SaaS bakes
+              </h2>
+              <p className="text-[16px] text-stel-text-muted leading-[1.75] mb-3">
+                One $499 audit grosses more in 90 minutes than 2.5 months of a $199 Team subscription.
+                Six audits a month at the bundle mix (avg ~$549) is{" "}
+                <span className="text-stel-text-primary">~$3.3K MRR-equivalent of audit revenue</span>{" "}
+                with zero infrastructure cost — and every audit ships with a 30-day Team trial,
+                converting at <span className="text-stel-text-primary">10% / 25% / 40%</span> across
+                the three scenarios. That&apos;s how the audit funds the SaaS without dilution: the founder
+                bandwidth ceiling is ~8 audits/mo, which is exactly the runway needed to gate Phase 3
+                infra build until ≥3 paid audits + ≥10 trial-waitlist signups land.
+              </p>
+              <p className="text-[16px] text-stel-text-muted leading-[1.75]">
+                <span className="text-stel-text-primary">Trigger to hire</span>: $20K MRR or 6+
+                audits/mo three months running with turnaround &gt;7 days. Not before.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-stel-text-primary font-semibold tracking-[-0.02em] mb-4" style={{ fontSize: "clamp(22px, 3vw, 28px)" }}>
+                The category window is 12–18 months
+              </h2>
+              <p className="text-[16px] text-stel-text-muted leading-[1.75] mb-3">
+                AI coding tools generate code several multiples faster than human review can absorb it.
+                Two surfaces compound risk simultaneously: (1) opaque codebases nobody can fully reason
+                about — including the engineers shipping into them, and (2) public web surfaces being
+                operated by AI agents (ChatGPT shopping, Operator, Claude computer use) that most sites
+                were never designed for. <span className="text-stel-text-primary">SonarQube has 300K+
+                deployments</span> matching known rule patterns. Nobody has built the deterministic,
+                LLM-free, change-impact + agent-readiness vocabulary for the AI-built era. We are.
+              </p>
+              <p className="text-[16px] text-stel-text-muted leading-[1.75]">
+                We hold one structural line: <span className="text-stel-text-primary">no LLMs in the
+                scoring path</span>. Same input, same score, every time, with the rule version stamped.
+                Reproducibility is the wedge — the day we add LLMs to scoring, we lose what makes a
+                report something a buyer or board can act on. SEO didn&apos;t die when Google added
+                Lighthouse; Ahrefs is $100M+ ARR. Versioned-rule auditability + multi-vendor neutrality
+                is the structural moat.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-stel-text-primary font-semibold tracking-[-0.02em] mb-4" style={{ fontSize: "clamp(22px, 3vw, 28px)" }}>
+                The honest framing
+              </h2>
+              <p className="text-[16px] text-stel-text-muted leading-[1.75]">
+                This is venture-adjacent, not venture-mandatory. Realistic outcome at the balanced
+                scenario is <span className="text-stel-text-primary">$1–2M ARR plus a strategic
+                acquisition by Snyk, SonarSource, GitHub, or Vercel within 18–24 months for $5–12M</span>.
+                Pre-seed ask is $300–500K because the category window is 12–18 months, not because the
+                business needs $5M. If you want a 100x outcome, this isn&apos;t it. If you want a 10x
+                outcome with strong category-capture defensibility, this fits.
+              </p>
+            </div>
+
+          </div>
+        </section>
+
+        {/* Comps */}
+        <section className="bg-stel-bg border-t border-stel-border py-14 md:py-20">
+          <div className="max-w-[1080px] mx-auto px-6 md:px-12 xl:px-20">
+            <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber mb-2">Category economics</p>
+            <h2 className="text-stel-text-primary font-semibold tracking-[-0.02em] mb-2" style={{ fontSize: "clamp(22px, 3vw, 30px)" }}>
+              Public comps that put a floor under the model
+            </h2>
+            <p className="text-[14px] text-stel-text-muted mb-8 max-w-[720px]">
+              Pricing comparables drive the SKU floors; valuation comparables put a floor under the exit
+              math. Numbers below are public reports at the dates noted; dollar figures rounded.
+            </p>
+            <div className="overflow-x-auto rounded-xl border border-stel-border">
+              <table className="w-full text-[14px]">
+                <thead className="bg-stel-surface text-stel-text-muted">
+                  <tr>
+                    <th className="text-left px-4 py-3 font-medium">Company</th>
+                    <th className="text-left px-4 py-3 font-medium">Pricing pattern we mirror</th>
+                    <th className="text-left px-4 py-3 font-medium">Signal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {COMPS.map((c, i) => (
+                    <tr key={c.name} className={i % 2 === 0 ? "bg-stel-bg" : "bg-stel-surface/40"}>
+                      <td className="px-4 py-3 text-stel-text-primary font-medium">{c.name}</td>
+                      <td className="px-4 py-3 text-stel-text-muted">{c.pricing}</td>
+                      <td className="px-4 py-3 text-stel-text-muted">{c.signal}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        {/* Projections */}
+        <section className="bg-stel-bg border-t border-stel-border py-14 md:py-20">
+          <div className="max-w-[1280px] mx-auto px-6 md:px-12 xl:px-20">
+            <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber mb-2">3-scenario projections</p>
+            <h2 className="text-stel-text-primary font-semibold tracking-[-0.02em] mb-2" style={{ fontSize: "clamp(22px, 3vw, 30px)" }}>
+              Cumulative revenue + MRR / ARR run-rate at horizon
+            </h2>
+            <p className="text-[14px] text-stel-text-muted mb-8 max-w-[720px]">
+              All USD. Cumulative revenue at horizon. MRR / ARR is the run-rate on the last day of the
+              horizon. Assumptions and conversion math below the table.
+            </p>
+            <div className="overflow-x-auto rounded-xl border border-stel-border">
+              <table className="w-full text-[13.5px]">
+                <thead className="bg-stel-surface text-stel-text-muted">
+                  <tr>
+                    <th className="text-left px-4 py-3 font-medium w-[110px]">Horizon</th>
+                    <th className="text-left px-4 py-3 font-medium">Pessimistic</th>
+                    <th className="text-left px-4 py-3 font-medium">Balanced <span className="text-stel-amber">(base case)</span></th>
+                    <th className="text-left px-4 py-3 font-medium">Optimistic</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {PROJECTIONS.map((r, i) => (
+                    <tr key={r.horizon} className={i % 2 === 0 ? "bg-stel-bg" : "bg-stel-surface/40"}>
+                      <td className="px-4 py-3 text-stel-text-primary font-mono text-[12.5px]">{r.horizon}</td>
+                      <td className="px-4 py-3 text-stel-text-muted">{r.pessimistic}</td>
+                      <td className="px-4 py-3 text-stel-text-muted">{r.balanced}</td>
+                      <td className="px-4 py-3 text-stel-text-muted">{r.optimistic}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3 text-[14px] text-stel-text-muted leading-relaxed max-w-[1080px]">
+              <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber col-span-full mb-1">Key assumptions</p>
+              <p><span className="text-stel-text-primary">Audit mix:</span> P 100% single-tool ($499 avg) · B 70/30 single/full ($549 avg) · O 50/50 ($599 avg)</p>
+              <p><span className="text-stel-text-primary">Team mix:</span> P 80% LuxScope ($220 avg) · B 50% bundle ($260 avg) · O 65% bundle ($275 avg)</p>
+              <p><span className="text-stel-text-primary">Org pricing:</span> $1,500/mo avg first logos</p>
+              <p><span className="text-stel-text-primary">Founder ceiling:</span> ~8 audits/mo solo; contractor needed above</p>
+              <p><span className="text-stel-text-primary">Audit → Team conversion:</span> P 10% · B 25% · O 40%</p>
+              <p><span className="text-stel-text-primary">Team churn:</span> P 8%/mo · B 4%/mo · O 2%/mo (biggest sensitivity at 18mo)</p>
+              <p><span className="text-stel-text-primary">SAFE assumed:</span> $300K for return calc</p>
+              <p><span className="text-stel-text-primary">Series A trigger:</span> $50–100K MRR or strategic-acq offer</p>
+            </div>
+          </div>
+        </section>
+
+        {/* The ask */}
+        <section className="bg-stel-bg border-t border-stel-border py-14 md:py-20">
+          <div className="max-w-[820px] mx-auto px-6 md:px-12 xl:px-20">
+            <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber mb-2">The ask</p>
+            <h2 className="text-stel-text-primary font-semibold tracking-[-0.02em] mb-4" style={{ fontSize: "clamp(22px, 3vw, 28px)" }}>
+              Pre-seed SAFE: $300–500K, MFN, uncapped or reasonable floor.
+            </h2>
+            <p className="text-[16px] text-stel-text-muted leading-[1.75]">
+              18-month runway → 10 audits booked, 3 enterprise CI logos, AEO category named in 2+
+              industry publications. Series A trigger at $50–100K MRR, or strategic acquisition.
+              Realistic exit: <span className="text-stel-text-primary">$5–12M strategic acquisition by
+              Snyk / SonarSource / GitHub / Vercel</span> at $50–100K MRR, 18–24 months.
+            </p>
+            <div className="mt-8 rounded-xl border border-stel-border bg-stel-surface p-5 text-[13.5px] text-stel-text-faint">
+              <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber mb-2">Source notes</p>
+              <p>
+                Numbers are pulled from <code className="font-mono text-stel-text-muted">stelyx.md</code>{" "}
+                (the master plan, single source of truth). Comp valuations are public reports at the
+                year stamped — they will move; refresh before quoting verbatim. AEO traction targets are
+                30-day commitments, not back-tested. SaaS infra burden is gated to Phase 3 — see the
+                phase plan in the master doc.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
