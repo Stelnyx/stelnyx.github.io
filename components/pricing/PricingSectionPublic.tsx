@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ContactModal, type ContactContext } from "@/components/contact/ContactModal";
+import { InstallModal } from "@/components/pricing/InstallModal";
 
 interface AuditCard {
   key: "luxscope" | "luxfaber" | "combined";
@@ -48,16 +49,7 @@ const AUDIT_CARDS: AuditCard[] = [
 
 export function PricingSectionPublic() {
   const [ctx, setCtx] = useState<ContactContext | null>(null);
-
-  function openFree() {
-    setCtx({
-      product: "Stelnyx CLI",
-      tier: "Free · CLI",
-      source: "stelnyx · pricing · free",
-      title: "Get the CLI",
-      free: true,
-    });
-  }
+  const [installOpen, setInstallOpen] = useState(false);
 
   function openAudit(card: AuditCard) {
     setCtx({
@@ -125,7 +117,7 @@ export function PricingSectionPublic() {
               </ul>
               <button
                 type="button"
-                onClick={openFree}
+                onClick={() => setInstallOpen(true)}
                 className="w-full px-5 py-3 rounded-md text-[14px] font-medium border border-stel-border hover:border-stel-border-bright text-stel-text-primary transition-colors duration-150 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber focus-visible:ring-offset-2 focus-visible:ring-offset-stel-bg"
               >
                 Get the CLI →
@@ -231,6 +223,7 @@ export function PricingSectionPublic() {
         </div>
       </section>
 
+      <InstallModal isOpen={installOpen} onClose={() => setInstallOpen(false)} />
       <ContactModal isOpen={!!ctx} onClose={() => setCtx(null)} context={ctx ?? undefined} />
     </>
   );

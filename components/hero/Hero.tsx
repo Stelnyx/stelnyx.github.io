@@ -4,6 +4,8 @@ import { useState } from "react";
 import { ContactModal } from "@/components/contact/ContactModal";
 
 const TERMINAL_LINES = [
+  { type: "cmd", text: "$ npx @tinydarkforge/luxfaber stelnyx.com" },
+  { type: "blank", text: "" },
   { type: "score", text: "Score: 91 / 100   AEO · rule v1" },
   { type: "blank", text: "" },
   { type: "rule", label: "  Crawl Accessibility", score: "96 / 100" },
