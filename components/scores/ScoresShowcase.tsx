@@ -20,7 +20,7 @@ const LUXSCOPE: ScoreBlock = {
   version: "rule v0.1.0",
   ariaLabel: "LuxScope Score for example codebase: 84 out of 100",
   caption: "LuxScope — codebase intelligence scanner. Sample run.",
-  reportHref: "/preview/reports/luxscope-sample.html",
+  reportHref: "/reports/luxscope-sample.html",
   lines: [
     { type: "score", text: "LuxScope Score: 84 / 100   rule v0.1.0" },
     { type: "blank" },
@@ -114,7 +114,7 @@ function Terminal({ block }: { block: ScoreBlock }) {
         </div>
       </div>
     </figure>
-    {block.reportHref && FEATURE_PUBLIC_REPOS && (
+    {block.reportHref && (
       <div className="mt-3 flex items-center justify-between gap-3 text-[12px] text-stel-text-faint">
         <span>Score is the headline. Report ships findings, fix order, ETAs.</span>
         <a

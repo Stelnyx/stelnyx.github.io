@@ -135,16 +135,14 @@ export function Hero() {
             </figure>
             <div className="mt-3 flex items-center justify-between gap-3 text-[12px] text-stel-text-faint">
               <span>Score is the headline. Report ships findings, fix order, ETAs.</span>
-              {FEATURE_PUBLIC_REPOS && (
-                <a
-                  href="/preview/reports/luxfaber-sample.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-stel-text-muted hover:text-stel-text-primary underline-offset-2 hover:underline whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
-                >
-                  View sample report →
-                </a>
-              )}
+              <a
+                href="/reports/luxfaber-sample.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-stel-text-muted hover:text-stel-text-primary underline-offset-2 hover:underline whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
+              >
+                View sample report →
+              </a>
             </div>
           </div>
 
