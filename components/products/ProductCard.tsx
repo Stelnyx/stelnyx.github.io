@@ -99,7 +99,7 @@ export function ProductCard({ product, onLearnMore, onRequestAudit, paidAuditsOp
         >
           Learn more →
         </button>
-        {product.page && (
+        {FEATURE_PUBLIC_REPOS && product.page && (
           <Link
             href={product.page}
             className="inline-flex items-center gap-1.5 text-[13px] text-stel-amber font-medium hover:underline focus-visible:outline-none focus-visible:underline"
