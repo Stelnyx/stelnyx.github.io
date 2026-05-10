@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Modal } from "@/components/ui/Modal";
 
 export type ContactContext = {
@@ -28,12 +28,11 @@ export function ContactModal({ isOpen, onClose, context }: ContactModalProps) {
   const [status, setStatus] = useState<Status>("idle");
   const [errorText, setErrorText] = useState<string>("");
 
-  useEffect(() => {
-    if (!isOpen) {
-      setStatus("idle");
-      setErrorText("");
-    }
-  }, [isOpen]);
+  function handleClose() {
+    setStatus("idle");
+    setErrorText("");
+    onClose();
+  }
 
   const title = context?.title ?? (context?.product ? `Request · ${context.product}${context.tier ? ` · ${context.tier}` : ""}` : "Contact us");
   const intro =
@@ -81,14 +80,14 @@ export function ContactModal({ isOpen, onClose, context }: ContactModalProps) {
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title={title}>
+    <Modal isOpen={isOpen} onClose={handleClose} title={title}>
       {status === "sent" ? (
         <div className="space-y-3">
           <p className="text-[15px] text-stel-text-primary">Got it — message sent.</p>
           <p className="text-[14px] text-stel-text-muted">We&apos;ll reply within a day. Check your spam folder if you don&apos;t see anything by tomorrow.</p>
           <button
             type="button"
-            onClick={onClose}
+            onClick={handleClose}
             className="mt-4 inline-flex items-center px-4 py-2.5 rounded-md text-[14px] font-semibold bg-stel-indigo hover:bg-stel-indigo-bright text-white transition-colors duration-150"
           >
             Close
@@ -187,7 +186,7 @@ export function ContactModal({ isOpen, onClose, context }: ContactModalProps) {
             </button>
             <button
               type="button"
-              onClick={onClose}
+              onClick={handleClose}
               className="text-[14px] text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150"
             >
               Cancel

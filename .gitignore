@@ -48,3 +48,7 @@ PARTNER-MEMO-*.md
 PARTNER-MEMO-*.html
 FRIEND-PITCH-*.md
 FRIEND-PITCH-*.html
+
+# Claude /export conversation dumps
+/continue.md
+/continue-*.md

@@ -1,16 +1,21 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { ContactModal } from "@/components/contact/ContactModal";
 
-const FOOTER_LINKS = [
-  { label: "Tools", href: "/#tools" },
+const FOOTER_LINKS: { label: string; href: string; external?: boolean }[] = [
+  { label: "LuxScope", href: "/luxscope" },
+  { label: "LuxFaber", href: "/luxfaber" },
   { label: "Pricing", href: "/#pricing" },
   { label: "GitHub", href: "https://github.com/tinydarkforge", external: true },
   { label: "Discussions", href: "https://github.com/orgs/tinydarkforge/discussions", external: true },
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
 ];
+
+const FOOTER_LINK_CLASS =
+  "text-[14px] text-stel-text-faint hover:text-stel-text-muted transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm";
 
 function StarMark() {
   return (
@@ -46,7 +51,7 @@ export function Footer() {
     <footer className="bg-stel-bg border-t border-stel-border py-12">
       <div className="max-w-[1280px] mx-auto px-6 md:px-12 xl:px-20 flex flex-col items-center gap-6">
         {/* Logo */}
-        <a
+        <Link
           href="/"
           className="flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
           aria-label="Stelnyx home"
@@ -55,7 +60,7 @@ export function Footer() {
           <span className="font-sans font-medium text-[18px] text-stel-text-primary">
             Stelnyx
           </span>
-        </a>
+        </Link>
 
         {/* Tagline */}
         <p className="text-[13px] text-stel-text-faint text-center">
@@ -67,13 +72,20 @@ export function Footer() {
           <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             {FOOTER_LINKS.map((link) => (
               <li key={link.label}>
-                <a
-                  href={link.href}
-                  {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="text-[14px] text-stel-text-faint hover:text-stel-text-muted transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
-                >
-                  {link.label}
-                </a>
+                {link.external ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={FOOTER_LINK_CLASS}
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link href={link.href} className={FOOTER_LINK_CLASS}>
+                    {link.label}
+                  </Link>
+                )}
               </li>
             ))}
             <li>
