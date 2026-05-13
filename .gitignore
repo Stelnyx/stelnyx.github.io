@@ -41,7 +41,8 @@ yarn-error.log*
 next-env.d.ts
 .a5c/
 
-# investor / partner artifacts (commit explicitly if you want to version these)
+# local strategy / investor / partner artifacts (commit explicitly if you want to version these)
+/docs/
 INVESTOR-PITCH-*.md
 INVESTOR-PITCH-*.html
 PARTNER-MEMO-*.md
