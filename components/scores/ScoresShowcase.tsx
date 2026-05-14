@@ -18,17 +18,17 @@ interface ScoreBlock {
 const LUXFABER: ScoreBlock = {
   title: "luxfaber v0.2",
   version: "rule v1",
-  ariaLabel: "LuxFaber AEO score for stelnyx.com: 92 out of 100",
-  caption: "LuxFaber — agent-readiness scanner. Dogfood run against stelnyx.com.",
+  ariaLabel: "LuxFaber AEO score for developer.mozilla.org: 73 out of 100",
+  caption: "LuxFaber — agent-readiness scanner. Premium run against developer.mozilla.org.",
   reportHref: "/reports/luxfaber.html",
   lines: [
-    { type: "cmd", text: "$ luxfaber https://stelnyx.com" },
-    { type: "score", text: "LuxFaber Score: 92 / 100   rule v1" },
+    { type: "cmd", text: "$ luxfaber https://developer.mozilla.org --tier premium --crawl 10" },
+    { type: "score", text: "LuxFaber Score: 73 / 100   rule v1" },
     { type: "blank" },
-    { type: "rule", label: "  Crawl Accessibility ", score: "100 / 100" },
-    { type: "rule", label: "  Structured Data     ", score: "87 / 100" },
-    { type: "rule", label: "  Semantic HTML       ", score: "100 / 100" },
-    { type: "rule", label: "  Content Clarity     ", score: "72 / 100" },
+    { type: "rule", label: "  Crawl Accessibility ", score: "77 / 100" },
+    { type: "rule", label: "  Structured Data     ", score: "21 / 100" },
+    { type: "rule", label: "  Semantic HTML       ", score: "93 / 100" },
+    { type: "rule", label: "  Content Clarity     ", score: "81 / 100" },
     { type: "rule", label: "  Determinism         ", score: "100 / 100" },
   ],
 };
@@ -36,18 +36,18 @@ const LUXFABER: ScoreBlock = {
 const SECGATE: ScoreBlock = {
   title: "secgate v0.2.7",
   version: "rule v7",
-  ariaLabel: "SecGate status for stelnyx-web: PASS, risk score 53",
-  caption: "SecGate — security gate scanner. Dogfood run against stelnyx-web.",
+  ariaLabel: "SecGate status for OWASP NodeGoat: FAIL, risk score 468",
+  caption: "SecGate — security gate scanner. Run against OWASP NodeGoat (intentionally vulnerable).",
   reportHref: "/reports/secgate.html",
   lines: [
-    { type: "cmd", text: "$ npx @tinydarkforge/secgate" },
-    { type: "score", text: "Status: PASS · Risk 53 · rule v7" },
+    { type: "cmd", text: "$ npx @tinydarkforge/secgate OWASP/NodeGoat" },
+    { type: "score", text: "Status: FAIL · Risk 468 · rule v7" },
     { type: "blank" },
-    { type: "rule", label: "  Semgrep     ", score: "0 findings" },
+    { type: "rule", label: "  Semgrep     ", score: "29 findings" },
     { type: "rule", label: "  Gitleaks    ", score: "0 findings" },
-    { type: "rule", label: "  npm audit   ", score: "2 findings" },
-    { type: "rule", label: "  osv-scanner ", score: "1 finding" },
-    { type: "rule", label: "  Trivy       ", score: "45 findings" },
+    { type: "rule", label: "  npm audit   ", score: "0 findings" },
+    { type: "rule", label: "  osv-scanner ", score: "0 findings" },
+    { type: "rule", label: "  Trivy       ", score: "125 findings" },
   ],
 };
 
@@ -146,8 +146,9 @@ function Terminal({ block }: { block: ScoreBlock }) {
 export function ScoresShowcase() {
   return (
     <section
+      id="reports"
       aria-labelledby="scores-heading"
-      className="relative bg-stel-bg border-t border-stel-border"
+      className="relative bg-stel-bg border-t border-stel-border scroll-mt-20"
     >
       <div className="relative w-full max-w-[1280px] mx-auto px-6 md:px-12 xl:px-20 py-16 md:py-24">
         <div className="max-w-[680px] mb-10 md:mb-14">

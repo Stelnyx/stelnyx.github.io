@@ -5,11 +5,11 @@ import { ContactModal } from "@/components/contact/ContactModal";
 import { FEATURE_PUBLIC_REPOS } from "@/lib/features";
 
 const TERMINAL_LINES = [
-  { type: "cmd", text: "$ luxscope analyze ." },
+  { type: "cmd", text: "$ luxscope analyze expressjs/express" },
   { type: "blank", text: "" },
-  { type: "score", text: "LuxScope Score: 96 / 100   rule v0.1.0" },
+  { type: "score", text: "LuxScope Score: 40 / 100   rule v0.1.0" },
   { type: "blank", text: "" },
-  { type: "rule", label: "  Security        ", score: "85 / 100" },
+  { type: "rule", label: "  Security        ", score: "69 / 100" },
   { type: "rule", label: "  Complexity      ", score: "100 / 100" },
   { type: "rule", label: "  Documentation   ", score: "100 / 100" },
   { type: "rule", label: "  Dependencies    ", score: "100 / 100" },
@@ -44,7 +44,7 @@ export function Hero() {
               className="text-stel-text-muted mt-5 leading-[1.7] max-w-[520px] text-balance"
               style={{ fontSize: "18px" }}
             >
-              AI shipped your codebase. We tell you what&apos;s actually inside — before your acquirer, investor, or new hire finds out. We scored our own codebase <span className="text-stel-text-primary font-semibold">96/100</span>.{" "}
+              AI shipped your codebase. We tell you what&apos;s actually inside — before your acquirer, investor, or new hire finds out. We ran LuxScope against <span className="text-stel-text-primary font-semibold">expressjs/express</span> — score <span className="text-stel-text-primary font-semibold">40/100</span>, security gaps the table doesn&apos;t lie about.{" "}
               <a
                 href="/reports/luxscope.html"
                 target="_blank"
@@ -80,11 +80,11 @@ export function Hero() {
           <div
             className="animate-fade-up-delay-2"
             role="img"
-            aria-label="LuxScope codebase scanner output for stelnyx-web: score 96 out of 100"
+            aria-label="LuxScope codebase scanner output for expressjs/express: score 40 out of 100"
           >
             <figure className="m-0">
               <figcaption className="sr-only">
-                LuxScope — codebase intelligence scanner. Dogfood run against the stelnyx-web repository.
+                LuxScope — codebase intelligence scanner. Sample run against expressjs/express.
               </figcaption>
               <div
                 className="rounded-lg border border-stel-border bg-stel-surface overflow-hidden"
