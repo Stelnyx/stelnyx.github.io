@@ -54,3 +54,8 @@ FRIEND-PITCH-*.html
 /continue.md
 /continue-*.md
 .archive/
+
+# Luxscope/SecGate artifacts (dogfood outputs, not source)
+/.luxscope/
+/luxscope/
+.a5c/

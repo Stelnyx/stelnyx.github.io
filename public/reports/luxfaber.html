@@ -1,0 +1,1683 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Luxfaber Site Report — https://developer.mozilla.org</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Inter%2C-apple-system%2Csans-serif' font-size='19' font-weight='700' fill='%23ff2d78'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
+<style>/* Unified report theme — SecGate palette + Lux sidebar shell */
+:root {
+  --bg: #0a0a0a;
+  --surface: #141414;
+  --surface-2: #1a1a1a;
+  --border: #1f1f1f;
+  --border-bright: #2a2a2a;
+  --text: #e5e5e7;
+  --muted: #a3a3a8; /* bumped from #8e8e93 for WCAG */
+  --faint: #6e6e73;
+  --success: #34c759;
+  --warn: #ff9500;
+  --error: #ff3b30;
+  --med-sev: #ffcc00;
+  --accent: #e5e5e7;
+  --pink: #ff2d78;
+  --sidebar-w: 240px;
+  --content-max: 1200px;
+  --font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* Aliases for LuxFaber --color-* convention */
+  --color-pink: var(--pink);
+  --color-green: var(--success);
+  --color-amber: var(--warn);
+  --color-red: var(--error);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-bright: var(--border-bright);
+  --color-text: var(--text);
+  --color-text-secondary: var(--muted);
+  --color-muted: var(--muted);
+  --radius: 6px;
+  --max-w: 960px;
+  --header-bg: var(--surface);
+  --score-glow: none;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--text); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code, .mono { font-family: var(--mono); font-size: 13px; }
+
+/* Pill row */
+.report-pill { display: inline-flex; align-items: center; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; background: var(--pink); color: #fff; }
+.pill-row { padding: 16px 24px 14px; border-bottom: 1px solid var(--border); }
+
+/* Layout */
+.shell { display: grid; grid-template-columns: var(--sidebar-w) 1fr; min-height: 100vh; }
+.aside {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 24px 0;
+  position: sticky; top: 0; height: 100vh;
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+}
+.aside-head { padding: 0 24px 20px; border-bottom: 1px solid var(--border); }
+.aside-head .product { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; margin-bottom: 12px; }
+.aside-head .tier-pill { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; margin-left: 6px; vertical-align: 1px; text-transform: uppercase; }
+.aside-head .tier-pill.neutral { background: rgba(255,255,255,0.06); color: var(--muted); }
+.aside-head .tier-pill.premium { background: rgba(255,45,120,0.12); color: var(--pink); }
+.aside-head .tier-pill.pass { background: rgba(52,199,89,0.12); color: var(--success); }
+.aside-head .tier-pill.warn { background: rgba(255,149,0,0.12); color: var(--warn); }
+.aside-head .target { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 4px; word-break: break-all; }
+.aside-head .score-line { display: flex; align-items: baseline; gap: 10px; margin-top: 12px; }
+.aside-head .score-num { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; color: var(--pink); }
+.aside-head .score-denom { font-size: 13px; color: var(--muted); }
+.aside-head .score-badge { padding: 3px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.aside-head .score-badge.pass { background: rgba(52, 199, 89, 0.12); color: var(--success); }
+.aside-head .score-badge.good { background: rgba(52, 199, 89, 0.12); color: var(--success); }
+.aside-head .score-badge.warn { background: rgba(255, 149, 0, 0.12); color: var(--warn); }
+.aside-head .report-type { margin-top: 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; }
+
+.aside-nav { padding: 20px 12px; }
+.aside-nav h6 { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: var(--faint); text-transform: uppercase; padding: 0 12px 8px; }
+.aside-nav a { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; border-radius: 4px; font-size: 13px; color: var(--muted); border-left: 2px solid transparent; margin: 2px 0; }
+.aside-nav a:hover { color: var(--text); background: var(--surface-2); text-decoration: none; }
+.aside-nav a.active { color: var(--pink); background: var(--surface-2); border-left-color: var(--pink); font-weight: 600; }
+.aside-nav a .count { font-size: 11px; color: var(--faint); background: var(--surface-2); padding: 1px 7px; border-radius: 999px; min-width: 22px; text-align: center; }
+.aside-nav a.active .count { background: var(--bg); color: var(--pink); }
+
+.aside-footer { margin-top: auto; padding: 20px 24px 0; border-top: 1px solid var(--border); font-size: 10px; color: var(--faint); letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* Main */
+.main { padding: 32px 32px 96px; max-width: var(--content-max); width: 100%; }
+.main h1 { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 8px; }
+.main h2 { font-size: 16px; font-weight: 600; margin: 36px 0 14px; letter-spacing: -0.01em; }
+.main h3 { font-size: 14px; font-weight: 600; margin: 24px 0 10px; }
+.main p { color: var(--muted); margin: 8px 0 16px; max-width: 70ch; }
+.main .lead { color: var(--faint); font-size: 12px; margin-left: 8px; font-weight: 400; }
+
+/* Score hero */
+.score-hero {
+  display: flex; align-items: center; gap: 32px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  padding: 28px 32px; margin-bottom: 24px;
+}
+.score-hero .gauge { width: 96px; height: 96px; flex-shrink: 0; }
+.score-hero .gauge-ring { stroke-width: 8; fill: none; }
+.score-hero .gauge-bg { stroke: var(--border-bright); }
+.score-hero .gauge-fill { stroke: var(--success); stroke-linecap: round; transform: rotate(-90deg); transform-origin: center; }
+.score-hero .info .label { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+.score-hero .info .num { font-size: 48px; font-weight: 700; letter-spacing: -0.03em; color: var(--text); margin-top: 4px; line-height: 1; }
+.score-hero .info .num small { font-size: 18px; color: var(--muted); font-weight: 400; margin-left: 6px; }
+.score-hero .info .sub { font-size: 12px; color: var(--muted); margin-top: 8px; }
+.score-hero .desc { flex: 1; color: var(--muted); font-size: 14px; line-height: 1.6; max-width: 60ch; padding-left: 16px; border-left: 1px solid var(--border); margin-left: 8px; }
+@media (max-width: 900px) {
+  .score-hero { flex-direction: column; align-items: flex-start; }
+  .score-hero .desc { border-left: none; padding-left: 0; margin-left: 0; }
+}
+
+/* KPI grid */
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
+.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+.kpi .label { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+.kpi .value { font-size: 22px; font-weight: 600; color: var(--text); margin-top: 4px; letter-spacing: -0.02em; }
+.kpi.crit .value { color: var(--error); }
+.kpi.high .value { color: var(--warn); }
+.kpi.med .value { color: var(--med-sev); }
+.kpi.low .value { color: var(--success); }
+
+/* Bars */
+.bars { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 18px 20px; }
+.bar-row { display: grid; grid-template-columns: 160px 40px 1fr 40px; align-items: center; gap: 12px; padding: 8px 0; }
+.bar-row + .bar-row { border-top: 1px solid var(--border); }
+.bar-row .name { font-size: 13px; color: var(--text); }
+.bar-row .score { font-size: 13px; color: var(--text); font-weight: 600; font-family: var(--mono); }
+.bar-row .track { height: 6px; background: var(--border-bright); border-radius: 3px; overflow: hidden; }
+.bar-row .fill { height: 100%; background: var(--success); border-radius: 3px; }
+.bar-row .fill.warn { background: var(--warn); }
+.bar-row .fill.med { background: var(--med-sev); }
+.bar-row .weight { font-size: 11px; color: var(--muted); text-align: right; }
+
+/* Findings + scanners */
+.scanner-list { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.scanner-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--border); }
+.scanner-row:last-child { border-bottom: 0; }
+.scanner-row .left { display: flex; align-items: center; gap: 14px; }
+.scanner-row .name { font-size: 13px; color: var(--text); font-weight: 500; }
+.scanner-row .count { font-size: 11px; color: var(--muted); background: var(--surface-2); padding: 2px 8px; border-radius: 999px; }
+.badge { padding: 3px 10px; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.badge.clean { background: rgba(52, 199, 89, 0.12); color: var(--success); }
+.badge.found { background: rgba(255, 149, 0, 0.12); color: var(--warn); }
+.badge.pass { background: rgba(52, 199, 89, 0.12); color: var(--success); }
+
+/* Tables */
+.findings-table { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; border-collapse: separate; border-spacing: 0; overflow: hidden; }
+.findings-table th { text-align: left; font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--surface-2); }
+.findings-table td { padding: 12px 16px; font-size: 13px; border-bottom: 1px solid var(--border); color: var(--text); }
+.findings-table tr:last-child td { border-bottom: 0; }
+.findings-table .pill { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.findings-table .pill.low { background: rgba(52, 199, 89, 0.12); color: var(--success); }
+.findings-table .pill.med { background: rgba(255, 204, 0, 0.12); color: var(--med-sev); }
+.findings-table .pill.high { background: rgba(255, 149, 0, 0.12); color: var(--warn); }
+.findings-table code { background: var(--surface-2); padding: 1px 6px; border-radius: 3px; color: var(--muted); }
+
+/* Doc grid */
+.doc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.doc-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; }
+.doc-card .head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.doc-card .title { font-size: 13px; font-weight: 600; color: var(--text); }
+.doc-card .status { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.doc-card .status.ok { color: var(--success); }
+.doc-card .status.missing { color: var(--error); }
+.doc-card .type { font-size: 10px; color: var(--faint); font-family: var(--mono); border: 1px solid var(--border); padding: 1px 6px; border-radius: 3px; display: inline-block; margin-bottom: 8px; }
+.doc-card .desc { font-size: 12px; color: var(--muted); line-height: 1.45; }
+
+/* Mobile */
+@media(max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .aside{position:static;height:auto;max-height:none;border-right:none;border-bottom:1px solid var(--border)}
+}
+
+/* Logo + client label in aside (for white-label reports) */
+.logo-row{padding:14px 24px 0}
+.aside-logo{max-width:80%;max-height:48px;height:auto;width:auto;display:block}
+.client-label{padding:8px 24px 0;font-size:11px;color:var(--muted)}
+.client-label strong{color:var(--text);font-weight:600}
+.target-link{color:inherit;text-decoration:none}
+.target-link:hover{text-decoration:underline}
+
+/* Mockup banner */
+.mockup-banner { background: rgba(255, 149, 0, 0.08); border-bottom: 1px solid rgba(255, 149, 0, 0.2); padding: 8px 24px; font-size: 12px; color: var(--warn); text-align: center; letter-spacing: 0.04em; }
+.mockup-banner strong { color: var(--text); }
+.mockup-banner a { color: var(--warn); text-decoration: underline; }
+</style>
+<style>.container{max-width:var(--max-w);margin:0 auto;padding:1.5rem 1rem}
+.site-title{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-pink);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.page-type-badge,.render-mode-badge{font-size:.65rem;padding:.15em .5em;border-radius:3px;background:var(--color-surface);border:1px solid var(--color-border);color:var(--color-text-secondary);letter-spacing:.04em}
+.page-type-auth,.page-type-app{background:#3b2c12;border-color:#a16207;color:#ffaa00}
+.render-mode-js{background:#2d1b4e;border-color:#4c1d95;color:#c4b5fd}
+.scanned-url{font-size:1rem;word-break:break-all;font-weight:500;line-height:1.4;margin:0}
+.scanned-url a{font-weight:500}
+.final-url{font-size:.85rem;color:var(--color-muted);margin-top:.25rem;word-break:break-all}
+.generated-at{font-size:.8rem;color:var(--color-muted);margin-top:.5rem}
+.score-cap{font-size:.85rem;color:var(--color-red);margin-top:.5rem;font-weight:600}
+.score-cap a{color:inherit}
+.score-cap code{font-family:monospace;font-size:.85em}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* Gates */
+.gates-banner{padding:.75rem 1rem;border-radius:var(--radius);font-weight:600;margin-bottom:1rem;font-size:.9rem}
+.gates-banner.triggered{background:rgba(232,21,95,.08);border:1px solid rgba(232,21,95,.35);color:var(--color-red)}
+.gates-banner.ok{background:rgba(0,151,106,.08);border:1px solid rgba(0,151,106,.35);color:var(--color-green)}
+[data-theme="dark"] .gates-banner.triggered{background:rgba(255,45,120,.1);border-color:rgba(255,45,120,.4);color:#ff8aad}
+[data-theme="dark"] .gates-banner.ok{background:rgba(0,214,143,.08);border-color:rgba(0,214,143,.3);color:#00d68f}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .gates-banner.triggered{background:rgba(255,45,120,.1);border-color:rgba(255,45,120,.4);color:#ff8aad}
+  :root:not([data-theme="light"]) .gates-banner.ok{background:rgba(0,214,143,.08);border-color:rgba(0,214,143,.3);color:#00d68f}
+}
+.gate-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.gate-item{display:flex;align-items:flex-start;gap:.5rem;padding:.6rem .75rem;border:1px solid var(--color-border);border-radius:var(--radius);font-size:.875rem}
+.gate-icon{flex-shrink:0;display:inline-flex;align-items:center;line-height:1.4;margin-top:.15rem}
+.gate-icon-pass{color:var(--color-green)}
+.gate-icon-fail{color:var(--color-red)}
+.gate-icon svg{display:block}
+.gate-name{font-weight:600}
+.gate-evidence{color:var(--color-text-secondary);margin-top:.1rem;font-size:.8rem}
+/* Findings */
+.findings-category{margin-bottom:.75rem}
+.findings-category summary{cursor:pointer;padding:.6rem .75rem;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius);font-weight:600;font-size:.9rem;user-select:none;list-style:none;display:flex;align-items:center;justify-content:space-between}
+.findings-category summary::-webkit-details-marker{display:none}
+.findings-category summary::after{content:"▸";transition:transform .2s}
+.findings-category[open] summary::after{transform:rotate(90deg)}
+.findings-list{padding:.75rem 0 0;display:flex;flex-direction:column;gap:.6rem}
+.finding{border:1px solid var(--color-border);border-radius:var(--radius);padding:.75rem;font-size:.875rem;transition:border-color .15s}
+.finding:hover{border-color:var(--color-pink)}
+.finding-header{display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:.3em;font-size:.7rem;font-weight:700;letter-spacing:.04em;padding:.2em .5em;border-radius:3px;text-transform:uppercase;line-height:1}
+.badge svg{flex-shrink:0}
+.badge-pass{background:var(--color-green);color:#fff}
+.badge-warn{background:var(--color-amber);color:#fff}
+.badge-fail{background:var(--color-red);color:#fff}
+.badge-info{background:var(--color-muted);color:#fff}
+.finding-rule{font-size:.75rem;font-family:monospace;color:var(--color-muted)}
+.finding-demoted{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;padding:.1em .4em;border-radius:3px;background:var(--color-surface);border:1px dashed var(--color-border);color:var(--color-muted)}
+.finding-demoted-row{opacity:.85}
+.finding-score{font-size:.75rem;color:var(--color-muted);margin-left:auto}
+.finding-evidence{color:var(--color-text-secondary);margin-bottom:.3rem}
+.finding-fix{font-size:.8rem;color:var(--color-text-secondary);border-left:3px solid var(--color-green);padding-left:.5rem}
+.finding-why{font-size:.78rem;color:var(--color-muted);border-left:3px solid var(--color-border);padding-left:.5rem;margin-top:.3rem}
+.finding-effort{font-size:.7rem;color:var(--color-muted);background:var(--color-surface);border:1px solid var(--color-border);border-radius:3px;padding:.1em .4em;font-family:monospace}
+.finding-snippet{margin-top:.4rem}
+.finding-snippet summary{cursor:pointer;font-size:.75rem;color:var(--color-muted);user-select:none;padding:.25rem 0}
+.finding-snippet summary::-webkit-details-marker{display:none}
+.finding-snippet summary::before{content:"▸";display:inline-block;margin-right:.3rem;transition:transform .2s}
+.finding-snippet[open] summary::before{transform:rotate(90deg)}
+.finding-snippet pre{margin-top:.3rem;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius);padding:.75rem;overflow-x:auto;font-size:.75rem;line-height:1.45}
+.finding-snippet code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+/* Quick wins */
+#quick-wins{margin-bottom:2rem}
+.quick-wins-intro{font-size:.85rem;color:var(--color-muted);margin-bottom:.75rem}
+.quick-wins-list{display:flex;flex-direction:column;gap:.6rem}
+.quick-win{border:1px solid var(--color-border);border-radius:var(--radius);padding:.75rem;background:var(--color-surface);transition:border-color .15s}
+.quick-win:hover{border-color:var(--color-pink)}
+.quick-win-header{display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem;flex-wrap:wrap}
+.qw-gain{font-size:.85rem;font-weight:700;color:#fff;background:var(--color-pink);padding:.15em .5em;border-radius:3px}
+.qw-effort{font-size:.7rem;color:var(--color-muted);background:var(--color-bg);border:1px solid var(--color-border);border-radius:3px;padding:.1em .4em;font-family:monospace}
+.qw-snippet{margin-top:.4rem;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);padding:.6rem;overflow-x:auto;font-size:.72rem;line-height:1.45}
+/* Metadata */
+.metadata-details summary{cursor:pointer;padding:.6rem .75rem;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius);font-weight:600;font-size:.875rem;user-select:none;list-style:none}
+.metadata-details summary::-webkit-details-marker{display:none}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;padding:.75rem 0}
+.meta-item{display:flex;flex-direction:column;gap:.1rem}
+.meta-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--color-muted);font-weight:600}
+.meta-value{font-size:.85rem;font-family:monospace}
+.raw-json{margin-top:.75rem}
+.raw-json pre{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius);padding:1rem;overflow-x:auto;font-size:.75rem;max-height:400px}
+/* Footer */
+footer{border-top:1px solid var(--color-border);padding-top:1rem;font-size:.8rem;color:var(--color-muted);text-align:center;margin-top:2rem}
+/* Theme toggle */
+#lf-theme-toggle{position:fixed;top:12px;right:14px;z-index:9999;background:var(--color-surface);border:1px solid var(--color-border);color:var(--color-muted);border-radius:20px;padding:5px 10px;font-size:14px;cursor:pointer;line-height:1;transition:background .15s,border-color .15s,color .15s}
+#lf-theme-toggle:hover{border-color:var(--color-pink);color:var(--color-pink)}
+/* Mobile */
+@media(max-width:600px){
+  .score-hero{flex-direction:column;align-items:flex-start;gap:1rem}
+  .cat-name{width:120px}
+  .cat-weight,.breakdown-table th.cat-weight{display:none}
+  .finding-header{row-gap:.25rem}
+  .finding-score{margin-left:0;flex-basis:100%}
+}
+/* Print */
+@media print{
+  #lf-theme-toggle{display:none}
+  .findings-category[open] summary::after,
+  .findings-category summary::after{display:none}
+  details,details[open]{display:block}
+  details>*{display:block!important}
+  .gates-banner{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  a{text-decoration:none}
+  .finding,.gate-item,.findings-category{page-break-inside:avoid;break-inside:avoid}
+}
+.lf-export-row{padding:1rem 1.25rem;border-top:1px solid var(--color-border);margin-top:.75rem;display:flex;flex-direction:column;gap:.4rem}
+.lf-export-row .lf-btn{width:100%}
+.lf-btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;padding:.5rem .75rem;border:1px solid var(--color-border);border-radius:var(--radius);font-size:.78rem;color:var(--color-text);background:transparent;cursor:pointer;text-decoration:none;font-weight:500;transition:border-color .15s,color .15s,background .15s}
+.lf-btn:hover{border-color:var(--color-pink);color:var(--color-pink);opacity:1}
+.lf-btn-primary{background:var(--color-pink);border-color:var(--color-pink);color:#fff}
+.lf-btn-primary:hover{filter:brightness(1.1);color:#fff}
+
+.lf-main{padding:1.5rem 2rem 2rem;max-width:none}
+.lf-main section{padding:1.25rem 0;border-bottom:1px solid var(--color-border);scroll-margin-top:1rem;margin-bottom:0}
+.lf-main section:last-of-type{border-bottom:none}
+.lf-main section .container{max-width:none;padding:0}
+.lf-main h1{font-size:1.5rem;font-weight:700;margin-bottom:1rem}
+.lf-main h2{font-size:1.2rem;font-weight:700;margin-bottom:1rem;padding-bottom:0;border-bottom:none;letter-spacing:-.01em}
+
+/* Free-tier upgrade card */
+.lf-upgrade{background:var(--color-surface);border:1px solid var(--color-pink);border-radius:calc(var(--radius)*2);padding:1.25rem;margin-top:1.5rem}
+.lf-upgrade-kicker{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--color-pink);font-weight:700;margin-bottom:.5rem}
+.lf-upgrade h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+.lf-upgrade p{font-size:.9rem;color:var(--color-text-secondary);margin-bottom:.75rem}
+.lf-upgrade ul{padding-left:1.1rem;color:var(--color-text-secondary);font-size:.88rem;margin-bottom:1rem}
+.lf-upgrade ul li+li{margin-top:.3rem}
+
+/* Mobile */
+@media(max-width:900px){
+  .lf-main{padding:1.25rem}
+}
+
+/* Print: hide sidebar, force light tokens, page-break each major section */
+@media print{
+  /* Force light tokens regardless of theme */
+  :root,[data-theme="dark"]{
+    --color-pink:#e8155f;
+    --color-green:#00976a;
+    --color-amber:#b45309;
+    --color-red:#c5173a;
+    --color-muted:#7c5e9e;
+    --color-bg:#fff;
+    --color-surface:#faf6ff;
+    --color-border:#d8cce8;
+    --color-text:#1a0a2e;
+    --color-text-secondary:#3d1f5a;
+    --score-glow:none;
+    --header-bg:#fff;
+  }
+  *{color-adjust:exact;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{background:#fff;font-size:11pt;line-height:1.4}
+  .aside{display:none}
+  .lf-main{max-width:none;padding:0;margin:0}
+  /* Print cover: brand kicker + url + score on first page */
+  .lf-main::before{
+    content:"";
+    display:block;
+  }
+  .lf-main section{page-break-inside:avoid;break-inside:avoid;border-bottom:none;padding:.75rem 0}
+  .lf-main section + section{page-break-before:always}
+  /* Inject print-only header at top of first page */
+  #lf-print-header{display:block!important;border-bottom:1px solid var(--color-border);margin-bottom:1rem;padding-bottom:.75rem}
+  a{text-decoration:none;color:var(--color-text)}
+  /* Findings + gates: keep tight together */
+  .finding,.gate-item,.premium-plan-item,.premium-reco-card,.site-stat{page-break-inside:avoid;break-inside:avoid}
+  .premium-grid,.premium-reco-grid{display:block}
+  .premium-grid > *,.premium-reco-grid > *{margin-bottom:.5rem}
+  /* Always expand details */
+  details,details[open]{display:block}
+  details > *{display:block!important}
+  details summary::-webkit-details-marker{display:none}
+}
+#lf-print-header{display:none}
+
+/* === Premium-tier components (used by renderSiteHtml) === */
+.site-summary{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:.5rem}
+.site-stat{padding:.85rem 1rem;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius);min-width:110px;flex:0 0 auto}
+.site-stat-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--color-muted);font-weight:600}
+.site-stat-value{font-size:1.7rem;font-weight:700;line-height:1;letter-spacing:-.02em;margin-top:.25rem}
+.site-stat-value.score{font-size:2.1rem}
+.site-pages{width:100%;border-collapse:collapse;margin-top:.5rem}
+.site-pages th{padding:.5rem .5rem;text-align:left;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--color-muted);font-weight:600;border-bottom:1px solid var(--color-border)}
+.site-pages td{padding:.6rem .5rem;border-bottom:1px solid var(--color-border);vertical-align:middle;font-size:.875rem}
+.page-score{width:60px;font-size:1rem}
+.page-url{word-break:break-all}
+.page-url a{font-weight:500}
+.page-issues{font-size:.75rem;color:var(--color-muted)}
+.page-issue{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;padding:.1em .35em;border-radius:3px;margin-right:.25rem;display:inline-block}
+.page-issue-fail{background:rgba(203,36,49,.08);color:var(--color-red)}
+.page-issue-warn{background:rgba(217,119,6,.08);color:var(--color-amber)}
+.page-no-issues{color:var(--color-green);font-size:.75rem}
+.discovery{font-size:.75rem;color:var(--color-muted);margin-top:.5rem}
+
+.premium-hero{background:var(--color-surface);border:1px solid var(--color-border);border-radius:calc(var(--radius)*2);padding:1.25rem}
+.premium-kicker{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--color-muted);font-weight:700;margin-bottom:.6rem}
+.premium-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(240px,1fr);gap:1rem}
+.premium-main-card,.premium-side-card,.premium-reco-card,.premium-plan-item{background:var(--color-bg);border:1px solid var(--color-border);border-radius:calc(var(--radius)*2);padding:1rem}
+.premium-band{display:inline-flex;align-items:center;border-radius:999px;padding:.22rem .65rem;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.7rem}
+.premium-band-strong,.premium-page-band-strong{background:#dcfce7;color:#166534}
+.premium-band-good,.premium-page-band-good{background:#dbeafe;color:#1d4ed8}
+.premium-band-mixed,.premium-page-band-mixed{background:#fef3c7;color:#92400e}
+.premium-band-weak,.premium-page-band-weak{background:#fee2e2;color:#991b1b}
+.premium-lead{font-size:1.1rem;line-height:1.4;font-weight:600;max-width:34rem}
+.premium-copy,.premium-section-copy,.premium-plan-copy,.premium-plan-fix,.premium-plan-page{font-size:.88rem;color:var(--color-text-secondary)}
+.premium-chip-row{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:.85rem}
+.premium-chip{display:inline-flex;align-items:center;padding:.18rem .55rem;border-radius:999px;background:var(--color-surface);border:1px solid var(--color-border);font-size:.74rem;color:var(--color-text-secondary)}
+.premium-list{padding-left:1.1rem;color:var(--color-text-secondary)}
+.premium-list li+li{margin-top:.4rem}
+.premium-plan-list,.premium-reco-grid{display:grid;gap:.75rem}
+.premium-plan-item h3,.premium-reco-card h3{font-size:.95rem;margin:.4rem 0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--color-pink)}
+.premium-reco-card h3{font-family:inherit;color:var(--color-pink)}
+.premium-plan-meta{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}
+.premium-plan-rank,.premium-plan-severity,.premium-plan-gain,.premium-page-band{display:inline-flex;align-items:center;border-radius:999px;padding:.15rem .5rem;font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.premium-plan-severity-fail{background:#fee2e2;color:#991b1b}
+.premium-plan-severity-warn{background:#fef3c7;color:#92400e}
+.premium-plan-gain{background:var(--color-surface);color:var(--color-text-secondary);border:1px solid var(--color-border)}
+.premium-plan-rank{background:var(--color-text);color:var(--color-bg)}
+.premium-plan-fix{border-left:3px solid var(--color-green);padding-left:.6rem;margin-top:.4rem}
+.premium-reco-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+[data-theme="dark"] .premium-hero{background:var(--color-surface)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .premium-hero{background:var(--color-surface)}}
+[data-theme="dark"] .premium-main-card,[data-theme="dark"] .premium-side-card,[data-theme="dark"] .premium-reco-card,[data-theme="dark"] .premium-plan-item{background:var(--color-bg)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .premium-main-card,:root:not([data-theme="light"]) .premium-side-card,:root:not([data-theme="light"]) .premium-reco-card,:root:not([data-theme="light"]) .premium-plan-item{background:var(--color-bg)}}
+[data-theme="dark"] .premium-band-strong,[data-theme="dark"] .premium-page-band-strong{background:#0a2e1e;color:#00d68f}
+[data-theme="dark"] .premium-band-good,[data-theme="dark"] .premium-page-band-good{background:#1a0f35;color:#c4b5e8}
+[data-theme="dark"] .premium-band-mixed,[data-theme="dark"] .premium-page-band-mixed{background:#2e1f0a;color:#ffaa00}
+[data-theme="dark"] .premium-band-weak,[data-theme="dark"] .premium-page-band-weak{background:#2e0a18;color:#ff8aad}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .premium-band-strong,:root:not([data-theme="light"]) .premium-page-band-strong{background:#0a2e1e;color:#00d68f}
+  :root:not([data-theme="light"]) .premium-band-good,:root:not([data-theme="light"]) .premium-page-band-good{background:#1a0f35;color:#c4b5e8}
+  :root:not([data-theme="light"]) .premium-band-mixed,:root:not([data-theme="light"]) .premium-page-band-mixed{background:#2e1f0a;color:#ffaa00}
+  :root:not([data-theme="light"]) .premium-band-weak,:root:not([data-theme="light"]) .premium-page-band-weak{background:#2e0a18;color:#ff8aad}
+}
+@media(max-width:780px){
+  .premium-grid,.premium-reco-grid{grid-template-columns:1fr}
+}
+
+/* === Findings flat list (site report) === */
+.findings-flat-list{display:flex;flex-direction:column;gap:.55rem;margin-top:.75rem}
+.finding-flat{border:1px solid var(--color-border);border-radius:var(--radius);padding:.75rem 1rem;background:var(--color-surface)}
+.finding-flat-head{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin-bottom:.35rem}
+.finding-flat-rule{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.72rem;color:var(--color-muted)}
+.finding-flat-page{font-size:.72rem;color:var(--color-muted);margin-left:auto}
+.finding-flat-evidence{font-size:.85rem;color:var(--color-text-secondary);line-height:1.45;margin:0}
+details.finding-flat{padding:0}
+details.finding-flat>summary{list-style:none;cursor:pointer;padding:.75rem 1rem;border-radius:var(--radius);transition:background .12s ease}
+details.finding-flat>summary::-webkit-details-marker{display:none}
+details.finding-flat>summary:hover{background:color-mix(in oklab,var(--color-pink) 6%,transparent)}
+.finding-flat-toggle{margin-left:.4rem;color:var(--color-muted);transition:transform .15s ease;font-size:1rem;line-height:1}
+details.finding-flat[open]>summary .finding-flat-toggle{transform:rotate(90deg)}
+.finding-flat-body{padding:0 1rem 1rem;display:flex;flex-direction:column;gap:.75rem;border-top:1px solid var(--color-border);margin-top:.25rem;padding-top:.85rem}
+.finding-flat-label{display:inline-block;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--color-muted);margin-bottom:.25rem}
+.finding-flat-why p,.finding-flat-fix p{margin:0;font-size:.85rem;color:var(--color-text-secondary);line-height:1.5}
+.finding-flat-fix p{color:var(--color-text)}
+.finding-flat-snippet pre{margin:0;padding:.7rem .9rem;background:var(--color-bg);border:1px solid var(--color-border);border-radius:8px;overflow-x:auto;font-size:.78rem;line-height:1.5}
+.finding-flat-snippet code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--color-text)}
+.finding-flat-effort{align-self:flex-start;font-size:.7rem;color:var(--color-muted);background:var(--color-bg);border:1px solid var(--color-border);padding:.2rem .55rem;border-radius:999px}
+.finding-affected-count{font-size:.68rem;font-weight:700;color:var(--color-amber);background:rgba(217,119,6,.08);border:1px solid rgba(217,119,6,.25);padding:.1rem .45rem;border-radius:999px;margin-left:.35rem}
+.finding-affected-list{margin-top:.5rem}
+.finding-affected-pages{padding-left:1.1rem;font-size:.8rem;color:var(--color-text-secondary);margin:.35rem 0 0;list-style:disc}
+.finding-affected-pages li{margin-bottom:.2rem;line-height:1.4}
+.findings-toggle-btn{margin-top:.75rem;padding:.4rem .85rem;border:1px solid var(--color-border);border-radius:var(--radius);background:transparent;font-size:.78rem;color:var(--color-text-secondary);cursor:pointer;transition:border-color .15s,color .15s}
+.findings-toggle-btn:hover{border-color:var(--color-pink);color:var(--color-pink)}
+.findings-hidden-group{flex-direction:column;gap:.55rem;margin-top:.55rem}</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="aside">
+    
+    
+    <div class="pill-row"><span class="report-pill">AEO Score Report</span></div>
+    <div class="aside-head">
+      <div class="product">Luxfaber Report</div>
+      <div class="target"><a href="https://developer.mozilla.org" class="target-link">developer.mozilla.org</a></div>
+      <div class="score-line">
+        <span class="score-num">73</span>
+        <span class="score-denom">/ 100</span>
+        <span class="score-badge good">GOOD</span>
+      </div>
+      <div class="report-type">AEO · GOOD</div>
+    </div>
+    <nav class="aside-nav">
+      <h6>Report</h6>
+      <a href="#overview" class="active">Overview <span class="count">·</span></a>
+      <a href="#premium-summary">Executive summary <span class="count">·</span></a>
+      <a href="#gates">Gates <span class="count">·</span></a>
+      <a href="#priority-plan">Priority plan <span class="count">5</span></a>
+      <a href="#findings">Findings <span class="count">11</span></a>
+      <a href="#page-health">Page health <span class="count">10</span></a>
+      <a href="#business-recommendations">Recommendations <span class="count">·</span></a>
+      <a href="#pages">Detailed pages <span class="count">10</span></a>
+      <a href="#metadata">Metadata <span class="count">·</span></a>
+    </nav>
+    <div class="aside-footer">AEO Score Report · v1</div>
+  </aside>
+
+  <main class="main">
+<section id="overview">
+  <h1>Overview <span class="lead">mean across 10 pages</span></h1>
+  <div class="score-hero">
+  <svg class="gauge" viewBox="0 0 100 100">
+    <circle class="gauge-ring gauge-bg" cx="50" cy="50" r="42" />
+    <circle class="gauge-ring gauge-fill" cx="50" cy="50" r="42"
+      stroke-dasharray="263.9" stroke-dashoffset="71.25" />
+  </svg>
+  <div class="info">
+    <div class="label">Site score</div>
+    <div class="num">73<small>/ 100</small></div>
+    <div class="sub">mean across 10 pages · scoring v1 · min 71 · max 74 · σ 1 · failures 0</div>
+  </div>
+  <div class="desc">LuxFaber Score measures how cleanly AI agents can read and interpret your site. Scored across 5 categories — crawl accessibility, structured data, semantic HTML, content clarity, determinism. The breakdown below shows where pressure concentrates so you know what to fix first.</div>
+</div>
+  <div class="kpis"><div class="kpi"><div class="label">Score</div><div class="value">73</div></div><div class="kpi"><div class="label">Raw</div><div class="value">72.5</div></div><div class="kpi"><div class="label">Pages</div><div class="value">10</div></div><div class="kpi"><div class="label">Gates failing</div><div class="value">0</div></div><div class="kpi"><div class="label">Findings</div><div class="value">420</div></div></div>
+  <h2>Score Breakdown</h2>
+  <div class="bars"><div class="bar-row"><span class="name">Crawl Accessibility</span><span class="score">77</span><div class="track"><div class="fill" style="width: 77%"></div></div><span class="weight">25%</span></div><div class="bar-row"><span class="name">Structured Data</span><span class="score">21</span><div class="track"><div class="fill warn" style="width: 21%"></div></div><span class="weight">22%</span></div><div class="bar-row"><span class="name">Semantic HTML</span><span class="score">93</span><div class="track"><div class="fill" style="width: 93%"></div></div><span class="weight">18%</span></div><div class="bar-row"><span class="name">Content Clarity</span><span class="score">81</span><div class="track"><div class="fill" style="width: 81%"></div></div><span class="weight">17%</span></div><div class="bar-row"><span class="name">Determinism</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">18%</span></div></div>
+</section>
+<section id="premium-summary">
+  <h2>Executive summary</h2>
+  <div class="premium-hero">
+    <div class="premium-kicker">Premium Site Report</div>
+    <div class="premium-grid">
+      <div class="premium-main-card">
+        <div class="premium-band premium-band-good">GOOD</div>
+        <p class="premium-lead">Usable by agents, but there are still visible structural gaps.</p>
+        <p class="premium-copy">Across 10 scored pages, Luxfaber sees a score spread of 71 to 74. The most fragile page is /en-US/docs/Web/HTML/Guides/Cheatsheet, which is likely where an AI crawler or agent will struggle first.</p>
+        <div class="premium-chip-row">
+          <span class="premium-chip">Structured Data 21</span><span class="premium-chip">Crawl Accessibility 77</span><span class="premium-chip">Content Clarity 81</span>
+        </div>
+      </div>
+      <div class="premium-side-card">
+        <div class="premium-kicker">What this means</div>
+        <ul class="premium-list">
+          <li>Agents can reach core flows, but machine-readable trust signals are incomplete.</li>
+          <li>Content interpretation is strongest on utility/auth pages and weakest on the homepage.</li>
+          <li>No crawl failures were detected in this run.</li>
+        </ul>
+        <div class="premium-kicker" style="margin-top:1rem;">Cross-referenced with</div>
+        <ul class="premium-list">
+          <li><strong>Mozilla Readability:</strong> 10/10 pages extractable as articles, 256283 chars total</li>
+          <li><strong>Agent Manifests:</strong> /.well-known/mcp.json and ai-plugin.json absent — AI agent discovery not declared</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="gates">
+  <h2>Gates</h2>
+  <p class="premium-section-copy">No gates triggered across 10 scored pages.</p>
+</section>
+<section id="priority-plan">
+  <h2>Priority plan</h2>
+  <p class="premium-section-copy">Highest-value fixes ranked by severity and weighted score impact.</p>
+  <div class="premium-plan-list">
+    
+        <article class="premium-plan-item">
+          <div class="premium-plan-meta">
+            <span class="premium-plan-rank">P1</span>
+            <span class="premium-plan-severity premium-plan-severity-fail">FAIL</span>
+            <span class="premium-plan-gain">impact 25.0</span>
+          </div>
+          <h3>crawl.ai-plugin-manifest.present</h3>
+          <p class="premium-plan-page">Page: <a href="https://developer.mozilla.org">/</a> · Crawl Accessibility</p>
+          <p class="premium-plan-copy">/.well-known/ai-plugin.json not found</p>
+          <p class="premium-plan-fix"><strong>Recommended fix:</strong> Publish /.well-known/ai-plugin.json to declare your ChatGPT/OpenAI plugin metadata</p>
+        </article>
+
+        <article class="premium-plan-item">
+          <div class="premium-plan-meta">
+            <span class="premium-plan-rank">P2</span>
+            <span class="premium-plan-severity premium-plan-severity-fail">FAIL</span>
+            <span class="premium-plan-gain">impact 25.0</span>
+          </div>
+          <h3>crawl.llms-txt.present</h3>
+          <p class="premium-plan-page">Page: <a href="https://developer.mozilla.org">/</a> · Crawl Accessibility</p>
+          <p class="premium-plan-copy">llms.txt was not found at /llms.txt</p>
+          <p class="premium-plan-fix"><strong>Recommended fix:</strong> Publish /llms.txt to guide LLM agents</p>
+        </article>
+
+        <article class="premium-plan-item">
+          <div class="premium-plan-meta">
+            <span class="premium-plan-rank">P3</span>
+            <span class="premium-plan-severity premium-plan-severity-fail">FAIL</span>
+            <span class="premium-plan-gain">impact 25.0</span>
+          </div>
+          <h3>crawl.mcp-manifest.present</h3>
+          <p class="premium-plan-page">Page: <a href="https://developer.mozilla.org">/</a> · Crawl Accessibility</p>
+          <p class="premium-plan-copy">/.well-known/mcp.json not found</p>
+          <p class="premium-plan-fix"><strong>Recommended fix:</strong> Publish /.well-known/mcp.json to declare MCP tool endpoints for AI agent discovery</p>
+        </article>
+
+        <article class="premium-plan-item">
+          <div class="premium-plan-meta">
+            <span class="premium-plan-rank">P4</span>
+            <span class="premium-plan-severity premium-plan-severity-fail">FAIL</span>
+            <span class="premium-plan-gain">impact 25.0</span>
+          </div>
+          <h3>crawl.sitemap.parseable</h3>
+          <p class="premium-plan-page">Page: <a href="https://developer.mozilla.org">/</a> · Crawl Accessibility</p>
+          <p class="premium-plan-copy">Sitemap has 0 parseable URLs or is absent</p>
+          <p class="premium-plan-fix"><strong>Recommended fix:</strong> Ensure sitemap.xml is valid XML with at least one &lt;loc&gt;</p>
+        </article>
+
+        <article class="premium-plan-item">
+          <div class="premium-plan-meta">
+            <span class="premium-plan-rank">P5</span>
+            <span class="premium-plan-severity premium-plan-severity-fail">FAIL</span>
+            <span class="premium-plan-gain">impact 25.0</span>
+          </div>
+          <h3>crawl.ai-plugin-manifest.present</h3>
+          <p class="premium-plan-page">Page: <a href="https://developer.mozilla.org/en-US/">/en-US/</a> · Crawl Accessibility</p>
+          <p class="premium-plan-copy">/.well-known/ai-plugin.json not found</p>
+          <p class="premium-plan-fix"><strong>Recommended fix:</strong> Publish /.well-known/ai-plugin.json to declare your ChatGPT/OpenAI plugin metadata</p>
+        </article>
+  </div>
+</section>
+<section id="findings">
+  <h2>Findings (11 issues)</h2>
+  <p class="premium-section-copy">Findings grouped by rule across all scored pages, sorted by severity then affected page count. Click a row to expand fix guidance.</p>
+  <div class="findings-flat-list">
+    <details class="finding-flat finding-flat-fail">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-fail">FAIL</span>
+      <code class="finding-flat-rule">crawl.ai-plugin-manifest.present</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">/.well-known/ai-plugin.json not found</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~60 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>/.well-known/ai-plugin.json was defined by OpenAI for ChatGPT plugins. Many agentic systems still look for this file to auto-discover capabilities — it&#39;s effectively the /robots.txt of agent APIs.</p></div>
+      <div class="finding-flat-fix"><span class="finding-flat-label">Fix</span><p>Publish /.well-known/ai-plugin.json to declare your ChatGPT/OpenAI plugin metadata</p></div>
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code>// /.well-known/ai-plugin.json
+{
+  &quot;schema_version&quot;: &quot;v1&quot;,
+  &quot;name_for_human&quot;: &quot;MDN Web Docs&quot;,
+  &quot;name_for_model&quot;: &quot;mdn_web_docs&quot;,
+  &quot;description_for_model&quot;: &quot;API for MDN Web Docs. Use to answer questions about this product.&quot;,
+  &quot;api&quot;: {
+    &quot;type&quot;: &quot;openapi&quot;,
+    &quot;url&quot;: &quot;https://developer.mozilla.org/openapi.json&quot;
+  }
+}</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — /.well-known/ai-plugin.json not found</li><li><code>/en-US/</code> — /.well-known/ai-plugin.json not found</li><li><code>/en-US/docs/Web/HTML</code> — /.well-known/ai-plugin.json not found</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — /.well-known/ai-plugin.json not found</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — /.well-known/ai-plugin.json not found</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — /.well-known/ai-plugin.json not found</li><li><code>/en-US/docs/Web/HTML/Reference</code> — /.well-known/ai-plugin.json not found</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — /.well-known/ai-plugin.json not found</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — /.well-known/ai-plugin.json not found</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — /.well-known/ai-plugin.json not found</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-fail">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-fail">FAIL</span>
+      <code class="finding-flat-rule">crawl.llms-txt.present</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">llms.txt was not found at /llms.txt</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~30 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>/llms.txt is the emerging standard for site-level guidance to LLM agents.</p></div>
+      <div class="finding-flat-fix"><span class="finding-flat-label">Fix</span><p>Publish /llms.txt to guide LLM agents</p></div>
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code># https://developer.mozilla.org/llms.txt
+# (https://llmstxt.org)
+
+# MDN Web Docs
+
+&gt; One-paragraph site summary aimed at an LLM agent.
+
+## Docs
+- [Getting Started](https://developer.mozilla.org/docs)
+
+## Optional
+- [Changelog](https://developer.mozilla.org/changelog)</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — llms.txt was not found at /llms.txt</li><li><code>/en-US/</code> — llms.txt was not found at /llms.txt</li><li><code>/en-US/docs/Web/HTML</code> — llms.txt was not found at /llms.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — llms.txt was not found at /llms.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — llms.txt was not found at /llms.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — llms.txt was not found at /llms.txt</li><li><code>/en-US/docs/Web/HTML/Reference</code> — llms.txt was not found at /llms.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — llms.txt was not found at /llms.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — llms.txt was not found at /llms.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — llms.txt was not found at /llms.txt</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-fail">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-fail">FAIL</span>
+      <code class="finding-flat-rule">crawl.mcp-manifest.present</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">/.well-known/mcp.json not found</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~60 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>/.well-known/mcp.json is the emerging discovery endpoint for MCP (Model Context Protocol) tool servers. AI agents that support MCP look here first before prompting a user to configure a server manually.</p></div>
+      <div class="finding-flat-fix"><span class="finding-flat-label">Fix</span><p>Publish /.well-known/mcp.json to declare MCP tool endpoints for AI agent discovery</p></div>
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code>// /.well-known/mcp.json
+{
+  &quot;version&quot;: &quot;1.0&quot;,
+  &quot;name&quot;: &quot;MDN Web Docs&quot;,
+  &quot;tools&quot;: [
+    {
+      &quot;name&quot;: &quot;search&quot;,
+      &quot;url&quot;: &quot;https://developer.mozilla.org/mcp/search&quot;
+    }
+  ]
+}</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — /.well-known/mcp.json not found</li><li><code>/en-US/</code> — /.well-known/mcp.json not found</li><li><code>/en-US/docs/Web/HTML</code> — /.well-known/mcp.json not found</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — /.well-known/mcp.json not found</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — /.well-known/mcp.json not found</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — /.well-known/mcp.json not found</li><li><code>/en-US/docs/Web/HTML/Reference</code> — /.well-known/mcp.json not found</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — /.well-known/mcp.json not found</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — /.well-known/mcp.json not found</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — /.well-known/mcp.json not found</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-fail">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-fail">FAIL</span>
+      <code class="finding-flat-rule">crawl.sitemap.parseable</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">Sitemap has 0 parseable URLs or is absent</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~30 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Empty/invalid sitemaps look the same to a crawler as none at all.</p></div>
+      <div class="finding-flat-fix"><span class="finding-flat-label">Fix</span><p>Ensure sitemap.xml is valid XML with at least one &lt;loc&gt;</p></div>
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&gt;
+  &lt;url&gt;&lt;loc&gt;https://developer.mozilla.org/&lt;/loc&gt;&lt;/url&gt;
+  &lt;!-- add one &lt;url&gt;&lt;loc&gt;…&lt;/loc&gt;&lt;/url&gt; per public page --&gt;
+&lt;/urlset&gt;</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — Sitemap has 0 parseable URLs or is absent</li><li><code>/en-US/</code> — Sitemap has 0 parseable URLs or is absent</li><li><code>/en-US/docs/Web/HTML</code> — Sitemap has 0 parseable URLs or is absent</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — Sitemap has 0 parseable URLs or is absent</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — Sitemap has 0 parseable URLs or is absent</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — Sitemap has 0 parseable URLs or is absent</li><li><code>/en-US/docs/Web/HTML/Reference</code> — Sitemap has 0 parseable URLs or is absent</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — Sitemap has 0 parseable URLs or is absent</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — Sitemap has 0 parseable URLs or is absent</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — Sitemap has 0 parseable URLs or is absent</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-fail">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-fail">FAIL</span>
+      <code class="finding-flat-rule">sd.jsonld.count</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">No JSON-LD blocks found</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~15 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>JSON-LD is how LLMs reliably extract entity facts (org, products, articles) without parsing prose.</p></div>
+      <div class="finding-flat-fix"><span class="finding-flat-label">Fix</span><p>Add at least one &lt;script type=&quot;application/ld+json&quot;&gt; block</p></div>
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code>&lt;script type=&quot;application/ld+json&quot;&gt;
+{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;Organization&quot;,
+  &quot;name&quot;: &quot;MDN Web Docs&quot;,
+  &quot;url&quot;: &quot;https://developer.mozilla.org&quot;
+}
+&lt;/script&gt;</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — No JSON-LD blocks found</li><li><code>/en-US/</code> — No JSON-LD blocks found</li><li><code>/en-US/docs/Web/HTML</code> — No JSON-LD blocks found</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — No JSON-LD blocks found</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — No JSON-LD blocks found</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — No JSON-LD blocks found</li><li><code>/en-US/docs/Web/HTML/Reference</code> — No JSON-LD blocks found</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — No JSON-LD blocks found</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — No JSON-LD blocks found</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — No JSON-LD blocks found</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-fail">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-fail">FAIL</span>
+      <code class="finding-flat-rule">sd.jsonld.entity-types</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">No valid JSON-LD blocks to check for entity types</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~20 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Generic JSON-LD without recognised @type doesn&#39;t disambiguate the entity for agents.</p></div>
+      <div class="finding-flat-fix"><span class="finding-flat-label">Fix</span><p>Add Organization, WebSite, or Article/Product/Service JSON-LD</p></div>
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code>&lt;script type=&quot;application/ld+json&quot;&gt;
+{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;WebSite&quot;,
+  &quot;name&quot;: &quot;MDN Web Docs&quot;,
+  &quot;url&quot;: &quot;https://developer.mozilla.org&quot;
+}
+&lt;/script&gt;</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — No valid JSON-LD blocks to check for entity types</li><li><code>/en-US/</code> — No valid JSON-LD blocks to check for entity types</li><li><code>/en-US/docs/Web/HTML</code> — No valid JSON-LD blocks to check for entity types</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — No valid JSON-LD blocks to check for entity types</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — No valid JSON-LD blocks to check for entity types</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — No valid JSON-LD blocks to check for entity types</li><li><code>/en-US/docs/Web/HTML/Reference</code> — No valid JSON-LD blocks to check for entity types</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — No valid JSON-LD blocks to check for entity types</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — No valid JSON-LD blocks to check for entity types</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — No valid JSON-LD blocks to check for entity types</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-fail">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-fail">FAIL</span>
+      <code class="finding-flat-rule">sd.opengraph.complete</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">Open Graph missing: title, description, type, image, url</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~10 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>OpenGraph drives link previews everywhere (Slack, iMessage, agent UIs that render share cards).</p></div>
+      <div class="finding-flat-fix"><span class="finding-flat-label">Fix</span><p>Add missing og: meta tags: og:title, og:description, og:type, og:image, og:url</p></div>
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code>&lt;meta property=&quot;og:title&quot; content=&quot;MDN Web Docs&quot;&gt;
+&lt;meta property=&quot;og:description&quot; content=&quot;The MDN Web Docs site provides information about Open Web technologies including HTML, CSS, and APIs for both Web sites and progressive web apps.&quot;&gt;
+&lt;meta property=&quot;og:type&quot; content=&quot;website&quot;&gt;
+&lt;meta property=&quot;og:url&quot; content=&quot;https://developer.mozilla.org/en-US/&quot;&gt;
+&lt;meta property=&quot;og:image&quot; content=&quot;https://developer.mozilla.org/og-image.png&quot;&gt;</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — Open Graph missing: title, description, type, image, url</li><li><code>/en-US/</code> — Open Graph missing: title, description, type, image, url</li><li><code>/en-US/docs/Web/HTML</code> — Open Graph missing: title, description, type, image, url</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — Open Graph missing: title, description, type, image, url</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — Open Graph missing: title, description, type, image, url</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — Open Graph missing: title, description, type, image, url</li><li><code>/en-US/docs/Web/HTML/Reference</code> — Open Graph missing: title, description, type, image, url</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — Open Graph missing: title, description, type, image, url</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — Open Graph missing: title, description, type, image, url</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — Open Graph missing: title, description, type, image, url</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-fail">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-fail">FAIL</span>
+      <code class="finding-flat-rule">content.signal-noise</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">Signal-noise ratio: 23.6% (27520 text bytes / 116509 total bytes)</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~90 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>High script/style-to-text ratio buries the actual content agents are trying to extract.</p></div>
+      
+      
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — Signal-noise ratio: 23.6% (27520 text bytes / 116509 total bytes)</li><li><code>/en-US/</code> — Signal-noise ratio: 23.6% (27520 text bytes / 116509 total bytes)</li><li><code>/en-US/docs/Web/HTML</code> — Signal-noise ratio: 15.8% (28575 text bytes / 180987 total bytes)</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — Signal-noise ratio: 22.4% (50767 text bytes / 226767 total bytes)</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — Signal-noise ratio: 17.4% (36585 text bytes / 209687 total bytes)</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — Signal-noise ratio: 20.8% (51021 text bytes / 244983 total bytes)</li><li><code>/en-US/docs/Web/HTML/Reference</code> — Signal-noise ratio: 13.6% (22714 text bytes / 167328 total bytes)</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — Signal-noise ratio: 20.1% (39554 text bytes / 196474 total bytes)</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — Signal-noise ratio: 14.3% (27468 text bytes / 191645 total bytes)</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — Signal-noise ratio: 19.8% (38625 text bytes / 195183 total bytes)</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-warn">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-warn">WARN</span>
+      <code class="finding-flat-rule">crawl.sitemap.discoverable</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">Sitemap referenced in robots but file returned 4xx — deploy it</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~20 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Without a sitemap, multi-page agents can&#39;t enumerate your site reliably.</p></div>
+      <div class="finding-flat-fix"><span class="finding-flat-label">Fix</span><p>Deploy a valid sitemap.xml at the referenced URL</p></div>
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code># Add to robots.txt:
+Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — Sitemap referenced in robots but file returned 4xx — deploy it</li><li><code>/en-US/</code> — Sitemap referenced in robots but file returned 4xx — deploy it</li><li><code>/en-US/docs/Web/HTML</code> — Sitemap referenced in robots but file returned 4xx — deploy it</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — Sitemap referenced in robots but file returned 4xx — deploy it</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — Sitemap referenced in robots but file returned 4xx — deploy it</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — Sitemap referenced in robots but file returned 4xx — deploy it</li><li><code>/en-US/docs/Web/HTML/Reference</code> — Sitemap referenced in robots but file returned 4xx — deploy it</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — Sitemap referenced in robots but file returned 4xx — deploy it</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — Sitemap referenced in robots but file returned 4xx — deploy it</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — Sitemap referenced in robots but file returned 4xx — deploy it</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-warn">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-warn">WARN</span>
+      <code class="finding-flat-rule">sd.title-meta.quality</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">Title (12 chars) and meta description (145 chars) within spec</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~5 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>&lt;title&gt; + meta description are the snippet agents quote when summarising or citing your page.</p></div>
+      
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code>&lt;title&gt;MDN Web Docs&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;The MDN Web Docs site provides information about Open Web technologies including HTML, CSS, and APIs for both Web sites and progressive web apps.&quot;&gt;</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — Title (12 chars) and meta description (145 chars) within spec</li><li><code>/en-US/</code> — Title (12 chars) and meta description (145 chars) within spec</li><li><code>/en-US/docs/Web/HTML</code> — Issues: meta description length 276 (want 50–160)</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — Title (36 chars) and meta description (68 chars) within spec</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — Title (30 chars) and meta description (144 chars) within spec</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — Issues: meta description length 167 (want 50–160)</li><li><code>/en-US/docs/Web/HTML/Reference</code> — Title (27 chars) and meta description (122 chars) within spec</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — Issues: meta description length 298 (want 50–160)</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — Issues: meta description length 420 (want 50–160)</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — Title (48 chars) and meta description (134 chars) within spec</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-warn">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-warn">WARN</span>
+      <code class="finding-flat-rule">content.boilerplate-ratio</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">Boilerplate ratio: 16.9% (4633 extracted / 27378 total visible bytes)</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~90 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Lots of nav/footer chrome relative to page body dilutes the signal in agent excerpts.</p></div>
+      
+      
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — Boilerplate ratio: 16.9% (4633 extracted / 27378 total visible bytes)</li><li><code>/en-US/</code> — Boilerplate ratio: 16.9% (4633 extracted / 27378 total visible bytes)</li><li><code>/en-US/docs/Web/HTML</code> — Boilerplate ratio: 81.4% (23211 extracted / 28501 total visible bytes)</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — Boilerplate ratio: 87.4% (44330 extracted / 50699 total visible bytes)</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — Boilerplate ratio: 82.9% (30279 extracted / 36521 total visible bytes)</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — Boilerplate ratio: 88.6% (45136 extracted / 50945 total visible bytes)</li><li><code>/en-US/docs/Web/HTML/Reference</code> — Boilerplate ratio: 72.1% (16326 extracted / 22642 total visible bytes)</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — Boilerplate ratio: 85.3% (33638 extracted / 39448 total visible bytes)</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — Boilerplate ratio: 78.8% (21614 extracted / 27424 total visible bytes)</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — Boilerplate ratio: 84.2% (32483 extracted / 38568 total visible bytes)</li></ul></div>
+    </div>
+  </details>
+    
+  <div class="findings-hidden-group" id="findings-hidden-group" style="display:none">
+    <details class="finding-flat finding-flat-info">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-info">INFO</span>
+      <code class="finding-flat-rule">crawl.auth-wall</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">No auth-wall signals detected</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~0 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Auth-walled pages require login before crawlers can read content. Flagged for awareness — most AI agents can&#39;t authenticate and will see only the login form.</p></div>
+      
+      
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — No auth-wall signals detected</li><li><code>/en-US/</code> — No auth-wall signals detected</li><li><code>/en-US/docs/Web/HTML</code> — No auth-wall signals detected</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — No auth-wall signals detected</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — No auth-wall signals detected</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — No auth-wall signals detected</li><li><code>/en-US/docs/Web/HTML/Reference</code> — No auth-wall signals detected</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — No auth-wall signals detected</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — No auth-wall signals detected</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — No auth-wall signals detected</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-info">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-info">INFO</span>
+      <code class="finding-flat-rule">crawl.hreflang-alternates</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">No hreflang alternate links found</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~30 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>hreflang tells agents which language/region variant is canonical for each locale, reducing duplicate-content signals across international site variations.</p></div>
+      
+      
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — No hreflang alternate links found</li><li><code>/en-US/</code> — No hreflang alternate links found</li><li><code>/en-US/docs/Web/HTML</code> — No hreflang alternate links found</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — No hreflang alternate links found</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — No hreflang alternate links found</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — No hreflang alternate links found</li><li><code>/en-US/docs/Web/HTML/Reference</code> — No hreflang alternate links found</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — No hreflang alternate links found</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — No hreflang alternate links found</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — No hreflang alternate links found</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-info">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-info">INFO</span>
+      <code class="finding-flat-rule">crawl.x-robots-header</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">No X-Robots-Tag or robots meta tag detected</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~10 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>X-Robots-Tag: noindex tells crawlers (and AI agents) to skip the page. noai and none are increasingly used to opt out of AI training — verify this is intentional.</p></div>
+      
+      
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — No X-Robots-Tag or robots meta tag detected</li><li><code>/en-US/</code> — No X-Robots-Tag or robots meta tag detected</li><li><code>/en-US/docs/Web/HTML</code> — No X-Robots-Tag or robots meta tag detected</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — No X-Robots-Tag or robots meta tag detected</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — No X-Robots-Tag or robots meta tag detected</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — No X-Robots-Tag or robots meta tag detected</li><li><code>/en-US/docs/Web/HTML/Reference</code> — No X-Robots-Tag or robots meta tag detected</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — No X-Robots-Tag or robots meta tag detected</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — No X-Robots-Tag or robots meta tag detected</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — No X-Robots-Tag or robots meta tag detected</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-info">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-info">INFO</span>
+      <code class="finding-flat-rule">sd.jsonld.valid</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">No JSON-LD blocks to validate (skipped)</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~10 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Invalid JSON-LD silently breaks structured-data parsers — they just skip the block.</p></div>
+      
+      
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — No JSON-LD blocks to validate (skipped)</li><li><code>/en-US/</code> — No JSON-LD blocks to validate (skipped)</li><li><code>/en-US/docs/Web/HTML</code> — No JSON-LD blocks to validate (skipped)</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — No JSON-LD blocks to validate (skipped)</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — No JSON-LD blocks to validate (skipped)</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — No JSON-LD blocks to validate (skipped)</li><li><code>/en-US/docs/Web/HTML/Reference</code> — No JSON-LD blocks to validate (skipped)</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — No JSON-LD blocks to validate (skipped)</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — No JSON-LD blocks to validate (skipped)</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — No JSON-LD blocks to validate (skipped)</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-info">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-info">INFO</span>
+      <code class="finding-flat-rule">html.img-alt-coverage</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">1/1 image(s) have an alt attribute</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~30 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Alt text is how agents (and screen readers) caption images. Missing alt = invisible content.</p></div>
+      
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code>&lt;img src=&quot;/diagram.png&quot; alt=&quot;Concise description of what the diagram shows&quot;&gt;</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — 1/1 image(s) have an alt attribute</li><li><code>/en-US/</code> — 1/1 image(s) have an alt attribute</li><li><code>/en-US/docs/Web/HTML</code> — no &lt;img&gt; elements found, rule skipped</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — no &lt;img&gt; elements found, rule skipped</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — no &lt;img&gt; elements found, rule skipped</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — no &lt;img&gt; elements found, rule skipped</li><li><code>/en-US/docs/Web/HTML/Reference</code> — no &lt;img&gt; elements found, rule skipped</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — 5/5 image(s) have an alt attribute</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — no &lt;img&gt; elements found, rule skipped</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — no &lt;img&gt; elements found, rule skipped</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-info">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-info">INFO</span>
+      <code class="finding-flat-rule">content.action-surface</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">Action surface: 17 entry points — 0 form(s), 17 button(s), 0 mailto, 0 tel, 0 ARIA button(s)</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~0 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Forms, CTA buttons, and contact links are conversion entry points. Agent-driven buyers (using AI to evaluate vendors) look for these signals when deciding whether a site is a real business.</p></div>
+      
+      
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — Action surface: 17 entry points — 0 form(s), 17 button(s), 0 mailto, 0 tel, 0 ARIA button(s)</li><li><code>/en-US/</code> — Action surface: 17 entry points — 0 form(s), 17 button(s), 0 mailto, 0 tel, 0 ARIA button(s)</li><li><code>/en-US/docs/Web/HTML</code> — Action surface: 20 entry points — 0 form(s), 20 button(s), 0 mailto, 0 tel, 0 ARIA button(s)</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — Action surface: 20 entry points — 0 form(s), 20 button(s), 0 mailto, 0 tel, 0 ARIA button(s)</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — Action surface: 20 entry points — 0 form(s), 20 button(s), 0 mailto, 0 tel, 0 ARIA button(s)</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — Action surface: 20 entry points — 0 form(s), 20 button(s), 0 mailto, 0 tel, 0 ARIA button(s)</li><li><code>/en-US/docs/Web/HTML/Reference</code> — Action surface: 20 entry points — 0 form(s), 20 button(s), 0 mailto, 0 tel, 0 ARIA button(s)</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — Action surface: 20 entry points — 0 form(s), 20 button(s), 0 mailto, 0 tel, 0 ARIA button(s)</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — Action surface: 20 entry points — 0 form(s), 20 button(s), 0 mailto, 0 tel, 0 ARIA button(s)</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — Action surface: 20 entry points — 0 form(s), 20 button(s), 0 mailto, 0 tel, 0 ARIA button(s)</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-info">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-info">INFO</span>
+      <code class="finding-flat-rule">content.readability-signal</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">Mozilla Readability extracted 4633 chars · siteName: MDN Web Docs</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~0 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Mozilla Readability is the same library Firefox Reader View uses; if it can&#39;t extract your content, neither can most third-party article scrapers.</p></div>
+      
+      
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — Mozilla Readability extracted 4633 chars · siteName: MDN Web Docs</li><li><code>/en-US/</code> — Mozilla Readability extracted 4633 chars · siteName: MDN Web Docs</li><li><code>/en-US/docs/Web/HTML</code> — Mozilla Readability extracted 23211 chars · byline: Author fast-loading HTML pages · siteName: MDN Web Docs</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — Mozilla Readability extracted 44330 chars · siteName: MDN Web Docs</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — Mozilla Readability extracted 30279 chars · siteName: MDN Web Docs</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — Mozilla Readability extracted 45136 chars · siteName: MDN Web Docs</li><li><code>/en-US/docs/Web/HTML/Reference</code> — Mozilla Readability extracted 16326 chars · siteName: MDN Web Docs</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — Mozilla Readability extracted 33638 chars · siteName: MDN Web Docs</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — Mozilla Readability extracted 21614 chars · siteName: MDN Web Docs</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — Mozilla Readability extracted 32483 chars · siteName: MDN Web Docs</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">crawl.bot-block</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">No bot-blocking signals detected</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~60 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>WAF challenges that don&#39;t recognize legitimate AI bots silently lock you out of LLM training/inference.</p></div>
+      
+      
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — No bot-blocking signals detected</li><li><code>/en-US/</code> — No bot-blocking signals detected</li><li><code>/en-US/docs/Web/HTML</code> — No bot-blocking signals detected</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — No bot-blocking signals detected</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — No bot-blocking signals detected</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — No bot-blocking signals detected</li><li><code>/en-US/docs/Web/HTML/Reference</code> — No bot-blocking signals detected</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — No bot-blocking signals detected</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — No bot-blocking signals detected</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — No bot-blocking signals detected</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">crawl.canonical.matches</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">Canonical matches final URL (https://developer.mozilla.org/en-US/)</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~3 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Mismatched canonical sends agents to a different URL than the one they fetched.</p></div>
+      
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code>&lt;link rel=&quot;canonical&quot; href=&quot;https://developer.mozilla.org/en-US/&quot;&gt;</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — Canonical matches final URL (https://developer.mozilla.org/en-US/)</li><li><code>/en-US/</code> — Canonical matches final URL (https://developer.mozilla.org/en-US/)</li><li><code>/en-US/docs/Web/HTML</code> — Canonical matches final URL (https://developer.mozilla.org/en-US/docs/Web/HTML)</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — Canonical matches final URL (https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements)</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — Canonical matches final URL (https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes)</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — Canonical matches final URL (https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes)</li><li><code>/en-US/docs/Web/HTML/Reference</code> — Canonical matches final URL (https://developer.mozilla.org/en-US/docs/Web/HTML/Reference)</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — Canonical matches final URL (https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Responsive_images)</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — Canonical matches final URL (https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Cheatsheet)</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — Canonical matches final URL (https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Date_and_time_formats)</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">crawl.canonical.present</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">Canonical tag present: https://developer.mozilla.org/en-US/</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~3 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>LLM crawlers use canonical to dedupe and pick the authoritative URL.</p></div>
+      
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code>&lt;link rel=&quot;canonical&quot; href=&quot;https://developer.mozilla.org/en-US/&quot;&gt;</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — Canonical tag present: https://developer.mozilla.org/en-US/</li><li><code>/en-US/</code> — Canonical tag present: https://developer.mozilla.org/en-US/</li><li><code>/en-US/docs/Web/HTML</code> — Canonical tag present: https://developer.mozilla.org/en-US/docs/Web/HTML</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — Canonical tag present: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — Canonical tag present: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — Canonical tag present: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes</li><li><code>/en-US/docs/Web/HTML/Reference</code> — Canonical tag present: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — Canonical tag present: https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Responsive_images</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — Canonical tag present: https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Cheatsheet</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — Canonical tag present: https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Date_and_time_formats</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">crawl.http-status</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">Primary fetch returned HTTP 200</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~30 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Non-2xx responses tell agents the page doesn&#39;t exist or is broken — score capped at 0.</p></div>
+      
+      
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — Primary fetch returned HTTP 200</li><li><code>/en-US/</code> — Primary fetch returned HTTP 200</li><li><code>/en-US/docs/Web/HTML</code> — Primary fetch returned HTTP 200</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — Primary fetch returned HTTP 200</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — Primary fetch returned HTTP 200</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — Primary fetch returned HTTP 200</li><li><code>/en-US/docs/Web/HTML/Reference</code> — Primary fetch returned HTTP 200</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — Primary fetch returned HTTP 200</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — Primary fetch returned HTTP 200</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — Primary fetch returned HTTP 200</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">crawl.js-divergence</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">Static and browser bodies within 0% — no significant JS divergence</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~120 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>When static HTML and browser-rendered HTML diverge heavily, AI crawlers that can&#39;t execute JS only see the shell — structured data, headings, and content are invisible.</p></div>
+      
+      
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — Static and browser bodies within 0% — no significant JS divergence</li><li><code>/en-US/</code> — Static and browser bodies within 0% — no significant JS divergence</li><li><code>/en-US/docs/Web/HTML</code> — Static and browser bodies within 0% — no significant JS divergence</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — Static and browser bodies within 0% — no significant JS divergence</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — Static and browser bodies within 0% — no significant JS divergence</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — Static and browser bodies within 0% — no significant JS divergence</li><li><code>/en-US/docs/Web/HTML/Reference</code> — Static and browser bodies within 0% — no significant JS divergence</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — Static and browser bodies within 0% — no significant JS divergence</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — Static and browser bodies within 0% — no significant JS divergence</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — Static and browser bodies within 0% — no significant JS divergence</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">crawl.redirect-chain</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">Redirect chain length: 1</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~15 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Long redirect chains burn crawl budget and can lose query/state across hops.</p></div>
+      
+      
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — Redirect chain length: 1</li><li><code>/en-US/</code> — Redirect chain length: 0</li><li><code>/en-US/docs/Web/HTML</code> — Redirect chain length: 0</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — Redirect chain length: 0</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — Redirect chain length: 0</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — Redirect chain length: 0</li><li><code>/en-US/docs/Web/HTML/Reference</code> — Redirect chain length: 0</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — Redirect chain length: 0</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — Redirect chain length: 0</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — Redirect chain length: 0</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">crawl.robots.bot-allow.applebot-extended</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">applebot-extended is allowed in robots.txt</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~5 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Explicitly allowing AI crawlers in robots.txt removes the ambiguity that defaults to &#39;block&#39; in some agent stacks.</p></div>
+      
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code># in robots.txt
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — applebot-extended is allowed in robots.txt</li><li><code>/en-US/</code> — applebot-extended is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML</code> — applebot-extended is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — applebot-extended is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — applebot-extended is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — applebot-extended is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference</code> — applebot-extended is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — applebot-extended is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — applebot-extended is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — applebot-extended is allowed in robots.txt</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">crawl.robots.bot-allow.bytespider</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">bytespider is allowed in robots.txt</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~5 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Explicitly allowing AI crawlers in robots.txt removes the ambiguity that defaults to &#39;block&#39; in some agent stacks.</p></div>
+      
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code># in robots.txt
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — bytespider is allowed in robots.txt</li><li><code>/en-US/</code> — bytespider is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML</code> — bytespider is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — bytespider is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — bytespider is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — bytespider is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference</code> — bytespider is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — bytespider is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — bytespider is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — bytespider is allowed in robots.txt</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">crawl.robots.bot-allow.ccbot</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">ccbot is allowed in robots.txt</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~5 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Explicitly allowing AI crawlers in robots.txt removes the ambiguity that defaults to &#39;block&#39; in some agent stacks.</p></div>
+      
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code># in robots.txt
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — ccbot is allowed in robots.txt</li><li><code>/en-US/</code> — ccbot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML</code> — ccbot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — ccbot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — ccbot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — ccbot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference</code> — ccbot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — ccbot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — ccbot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — ccbot is allowed in robots.txt</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">crawl.robots.bot-allow.claudebot</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">claudebot is allowed in robots.txt</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~5 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Explicitly allowing AI crawlers in robots.txt removes the ambiguity that defaults to &#39;block&#39; in some agent stacks.</p></div>
+      
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code># in robots.txt
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — claudebot is allowed in robots.txt</li><li><code>/en-US/</code> — claudebot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML</code> — claudebot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — claudebot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — claudebot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — claudebot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference</code> — claudebot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — claudebot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — claudebot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — claudebot is allowed in robots.txt</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">crawl.robots.bot-allow.google-extended</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">google-extended is allowed in robots.txt</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~5 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Explicitly allowing AI crawlers in robots.txt removes the ambiguity that defaults to &#39;block&#39; in some agent stacks.</p></div>
+      
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code># in robots.txt
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — google-extended is allowed in robots.txt</li><li><code>/en-US/</code> — google-extended is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML</code> — google-extended is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — google-extended is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — google-extended is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — google-extended is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference</code> — google-extended is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — google-extended is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — google-extended is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — google-extended is allowed in robots.txt</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">crawl.robots.bot-allow.gptbot</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">gptbot is allowed in robots.txt</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~5 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Explicitly allowing AI crawlers in robots.txt removes the ambiguity that defaults to &#39;block&#39; in some agent stacks.</p></div>
+      
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code># in robots.txt
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — gptbot is allowed in robots.txt</li><li><code>/en-US/</code> — gptbot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML</code> — gptbot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — gptbot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — gptbot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — gptbot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference</code> — gptbot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — gptbot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — gptbot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — gptbot is allowed in robots.txt</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">crawl.robots.bot-allow.perplexitybot</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">perplexitybot is allowed in robots.txt</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~5 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Explicitly allowing AI crawlers in robots.txt removes the ambiguity that defaults to &#39;block&#39; in some agent stacks.</p></div>
+      
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code># in robots.txt
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — perplexitybot is allowed in robots.txt</li><li><code>/en-US/</code> — perplexitybot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML</code> — perplexitybot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — perplexitybot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — perplexitybot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — perplexitybot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Reference</code> — perplexitybot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — perplexitybot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — perplexitybot is allowed in robots.txt</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — perplexitybot is allowed in robots.txt</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">crawl.robots.present</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">robots.txt is present</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~5 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>robots.txt is the first file every crawler checks.</p></div>
+      
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code># https://developer.mozilla.org/robots.txt
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — robots.txt is present</li><li><code>/en-US/</code> — robots.txt is present</li><li><code>/en-US/docs/Web/HTML</code> — robots.txt is present</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — robots.txt is present</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — robots.txt is present</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — robots.txt is present</li><li><code>/en-US/docs/Web/HTML/Reference</code> — robots.txt is present</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — robots.txt is present</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — robots.txt is present</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — robots.txt is present</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">sd.twitter-card.present</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">Twitter Card type: summary</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~2 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>twitter:card extends OpenGraph with X/Twitter-specific layout hints.</p></div>
+      
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code>&lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;&gt;</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — Twitter Card type: summary</li><li><code>/en-US/</code> — Twitter Card type: summary</li><li><code>/en-US/docs/Web/HTML</code> — Twitter Card type: summary</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — Twitter Card type: summary</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — Twitter Card type: summary</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — Twitter Card type: summary</li><li><code>/en-US/docs/Web/HTML/Reference</code> — Twitter Card type: summary</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — Twitter Card type: summary</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — Twitter Card type: summary</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — Twitter Card type: summary</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">html.heading-hierarchy</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">Heading hierarchy is valid (13 headings, 1 h1, no skips)</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~30 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Headings give agents the document outline. No h1 = no clear topic.</p></div>
+      
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code>&lt;!-- Document outline --&gt;
+&lt;h1&gt;Page topic in one sentence&lt;/h1&gt;
+&lt;section&gt;
+  &lt;h2&gt;Section heading&lt;/h2&gt;
+  &lt;h3&gt;Sub-section&lt;/h3&gt;
+&lt;/section&gt;</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — Heading hierarchy is valid (13 headings, 1 h1, no skips)</li><li><code>/en-US/</code> — Heading hierarchy is valid (13 headings, 1 h1, no skips)</li><li><code>/en-US/docs/Web/HTML</code> — Heading hierarchy is valid (10 headings, 1 h1, no skips)</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — Heading hierarchy is valid (20 headings, 1 h1, no skips)</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — Heading hierarchy is valid (8 headings, 1 h1, no skips)</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — Heading hierarchy is valid (8 headings, 1 h1, no skips)</li><li><code>/en-US/docs/Web/HTML/Reference</code> — Heading hierarchy is valid (2 headings, 1 h1, no skips)</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — Heading hierarchy is valid (12 headings, 1 h1, no skips)</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — Heading hierarchy is valid (5 headings, 1 h1, no skips)</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — Heading hierarchy is valid (21 headings, 1 h1, no skips)</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">html.landmarks</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">Landmarks present: nav, header, footer, article (4/5)</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~30 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Landmark elements let agents skip nav/footer chrome and zero in on the main content.</p></div>
+      <div class="finding-flat-fix"><span class="finding-flat-label">Fix</span><p>Add missing landmark elements: main</p></div>
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code>&lt;header&gt;
+  &lt;nav&gt;…site nav…&lt;/nav&gt;
+&lt;/header&gt;
+&lt;main&gt;
+  &lt;article&gt;…page content…&lt;/article&gt;
+&lt;/main&gt;
+&lt;footer&gt;…site footer…&lt;/footer&gt;</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — Landmarks present: nav, header, footer, article (4/5)</li><li><code>/en-US/</code> — Landmarks present: nav, header, footer, article (4/5)</li><li><code>/en-US/docs/Web/HTML</code> — Landmarks present: main, nav, header, footer (4/5)</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — Landmarks present: main, nav, header, footer (4/5)</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — Landmarks present: main, nav, header, footer (4/5)</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — Landmarks present: main, nav, header, footer (4/5)</li><li><code>/en-US/docs/Web/HTML/Reference</code> — Landmarks present: main, nav, header, footer (4/5)</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — Landmarks present: main, nav, header, footer (4/5)</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — Landmarks present: main, nav, header, footer (4/5)</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — Landmarks present: main, nav, header, footer (4/5)</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">html.lang-attr</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">&lt;html lang=&quot;en-US&quot;&gt; is set</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~1 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Without lang, agents can&#39;t decide whether to translate or which language model to apply.</p></div>
+      
+      <div class="finding-flat-snippet"><span class="finding-flat-label">Copy-paste</span><pre><code>&lt;html lang=&quot;en&quot;&gt;</code></pre></div>
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — &lt;html lang=&quot;en-US&quot;&gt; is set</li><li><code>/en-US/</code> — &lt;html lang=&quot;en-US&quot;&gt; is set</li><li><code>/en-US/docs/Web/HTML</code> — &lt;html lang=&quot;en-US&quot;&gt; is set</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — &lt;html lang=&quot;en-US&quot;&gt; is set</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — &lt;html lang=&quot;en-US&quot;&gt; is set</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — &lt;html lang=&quot;en-US&quot;&gt; is set</li><li><code>/en-US/docs/Web/HTML/Reference</code> — &lt;html lang=&quot;en-US&quot;&gt; is set</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — &lt;html lang=&quot;en-US&quot;&gt; is set</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — &lt;html lang=&quot;en-US&quot;&gt; is set</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — &lt;html lang=&quot;en-US&quot;&gt; is set</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">html.link-text-quality</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">6/167 link(s) have poor anchor text</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~20 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>&quot;click here&quot; / &quot;learn more&quot; tells agents nothing about the destination. Use descriptive link text.</p></div>
+      <div class="finding-flat-fix"><span class="finding-flat-label">Fix</span><p>Replace generic link text (&quot;click here&quot;, empty) with descriptive phrases</p></div>
+      
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — 6/167 link(s) have poor anchor text</li><li><code>/en-US/</code> — 6/167 link(s) have poor anchor text</li><li><code>/en-US/docs/Web/HTML</code> — 6/464 link(s) have poor anchor text</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — 6/674 link(s) have poor anchor text</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — 6/630 link(s) have poor anchor text</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — 6/819 link(s) have poor anchor text</li><li><code>/en-US/docs/Web/HTML/Reference</code> — 6/400 link(s) have poor anchor text</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — 6/446 link(s) have poor anchor text</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — 6/424 link(s) have poor anchor text</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — 6/456 link(s) have poor anchor text</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">content.readability-extract</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">Readability extracted 4633 chars of text</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~60 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>If readability extraction returns null, agents likely can&#39;t isolate the article body.</p></div>
+      
+      
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — Readability extracted 4633 chars of text</li><li><code>/en-US/</code> — Readability extracted 4633 chars of text</li><li><code>/en-US/docs/Web/HTML</code> — Readability extracted 23211 chars of text</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — Readability extracted 44330 chars of text</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — Readability extracted 30279 chars of text</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — Readability extracted 45136 chars of text</li><li><code>/en-US/docs/Web/HTML/Reference</code> — Readability extracted 16326 chars of text</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — Readability extracted 33638 chars of text</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — Readability extracted 21614 chars of text</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — Readability extracted 32483 chars of text</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">content.script-density</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">6 script/iframe elements (6 &lt;script&gt;, 0 cross-origin &lt;iframe&gt;)</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~60 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Heavy client-side script density is a red flag that content depends on JS to render.</p></div>
+      
+      
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — 6 script/iframe elements (6 &lt;script&gt;, 0 cross-origin &lt;iframe&gt;)</li><li><code>/en-US/</code> — 6 script/iframe elements (6 &lt;script&gt;, 0 cross-origin &lt;iframe&gt;)</li><li><code>/en-US/docs/Web/HTML</code> — 6 script/iframe elements (6 &lt;script&gt;, 0 cross-origin &lt;iframe&gt;)</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — 6 script/iframe elements (6 &lt;script&gt;, 0 cross-origin &lt;iframe&gt;)</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — 6 script/iframe elements (6 &lt;script&gt;, 0 cross-origin &lt;iframe&gt;)</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — 6 script/iframe elements (6 &lt;script&gt;, 0 cross-origin &lt;iframe&gt;)</li><li><code>/en-US/docs/Web/HTML/Reference</code> — 6 script/iframe elements (6 &lt;script&gt;, 0 cross-origin &lt;iframe&gt;)</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — 6 script/iframe elements (6 &lt;script&gt;, 0 cross-origin &lt;iframe&gt;)</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — 6 script/iframe elements (6 &lt;script&gt;, 0 cross-origin &lt;iframe&gt;)</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — 6 script/iframe elements (6 &lt;script&gt;, 0 cross-origin &lt;iframe&gt;)</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">det.bot-cloaking</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">gptbot and browser fetches returned identical content</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~60 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Different content to GPTBot vs a browser is the textbook cloaking pattern. Search engines flag this.</p></div>
+      
+      
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — gptbot and browser fetches returned identical content</li><li><code>/en-US/</code> — gptbot and browser fetches returned identical content</li><li><code>/en-US/docs/Web/HTML</code> — gptbot and browser fetches returned identical content</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — gptbot and browser fetches returned identical content</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — gptbot and browser fetches returned identical content</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — gptbot and browser fetches returned identical content</li><li><code>/en-US/docs/Web/HTML/Reference</code> — gptbot and browser fetches returned identical content</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — gptbot and browser fetches returned identical content</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — gptbot and browser fetches returned identical content</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — gptbot and browser fetches returned identical content</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">det.fetch-stability</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">Two luxfaber fetches returned identical body hash</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~60 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>If the same URL serves different bytes on every fetch, no agent can cache/cite reliably.</p></div>
+      
+      
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — Two luxfaber fetches returned identical body hash</li><li><code>/en-US/</code> — Two luxfaber fetches returned identical body hash</li><li><code>/en-US/docs/Web/HTML</code> — Two luxfaber fetches returned identical body hash</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — Two luxfaber fetches returned identical body hash</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — Two luxfaber fetches returned identical body hash</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — Two luxfaber fetches returned identical body hash</li><li><code>/en-US/docs/Web/HTML/Reference</code> — Two luxfaber fetches returned identical body hash</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — Two luxfaber fetches returned identical body hash</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — Two luxfaber fetches returned identical body hash</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — Two luxfaber fetches returned identical body hash</li></ul></div>
+    </div>
+  </details>
+<details class="finding-flat finding-flat-pass">
+    <summary>
+    <div class="finding-flat-head">
+      <span class="badge badge-pass">PASS</span>
+      <code class="finding-flat-rule">det.ua-cloaking</code>
+      <span class="finding-affected-count">10 pages</span>
+      <span class="finding-flat-toggle" aria-hidden="true">›</span>
+    </div>
+    <p class="finding-flat-evidence">luxfaber and browser fetches returned identical content</p></summary>
+    <div class="finding-flat-body">
+      <span class="finding-flat-effort">~60 min</span>
+      <div class="finding-flat-why"><span class="finding-flat-label">Why agents care</span><p>Serving different content to a Luxfaber UA vs a browser UA = SEO/agent cloaking risk.</p></div>
+      
+      
+      <div class="finding-affected-list"><span class="finding-flat-label">Affected pages (10)</span><ul class="finding-affected-pages"><li><code>/</code> — luxfaber and browser fetches returned identical content</li><li><code>/en-US/</code> — luxfaber and browser fetches returned identical content</li><li><code>/en-US/docs/Web/HTML</code> — luxfaber and browser fetches returned identical content</li><li><code>/en-US/docs/Web/HTML/Reference/Elements</code> — luxfaber and browser fetches returned identical content</li><li><code>/en-US/docs/Web/HTML/Reference/Global_attributes</code> — luxfaber and browser fetches returned identical content</li><li><code>/en-US/docs/Web/HTML/Reference/Attributes</code> — luxfaber and browser fetches returned identical content</li><li><code>/en-US/docs/Web/HTML/Reference</code> — luxfaber and browser fetches returned identical content</li><li><code>/en-US/docs/Web/HTML/Guides/Responsive_images</code> — luxfaber and browser fetches returned identical content</li><li><code>/en-US/docs/Web/HTML/Guides/Cheatsheet</code> — luxfaber and browser fetches returned identical content</li><li><code>/en-US/docs/Web/HTML/Guides/Date_and_time_formats</code> — luxfaber and browser fetches returned identical content</li></ul></div>
+    </div>
+  </details>
+  </div>
+  <button class="findings-toggle-btn" onclick="
+    var g=document.getElementById('findings-hidden-group');
+    var b=document.getElementById('findings-show-all');
+    if(g.style.display==='none'){g.style.display='flex';b.textContent='Hide pass/info (31)'}
+    else{g.style.display='none';b.textContent='Show all (31 hidden)'}
+  " id="findings-show-all">Show all (31 hidden)</button>
+  </div>
+</section>
+<section id="page-health">
+  <h2>Page health</h2>
+  <p class="premium-section-copy">Page-by-page quality spread, ordered from weakest to strongest.</p>
+  <table class="site-pages" aria-label="Premium per-page health">
+    <thead>
+      <tr>
+        <th scope="col">Score</th>
+        <th scope="col">Path</th>
+        <th scope="col">Band</th>
+        <th scope="col">Top issues</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>71</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Cheatsheet">/en-US/docs/Web/HTML/Guides/Cheatsheet</a></td>
+      <td class="page-issues"><span class="premium-page-band premium-page-band-good">good</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+<tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>72</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org">/</a></td>
+      <td class="page-issues"><span class="premium-page-band premium-page-band-good">good</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+<tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>72</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org/en-US/">/en-US/</a></td>
+      <td class="page-issues"><span class="premium-page-band premium-page-band-good">good</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+<tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>72</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">/en-US/docs/Web/HTML</a></td>
+      <td class="page-issues"><span class="premium-page-band premium-page-band-good">good</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+<tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>72</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes">/en-US/docs/Web/HTML/Reference/Attributes</a></td>
+      <td class="page-issues"><span class="premium-page-band premium-page-band-good">good</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+<tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>72</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference">/en-US/docs/Web/HTML/Reference</a></td>
+      <td class="page-issues"><span class="premium-page-band premium-page-band-good">good</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+<tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>72</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Responsive_images">/en-US/docs/Web/HTML/Guides/Responsive_images</a></td>
+      <td class="page-issues"><span class="premium-page-band premium-page-band-good">good</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+<tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>74</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements">/en-US/docs/Web/HTML/Reference/Elements</a></td>
+      <td class="page-issues"><span class="premium-page-band premium-page-band-good">good</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+<tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>74</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes">/en-US/docs/Web/HTML/Reference/Global_attributes</a></td>
+      <td class="page-issues"><span class="premium-page-band premium-page-band-good">good</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+<tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>74</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Date_and_time_formats">/en-US/docs/Web/HTML/Guides/Date_and_time_formats</a></td>
+      <td class="page-issues"><span class="premium-page-band premium-page-band-good">good</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+    </tbody>
+  </table>
+</section>
+<section id="business-recommendations">
+  <h2>Recommended next actions</h2>
+  <div class="premium-reco-grid">
+    <article class="premium-reco-card">
+      <h3>Week 1</h3>
+      <p>Add canonical tags, a valid sitemap, and complete Open Graph/Twitter metadata on the homepage.</p>
+    </article>
+    <article class="premium-reco-card">
+      <h3>Week 2</h3>
+      <p>Add JSON-LD and expand human-readable homepage copy so agents can classify the product without heavy JS inference.</p>
+    </article>
+    <article class="premium-reco-card">
+      <h3>Week 3</h3>
+      <p>Re-run Luxfaber after deployment and confirm the weakest category moves from Structured Data into the green band.</p>
+    </article>
+  </div>
+</section>
+<section id="pages">
+  <h2>Detailed page table</h2>
+  <table class="site-pages" aria-label="Per-page scores">
+    <thead>
+      <tr>
+        <th scope="col">Score</th>
+        <th scope="col">Path</th>
+        <th scope="col">Top issues</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>71</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Cheatsheet">/en-US/docs/Web/HTML/Guides/Cheatsheet</a> <span class="page-type-badge page-type-docs">docs</span><span class="render-mode-badge render-mode-static">static</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+<tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>72</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org">/</a> <span class="page-type-badge page-type-marketing">marketing</span><span class="render-mode-badge render-mode-static">static</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+<tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>72</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org/en-US/">/en-US/</a> <span class="page-type-badge page-type-marketing">marketing</span><span class="render-mode-badge render-mode-static">static</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+<tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>72</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">/en-US/docs/Web/HTML</a> <span class="page-type-badge page-type-docs">docs</span><span class="render-mode-badge render-mode-static">static</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+<tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>72</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes">/en-US/docs/Web/HTML/Reference/Attributes</a> <span class="page-type-badge page-type-docs">docs</span><span class="render-mode-badge render-mode-static">static</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+<tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>72</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference">/en-US/docs/Web/HTML/Reference</a> <span class="page-type-badge page-type-docs">docs</span><span class="render-mode-badge render-mode-static">static</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+<tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>72</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Responsive_images">/en-US/docs/Web/HTML/Guides/Responsive_images</a> <span class="page-type-badge page-type-docs">docs</span><span class="render-mode-badge render-mode-static">static</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+<tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>74</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements">/en-US/docs/Web/HTML/Reference/Elements</a> <span class="page-type-badge page-type-docs">docs</span><span class="render-mode-badge render-mode-static">static</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+<tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>74</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes">/en-US/docs/Web/HTML/Reference/Global_attributes</a> <span class="page-type-badge page-type-docs">docs</span><span class="render-mode-badge render-mode-static">static</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+<tr>
+      <td class="page-score" style="color:var(--color-green)"><strong>74</strong></td>
+      <td class="page-url"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Date_and_time_formats">/en-US/docs/Web/HTML/Guides/Date_and_time_formats</a> <span class="page-type-badge page-type-docs">docs</span><span class="render-mode-badge render-mode-static">static</span></td>
+      <td class="page-issues"><code class="page-issue page-issue-fail">crawl.ai-plugin-manifest.present</code> <code class="page-issue page-issue-fail">crawl.llms-txt.present</code> <code class="page-issue page-issue-fail">crawl.mcp-manifest.present</code></td>
+    </tr>
+    </tbody>
+  </table>
+  <p class="discovery">Per-page reports: re-run a single URL with <code>luxfaber &lt;url&gt; --out report.html</code> for full findings.</p>
+</section>
+<section id="metadata">
+  <h2>Metadata</h2>
+  <div class="meta-grid">
+    <div class="meta-item"><span class="meta-label">Generated</span><span class="meta-value">2026-05-14T03:32:30.289Z</span></div>
+    <div class="meta-item"><span class="meta-label">Origin</span><span class="meta-value">https://developer.mozilla.org</span></div>
+    <div class="meta-item"><span class="meta-label">Start URL</span><span class="meta-value">https://developer.mozilla.org</span></div>
+    <div class="meta-item"><span class="meta-label">Discovery</span><span class="meta-value">bfs</span></div>
+    <div class="meta-item"><span class="meta-label">Pages scored</span><span class="meta-value">10</span></div>
+    <div class="meta-item"><span class="meta-label">Failures</span><span class="meta-value">0</span></div>
+    <div class="meta-item"><span class="meta-label">Scoring</span><span class="meta-value">v1</span></div>
+    <div class="meta-item"><span class="meta-label">Luxfaber</span><span class="meta-value">0.2.0</span></div>
+  </div>
+</section>
+<footer class="lf-footer">&lt;div class=&quot;container&quot;&gt;
+  Generated by Luxfaber 0.2.0 &amp;middot; scoring v1
+&lt;/div&gt;</footer>
+  </main>
+</div>
+<script>(function(){
+  var links=document.querySelectorAll('.aside-nav a[href^="#"]');
+  var byId={};
+  var sections=[];
+  links.forEach(function(l){
+    var id=l.getAttribute('href').slice(1);
+    var el=document.getElementById(id);
+    byId[id]=l;
+    if(el)sections.push(el);
+  });
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(l){l.classList.remove('active')});
+          var link=byId[e.target.id];
+          if(link)link.classList.add('active');
+        }
+      });
+    },{rootMargin:'-20% 0% -70% 0%',threshold:0});
+    sections.forEach(function(s){io.observe(s)});
+  }
+})();</script>
+</body>
+</html>

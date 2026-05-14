@@ -11,21 +11,6 @@ const BUNDLE_OPEN = false;
 
 const TOOLS: Product[] = [
   {
-    name: "SecGate",
-    badge: "Security",
-    license: "MIT",
-    tier: "tool",
-    tagline: "One command. One report. One exit code.",
-    cli: "npx @tinydarkforge/secgate",
-    description:
-      "Runs Semgrep, Gitleaks, osv-scanner, Trivy, and npm audit in one command. Normalizes findings into one report and fails the pipeline on CRITICAL or HIGH.",
-    stack: ["Semgrep", "Gitleaks", "osv-scanner", "Trivy", "npm audit"],
-    status: "v0.2.4 — MIT · published to npm",
-    npm: "https://www.npmjs.com/package/@tinydarkforge/secgate",
-    github: "https://github.com/tinydarkforge/SecGate",
-    audit: { price: "Free", href: "/preview/audit/secgate.html" },
-  },
-  {
     name: "LuxScope",
     badge: "Codebase Intel",
     license: "Apache-2.0",
@@ -62,6 +47,21 @@ const TOOLS: Product[] = [
       ceo: "Search engines sent you traffic because they could crawl you. AI agents work the same way — except the rules changed and most companies haven't noticed.\n\nAEO (Answer Engine Optimization) is the consensus term for getting cited inside AI answers. LuxFaber goes one layer further: not just being cited, but being operable by autonomous agents that browse and act on a user's behalf. We audit your web presence across the full AEO surface and score it, give you a prioritized fix list, and a clear path to becoming the default result when an agent acts. Companies that optimize now will capture agent-driven traffic before competitors realize the channel exists.",
       investor: "Search is being disintermediated. AI agents — ChatGPT shopping, Operator-style task completion, Google's agentic layer — are becoming the primary interface between users and web services. Most of the web is invisible to them: unstructured markup, JavaScript-rendered content, missing semantic signals.\n\nAEO (Answer Engine Optimization) is the term the market has settled on, and existing tools (HubSpot AEO Grader, etc.) optimize for citation. LuxFaber takes AEO one rubric deeper: agent operability — not whether you get quoted, but whether an agent can act on your site. The market is every business that depends on web-driven distribution. The timing mirrors early SEO (2003–2006): the channel exists, best practices don't, and first-mover OSS tooling captures the category.",
     },
+  },
+  {
+    name: "SecGate",
+    badge: "Security",
+    license: "MIT",
+    tier: "tool",
+    tagline: "One command. One report. One exit code.",
+    cli: "npx @tinydarkforge/secgate",
+    description:
+      "Runs Semgrep, Gitleaks, osv-scanner, Trivy, and npm audit in one command. Normalizes findings into one report and fails the pipeline on CRITICAL or HIGH.",
+    stack: ["Semgrep", "Gitleaks", "osv-scanner", "Trivy", "npm audit"],
+    status: "v0.2.7 — MIT · published to npm",
+    npm: "https://www.npmjs.com/package/@tinydarkforge/secgate",
+    github: "https://github.com/tinydarkforge/SecGate",
+    audit: { price: "Free", href: "/preview/audit/secgate.html" },
   },
   {
     name: "Intake",

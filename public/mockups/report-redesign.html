@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>StelNyx Report Sidebar Redesign — Mockup</title>
+<style>
+/* ─── Reset ─────────────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ─── Palette (secgate dark monochrome, approved) ──────────────── */
+:root{
+  --bg:       #0a0a0a;
+  --surface:  #141414;
+  --surface-2:#1a1a1a;
+  --border:   #1f1f1f;
+  --border-bright:#2a2a2a;
+  --text:     #e5e5e7;
+  --muted:    #a3a3a8;
+  --faint:    #6e6e73;
+  --success:  #34c759;
+  --warn:     #ff9500;
+  --error:    #ff3b30;
+  --pink:     #ff2d78;
+
+  --font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html,body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Mockup chrome ──────────────────────────────────────────────── */
+.mockup-header{
+  padding: 24px 32px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+.mockup-header h1{
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.mockup-header p{
+  font-size: 12px;
+  color: var(--faint);
+  margin-top: 4px;
+  max-width: 60ch;
+}
+.mockup-badge{
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: rgba(255,45,120,0.12);
+  color: var(--pink);
+  border: 1px solid rgba(255,45,120,0.25);
+}
+
+/* ─── Three-column stage ─────────────────────────────────────────── */
+.stage{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  min-height: calc(100vh - 89px);
+}
+.column{
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+.column:last-child{ border-right: none; }
+
+.column-label{
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.column-label span{
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--faint);
+  margin-top: 3px;
+  text-transform: none;
+}
+
+/* ─── Shared sidebar structure ───────────────────────────────────── */
+.sidebar{
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  /* visual indicator: this IS the sidebar, floating in the column */
+}
+
+/* Report-type pill — top of sidebar */
+.sidebar-pill-row{
+  padding: 16px 20px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.report-pill{
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--pink);
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* Product identity block */
+.sidebar-identity{
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sidebar-product-label{
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tier-badge{
+  display: inline-flex;
+  align-items: center;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 3px;
+  border: 1px solid var(--border-bright);
+  background: var(--surface-2);
+  color: var(--muted);
+}
+.tier-badge.premium{ color: var(--pink); border-color: rgba(255,45,120,0.3); background: rgba(255,45,120,0.08); }
+.tier-badge.free{ color: var(--muted); }
+.tier-badge.pass-badge{ color: var(--success); border-color: rgba(52,199,89,0.3); background: rgba(52,199,89,0.08); }
+
+.sidebar-target{
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  word-break: break-all;
+  line-height: 1.3;
+}
+
+.score-line{
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 4px;
+}
+.score-num{
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--pink);
+  line-height: 1;
+}
+.score-denom{
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+}
+.status-band{
+  display: inline-flex;
+  align-items: center;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 3px;
+  align-self: flex-start;
+}
+.status-band.strong{
+  background: rgba(52,199,89,0.12);
+  color: var(--success);
+}
+.status-band.pass{
+  background: rgba(52,199,89,0.12);
+  color: var(--success);
+}
+.status-band.weak{
+  background: rgba(255,59,48,0.1);
+  color: var(--error);
+}
+
+.sidebar-meta{
+  font-size: 11px;
+  color: var(--faint);
+  line-height: 1.45;
+  margin-top: 2px;
+}
+
+/* Nav section */
+.sidebar-nav{
+  flex: 1;
+  padding: 12px 0;
+}
+.nav-section-label{
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  padding: 8px 20px 6px;
+}
+.nav-list{
+  list-style: none;
+}
+.nav-list li a{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 20px 7px 18px;
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 0.1s, background 0.1s, border-color 0.1s;
+  cursor: default;
+}
+.nav-list li a:hover{
+  color: var(--text);
+  background: var(--surface-2);
+}
+.nav-list li a.active{
+  color: var(--text);
+  background: var(--surface-2);
+  border-left-color: var(--pink);
+  font-weight: 600;
+}
+.nav-count{
+  font-size: 11px;
+  color: var(--faint);
+  background: var(--surface-2);
+  padding: 1px 7px;
+  border-radius: 999px;
+  min-width: 22px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.nav-list li a.active .nav-count{
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Theme toggle button at bottom */
+.sidebar-footer{
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+.theme-btn{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--border-bright);
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: var(--font);
+  min-height: 36px;
+}
+.theme-btn:hover{
+  border-color: var(--pink);
+  color: var(--pink);
+}
+/* Moon icon via SVG inline */
+.theme-btn svg{ flex-shrink: 0; }
+
+/* Secgate-specific: security score is risk-based (lower = better conceptually,
+   but we still render it in the score-num slot; use --text not --pink for secgate) */
+.sidebar--secgate .score-num{
+  /* secgate renders the risk score, not pink-accented */
+  color: var(--text);
+}
+
+/* ─── Annotation overlay (bottom of each column) ────────────────── */
+.column-annotation{
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  font-size: 11px;
+  color: var(--faint);
+  line-height: 1.5;
+}
+.column-annotation strong{
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.column-annotation ul{
+  padding-left: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.column-annotation ul li::marker{
+  color: var(--border-bright);
+}
+</style>
+</head>
+<body>
+
+<header class="mockup-header">
+  <div>
+    <h1>StelNyx Report Sidebar Redesign</h1>
+    <p>Proposed unified dark monochrome sidebar for Luxfaber, Luxscope, and SecGate. Pending approval before applying to production reports.</p>
+  </div>
+  <div class="mockup-badge">Mockup — pending approval</div>
+</header>
+
+<div class="stage">
+
+  <!-- ╔══════════════════════════════════════╗ -->
+  <!-- ║  COLUMN 1: LUXFABER                  ║ -->
+  <!-- ╚══════════════════════════════════════╝ -->
+  <div class="column">
+    <div class="column-label">
+      Luxfaber
+      <span>AEO (Agent Experience Optimization) report · stelnyx.com</span>
+    </div>
+
+    <div class="sidebar">
+
+      <!-- Report-type pill (new — was missing, now added) -->
+      <div class="sidebar-pill-row">
+        <span class="report-pill">AEO Score Report</span>
+      </div>
+
+      <!-- Identity block -->
+      <div class="sidebar-identity">
+        <div class="sidebar-product-label">
+          Luxfaber Report
+          <span class="tier-badge premium">Premium</span>
+        </div>
+        <div class="sidebar-target">stelnyx.com</div>
+        <div class="score-line">
+          <span class="score-num">92</span>
+          <span class="score-denom">/100</span>
+          <span class="status-band strong">Strong</span>
+        </div>
+        <div class="sidebar-meta">Generated 2026-05-13 &middot; 1 page &middot; scoring v1</div>
+      </div>
+
+      <!-- Nav -->
+      <nav class="sidebar-nav" aria-label="Report sections">
+        <div class="nav-section-label">Report</div>
+        <ul class="nav-list">
+          <li>
+            <a href="#summary" class="active" tabindex="-1" aria-current="page">
+              Site score
+            </a>
+          </li>
+          <li>
+            <a href="#premium-summary" tabindex="-1">
+              Executive summary
+            </a>
+          </li>
+          <li>
+            <a href="#gates" tabindex="-1">
+              Gates
+            </a>
+          </li>
+          <li>
+            <a href="#priority-plan" tabindex="-1">
+              Priority plan
+              <span class="nav-count">5</span>
+            </a>
+          </li>
+          <li>
+            <a href="#findings" tabindex="-1">
+              Findings
+              <span class="nav-count">5</span>
+            </a>
+          </li>
+          <li>
+            <a href="#page-health" tabindex="-1">
+              Page health
+              <span class="nav-count">1</span>
+            </a>
+          </li>
+          <li>
+            <a href="#business-recommendations" tabindex="-1">
+              Recommendations
+            </a>
+          </li>
+          <li>
+            <a href="#pages" tabindex="-1">
+              Detailed pages
+              <span class="nav-count">1</span>
+            </a>
+          </li>
+          <li>
+            <a href="#metadata" tabindex="-1">
+              Metadata
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Footer: theme toggle -->
+      <div class="sidebar-footer">
+        <button class="theme-btn" type="button" aria-label="Toggle light/dark theme">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          Theme
+        </button>
+      </div>
+
+    </div><!-- /sidebar -->
+
+    <div class="column-annotation">
+      <strong>Changes from current</strong>
+      <ul>
+        <li>Add "AEO Score Report" pill at top (was absent)</li>
+        <li>Replace purple/pink light palette with dark monochrome</li>
+        <li>Score number keeps pink accent (#ff2d78)</li>
+        <li>Status band renders against dark surface</li>
+        <li>No topbar — sidebar is the only navigation chrome</li>
+      </ul>
+    </div>
+  </div><!-- /column 1 -->
+
+
+  <!-- ╔══════════════════════════════════════╗ -->
+  <!-- ║  COLUMN 2: LUXSCOPE                  ║ -->
+  <!-- ╚══════════════════════════════════════╝ -->
+  <div class="column">
+    <div class="column-label">
+      Luxscope
+      <span>Code Risk report · web repo</span>
+    </div>
+
+    <div class="sidebar">
+
+      <!-- Report-type pill (already existed as .luxscope-cover-tier) -->
+      <div class="sidebar-pill-row">
+        <span class="report-pill">Code Risk Report</span>
+      </div>
+
+      <!-- Identity block -->
+      <div class="sidebar-identity">
+        <div class="sidebar-product-label">
+          Luxscope Report
+          <span class="tier-badge free">Free</span>
+        </div>
+        <div class="sidebar-target">web</div>
+        <div class="score-line">
+          <span class="score-num">100</span>
+          <span class="score-denom">/100</span>
+          <span class="status-band strong">Strong</span>
+        </div>
+        <div class="sidebar-meta">2026-05-13 20:53:07 &middot; profile default &middot; 3 files</div>
+      </div>
+
+      <!-- Nav -->
+      <nav class="sidebar-nav" aria-label="Report sections">
+        <div class="nav-section-label">Report</div>
+        <ul class="nav-list">
+          <li>
+            <a href="#overview" class="active" tabindex="-1" aria-current="page">
+              Overview
+            </a>
+          </li>
+          <li>
+            <a href="#gates" tabindex="-1">
+              Gates
+              <span class="nav-count">0/5</span>
+            </a>
+          </li>
+          <li>
+            <a href="#quick-wins" tabindex="-1">
+              Quick Wins
+              <span class="nav-count">4</span>
+            </a>
+          </li>
+          <li>
+            <a href="#risk-files" tabindex="-1">
+              Risk Files
+              <span class="nav-count">3</span>
+            </a>
+          </li>
+          <li>
+            <a href="#findings" tabindex="-1">
+              Findings
+              <span class="nav-count">4</span>
+            </a>
+          </li>
+          <li>
+            <a href="#documents" tabindex="-1">
+              Generated Documentation
+              <span class="nav-count">10</span>
+            </a>
+          </li>
+          <li>
+            <a href="#metadata" tabindex="-1">
+              Metadata
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Footer: theme toggle -->
+      <div class="sidebar-footer">
+        <button class="theme-btn" type="button" aria-label="Toggle light/dark theme">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          Theme
+        </button>
+      </div>
+
+    </div><!-- /sidebar -->
+
+    <div class="column-annotation">
+      <strong>Changes from current</strong>
+      <ul>
+        <li>Replace purple/pink light palette with dark monochrome</li>
+        <li>"Code Risk Report" pill retained, re-styled to pink fill</li>
+        <li>Score keeps pink accent for consistency</li>
+        <li>FREE badge stays neutral (no pink accent)</li>
+        <li>Nav active state: left border #ff2d78, bg #1a1a1a</li>
+      </ul>
+    </div>
+  </div><!-- /column 2 -->
+
+
+  <!-- ╔══════════════════════════════════════╗ -->
+  <!-- ║  COLUMN 3: SECGATE                   ║ -->
+  <!-- ╚══════════════════════════════════════╝ -->
+  <div class="column">
+    <div class="column-label">
+      SecGate
+      <span>Security report · web repo · topbar removed</span>
+    </div>
+
+    <div class="sidebar sidebar--secgate">
+
+      <!-- Report-type pill (new — folded up from topbar brand) -->
+      <div class="sidebar-pill-row">
+        <span class="report-pill">Security Report</span>
+      </div>
+
+      <!-- Identity block — topbar content (brand, version, date, tier) folded in here -->
+      <div class="sidebar-identity">
+        <div class="sidebar-product-label">
+          SecGate
+          <span class="tier-badge pass-badge">Pass</span>
+        </div>
+        <div class="sidebar-target">web</div>
+        <div class="score-line">
+          <!-- Risk score: not pink — keeps --text per secgate convention -->
+          <span class="score-num" style="color:var(--text)">71</span>
+          <span class="score-denom">risk</span>
+          <span class="status-band pass">Pass</span>
+        </div>
+        <!-- Version + rule version + date folded from topbar -->
+        <div class="sidebar-meta">v0.2.7 &middot; rule v7 &middot; 2026-05-13</div>
+      </div>
+
+      <!-- Nav -->
+      <nav class="sidebar-nav" aria-label="Report sections">
+        <div class="nav-section-label">Navigation</div>
+        <ul class="nav-list">
+          <li>
+            <a href="#overview" class="active" tabindex="-1" aria-current="page">
+              Overview
+            </a>
+          </li>
+          <li>
+            <a href="#surface" tabindex="-1">
+              Attack Surface
+              <span class="nav-count">2</span>
+            </a>
+          </li>
+          <li>
+            <a href="#tools" tabindex="-1">
+              Tools
+              <span class="nav-count">5</span>
+            </a>
+          </li>
+          <li>
+            <a href="#findings" tabindex="-1">
+              Findings
+              <span class="nav-count">0</span>
+            </a>
+          </li>
+          <li>
+            <a href="#recommendations" tabindex="-1">
+              Recommendations
+              <span class="nav-count">2</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Footer: theme toggle -->
+      <div class="sidebar-footer">
+        <button class="theme-btn" type="button" aria-label="Toggle light/dark theme">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          Theme
+        </button>
+      </div>
+
+    </div><!-- /sidebar -->
+
+    <div class="column-annotation">
+      <strong>Changes from current</strong>
+      <ul>
+        <li>Topbar (.topbar) removed entirely</li>
+        <li>Brand (SECGATE), version, date, tier-pill folded into sidebar head</li>
+        <li>Add "Security Report" pill at top (pink fill, matches others)</li>
+        <li>Risk score number stays --text (not pink) — secgate convention</li>
+        <li>Shell min-height reclaims ~50px topbar height; content offset removed</li>
+      </ul>
+    </div>
+  </div><!-- /column 3 -->
+
+</div><!-- /stage -->
+
+</body>
+</html>

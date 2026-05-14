@@ -112,7 +112,7 @@ export default function RevenuePreviewPage() {
                     See live score →
                   </a>
                   <a
-                    href="/reports/luxfaber-sample.html"
+                    href="/reports/luxfaber.html"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center text-stel-text-primary border border-stel-border px-4 py-2.5 rounded-md text-[13px] font-medium hover:border-stel-border-bright transition-colors duration-150"

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LuxScope Report — stelnyx-web · Mockup</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="/mockups/_shared.css">
+</head>
+<body>
+<div class="mockup-banner"><strong>MOCKUP</strong> — unified theme proof · <a href="/mockups/luxfaber.html">LuxFaber</a> · <a href="/mockups/secgate.html">SecGate</a></div>
+
+<header class="topbar">
+  <span class="brand">LUXSCOPE</span>
+  <span class="target">stelnyx-web / main</span>
+  <span class="spacer"></span>
+  <span class="meta">2026-05-13 · rule v0.1.0</span>
+  <span class="tier-pill pass">PASS</span>
+</header>
+
+<div class="shell">
+  <aside class="aside">
+    <div class="aside-head">
+      <div class="product">LuxScope Report</div>
+      <div class="target">stelnyx-web</div>
+      <div class="score-line">
+        <span class="score-num">96</span>
+        <span class="score-denom">/ 100</span>
+        <span class="score-badge pass">Pass</span>
+      </div>
+      <div class="report-type">Code Risk · Free</div>
+    </div>
+    <nav class="aside-nav">
+      <h6>Navigation</h6>
+      <a href="#overview" class="active">Overview <span class="count">·</span></a>
+      <a href="#gates">Gates <span class="count">5/5</span></a>
+      <a href="#wins">Quick Wins <span class="count">4</span></a>
+      <a href="#risks">Risk Files <span class="count">3</span></a>
+      <a href="#findings">Findings <span class="count">48</span></a>
+      <a href="#documents">Documents <span class="count">10</span></a>
+      <a href="#metadata">Metadata <span class="count">·</span></a>
+    </nav>
+    <div class="aside-footer">Code Risk Report · v1</div>
+  </aside>
+
+  <main class="main">
+    <section id="overview">
+      <h1>Overview <span class="lead">Weighted score across 5 buckets</span></h1>
+      <p>Luxscope Score reflects findings across Security, Complexity, Documentation, Dependencies, and Dead Code. The breakdown below shows where pressure concentrates so you know what to fix first.</p>
+
+      <div class="score-hero">
+        <svg class="gauge" viewBox="0 0 100 100">
+          <circle class="gauge-ring gauge-bg" cx="50" cy="50" r="42" />
+          <circle class="gauge-ring gauge-fill" cx="50" cy="50" r="42"
+            stroke-dasharray="263.9" stroke-dashoffset="10.6" />
+        </svg>
+        <div class="info">
+          <div class="label">Luxscope Score</div>
+          <div class="num">96<small>/ 100</small></div>
+          <div class="sub">32 files scored · 0 HIGH · 1 MED · 31 LOW · rule v0.1.0</div>
+        </div>
+      </div>
+
+      <div class="kpis">
+        <div class="kpi crit"><div class="label">Critical</div><div class="value">0</div></div>
+        <div class="kpi high"><div class="label">High</div><div class="value">0</div></div>
+        <div class="kpi med"><div class="label">Medium</div><div class="value">1</div></div>
+        <div class="kpi low"><div class="label">Low</div><div class="value">31</div></div>
+        <div class="kpi"><div class="label">Files Scored</div><div class="value">32</div></div>
+        <div class="kpi"><div class="label">Findings</div><div class="value">224</div></div>
+      </div>
+
+      <h2>Score breakdown <span class="lead">5 buckets · weighted</span></h2>
+      <div class="bars">
+        <div class="bar-row"><span class="name">Security</span><span class="score">85</span><div class="track"><div class="fill" style="width: 85%"></div></div><span class="weight">30%</span></div>
+        <div class="bar-row"><span class="name">Complexity</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">25%</span></div>
+        <div class="bar-row"><span class="name">Documentation</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">15%</span></div>
+        <div class="bar-row"><span class="name">Dependencies</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">15%</span></div>
+        <div class="bar-row"><span class="name">Dead Code</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">15%</span></div>
+      </div>
+    </section>
+
+    <section id="gates">
+      <h2>Gates <span class="lead">all required scans passed</span></h2>
+      <div class="scanner-list">
+        <div class="scanner-row"><div class="left"><span class="name">Type checks</span><span class="count">0 errors</span></div><span class="badge pass">Pass</span></div>
+        <div class="scanner-row"><div class="left"><span class="name">Lint</span><span class="count">0 errors</span></div><span class="badge pass">Pass</span></div>
+        <div class="scanner-row"><div class="left"><span class="name">Build</span><span class="count">12 routes</span></div><span class="badge pass">Pass</span></div>
+        <div class="scanner-row"><div class="left"><span class="name">Risk band</span><span class="count">0 HIGH</span></div><span class="badge pass">Pass</span></div>
+        <div class="scanner-row"><div class="left"><span class="name">Score floor</span><span class="count">96 ≥ 70</span></div><span class="badge pass">Pass</span></div>
+      </div>
+    </section>
+
+    <section id="risks">
+      <h2>Top risk files <span class="lead">ranked by score</span></h2>
+      <table class="findings-table">
+        <thead><tr><th>Band</th><th>Score</th><th>File</th><th>Top issue</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pill med">MED</span></td><td>25</td><td><code>app/layout.tsx</code></td><td>metrics.file.loc — 99 lines</td></tr>
+          <tr><td><span class="pill low">LOW</span></td><td>24</td><td><code>app/api/contact/route.ts</code></td><td>metrics.file.loc — 103 lines</td></tr>
+          <tr><td><span class="pill low">LOW</span></td><td>18</td><td><code>components/hero/StarField.tsx</code></td><td>metrics.file.loc — 113 lines</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="documents">
+      <h2>Generated documentation <span class="lead">10 docs · md + diagrams</span></h2>
+      <p>Markdown docs and interactive diagrams emitted alongside the report. Use these as a self-contained handoff package.</p>
+      <div class="doc-grid">
+        <div class="doc-card"><div class="head"><span class="title">Handoff (README)</span><span class="status ok">Ready</span></div><span class="type">MD</span><div class="desc">Entry-point for new contributors. Setup, run, test, deploy.</div></div>
+        <div class="doc-card"><div class="head"><span class="title">Architecture</span><span class="status ok">Ready</span></div><span class="type">MD</span><div class="desc">High-level system design, modules, boundaries.</div></div>
+        <div class="doc-card"><div class="head"><span class="title">Modules</span><span class="status ok">Ready</span></div><span class="type">MD</span><div class="desc">Per-package overview with public exports.</div></div>
+        <div class="doc-card"><div class="head"><span class="title">Dependencies</span><span class="status ok">Ready</span></div><span class="type">MD</span><div class="desc">Internal + external dep graph, version pins.</div></div>
+        <div class="doc-card"><div class="head"><span class="title">Risks</span><span class="status ok">Ready</span></div><span class="type">MD</span><div class="desc">Markdown export of risk findings.</div></div>
+        <div class="doc-card"><div class="head"><span class="title">Gaps</span><span class="status ok">Ready</span></div><span class="type">MD</span><div class="desc">Missing docs, untested paths, undocumented APIs.</div></div>
+        <div class="doc-card"><div class="head"><span class="title">Frontend Routes</span><span class="status ok">Ready</span></div><span class="type">MD</span><div class="desc">Route inventory + page-type classification.</div></div>
+        <div class="doc-card"><div class="head"><span class="title">Summary</span><span class="status ok">Ready</span></div><span class="type">MD</span><div class="desc">Executive summary of repo health.</div></div>
+        <div class="doc-card"><div class="head"><span class="title">Module Graph</span><span class="status ok">Ready</span></div><span class="type">DIAGRAM</span><div class="desc">Interactive Cytoscape graph of inter-module imports.</div></div>
+        <div class="doc-card"><div class="head"><span class="title">Call Graph</span><span class="status ok">Ready</span></div><span class="type">DIAGRAM</span><div class="desc">Function-level call relationships, top-down.</div></div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

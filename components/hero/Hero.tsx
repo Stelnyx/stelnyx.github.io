@@ -2,18 +2,18 @@
 
 import { useState } from "react";
 import { ContactModal } from "@/components/contact/ContactModal";
-import { FEATURE_PRICING, FEATURE_PUBLIC_REPOS } from "@/lib/features";
+import { FEATURE_PUBLIC_REPOS } from "@/lib/features";
 
 const TERMINAL_LINES = [
-  { type: "cmd", text: "$ luxfaber https://stelnyx.com" },
+  { type: "cmd", text: "$ luxscope analyze ." },
   { type: "blank", text: "" },
-  { type: "score", text: "Score: 91 / 100   AEO · rule v1" },
+  { type: "score", text: "LuxScope Score: 96 / 100   rule v0.1.0" },
   { type: "blank", text: "" },
-  { type: "rule", label: "  Crawl Accessibility", score: "96 / 100" },
-  { type: "rule", label: "  Structured Data    ", score: "86 / 100" },
-  { type: "rule", label: "  Semantic HTML      ", score: "100 / 100" },
-  { type: "rule", label: "  Content Clarity    ", score: "72 / 100" },
-  { type: "rule", label: "  Determinism        ", score: "100 / 100" },
+  { type: "rule", label: "  Security        ", score: "85 / 100" },
+  { type: "rule", label: "  Complexity      ", score: "100 / 100" },
+  { type: "rule", label: "  Documentation   ", score: "100 / 100" },
+  { type: "rule", label: "  Dependencies    ", score: "100 / 100" },
+  { type: "rule", label: "  Dead Code       ", score: "100 / 100" },
 ];
 
 export function Hero() {
@@ -37,26 +37,34 @@ export function Hero() {
               className="text-stel-text-primary font-semibold tracking-[-0.04em] leading-[1.05] text-balance"
               style={{ fontSize: "clamp(36px, 5vw, 60px)" }}
             >
-              Score the systems you can&apos;t afford to ship blind.
+              The Carfax for code.
             </h1>
 
             <p
               className="text-stel-text-muted mt-5 leading-[1.7] max-w-[520px] text-balance"
               style={{ fontSize: "18px" }}
             >
-              AI ships code faster than humans review it. Agents already buy and act on sites that weren&apos;t built for them. <span className="text-stel-text-primary font-semibold">LuxScope</span> tells you what breaks before you change it. <span className="text-stel-text-primary font-semibold">LuxFaber</span> tells you what agents can&apos;t use before they try. Both deterministic, both local-first. Stelnyx scores itself in public: <span className="text-stel-text-primary font-semibold">91/100</span> agent-readiness · <span className="text-stel-text-primary font-semibold">84/100</span> codebase health.
+              AI shipped your codebase. We tell you what&apos;s actually inside — before your acquirer, investor, or new hire finds out. We scored our own codebase <span className="text-stel-text-primary font-semibold">96/100</span>.{" "}
+              <a
+                href="/reports/luxscope.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-stel-text-primary font-semibold underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
+              >
+                View the report →
+              </a>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-10">
-              {FEATURE_PRICING && (
-                <a
-                  href="#pricing"
-                  className="inline-flex items-center justify-center bg-stel-amber text-stel-bg font-semibold px-6 py-3.5 rounded-md hover:bg-amber-400 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber focus-visible:ring-offset-2 focus-visible:ring-offset-stel-bg"
-                  style={{ minHeight: "44px" }}
-                >
-                  See pricing
-                </a>
-              )}
+              <a
+                href="/reports/luxscope.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center bg-stel-amber text-stel-bg font-semibold px-6 py-3.5 rounded-md hover:bg-amber-400 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber focus-visible:ring-offset-2 focus-visible:ring-offset-stel-bg"
+                style={{ minHeight: "44px" }}
+              >
+                View sample report
+              </a>
               <button
                 type="button"
                 onClick={() => setContactOpen(true)}
@@ -72,11 +80,11 @@ export function Hero() {
           <div
             className="animate-fade-up-delay-2"
             role="img"
-            aria-label="LuxFaber AEO scanner output for stelnyx.com: score 91 out of 100"
+            aria-label="LuxScope codebase scanner output for stelnyx-web: score 96 out of 100"
           >
             <figure className="m-0">
               <figcaption className="sr-only">
-                LuxFaber — Answer Engine Optimization scanner. Dogfood run against stelnyx.com.
+                LuxScope — codebase intelligence scanner. Dogfood run against the stelnyx-web repository.
               </figcaption>
               <div
                 className="rounded-lg border border-stel-border bg-stel-surface overflow-hidden"
@@ -88,7 +96,7 @@ export function Hero() {
                     terminal
                   </span>
                   <span className="ml-auto font-mono text-stel-text-faint" style={{ fontSize: "11px" }}>
-                    luxfaber v0.2
+                    luxscope v0.1
                   </span>
                 </div>
 
@@ -136,7 +144,7 @@ export function Hero() {
             <div className="mt-3 flex items-center justify-between gap-3 text-[12px] text-stel-text-faint">
               <span>Score is the headline. Report ships findings, fix order, ETAs.</span>
               <a
-                href="/reports/luxfaber-sample.html"
+                href="/reports/luxscope.html"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-stel-text-muted hover:text-stel-text-primary underline-offset-2 hover:underline whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"

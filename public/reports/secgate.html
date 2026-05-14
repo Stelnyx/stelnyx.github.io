@@ -1,0 +1,1542 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SecGate Report — nodegoat</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Inter%2C-apple-system%2Csans-serif' font-size='19' font-weight='700' fill='%23ff2d78'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
+<style>/* Unified report theme — SecGate palette + Lux sidebar shell */
+:root {
+  --bg: #0a0a0a;
+  --surface: #141414;
+  --surface-2: #1a1a1a;
+  --border: #1f1f1f;
+  --border-bright: #2a2a2a;
+  --text: #e5e5e7;
+  --muted: #a3a3a8; /* bumped from #8e8e93 for WCAG */
+  --faint: #6e6e73;
+  --success: #34c759;
+  --warn: #ff9500;
+  --error: #ff3b30;
+  --med-sev: #ffcc00;
+  --accent: #e5e5e7;
+  --pink: #ff2d78;
+  --sidebar-w: 240px;
+  --content-max: 1200px;
+  --font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* Aliases for LuxFaber --color-* convention */
+  --color-pink: var(--pink);
+  --color-green: var(--success);
+  --color-amber: var(--warn);
+  --color-red: var(--error);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-bright: var(--border-bright);
+  --color-text: var(--text);
+  --color-text-secondary: var(--muted);
+  --color-muted: var(--muted);
+  --radius: 6px;
+  --max-w: 960px;
+  --header-bg: var(--surface);
+  --score-glow: none;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--text); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code, .mono { font-family: var(--mono); font-size: 13px; }
+
+/* Pill row */
+.report-pill { display: inline-flex; align-items: center; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; background: var(--pink); color: #fff; }
+.pill-row { padding: 16px 24px 14px; border-bottom: 1px solid var(--border); }
+
+/* Layout */
+.shell { display: grid; grid-template-columns: var(--sidebar-w) 1fr; min-height: 100vh; }
+.aside {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 24px 0;
+  position: sticky; top: 0; height: 100vh;
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+}
+.aside-head { padding: 0 24px 20px; border-bottom: 1px solid var(--border); }
+.aside-head .product { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; margin-bottom: 12px; }
+.aside-head .tier-pill { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; margin-left: 6px; vertical-align: 1px; text-transform: uppercase; }
+.aside-head .tier-pill.neutral { background: rgba(255,255,255,0.06); color: var(--muted); }
+.aside-head .tier-pill.premium { background: rgba(255,45,120,0.12); color: var(--pink); }
+.aside-head .tier-pill.pass { background: rgba(52,199,89,0.12); color: var(--success); }
+.aside-head .tier-pill.warn { background: rgba(255,149,0,0.12); color: var(--warn); }
+.aside-head .target { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 4px; word-break: break-all; }
+.aside-head .score-line { display: flex; align-items: baseline; gap: 10px; margin-top: 12px; }
+.aside-head .score-num { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; color: var(--pink); }
+.aside-head .score-denom { font-size: 13px; color: var(--muted); }
+.aside-head .score-badge { padding: 3px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.aside-head .score-badge.pass { background: rgba(52, 199, 89, 0.12); color: var(--success); }
+.aside-head .score-badge.good { background: rgba(52, 199, 89, 0.12); color: var(--success); }
+.aside-head .score-badge.warn { background: rgba(255, 149, 0, 0.12); color: var(--warn); }
+.aside-head .report-type { margin-top: 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; }
+
+.aside-nav { padding: 20px 12px; }
+.aside-nav h6 { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: var(--faint); text-transform: uppercase; padding: 0 12px 8px; }
+.aside-nav a { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; border-radius: 4px; font-size: 13px; color: var(--muted); border-left: 2px solid transparent; margin: 2px 0; }
+.aside-nav a:hover { color: var(--text); background: var(--surface-2); text-decoration: none; }
+.aside-nav a.active { color: var(--pink); background: var(--surface-2); border-left-color: var(--pink); font-weight: 600; }
+.aside-nav a .count { font-size: 11px; color: var(--faint); background: var(--surface-2); padding: 1px 7px; border-radius: 999px; min-width: 22px; text-align: center; }
+.aside-nav a.active .count { background: var(--bg); color: var(--pink); }
+
+.aside-footer { margin-top: auto; padding: 20px 24px 0; border-top: 1px solid var(--border); font-size: 10px; color: var(--faint); letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* Main */
+.main { padding: 32px 32px 96px; max-width: var(--content-max); width: 100%; }
+.main h1 { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 8px; }
+.main h2 { font-size: 16px; font-weight: 600; margin: 36px 0 14px; letter-spacing: -0.01em; }
+.main h3 { font-size: 14px; font-weight: 600; margin: 24px 0 10px; }
+.main p { color: var(--muted); margin: 8px 0 16px; max-width: 70ch; }
+.main .lead { color: var(--faint); font-size: 12px; margin-left: 8px; font-weight: 400; }
+
+/* Score hero */
+.score-hero {
+  display: flex; align-items: center; gap: 32px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  padding: 28px 32px; margin-bottom: 24px;
+}
+.score-hero .gauge { width: 96px; height: 96px; flex-shrink: 0; }
+.score-hero .gauge-ring { stroke-width: 8; fill: none; }
+.score-hero .gauge-bg { stroke: var(--border-bright); }
+.score-hero .gauge-fill { stroke: var(--success); stroke-linecap: round; transform: rotate(-90deg); transform-origin: center; }
+.score-hero .info .label { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+.score-hero .info .num { font-size: 48px; font-weight: 700; letter-spacing: -0.03em; color: var(--text); margin-top: 4px; line-height: 1; }
+.score-hero .info .num small { font-size: 18px; color: var(--muted); font-weight: 400; margin-left: 6px; }
+.score-hero .info .sub { font-size: 12px; color: var(--muted); margin-top: 8px; }
+.score-hero .desc { flex: 1; color: var(--muted); font-size: 14px; line-height: 1.6; max-width: 60ch; padding-left: 16px; border-left: 1px solid var(--border); margin-left: 8px; }
+@media (max-width: 900px) {
+  .score-hero { flex-direction: column; align-items: flex-start; }
+  .score-hero .desc { border-left: none; padding-left: 0; margin-left: 0; }
+}
+
+/* KPI grid */
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
+.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+.kpi .label { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+.kpi .value { font-size: 22px; font-weight: 600; color: var(--text); margin-top: 4px; letter-spacing: -0.02em; }
+.kpi.crit .value { color: var(--error); }
+.kpi.high .value { color: var(--warn); }
+.kpi.med .value { color: var(--med-sev); }
+.kpi.low .value { color: var(--success); }
+
+/* Bars */
+.bars { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 18px 20px; }
+.bar-row { display: grid; grid-template-columns: 160px 40px 1fr 40px; align-items: center; gap: 12px; padding: 8px 0; }
+.bar-row + .bar-row { border-top: 1px solid var(--border); }
+.bar-row .name { font-size: 13px; color: var(--text); }
+.bar-row .score { font-size: 13px; color: var(--text); font-weight: 600; font-family: var(--mono); }
+.bar-row .track { height: 6px; background: var(--border-bright); border-radius: 3px; overflow: hidden; }
+.bar-row .fill { height: 100%; background: var(--success); border-radius: 3px; }
+.bar-row .fill.warn { background: var(--warn); }
+.bar-row .fill.med { background: var(--med-sev); }
+.bar-row .weight { font-size: 11px; color: var(--muted); text-align: right; }
+
+/* Findings + scanners */
+.scanner-list { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.scanner-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--border); }
+.scanner-row:last-child { border-bottom: 0; }
+.scanner-row .left { display: flex; align-items: center; gap: 14px; }
+.scanner-row .name { font-size: 13px; color: var(--text); font-weight: 500; }
+.scanner-row .count { font-size: 11px; color: var(--muted); background: var(--surface-2); padding: 2px 8px; border-radius: 999px; }
+.badge { padding: 3px 10px; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.badge.clean { background: rgba(52, 199, 89, 0.12); color: var(--success); }
+.badge.found { background: rgba(255, 149, 0, 0.12); color: var(--warn); }
+.badge.pass { background: rgba(52, 199, 89, 0.12); color: var(--success); }
+
+/* Tables */
+.findings-table { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; border-collapse: separate; border-spacing: 0; overflow: hidden; }
+.findings-table th { text-align: left; font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--surface-2); }
+.findings-table td { padding: 12px 16px; font-size: 13px; border-bottom: 1px solid var(--border); color: var(--text); }
+.findings-table tr:last-child td { border-bottom: 0; }
+.findings-table .pill { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.findings-table .pill.low { background: rgba(52, 199, 89, 0.12); color: var(--success); }
+.findings-table .pill.med { background: rgba(255, 204, 0, 0.12); color: var(--med-sev); }
+.findings-table .pill.high { background: rgba(255, 149, 0, 0.12); color: var(--warn); }
+.findings-table code { background: var(--surface-2); padding: 1px 6px; border-radius: 3px; color: var(--muted); }
+
+/* Doc grid */
+.doc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.doc-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; }
+.doc-card .head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.doc-card .title { font-size: 13px; font-weight: 600; color: var(--text); }
+.doc-card .status { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.doc-card .status.ok { color: var(--success); }
+.doc-card .status.missing { color: var(--error); }
+.doc-card .type { font-size: 10px; color: var(--faint); font-family: var(--mono); border: 1px solid var(--border); padding: 1px 6px; border-radius: 3px; display: inline-block; margin-bottom: 8px; }
+.doc-card .desc { font-size: 12px; color: var(--muted); line-height: 1.45; }
+
+/* Mobile */
+@media(max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .aside{position:static;height:auto;max-height:none;border-right:none;border-bottom:1px solid var(--border)}
+}
+
+/* Logo + client label in aside (for white-label reports) */
+.logo-row{padding:14px 24px 0}
+.aside-logo{max-width:80%;max-height:48px;height:auto;width:auto;display:block}
+.client-label{padding:8px 24px 0;font-size:11px;color:var(--muted)}
+.client-label strong{color:var(--text);font-weight:600}
+.target-link{color:inherit;text-decoration:none}
+.target-link:hover{text-decoration:underline}
+
+/* Mockup banner */
+.mockup-banner { background: rgba(255, 149, 0, 0.08); border-bottom: 1px solid rgba(255, 149, 0, 0.2); padding: 8px 24px; font-size: 12px; color: var(--warn); text-align: center; letter-spacing: 0.04em; }
+.mockup-banner strong { color: var(--text); }
+.mockup-banner a { color: var(--warn); text-decoration: underline; }
+</style>
+
+</head>
+<body>
+<div class="shell">
+  <aside class="aside">
+    
+    
+    <div class="pill-row"><span class="report-pill">SECURITY REPORT</span></div>
+    <div class="aside-head">
+      <div class="product">SecGate Report</div>
+      <div class="target">nodegoat</div>
+      <div class="score-line">
+        <span class="score-num">468</span>
+        <span class="score-denom">risk</span>
+        <span class="score-badge warn">FAIL</span>
+      </div>
+      <div class="report-type">Security · WEAK</div>
+    </div>
+    <nav class="aside-nav">
+      <h6>Report</h6>
+      <a href="#overview" class="active">Overview <span class="count">·</span></a>
+      <a href="#surface">Attack Surface <span class="count">4</span></a>
+      <a href="#tools">Tools <span class="count">5</span></a>
+      <a href="#findings">Findings <span class="count">54</span></a>
+      <a href="#reasoning">Reasoning <span class="count">54</span></a>
+      <a href="#recommendations">Recommendations <span class="count">4</span></a>
+      <a href="#remediation">Remediation <span class="count">54</span></a>
+    </nav>
+    <div class="aside-footer">Security Report · v0.2.7 · 2026-05-14T03:32:14.204Z</div>
+  </aside>
+
+  <main class="main">
+
+    <section id="overview">
+      <h1>Overview <span class="lead">5 scanners · 54 actionable findings</span></h1>
+      <div class="score-hero">
+  <svg class="gauge" viewBox="0 0 100 100">
+    <circle class="gauge-ring gauge-bg" cx="50" cy="50" r="42" />
+    <circle class="gauge-ring gauge-fill" cx="50" cy="50" r="42"
+      stroke-dasharray="263.9" stroke-dashoffset="263.90" style="stroke: var(--warn)" />
+  </svg>
+  <div class="info">
+    <div class="label">Status</div>
+    <div class="num">FAIL<small> Risk 468</small></div>
+    <div class="sub">16 CRITICAL · 24 HIGH · 26 MED · 86 LOW · confidence 0%</div>
+  </div>
+  <div class="desc">SecGate runs Semgrep, Gitleaks, npm audit, osv-scanner, and Trivy in one command. Normalizes findings and fails the pipeline on CRITICAL or HIGH.</div>
+</div>
+      <div class="kpis"><div class="kpi crit"><div class="label">Critical</div><div class="value">16</div></div><div class="kpi high"><div class="label">High</div><div class="value">24</div></div><div class="kpi med"><div class="label">Medium</div><div class="value">26</div></div><div class="kpi low"><div class="label">Low</div><div class="value">86</div></div><div class="kpi"><div class="label">Unknown</div><div class="value">2</div></div><div class="kpi"><div class="label">Risk Score</div><div class="value">468</div></div></div>
+    </section>
+
+    <section id="surface">
+      <h2>Attack surface <span class="lead">categories detected</span></h2>
+      <div class="bars"><div class="bar-row"><span class="name">iac</span><span class="score">·</span><div class="track"><div class="fill" style="width: 50%"></div></div><span class="weight"></span></div><div class="bar-row"><span class="name">license</span><span class="score">·</span><div class="track"><div class="fill" style="width: 50%"></div></div><span class="weight"></span></div><div class="bar-row"><span class="name">code</span><span class="score">·</span><div class="track"><div class="fill" style="width: 50%"></div></div><span class="weight"></span></div><div class="bar-row"><span class="name">dependency</span><span class="score">·</span><div class="track"><div class="fill" style="width: 50%"></div></div><span class="weight"></span></div></div>
+    </section>
+
+    
+
+    <section id="tools">
+      <h2>Findings by tool <span class="lead">54 total · 5 scanners</span></h2>
+      <div class="scanner-list"><div class="scanner-row"><div class="left"><span class="name">Semgrep</span><span class="count">29 findings</span></div><span class="badge found">found issues</span></div><div class="scanner-row"><div class="left"><span class="name">Gitleaks</span><span class="count">0 findings</span></div><span class="badge clean">clean</span></div><div class="scanner-row"><div class="left"><span class="name">npm audit</span><span class="count">0 findings</span></div><span class="badge found">error</span></div><div class="scanner-row"><div class="left"><span class="name">osv-scanner</span><span class="count">0 findings</span></div><span class="badge clean">clean</span></div><div class="scanner-row"><div class="left"><span class="name">Trivy</span><span class="count">125 findings</span></div><span class="badge found">found issues</span></div></div>
+    </section>
+
+    <section id="findings">
+      <h2>Top findings <span class="lead">ranked by severity · top 10 of 54</span></h2>
+      <table class="findings-table"><thead><tr><th>Severity</th><th>Type</th><th>Signature</th><th>Location</th><th>Message</th><th>Fixable</th></tr></thead><tbody><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>python.django.security.django-no-csrf-token.django-no-csrf-token</code></td><td><code>nodegoat/app/views/benefits.html:54</code></td><td>Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks.</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>python.django.security.django-no-csrf-token.django-no-csrf-token</code></td><td><code>nodegoat/app/views/login.html:107</code></td><td>Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks.</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>python.django.security.django-no-csrf-token.django-no-csrf-token</code></td><td><code>nodegoat/app/views/memos.html:15</code></td><td>Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks.</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>generic.secrets.security.detected-private-key.detected-private-key</code></td><td><code>nodegoat/artifacts/cert/server.key:1</code></td><td>Private Key detected. This is a sensitive credential and should not be hardcoded here. Instead, store this in a separate, private file.</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash</code></td><td><code>nodegoat/artifacts/db-reset.js:19</code></td><td>bcrypt hash detected</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash</code></td><td><code>nodegoat/artifacts/db-reset.js:28</code></td><td>bcrypt hash detected</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash</code></td><td><code>nodegoat/artifacts/db-reset.js:36</code></td><td>bcrypt hash detected</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>javascript.express.security.audit.express-cookie-settings.express-cookie-session-default-name</code></td><td><code>nodegoat/server.js:78</code></td><td>Don’t use the default session cookie name Using the default session cookie name can open your app to attacks. The security issue posed is similar to X-Powered-By: a potential attacker can use it to fingerprint the server and target attacks accordingly.</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-domain</code></td><td><code>nodegoat/server.js:78</code></td><td>Default session middleware settings: `domain` not set. It indicates the domain of the cookie; use it to compare against the domain of the server in which the URL is being requested. If they match, then check the path attribute next.</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-expires</code></td><td><code>nodegoat/server.js:78</code></td><td>Default session middleware settings: `expires` not set. Use it to set expiration date for persistent cookies.</td><td>manual</td></tr></tbody></table>
+      
+      <details class="sg-details">
+        <summary>
+          <span class="sg-details-label">Informational</span>
+          <span class="sg-details-count">100</span>
+          <span class="sg-details-hint">demoted by curated profile — click to expand</span>
+        </summary>
+        <div class="sg-details-body">
+          <p class="sg-lede-sub" style="margin-bottom:.75rem">These findings matched scanner rules but were demoted because they are commonly false-positive (noisy SAST rules, base-image OS packages, stale CVEs, unknown severity). Run with <code>profile: "strict"</code> to see them inline above.</p>
+          <table class="sg-table">
+            <thead><tr><th>Severity</th><th>Tool</th><th>Signature</th><th>Location</th><th>Message</th><th>Reason</th></tr></thead>
+            <tbody>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:abbrev</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for abbrev</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:ansi-regex</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for ansi-regex</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:aproba</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for aproba</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:are-we-there-yet</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for are-we-there-yet</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:async</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for async</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:balanced-match</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for balanced-match</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:brace-expansion</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for brace-expansion</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:buffer-shims</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for buffer-shims</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:camelcase</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for camelcase</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:chownr</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for chownr</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:cliui</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for cliui</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:code-point-at</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for code-point-at</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:concat-map</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for concat-map</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:console-control-strings</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for console-control-strings</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:core-util-is</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for core-util-is</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:debug</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for debug</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:decamelize</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for decamelize</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:deep-extend</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for deep-extend</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:delegates</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for delegates</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">Apache-2.0:detect-libc</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License Apache-2.0 flagged for detect-libc</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:fs-minipass</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for fs-minipass</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:fs.realpath</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for fs.realpath</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:gauge</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for gauge</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:glob</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for glob</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:has-unicode</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for has-unicode</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:iconv-lite</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for iconv-lite</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:ignore-walk</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for ignore-walk</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:inflight</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for inflight</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:inherits</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for inherits</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:ini</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for ini</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:invert-kv</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for invert-kv</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:is-extendable</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for is-extendable</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:is-fullwidth-code-point</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for is-fullwidth-code-point</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:isarray</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for isarray</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:isobject</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for isobject</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:isstream</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for isstream</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:lcid</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for lcid</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:minimatch</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for minimatch</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:minimist</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for minimist</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:minipass</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for minipass</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:minizlib</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for minizlib</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:mkdirp</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for mkdirp</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:ms</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for ms</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:needle</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for needle</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">BSD-3-Clause:node-pre-gyp</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License BSD-3-Clause flagged for node-pre-gyp</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:nopt</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for nopt</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:npm-bundled</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for npm-bundled</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:npm-packlist</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for npm-packlist</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:npmlog</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for npmlog</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:number-is-nan</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for number-is-nan</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:object-assign</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for object-assign</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:once</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for once</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill">UNKNOWN</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT/X11:optimist</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT/X11 flagged for optimist</td>
+          <td><span class="sg-info-reason">unknown severity</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:os-homedir</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for os-homedir</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:os-locale</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for os-locale</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:os-tmpdir</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for os-tmpdir</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:osenv</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for osenv</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:path-is-absolute</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for path-is-absolute</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:process-nextick-args</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for process-nextick-args</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">(BSD-2-Clause OR MIT OR Apache-2.0):rc</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License (BSD-2-Clause OR MIT OR Apache-2.0) flagged for rc</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:read</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for read</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:readable-stream</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for readable-stream</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:resolve-from</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for resolve-from</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:rimraf</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for rimraf</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:safe-buffer</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for safe-buffer</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:safer-buffer</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for safer-buffer</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:sax</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for sax</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:semver</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for semver</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:set-blocking</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for set-blocking</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:signal-exit</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for signal-exit</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:string-width</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for string-width</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:string_decoder</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for string_decoder</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:strip-ansi</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for strip-ansi</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:strip-json-comments</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for strip-json-comments</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:tar</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for tar</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:uglify-to-browserify</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for uglify-to-browserify</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:unpipe</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for unpipe</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:util-deprecate</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for util-deprecate</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:wide-align</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for wide-align</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill">UNKNOWN</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT/X11:wordwrap</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT/X11 flagged for wordwrap</td>
+          <td><span class="sg-info-reason">unknown severity</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">MIT:wordwrap</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License MIT flagged for wordwrap</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:wrappy</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for wrappy</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:y18n</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for y18n</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">ISC:yallist</td>
+          <td class="sg-mono"><span class="loc">package-lock.json</span></td>
+          <td>License ISC flagged for yallist</td>
+          <td><span class="sg-info-reason">license posture</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-warn">MEDIUM</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">trivy-image:node:12-alpine:CVE-2022-2097</td>
+          <td class="sg-mono"><span class="loc">node:12-alpine</span></td>
+          <td>openssl: AES OCB fails to encrypt some bytes</td>
+          <td><span class="sg-info-reason">base-image OS package</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-warn">MEDIUM</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">trivy-image:node:12-alpine:CVE-2022-4304</td>
+          <td class="sg-mono"><span class="loc">node:12-alpine</span></td>
+          <td>openssl: timing attack in RSA Decryption implementation</td>
+          <td><span class="sg-info-reason">base-image OS package</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-warn">MEDIUM</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">trivy-image:node:12-alpine:CVE-2023-0465</td>
+          <td class="sg-mono"><span class="loc">node:12-alpine</span></td>
+          <td>openssl: Invalid certificate policies in leaf certificates are silently ignored</td>
+          <td><span class="sg-info-reason">base-image OS package</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-warn">MEDIUM</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">trivy-image:node:12-alpine:CVE-2023-2650</td>
+          <td class="sg-mono"><span class="loc">node:12-alpine</span></td>
+          <td>openssl: Possible DoS translating ASN.1 object identifiers</td>
+          <td><span class="sg-info-reason">base-image OS package</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-warn">MEDIUM</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">trivy-image:node:12-alpine:CVE-2023-3446</td>
+          <td class="sg-mono"><span class="loc">node:12-alpine</span></td>
+          <td>openssl: Excessive time spent checking DH keys and parameters</td>
+          <td><span class="sg-info-reason">base-image OS package</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-warn">MEDIUM</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">trivy-image:node:12-alpine:CVE-2023-3817</td>
+          <td class="sg-mono"><span class="loc">node:12-alpine</span></td>
+          <td>OpenSSL: Excessive time spent checking DH q parameter value</td>
+          <td><span class="sg-info-reason">base-image OS package</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-warn">MEDIUM</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">trivy-image:node:12-alpine:CVE-2023-5678</td>
+          <td class="sg-mono"><span class="loc">node:12-alpine</span></td>
+          <td>openssl: Generating excessively long X9.42 DH keys or checking excessively long X9.42 DH keys or parameters may be very slow</td>
+          <td><span class="sg-info-reason">base-image OS package</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-warn">MEDIUM</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">trivy-image:node:12-alpine:CVE-2025-69873</td>
+          <td class="sg-mono"><span class="loc">node:12-alpine</span></td>
+          <td>ajv: ReDoS via $data reference</td>
+          <td><span class="sg-info-reason">base-image OS package</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-warn">MEDIUM</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">trivy-image:node:12-alpine:CVE-2026-33750</td>
+          <td class="sg-mono"><span class="loc">node:12-alpine</span></td>
+          <td>brace-expansion: brace-expansion: Denial of Service via zero step value in brace pattern</td>
+          <td><span class="sg-info-reason">base-image OS package</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">trivy-image:node:12-alpine:CVE-2025-5889</td>
+          <td class="sg-mono"><span class="loc">node:12-alpine</span></td>
+          <td>brace-expansion: juliangruber brace-expansion index.js expand redos</td>
+          <td><span class="sg-info-reason">base-image OS package</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-warn">MEDIUM</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">trivy-image:node:12-alpine:CVE-2022-33987</td>
+          <td class="sg-mono"><span class="loc">node:12-alpine</span></td>
+          <td>nodejs-got: missing verification of requested URLs allows redirects to UNIX sockets</td>
+          <td><span class="sg-info-reason">base-image OS package</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-ok">LOW</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">trivy-image:node:12-alpine:CVE-2023-42282</td>
+          <td class="sg-mono"><span class="loc">node:12-alpine</span></td>
+          <td>nodejs-ip: arbitrary code execution via the isPublic() function</td>
+          <td><span class="sg-info-reason">base-image OS package</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-warn">MEDIUM</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">trivy-image:node:12-alpine:CVE-2025-15284</td>
+          <td class="sg-mono"><span class="loc">node:12-alpine</span></td>
+          <td>qs: qs: Denial of Service via improper input validation in array parsing</td>
+          <td><span class="sg-info-reason">base-image OS package</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-warn">MEDIUM</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">trivy-image:node:12-alpine:CVE-2023-28155</td>
+          <td class="sg-mono"><span class="loc">node:12-alpine</span></td>
+          <td>request: bypass of SSRF mitigations when following a cross-protocol redirect</td>
+          <td><span class="sg-info-reason">base-image OS package</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-warn">MEDIUM</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">trivy-image:node:12-alpine:CVE-2024-28863</td>
+          <td class="sg-mono"><span class="loc">node:12-alpine</span></td>
+          <td>node-tar: denial of service while parsing a tar file due to lack of folders depth validation</td>
+          <td><span class="sg-info-reason">base-image OS package</span></td>
+        </tr>
+        <tr class="sg-info-row">
+          <td><span class="sg-pill sg-pill-warn">MEDIUM</span></td>
+          <td><span class="sg-mono">trivy</span></td>
+          <td class="sg-mono">trivy-image:node:12-alpine:CVE-2023-26136</td>
+          <td class="sg-mono"><span class="loc">node:12-alpine</span></td>
+          <td>tough-cookie: prototype pollution in cookie memstore</td>
+          <td><span class="sg-info-reason">base-image OS package</span></td>
+        </tr></tbody>
+          </table>
+        </div>
+      </details>
+      
+    </section>
+
+    <section id="reasoning">
+      <h2>Reasoning</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px">
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">DS-0026:Dockerfile</h3>
+        <p class="sg-card-body">No HEALTHCHECK defined in Dockerfile</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">javascript.browser.security.eval-detected.eval-detected</h3>
+        <p class="sg-card-body">Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources. at contributions.js:32</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">javascript.lang.security.audit.code-string-concat.code-string-concat</h3>
+        <p class="sg-card-body">Found data from an Express or Next web request flowing to `eval`. If this data is user-controllable this can lead to execution of arbitrary system commands in the context of your application process. Avoid `eval` whenever possible. at contributions.js:32</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">javascript.browser.security.eval-detected.eval-detected</h3>
+        <p class="sg-card-body">Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources. at contributions.js:33</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">javascript.lang.security.audit.code-string-concat.code-string-concat</h3>
+        <p class="sg-card-body">Found data from an Express or Next web request flowing to `eval`. If this data is user-controllable this can lead to execution of arbitrary system commands in the context of your application process. Avoid `eval` whenever possible. at contributions.js:33</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">javascript.browser.security.eval-detected.eval-detected</h3>
+        <p class="sg-card-body">Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources. at contributions.js:34</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">javascript.lang.security.audit.code-string-concat.code-string-concat</h3>
+        <p class="sg-card-body">Found data from an Express or Next web request flowing to `eval`. If this data is user-controllable this can lead to execution of arbitrary system commands in the context of your application process. Avoid `eval` whenever possible. at contributions.js:34</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">javascript.express.security.audit.express-open-redirect.express-open-redirect</h3>
+        <p class="sg-card-body">The application redirects to a URL specified by user-supplied input `req` that is not validated. This could redirect users to malicious locations. Consider using an allow-list approach to validate URLs, or warn users they are being redirected to a third-party website. at index.js:72</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">python.django.security.django-no-csrf-token.django-no-csrf-token</h3>
+        <p class="sg-card-body">Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks. at benefits.html:54</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">python.django.security.django-no-csrf-token.django-no-csrf-token</h3>
+        <p class="sg-card-body">Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks. at login.html:107</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">python.django.security.django-no-csrf-token.django-no-csrf-token</h3>
+        <p class="sg-card-body">Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks. at memos.html:15</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">html.security.plaintext-http-link.plaintext-http-link</h3>
+        <p class="sg-card-body">This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible. at a2.html:207</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">html.security.plaintext-http-link.plaintext-http-link</h3>
+        <p class="sg-card-body">This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible. at a2.html:209</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">html.security.plaintext-http-link.plaintext-http-link</h3>
+        <p class="sg-card-body">This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible. at a2.html:210</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">html.security.plaintext-http-link.plaintext-http-link</h3>
+        <p class="sg-card-body">This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible. at a5.html:50</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">html.security.plaintext-http-link.plaintext-http-link</h3>
+        <p class="sg-card-body">This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible. at a5.html:51</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">generic.secrets.security.detected-private-key.detected-private-key</h3>
+        <p class="sg-card-body">Private Key detected. This is a sensitive credential and should not be hardcoded here. Instead, store this in a separate, private file. at server.key:1</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash</h3>
+        <p class="sg-card-body">bcrypt hash detected at db-reset.js:19</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash</h3>
+        <p class="sg-card-body">bcrypt hash detected at db-reset.js:28</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash</h3>
+        <p class="sg-card-body">bcrypt hash detected at db-reset.js:36</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">yaml.docker-compose.security.no-new-privileges.no-new-privileges</h3>
+        <p class="sg-card-body">Service &#39;mongo&#39; allows for privilege escalation via setuid or setgid binaries. Add &#39;no-new-privileges:true&#39; in &#39;security_opt&#39; to prevent this. at docker-compose.yml:13</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service</h3>
+        <p class="sg-card-body">Service &#39;mongo&#39; is running with a writable root filesystem. This may allow malicious applications to download and run additional payloads, or modify container files. If an application inside a container has to save something temporarily consider using a tmpfs. Add &#39;read_only: true&#39; to this service to prevent this. at docker-compose.yml:13</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">javascript.express.security.audit.express-check-csurf-middleware-usage.express-check-csurf-middleware-usage</h3>
+        <p class="sg-card-body">A CSRF middleware was not detected in your express application. Ensure you are either using one such as `csurf` or `csrf` (see rule references) and/or you are properly doing CSRF validation in your routes with a token or cookies. at server.js:15</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">javascript.express.security.audit.express-cookie-settings.express-cookie-session-default-name</h3>
+        <p class="sg-card-body">Don’t use the default session cookie name Using the default session cookie name can open your app to attacks. The security issue posed is similar to X-Powered-By: a potential attacker can use it to fingerprint the server and target attacks accordingly. at server.js:78</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-domain</h3>
+        <p class="sg-card-body">Default session middleware settings: `domain` not set. It indicates the domain of the cookie; use it to compare against the domain of the server in which the URL is being requested. If they match, then check the path attribute next. at server.js:78</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-expires</h3>
+        <p class="sg-card-body">Default session middleware settings: `expires` not set. Use it to set expiration date for persistent cookies. at server.js:78</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-httponly</h3>
+        <p class="sg-card-body">Default session middleware settings: `httpOnly` not set. It ensures the cookie is sent only over HTTP(S), not client JavaScript, helping to protect against cross-site scripting attacks. at server.js:78</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-path</h3>
+        <p class="sg-card-body">Default session middleware settings: `path` not set. It indicates the path of the cookie; use it to compare against the request path. If this and domain match, then send the cookie in the request. at server.js:78</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-secure</h3>
+        <p class="sg-card-body">Default session middleware settings: `secure` not set. It ensures the browser only sends the cookie over HTTPS. at server.js:78</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">problem-based-packs.insecure-transport.js-node.using-http-server.using-http-server</h3>
+        <p class="sg-card-body">Checks for any usage of http servers instead of https servers. Encourages the usage of https protocol instead of http, which does not have TLS and is therefore unencrypted. Using http can lead to man-in-the-middle attacks in which the attacker is able to read sensitive information. at server.js:145</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2022-4450</h3>
+        <p class="sg-card-body">openssl: double free after calling PEM_read_bio_ex</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2023-0215</h3>
+        <p class="sg-card-body">openssl: use-after-free following BIO_new_NDEF</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2023-0286</h3>
+        <p class="sg-card-body">openssl: X.400 address type confusion in X.509 GeneralName</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2023-0464</h3>
+        <p class="sg-card-body">openssl: Denial of service by excessive resource usage in verifying X509 policy constraints</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2022-37434</h3>
+        <p class="sg-card-body">zlib: heap-based buffer over-read and overflow in inflate() in inflate.c via a large gzip header extra field</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2021-3807</h3>
+        <p class="sg-card-body">nodejs-ansi-regex: Regular expression denial of service (ReDoS) matching ANSI escape codes</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2024-21538</h3>
+        <p class="sg-card-body">cross-spawn: regular expression denial of service</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2022-38900</h3>
+        <p class="sg-card-body">decode-uri-component: improper input validation resulting in DoS</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2025-7783</h3>
+        <p class="sg-card-body">form-data: Unsafe random function in form-data</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2022-25881</h3>
+        <p class="sg-card-body">http-cache-semantics: Regular Expression Denial of Service (ReDoS) vulnerability</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2024-29415</h3>
+        <p class="sg-card-body">node-ip: Incomplete fix for CVE-2023-42282</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2022-3517</h3>
+        <p class="sg-card-body">nodejs-minimatch: ReDoS via the braceExpand function</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2026-26996</h3>
+        <p class="sg-card-body">minimatch: minimatch: Denial of Service via specially crafted glob patterns</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2026-27903</h3>
+        <p class="sg-card-body">minimatch: minimatch: Denial of Service due to unbounded recursive backtracking via crafted glob patterns</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2026-27904</h3>
+        <p class="sg-card-body">minimatch: Minimatch: Denial of Service via catastrophic backtracking in glob expressions</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2021-44906</h3>
+        <p class="sg-card-body">minimist: prototype pollution</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2022-24999</h3>
+        <p class="sg-card-body">express: &quot;qs&quot; prototype poisoning causes the hang of the node process</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2022-25883</h3>
+        <p class="sg-card-body">nodejs-semver: Regular expression denial of service</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2026-23745</h3>
+        <p class="sg-card-body">node-tar: tar: node-tar: Arbitrary file overwrite and symlink poisoning via unsanitized linkpaths in archives</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2026-23950</h3>
+        <p class="sg-card-body">node-tar: tar: node-tar: Arbitrary file overwrite via Unicode path collision race condition</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2026-24842</h3>
+        <p class="sg-card-body">node-tar: tar: node-tar: Arbitrary file creation via path traversal bypass in hardlink security check</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2026-26960</h3>
+        <p class="sg-card-body">node-tar: node-tar: Arbitrary file read/write via malicious archive hardlink creation</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2026-29786</h3>
+        <p class="sg-card-body">node-tar: hardlink path traversal via drive-relative linkpath</p>
+      </div>
+      <div class="sg-card">
+        <h3 class="sg-card-title sg-mono">trivy-image:node:12-alpine:CVE-2026-31802</h3>
+        <p class="sg-card-body">tar: tar: File overwrite via drive-relative symlink traversal</p>
+      </div></div>
+    </section>
+
+    <section id="recommendations">
+      <h2>Recommendations</h2>
+      <ul style="color:var(--muted);font-size:13px;line-height:1.7;padding-left:20px"><li>Harden infrastructure configuration</li><li>Review third-party licenses</li><li>Refactor insecure code</li><li>Upgrade affected packages</li></ul>
+    </section>
+
+    <section id="remediation">
+      <h2>Remediation plan</h2>
+      <ul style="color:var(--muted);font-size:13px;line-height:1.7;padding-left:20px">
+      <li>
+        <span class="sg-mono">DS-0026:Dockerfile</span> — fix misconfiguration
+        <code class="sg-cmd"># No HEALTHCHECK defined — edit Dockerfile</code>
+      </li>
+      <li>
+        <span class="sg-mono">javascript.browser.security.eval-detected.eval-detected</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/app/routes/contributions.js:32</code>
+      </li>
+      <li>
+        <span class="sg-mono">javascript.lang.security.audit.code-string-concat.code-string-concat</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/app/routes/contributions.js:32</code>
+      </li>
+      <li>
+        <span class="sg-mono">javascript.browser.security.eval-detected.eval-detected</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/app/routes/contributions.js:33</code>
+      </li>
+      <li>
+        <span class="sg-mono">javascript.lang.security.audit.code-string-concat.code-string-concat</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/app/routes/contributions.js:33</code>
+      </li>
+      <li>
+        <span class="sg-mono">javascript.browser.security.eval-detected.eval-detected</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/app/routes/contributions.js:34</code>
+      </li>
+      <li>
+        <span class="sg-mono">javascript.lang.security.audit.code-string-concat.code-string-concat</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/app/routes/contributions.js:34</code>
+      </li>
+      <li>
+        <span class="sg-mono">javascript.express.security.audit.express-open-redirect.express-open-redirect</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/app/routes/index.js:72</code>
+      </li>
+      <li>
+        <span class="sg-mono">python.django.security.django-no-csrf-token.django-no-csrf-token</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/app/views/benefits.html:54</code>
+      </li>
+      <li>
+        <span class="sg-mono">python.django.security.django-no-csrf-token.django-no-csrf-token</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/app/views/login.html:107</code>
+      </li>
+      <li>
+        <span class="sg-mono">python.django.security.django-no-csrf-token.django-no-csrf-token</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/app/views/memos.html:15</code>
+      </li>
+      <li>
+        <span class="sg-mono">html.security.plaintext-http-link.plaintext-http-link</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/app/views/tutorial/a2.html:207</code>
+      </li>
+      <li>
+        <span class="sg-mono">html.security.plaintext-http-link.plaintext-http-link</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/app/views/tutorial/a2.html:209</code>
+      </li>
+      <li>
+        <span class="sg-mono">html.security.plaintext-http-link.plaintext-http-link</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/app/views/tutorial/a2.html:210</code>
+      </li>
+      <li>
+        <span class="sg-mono">html.security.plaintext-http-link.plaintext-http-link</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/app/views/tutorial/a5.html:50</code>
+      </li>
+      <li>
+        <span class="sg-mono">html.security.plaintext-http-link.plaintext-http-link</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/app/views/tutorial/a5.html:51</code>
+      </li>
+      <li>
+        <span class="sg-mono">generic.secrets.security.detected-private-key.detected-private-key</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/artifacts/cert/server.key:1</code>
+      </li>
+      <li>
+        <span class="sg-mono">generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/artifacts/db-reset.js:19</code>
+      </li>
+      <li>
+        <span class="sg-mono">generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/artifacts/db-reset.js:28</code>
+      </li>
+      <li>
+        <span class="sg-mono">generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/artifacts/db-reset.js:36</code>
+      </li>
+      <li>
+        <span class="sg-mono">yaml.docker-compose.security.no-new-privileges.no-new-privileges</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/docker-compose.yml:13</code>
+      </li>
+      <li>
+        <span class="sg-mono">yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/docker-compose.yml:13</code>
+      </li>
+      <li>
+        <span class="sg-mono">javascript.express.security.audit.express-check-csurf-middleware-usage.express-check-csurf-middleware-usage</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/server.js:15</code>
+      </li>
+      <li>
+        <span class="sg-mono">javascript.express.security.audit.express-cookie-settings.express-cookie-session-default-name</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/server.js:78</code>
+      </li>
+      <li>
+        <span class="sg-mono">javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-domain</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/server.js:78</code>
+      </li>
+      <li>
+        <span class="sg-mono">javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-expires</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/server.js:78</code>
+      </li>
+      <li>
+        <span class="sg-mono">javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-httponly</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/server.js:78</code>
+      </li>
+      <li>
+        <span class="sg-mono">javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-path</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/server.js:78</code>
+      </li>
+      <li>
+        <span class="sg-mono">javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-secure</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/server.js:78</code>
+      </li>
+      <li>
+        <span class="sg-mono">problem-based-packs.insecure-transport.js-node.using-http-server.using-http-server</span> — manual code fix
+        <code class="sg-cmd"># Fix: nodegoat/server.js:145</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2022-4450</span> — fix misconfiguration
+        <code class="sg-cmd"># openssl: double free after calling PEM_read_bio_ex — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2023-0215</span> — fix misconfiguration
+        <code class="sg-cmd"># openssl: use-after-free following BIO_new_NDEF — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2023-0286</span> — fix misconfiguration
+        <code class="sg-cmd"># openssl: X.400 address type confusion in X.509 GeneralName — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2023-0464</span> — fix misconfiguration
+        <code class="sg-cmd"># openssl: Denial of service by excessive resource usage in verifying X509 policy constraints — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2022-37434</span> — fix misconfiguration
+        <code class="sg-cmd"># zlib: heap-based buffer over-read and overflow in inflate() in inflate.c via a large gzip header extra field — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2021-3807</span> — fix misconfiguration
+        <code class="sg-cmd"># nodejs-ansi-regex: Regular expression denial of service (ReDoS) matching ANSI escape codes — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2024-21538</span> — fix misconfiguration
+        <code class="sg-cmd"># cross-spawn: regular expression denial of service — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2022-38900</span> — fix misconfiguration
+        <code class="sg-cmd"># decode-uri-component: improper input validation resulting in DoS — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2025-7783</span> — fix misconfiguration
+        <code class="sg-cmd"># form-data: Unsafe random function in form-data — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2022-25881</span> — fix misconfiguration
+        <code class="sg-cmd"># http-cache-semantics: Regular Expression Denial of Service (ReDoS) vulnerability — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2024-29415</span> — fix misconfiguration
+        <code class="sg-cmd"># node-ip: Incomplete fix for CVE-2023-42282 — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2022-3517</span> — fix misconfiguration
+        <code class="sg-cmd"># nodejs-minimatch: ReDoS via the braceExpand function — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2026-26996</span> — fix misconfiguration
+        <code class="sg-cmd"># minimatch: minimatch: Denial of Service via specially crafted glob patterns — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2026-27903</span> — fix misconfiguration
+        <code class="sg-cmd"># minimatch: minimatch: Denial of Service due to unbounded recursive backtracking via crafted glob patterns — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2026-27904</span> — fix misconfiguration
+        <code class="sg-cmd"># minimatch: Minimatch: Denial of Service via catastrophic backtracking in glob expressions — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2021-44906</span> — fix misconfiguration
+        <code class="sg-cmd"># minimist: prototype pollution — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2022-24999</span> — fix misconfiguration
+        <code class="sg-cmd"># express: &quot;qs&quot; prototype poisoning causes the hang of the node process — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2022-25883</span> — fix misconfiguration
+        <code class="sg-cmd"># nodejs-semver: Regular expression denial of service — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2026-23745</span> — fix misconfiguration
+        <code class="sg-cmd"># node-tar: tar: node-tar: Arbitrary file overwrite and symlink poisoning via unsanitized linkpaths in archives — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2026-23950</span> — fix misconfiguration
+        <code class="sg-cmd"># node-tar: tar: node-tar: Arbitrary file overwrite via Unicode path collision race condition — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2026-24842</span> — fix misconfiguration
+        <code class="sg-cmd"># node-tar: tar: node-tar: Arbitrary file creation via path traversal bypass in hardlink security check — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2026-26960</span> — fix misconfiguration
+        <code class="sg-cmd"># node-tar: node-tar: Arbitrary file read/write via malicious archive hardlink creation — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2026-29786</span> — fix misconfiguration
+        <code class="sg-cmd"># node-tar: hardlink path traversal via drive-relative linkpath — edit node:12-alpine</code>
+      </li>
+      <li>
+        <span class="sg-mono">trivy-image:node:12-alpine:CVE-2026-31802</span> — fix misconfiguration
+        <code class="sg-cmd"># tar: tar: File overwrite via drive-relative symlink traversal — edit node:12-alpine</code>
+      </li></ul>
+    </section>
+  
+  </main>
+</div>
+
+</body>
+</html>

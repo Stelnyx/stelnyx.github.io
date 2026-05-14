@@ -15,37 +15,39 @@ interface ScoreBlock {
   reportHref?: string;
 }
 
-const LUXSCOPE: ScoreBlock = {
-  title: "luxscope v0.1",
-  version: "rule v0.1.0",
-  ariaLabel: "LuxScope Score for example codebase: 84 out of 100",
-  caption: "LuxScope — codebase intelligence scanner. Sample run.",
-  reportHref: "/reports/luxscope-sample.html",
+const LUXFABER: ScoreBlock = {
+  title: "luxfaber v0.2",
+  version: "rule v1",
+  ariaLabel: "LuxFaber AEO score for stelnyx.com: 92 out of 100",
+  caption: "LuxFaber — agent-readiness scanner. Dogfood run against stelnyx.com.",
+  reportHref: "/reports/luxfaber.html",
   lines: [
-    { type: "score", text: "LuxScope Score: 84 / 100   rule v0.1.0" },
+    { type: "cmd", text: "$ luxfaber https://stelnyx.com" },
+    { type: "score", text: "LuxFaber Score: 92 / 100   rule v1" },
     { type: "blank" },
-    { type: "rule", label: "  Security          ", score: "92 / 100" },
-    { type: "rule", label: "  Dead Code         ", score: "78 / 100" },
-    { type: "rule", label: "  Dependency Health ", score: "88 / 100" },
-    { type: "rule", label: "  Type Safety       ", score: "81 / 100" },
-    { type: "rule", label: "  Documentation     ", score: "70 / 100" },
+    { type: "rule", label: "  Crawl Accessibility ", score: "100 / 100" },
+    { type: "rule", label: "  Structured Data     ", score: "87 / 100" },
+    { type: "rule", label: "  Semantic HTML       ", score: "100 / 100" },
+    { type: "rule", label: "  Content Clarity     ", score: "72 / 100" },
+    { type: "rule", label: "  Determinism         ", score: "100 / 100" },
   ],
 };
 
 const SECGATE: ScoreBlock = {
-  title: "secgate v0.2",
-  version: "rule v1",
-  ariaLabel: "Security Score for example repo: 62 out of 100",
-  caption: "SecGate — security gate scanner. Sample run.",
+  title: "secgate v0.2.7",
+  version: "rule v7",
+  ariaLabel: "SecGate status for stelnyx-web: PASS, risk score 53",
+  caption: "SecGate — security gate scanner. Dogfood run against stelnyx-web.",
+  reportHref: "/reports/secgate.html",
   lines: [
     { type: "cmd", text: "$ npx @tinydarkforge/secgate" },
-    { type: "score", text: "Security Score: 62 / 100   rule v1" },
+    { type: "score", text: "Status: PASS · Risk 53 · rule v7" },
     { type: "blank" },
-    { type: "rule", label: "  Semgrep     ", score: "97 / 100" },
-    { type: "rule", label: "  Gitleaks    ", score: "75 / 100" },
-    { type: "rule", label: "  npm audit   ", score: "90 / 100" },
-    { type: "rule", label: "  osv-scanner ", score: "100 / 100" },
-    { type: "rule", label: "  Trivy       ", score: "62 / 100" },
+    { type: "rule", label: "  Semgrep     ", score: "0 findings" },
+    { type: "rule", label: "  Gitleaks    ", score: "0 findings" },
+    { type: "rule", label: "  npm audit   ", score: "2 findings" },
+    { type: "rule", label: "  osv-scanner ", score: "1 finding" },
+    { type: "rule", label: "  Trivy       ", score: "45 findings" },
   ],
 };
 
@@ -98,12 +100,22 @@ function Terminal({ block }: { block: ScoreBlock }) {
               );
             }
             const numericScore = parseInt(line.score, 10);
-            const scoreColor =
-              numericScore >= 90
+            const isNumeric = !Number.isNaN(numericScore);
+            const isFindings = /finding/i.test(line.score);
+            const cleanLike = /^(clean|pass|ok)$/i.test(line.score);
+            const scoreColor = isFindings
+              ? numericScore === 0
+                ? "text-emerald-400"
+                : "text-stel-amber"
+              : isNumeric
+              ? numericScore >= 90
                 ? "text-emerald-400"
                 : numericScore >= 70
                 ? "text-stel-amber"
-                : "text-red-400";
+                : "text-red-400"
+              : cleanLike
+              ? "text-emerald-400"
+              : "text-stel-amber";
             return (
               <div key={i} className="flex items-center justify-between gap-8">
                 <span className="text-stel-text-muted whitespace-pre">{line.label}</span>
@@ -155,7 +167,7 @@ export function ScoresShowcase() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          <Terminal block={LUXSCOPE} />
+          <Terminal block={LUXFABER} />
           <Terminal block={SECGATE} />
         </div>
       </div>
