@@ -44,7 +44,7 @@ export function Hero() {
               className="text-stel-text-muted mt-5 leading-[1.7] max-w-[520px] text-balance"
               style={{ fontSize: "18px" }}
             >
-              AI shipped your codebase. We tell you what&apos;s actually inside — before your acquirer, investor, or new hire finds out. We ran LuxScope against <span className="text-stel-text-primary font-semibold">expressjs/express@4.21.2</span> — score <span className="text-stel-text-primary font-semibold">82/100</span>, <span className="text-stel-text-primary font-semibold">399 findings</span> across <span className="text-stel-text-primary font-semibold">149 files</span>, plus <span className="text-stel-text-primary font-semibold">24 deterministic handoff docs</span>.{" "}
+              AI shipped your codebase. We tell you what&apos;s actually inside — before your acquirer, investor, or new hire finds out. We ran LuxScope against <span className="text-stel-text-primary font-semibold">expressjs/express@4.21.2</span> — score <span className="text-stel-text-primary font-semibold">82/100</span>, <span className="text-stel-text-primary font-semibold">8 findings</span> across <span className="text-stel-text-primary font-semibold">57 risk files</span>, plus <span className="text-stel-text-primary font-semibold">23 deterministic handoff docs</span>.{" "}
               <a
                 href="/reports/luxscope.html"
                 target="_blank"
