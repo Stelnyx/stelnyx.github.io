@@ -31,6 +31,8 @@ export interface Product {
   cli?: string;
   /** Internal landing page route, e.g. "/luxscope". When set, card renders a "Full page →" link. */
   page?: string;
+  /** Format-anchored sample stats line, e.g. "Sample: 82/100 · 149 files · 399 findings". */
+  sampleStats?: string;
 }
 
 interface ProductCardProps {
@@ -71,6 +73,12 @@ export function ProductCard({ product, onLearnMore, onRequestAudit, paidAuditsOp
       <p className="text-[15px] text-stel-text-muted leading-relaxed">
         {product.description}
       </p>
+
+      {product.sampleStats && (
+        <p className="mt-3 text-[12px] font-mono text-stel-text-faint">
+          {product.sampleStats}
+        </p>
+      )}
 
       {product.audit && (() => {
         const isFree = /free/i.test(product.audit.price);

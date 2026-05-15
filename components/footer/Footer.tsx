@@ -15,8 +15,8 @@ const FOOTER_LINKS: { label: string; href: string; external?: boolean }[] = [
   ...(FEATURE_PRICING ? [{ label: "Pricing", href: "/#pricing" }] : []),
   ...(FEATURE_PUBLIC_REPOS
     ? [
-        { label: "GitHub", href: "https://github.com/tinydarkforge", external: true },
-        { label: "Discussions", href: "https://github.com/orgs/tinydarkforge/discussions", external: true },
+        { label: "GitHub", href: "https://github.com/Stelnyx", external: true },
+        { label: "Discussions", href: "https://github.com/orgs/Stelnyx/discussions", external: true },
       ]
     : []),
   { label: "Privacy", href: "/privacy" },

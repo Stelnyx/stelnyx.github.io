@@ -18,17 +18,17 @@ interface ScoreBlock {
 const LUXFABER: ScoreBlock = {
   title: "luxfaber v0.2",
   version: "rule v1",
-  ariaLabel: "LuxFaber AEO score for developer.mozilla.org: 73 out of 100",
-  caption: "LuxFaber — agent-readiness scanner. Premium run against developer.mozilla.org.",
+  ariaLabel: "LuxFaber AEO score for developer.mozilla.org: 72 out of 100",
+  caption: "LuxFaber — agent-readiness scanner. Recon run against developer.mozilla.org.",
   reportHref: "/reports/luxfaber.html",
   lines: [
-    { type: "cmd", text: "$ luxfaber https://developer.mozilla.org --tier premium --crawl 10" },
-    { type: "score", text: "LuxFaber Score: 73 / 100   rule v1" },
+    { type: "cmd", text: "$ luxfaber https://developer.mozilla.org --tier recon" },
+    { type: "score", text: "LuxFaber Score: 72 / 100   rule v1" },
     { type: "blank" },
     { type: "rule", label: "  Crawl Accessibility ", score: "77 / 100" },
-    { type: "rule", label: "  Structured Data     ", score: "21 / 100" },
+    { type: "rule", label: "  Structured Data     ", score: "24 / 100" },
     { type: "rule", label: "  Semantic HTML       ", score: "93 / 100" },
-    { type: "rule", label: "  Content Clarity     ", score: "81 / 100" },
+    { type: "rule", label: "  Content Clarity     ", score: "75 / 100" },
     { type: "rule", label: "  Determinism         ", score: "100 / 100" },
   ],
 };
@@ -36,12 +36,12 @@ const LUXFABER: ScoreBlock = {
 const SECGATE: ScoreBlock = {
   title: "secgate v0.2.7",
   version: "rule v7",
-  ariaLabel: "SecGate status for OWASP NodeGoat: FAIL, risk score 468",
+  ariaLabel: "SecGate status for OWASP NodeGoat: FAIL, 154 findings across 6 scanners",
   caption: "SecGate — security gate scanner. Run against OWASP NodeGoat (intentionally vulnerable).",
   reportHref: "/reports/secgate.html",
   lines: [
     { type: "cmd", text: "$ npx @tinydarkforge/secgate OWASP/NodeGoat" },
-    { type: "score", text: "Status: FAIL · Risk 468 · rule v7" },
+    { type: "score", text: "Status: FAIL · 154 findings · rule v7" },
     { type: "blank" },
     { type: "rule", label: "  Semgrep     ", score: "29 findings" },
     { type: "rule", label: "  Gitleaks    ", score: "0 findings" },

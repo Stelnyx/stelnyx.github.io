@@ -21,18 +21,18 @@ const TOOLS: ToolBlock[] = [
   {
     name: "LuxScope",
     blurb: "Codebase intelligence — change-impact risk, dependency drift, architecture map. Run it on any repo.",
-    repo: "https://github.com/tinydarkforge/luxscope",
-    discussions: "https://github.com/tinydarkforge/luxscope/discussions",
+    repo: "https://github.com/Stelnyx/LuxScope",
+    discussions: "https://github.com/Stelnyx/LuxScope/discussions",
     fromSource:
-      "git clone https://github.com/tinydarkforge/luxscope && cd luxscope && pnpm i && pnpm build && node packages/cli/dist/index.js analyze .",
+      "git clone https://github.com/Stelnyx/LuxScope && cd luxscope && pnpm i && pnpm build && node packages/cli/dist/index.js analyze .",
   },
   {
     name: "LuxFaber",
     blurb: "Agent-readiness score — crawl, structured data, semantic HTML, UA-cloaking determinism. Run it on any URL.",
-    repo: "https://github.com/tinydarkforge/luxfaber",
-    discussions: "https://github.com/tinydarkforge/luxfaber/discussions",
+    repo: "https://github.com/Stelnyx/LuxFaber",
+    discussions: "https://github.com/Stelnyx/LuxFaber/discussions",
     fromSource:
-      "git clone https://github.com/tinydarkforge/luxfaber && cd luxfaber && pnpm i && pnpm build && node packages/cli/dist/index.js https://stelnyx.com",
+      "git clone https://github.com/Stelnyx/LuxFaber && cd luxfaber && pnpm i && pnpm build && node packages/cli/dist/index.js https://stelnyx.com",
   },
 ];
 

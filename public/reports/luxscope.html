@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Luxscope Report — express</title>
+<title>Luxscope Report — express-pin</title>
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Inter%2C-apple-system%2Csans-serif' font-size='19' font-weight='700' fill='%23ff2d78'%3ES%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -250,26 +250,34 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
     
     <div class="pill-row"><span class="report-pill">CODE RISK REPORT</span></div>
     <div class="aside-head">
-      <div class="product">LuxScope Report</div>
-      <div class="target">express</div>
+      <div class="product">LuxScope Report<span class="tier-pill neutral">RECON</span></div>
+      <div class="target">express-pin</div>
       <div class="score-line">
-        <span class="score-num">40</span>
+        <span class="score-num">82</span>
         <span class="score-denom">/ 100</span>
-        <span class="score-badge warn">WEAK</span>
+        <span class="score-badge pass">GOOD</span>
       </div>
-      <div class="report-type">Code Risk · Free</div>
+      <div class="report-type">Code Risk · Recon</div>
     </div>
     <nav class="aside-nav">
       <h6>Report</h6>
       <a href="#overview" class="active">Overview <span class="count">·</span></a>
-      <a href="#gates">Gates <span class="count">1/5</span></a>
+      <a href="#history">History <span class="count">·</span></a>
+      <a href="#ownership">Ownership <span class="count">·</span></a>
+      <a href="#stack">Stack <span class="count">·</span></a>
+      <a href="#ci">CI <span class="count">·</span></a>
+      <a href="#tests">Tests <span class="count">·</span></a>
+      <a href="#hygiene">Hygiene <span class="count">·</span></a>
+      <a href="#deps">Dependencies <span class="count">·</span></a>
+      <a href="#handoff-docs">Documents <span class="count">23</span></a>
+      <a href="#gates">Gates <span class="count">2/5</span></a>
       <a href="#quick-wins">Quick Wins <span class="count">5</span></a>
-      <a href="#risk-files">Risk Files <span class="count">4</span></a>
-      <a href="#findings">Findings <span class="count">7</span></a>
+      <a href="#risk-files">Risk Files <span class="count">57</span></a>
+      <a href="#findings">Findings <span class="count">8</span></a>
       <a href="#documents">Generated Documentation <span class="count">10</span></a>
       <a href="#metadata">Metadata <span class="count">·</span></a>
     </nav>
-    <div class="aside-footer">Code Risk Report · v0.1.0 · 2026-05-14 03:39:30 U</div>
+    <div class="aside-footer">Code Risk Report · v0.1.0 · 2026-05-15 03:58:32 U</div>
   </aside>
 
   <main class="main">
@@ -279,62 +287,1008 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
   <svg class="gauge" viewBox="0 0 100 100">
     <circle class="gauge-ring gauge-bg" cx="50" cy="50" r="42" />
     <circle class="gauge-ring gauge-fill" cx="50" cy="50" r="42"
-      stroke-dasharray="263.9" stroke-dashoffset="158.34" style="stroke: var(--error)" />
+      stroke-dasharray="263.9" stroke-dashoffset="47.50" />
   </svg>
   <div class="info">
     <div class="label">Luxscope Score</div>
-    <div class="num">40<small>/ 100</small></div>
-    <div class="sub">4 files · 7 findings · profile default</div>
+    <div class="num">82<small>/ 100</small></div>
+    <div class="sub">57 files · 8 findings · profile default</div>
   </div>
   <div class="desc">Luxscope Score reflects findings across Security, Complexity, Documentation, Dependencies, Dead Code, Test Coverage, Other. The breakdown below shows where pressure concentrates so you know what to fix first.</div>
 </div>
-    <div class="kpis"><div class="kpi crit"><div class="label">Critical</div><div class="value">0</div></div><div class="kpi high"><div class="label">High</div><div class="value">0</div></div><div class="kpi med"><div class="label">Medium</div><div class="value">1</div></div><div class="kpi low"><div class="label">Low</div><div class="value">3</div></div><div class="kpi"><div class="label">Files Scanned</div><div class="value">4</div></div><div class="kpi"><div class="label">Findings</div><div class="value">7</div></div></div>
+    <div class="kpis"><div class="kpi crit"><div class="label">Critical</div><div class="value">0</div></div><div class="kpi high"><div class="label">High</div><div class="value">1</div></div><div class="kpi med"><div class="label">Medium</div><div class="value">2</div></div><div class="kpi low"><div class="label">Low</div><div class="value">54</div></div><div class="kpi"><div class="label">Files Scanned</div><div class="value">57</div></div><div class="kpi"><div class="label">Findings</div><div class="value">8</div></div></div>
     <h2>Score breakdown <span class="lead">7 buckets · weighted</span></h2>
-    <div class="bars"><div class="bar-row"><span class="name">Security</span><span class="score">69</span><div class="track"><div class="fill warn" style="width: 69%"></div></div><span class="weight">2500%</span></div><div class="bar-row"><span class="name">Complexity</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">2000%</span></div><div class="bar-row"><span class="name">Documentation</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">1500%</span></div><div class="bar-row"><span class="name">Dependencies</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">1500%</span></div><div class="bar-row"><span class="name">Dead Code</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">1000%</span></div><div class="bar-row"><span class="name">Test Coverage</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">1000%</span></div><div class="bar-row"><span class="name">Other</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">500%</span></div></div>
+    <div class="bars"><div class="bar-row"><span class="name">Security</span><span class="score">69</span><div class="track"><div class="fill warn" style="width: 69%"></div></div><span class="weight">25%</span></div><div class="bar-row"><span class="name">Complexity</span><span class="score">50</span><div class="track"><div class="fill med" style="width: 50%"></div></div><span class="weight">20%</span></div><div class="bar-row"><span class="name">Documentation</span><span class="score">99</span><div class="track"><div class="fill" style="width: 99%"></div></div><span class="weight">15%</span></div><div class="bar-row"><span class="name">Dependencies</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">15%</span></div><div class="bar-row"><span class="name">Dead Code</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">10%</span></div><div class="bar-row"><span class="name">Test Coverage</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">10%</span></div><div class="bar-row"><span class="name">Other</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">5%</span></div></div>
   </section>
+<section id="history">
+  <h2>History</h2>
+  <div class="kpis"><div class="kpi"><div class="label">Total Commits</div><div class="value">5,868</div></div><div class="kpi"><div class="label">First Commit</div><div class="value">2009-06-26</div></div><div class="kpi"><div class="label">Tags</div><div class="value">20</div></div></div>
+    <h3>Recent commits</h3><ul><li><code>1faf2289</code> 4.21.2 <span style="color:var(--faint);font-size:12px">Ulises Gascón · 2024-12-05</span></li><li><code>2e0fb646</code> deps: bump path-to-regexp@0.1.12 (#6209) <span style="color:var(--faint);font-size:12px">Jon Church · 2024-12-05</span></li><li><code>59fc2702</code> deps: path-to-regexp@0.1.11 (#5956) <span style="color:var(--faint);font-size:12px">Blake Embrey · 2024-10-20</span></li><li><code>51fc39cc</code> docs: add funding (#6065) <span style="color:var(--faint);font-size:12px">Sebastian Beltran · 2024-10-20</span></li><li><code>8e229f92</code> 4.21.1 <span style="color:var(--faint);font-size:12px">Ulises Gascón · 2024-10-08</span></li><li><code>a024c8a7</code> fix(deps): cookie@0.7.1 <span style="color:var(--faint);font-size:12px">Josh Buker · 2024-10-08</span></li><li><code>7e562c6d</code> 4.21.0 <span style="color:var(--faint);font-size:12px">Wes Todd · 2024-09-11</span></li><li><code>1bcde96b</code> fix(deps): qs@6.13.0 (#5946) <span style="color:var(--faint);font-size:12px">agadzinski93 · 2024-09-11</span></li><li><code>7d364775</code> fix(deps): serve-static@1.16.2 (#5951) <span style="color:var(--faint);font-size:12px">Wes Todd · 2024-09-11</span></li><li><code>40d2d8f2</code> fix(deps): finalhandler@1.3.1 <span style="color:var(--faint);font-size:12px">Wes Todd · 2024-09-11</span></li></ul>
+    <h3>Tags</h3><ul><li><code>v4.22.2</code> <span style="color:var(--faint);font-size:12px">2026-05-11</span></li><li><code>v5.2.1</code> <span style="color:var(--faint);font-size:12px">2025-12-01</span></li><li><code>v4.22.1</code> <span style="color:var(--faint);font-size:12px">2025-12-01</span></li><li><code>v5.2.0</code> <span style="color:var(--faint);font-size:12px">2025-12-01</span></li><li><code>4.22.0</code> <span style="color:var(--faint);font-size:12px">2025-12-01</span></li><li><code>v5.0.1</code> <span style="color:var(--faint);font-size:12px">2025-04-20</span></li><li><code>v5.1.0</code> <span style="color:var(--faint);font-size:12px">2025-03-28</span></li><li><code>4.21.2</code> <span style="color:var(--faint);font-size:12px">2024-12-05</span></li><li><code>4.21.1</code> <span style="color:var(--faint);font-size:12px">2024-10-08</span></li><li><code>4.21.0</code> <span style="color:var(--faint);font-size:12px">2024-09-11</span></li></ul>
+</section>
+<section id="ownership">
+  <h2>Ownership</h2>
+  <p style="color:var(--faint);font-size:13px">No CODEOWNERS file detected.</p>
+</section>
+<section id="stack">
+  <h2>Stack</h2>
+  <div class="kpis"><div class="kpi"><div class="label">Node.js</div><div class="value">&gt;= 0.10.0</div></div></div>
+</section>
+<section id="ci">
+  <h2>CI</h2>
+  <p>Platform: <strong>GitHub Actions</strong></p>
+    <div class="scanner-list"><div class="scanner-row"><div class="left"><span class="name">.github/workflows/ci.yml</span><span class="count">—</span></div><span class="badge pass">GitHub Actions</span></div><div class="scanner-row"><div class="left"><span class="name">.github/workflows/codeql.yml</span><span class="count">—</span></div><span class="badge pass">GitHub Actions</span></div><div class="scanner-row"><div class="left"><span class="name">.github/workflows/iojs.yml</span><span class="count">—</span></div><span class="badge pass">GitHub Actions</span></div></div>
+</section>
+<section id="tests">
+  <h2>Tests</h2>
+  <div class="kpis"><div class="kpi"><div class="label">Runners</div><div class="value">0</div></div><div class="kpi"><div class="label">Spec Files</div><div class="value">0</div></div><div class="kpi"><div class="label">Coverage Threshold</div><div class="value">—</div></div></div>
+</section>
+<section id="hygiene">
+  <h2>Hygiene</h2>
+  <div class="kpis"><div class="kpi"><div class="label">TODO markers</div><div class="value">3</div></div><div class="kpi"><div class="label">FIXME markers</div><div class="value">0</div></div><div class="kpi"><div class="label">Skipped tests</div><div class="value">0</div></div><div class="kpi"><div class="label">Feature flags</div><div class="value">0</div></div></div>
+</section>
+<section id="deps">
+  <h2>Dependencies</h2>
+  <div class="kpis"><div class="kpi"><div class="label">Dependencies</div><div class="value">31</div></div><div class="kpi"><div class="label">Dev Dependencies</div><div class="value">16</div></div><div class="kpi"><div class="label">Majors Behind</div><div class="value">0</div></div><div class="kpi"><div class="label">Deprecated</div><div class="value">0</div></div><div class="kpi"><div class="label">Copyleft Licenses</div><div class="value">0</div></div><div class="kpi"><div class="label">Unknown Licenses</div><div class="value">0</div></div></div>
+</section>
+<section id="handoff-docs">
+  <h2>Documents</h2>
+  <p>23 handoff document(s) generated from the codebase. Expand each to read inline.</p>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">HANDOFF</summary>
+  <div class="doc-md"><h1>express-pin — Developer Handoff</h1>
+<blockquote>
+<p><strong>Entry point.</strong> Read this first. Everything else is referenced from here.</p>
+</blockquote>
+<p>Generated: 2026-05-15 03:58:32 UTC · Repo root: <code>/tmp/express-pin</code> · Remote: <code>https://github.com/expressjs/express.git</code></p>
+<hr>
+<h2>1. What is this?</h2>
+<p><strong>express</strong> — project manifest detected from <code>package.json</code>.</p>
+<p><strong>Detected stack:</strong> (none)</p>
+<p><strong>Repository signals:</strong></p>
+<ul>
+<li>Prisma models: 0 (0 enums, 0 relations)</li>
+<li>NestJS controllers: 0 (0 endpoints)</li>
+<li>Next.js routes: 0 app/ + 0 pages/</li>
+<li>Frontend components: 0</li>
+</ul>
+<p>Full stack + topology: see <a href="#section-arch">ARCHITECTURE</a> · <a href="#section-infra">INFRASTRUCTURE</a></p>
+<hr>
+<h2>2. Current state</h2>
+<ul>
+<li><strong>Branch:</strong> <code>HEAD</code></li>
+<li><strong>HEAD:</strong> <code>1faf228935aa</code></li>
+<li><strong>Remote:</strong> <a href="https://github.com/expressjs/express.git">https://github.com/expressjs/express.git</a></li>
+</ul>
+<p>Recent commits:</p>
+<ul>
+<li><code>1faf2289</code> 4.21.2 — <em>Ulises Gascón</em> (2024-12-05)</li>
+<li><code>2e0fb646</code> deps: bump <a href="mailto:path-to-regexp@0.1.12">path-to-regexp@0.1.12</a> (#6209) — <em>Jon Church</em> (2024-12-05)</li>
+<li><code>59fc2702</code> deps: <a href="mailto:path-to-regexp@0.1.11">path-to-regexp@0.1.11</a> (#5956) — <em>Blake Embrey</em> (2024-10-20)</li>
+<li><code>51fc39cc</code> docs: add funding (#6065) — <em>Sebastian Beltran</em> (2024-10-20)</li>
+<li><code>8e229f92</code> 4.21.1 — <em>Ulises Gascón</em> (2024-10-08)</li>
+</ul>
+<hr>
+<h2>3. Top 10 risks (bus-factor warning)</h2>
+<p>Generated by Luxscope static analysis (static + churn + ownership).</p>
+<p><strong>Band totals:</strong> 1 HIGH · 2 MED · 54 LOW (57 files scanned)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>File</th>
+<th>Score</th>
+<th>Owner</th>
+<th>Churn 90d</th>
+<th>Band</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>lib/router/index.js</code></td>
+<td><strong>73</strong></td>
+<td>Tj Holowaychuk</td>
+<td>—</td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>test/res.redirect.js</code></td>
+<td><strong>51</strong></td>
+<td>Tj Holowaychuk</td>
+<td>—</td>
+<td>MED</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>lib/response.js</code></td>
+<td><strong>46</strong></td>
+<td>Tj Holowaychuk</td>
+<td>—</td>
+<td>MED</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>examples/view-locals/index.js</code></td>
+<td><strong>19</strong></td>
+<td>TJ Holowaychuk</td>
+<td>—</td>
+<td>LOW</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>examples/route-middleware/index.js</code></td>
+<td><strong>15</strong></td>
+<td>Douglas Christopher Wilson</td>
+<td>—</td>
+<td>LOW</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>lib/application.js</code></td>
+<td><strong>14</strong></td>
+<td>Tj Holowaychuk</td>
+<td>—</td>
+<td>LOW</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>lib/view.js</code></td>
+<td><strong>13.4</strong></td>
+<td>Tj Holowaychuk</td>
+<td>—</td>
+<td>LOW</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>examples/auth/index.js</code></td>
+<td><strong>11</strong></td>
+<td>Douglas Christopher Wilson</td>
+<td>—</td>
+<td>LOW</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>lib/router/layer.js</code></td>
+<td><strong>11</strong></td>
+<td>Douglas Christopher Wilson</td>
+<td>—</td>
+<td>LOW</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>lib/utils.js</code></td>
+<td><strong>11</strong></td>
+<td>TJ Holowaychuk</td>
+<td>—</td>
+<td>LOW</td>
+</tr>
+</tbody></table>
+<p>Full risk dashboard: <a href="./risks/RISKS.md"><code>risks/RISKS.md</code></a> · <a href="./risks/SUMMARY.txt"><code>risks/SUMMARY.txt</code></a>. Interactive site: <a href="./web/index.html"><code>web/index.html</code></a>. Per-file explain files: <a href="./explain/"><code>explain/</code></a>.</p>
+<hr>
+<h2>4. How to get started</h2>
+<ol>
+<li>Read <a href="./README.md">README</a> — install, dev scripts, ports.</li>
+<li>Read <a href="./ARCHITECTURE.md">ARCHITECTURE</a> — topology, request flows.</li>
+<li>Read <a href="./BEST_PRACTICES.md">BEST_PRACTICES</a> — git workflow + commit conventions.</li>
+<li>Read <a href="./DEPLOYMENT.md">DEPLOYMENT</a> before touching staging/prod.</li>
+<li>Read <a href="./RUNBOOK.md">RUNBOOK</a> on first incident.</li>
+</ol>
+<hr>
+<h2>5. Aux artefacts</h2>
+<ul>
+<li><a href="./diagrams/module-graph.html"><code>diagrams/module-graph.html</code></a></li>
+<li><a href="./diagrams/call-graph.html"><code>diagrams/call-graph.html</code></a></li>
+<li><a href="./diagrams/classes.html"><code>diagrams/classes.html</code></a></li>
+<li><a href="./diagrams/er-diagram.html"><code>diagrams/er-diagram.html</code></a> (Prisma-based)</li>
+<li><a href="./risks/risks.json"><code>risks/risks.json</code></a>, <a href="./risks/risks.sarif"><code>risks/risks.sarif</code></a></li>
+</ul>
+<hr>
+<h2>Code ownership</h2>
+<p><em>No <code>CODEOWNERS</code> file detected. Add <code>.github/CODEOWNERS</code> so reviewers are auto-requested and new contributors know who maintains what.</em></p>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">README</summary>
+  <div class="doc-md"><h1>express-pin — Local Developer Setup</h1>
+<p>Generated by Luxscope handoff. Re-run <code>luxscope handoff</code> to refresh.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li><strong>Node.js</strong> &gt;= 0.10.0</li>
+<li><strong>Package manager</strong>: <code>npm</code></li>
+</ul>
+<h2>Setup</h2>
+<ol>
+<li><code>git clone https://github.com/expressjs/express.git</code></li>
+<li><code>cd express-pin</code></li>
+<li><code>npm install</code></li>
+</ol>
+<h2>Run dev</h2>
+<p><em>(none detected)</em></p>
+<p><strong>Detected service ports</strong> (from <code>docker-compose.yml</code>):</p>
+<p><em>(none detected via docker-compose; check framework defaults: Next.js 3000, NestJS 3000, Express varies)</em></p>
+<h2>Test</h2>
+<p><strong>Unit:</strong></p>
+<ul>
+<li><code>npm run test</code> — mocha --require test/support/env --reporter spec --bail --check-leaks test/ test/acceptance/</li>
+</ul>
+<h2>Quality gates</h2>
+<ul>
+<li><code>npm run lint</code> — eslint .</li>
+</ul>
+<h2>Environment</h2>
+<ul>
+<li>See <code>.env.example</code> (if present at repo root) for required variables.</li>
+<li>See <a href="./DEPLOYMENT.md"><code>DEPLOYMENT.md</code></a> for staging/production env handling.</li>
+</ul>
+<h2>What next</h2>
+<ul>
+<li>New to the codebase? Read <a href="./HANDOFF.md"><code>HANDOFF.md</code></a> and <a href="./HOWTO.md"><code>HOWTO.md</code></a>.</li>
+<li>Architecture overview: <a href="./ARCHITECTURE.md"><code>ARCHITECTURE.md</code></a>.</li>
+<li>Contribution rules: <a href="./BEST_PRACTICES.md"><code>BEST_PRACTICES.md</code></a>.</li>
+</ul>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">HOWTO</summary>
+  <div class="doc-md"><h1>express-pin — How To</h1>
+<p>Stack-specific playbook. Read <a href="./README.md"><code>README.md</code></a> first for setup; this file is the day-1 / week-1 task playbook.</p>
+<h2>Day 1</h2>
+<ul>
+<li><p>Read <a href="./HANDOFF.md"><code>HANDOFF.md</code></a> (entry point) and <a href="./ARCHITECTURE.md"><code>ARCHITECTURE.md</code></a> (topology).</p>
+</li>
+<li><p>Run dev locally per <a href="./README.md#run-dev"><code>README.md</code></a>.</p>
+</li>
+<li><p>Hit a health endpoint (look in <code>API_REFERENCE_DETAIL.md</code> for <code>/health</code>, <code>/healthz</code>, <code>/ping</code>).</p>
+</li>
+<li><p>Run the full test suite once to confirm a clean baseline:</p>
+<pre><code class="language-bash">npm test
+</code></pre>
+</li>
+<li><p>Skim <a href="./risks/RISKS.md"><code>risks/RISKS.md</code></a> — top 10 files are the bus-factor + complexity hot spots.</p>
+</li>
+</ul>
+<h2>Week 1 — Common operations</h2>
+<h3>Ship a change</h3>
+<ol>
+<li>Branch from <code>main</code> (or <code>develop</code> if the repo uses GitFlow).</li>
+<li>Make the change. Keep the PR ≤ 400 LOC where possible.</li>
+<li>Run quality gates locally — see <a href="./README.md#quality-gates"><code>README.md</code></a>.</li>
+<li>Open a PR; follow conventions in <a href="./BEST_PRACTICES.md"><code>BEST_PRACTICES.md</code></a>.</li>
+<li>Wait for CI green + 1 reviewer approval before merge.</li>
+</ol>
+<h2>Where to look when something breaks</h2>
+<ul>
+<li><a href="./RUNBOOK.md"><code>RUNBOOK.md</code></a> — incident playbooks</li>
+<li><a href="./risks/HIGH.md"><code>risks/HIGH.md</code></a> — files most likely to be the source of bugs</li>
+<li><a href="./SECURITY.md"><code>SECURITY.md</code></a> — auth and data protection conventions</li>
+</ul>
+<h2>Work in progress / known unknowns</h2>
+<h3>Source markers (3)</h3>
+<p><strong>3</strong> TODO</p>
+<h3>Open pull requests (30)</h3>
+<p>Fetched from GitHub via the <code>gh</code> CLI. Mid-flight changes — coordinate before stomping on these branches.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Title</th>
+<th>Branch</th>
+<th>Author</th>
+<th>Labels</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>#7045</td>
+<td>fix: non standard status code will result in undefined</td>
+<td><code>statusMessage</code></td>
+<td>@cuiweixie</td>
+<td>—</td>
+</tr>
+<tr>
+<td>#7047</td>
+<td>Refactor X-Forwarded-Host value extraction</td>
+<td><code>patch-1</code></td>
+<td>@ProxyLoader</td>
+<td>—</td>
+</tr>
+<tr>
+<td>#7050</td>
+<td>Improve test coverage for <code>res.set()</code> edge cases</td>
+<td><code>master</code></td>
+<td>@RlxChap2</td>
+<td>—</td>
+</tr>
+<tr>
+<td>#7051</td>
+<td>fix: make view engine extension matching case-insensitive</td>
+<td><code>fix/case-insensitive-view-engine-ext</code></td>
+<td>@erdinccurebal</td>
+<td>—</td>
+</tr>
+<tr>
+<td>#7059</td>
+<td>refactor(deps): migrate connect-redis from v8 to v9</td>
+<td><code>deps/upgrade-connect-redis-9.0.0</code></td>
+<td>@digital-wizard48</td>
+<td>—</td>
+</tr>
+<tr>
+<td>#7061</td>
+<td>refactor(deps): migrate express-session from v1.18.1 to v1.19.0</td>
+<td><code>deps/upgrade-express-session-1.19.0</code></td>
+<td>@digital-wizard48</td>
+<td>—</td>
+</tr>
+<tr>
+<td>#7092</td>
+<td>fix: replace deprecated module.parent with require.main === module in…</td>
+<td><code>fix/replace-module-parent-in-examples</code></td>
+<td>@sehrishanam1</td>
+<td><code>examples</code></td>
+</tr>
+<tr>
+<td>#7105</td>
+<td>Unit test cases for uncovered lines for response.js file</td>
+<td><code>master</code></td>
+<td>@ashish3011</td>
+<td><code>tests</code></td>
+</tr>
+<tr>
+<td>#7107</td>
+<td>fix: use safe stringification for status code error messages</td>
+<td><code>fix/status-code-bigint-error-message</code></td>
+<td>@AkaHarshit</td>
+<td>—</td>
+</tr>
+<tr>
+<td>#7112</td>
+<td>achieve 100% test coverage in expressjs</td>
+<td><code>master</code></td>
+<td>@bhavya3024</td>
+<td>—</td>
+</tr>
+<tr>
+<td>#7113</td>
+<td>Fix issue #5995, added cookie encryption</td>
+<td><code>fix-issue-#5995</code></td>
+<td>@emilANS</td>
+<td>—</td>
+</tr>
+<tr>
+<td>#7117</td>
+<td>Fix query parameter truncation with configurable limit (fixes #5878)</td>
+<td><code>fix-query-param-limit-5878-new</code></td>
+<td>@nmurrell07</td>
+<td>—</td>
+</tr>
+<tr>
+<td>#7119</td>
+<td>clarify express-generator is still 4.x</td>
+<td><code>docs/clarify-generator-version</code></td>
+<td>@AzmeerX</td>
+<td><code>docs</code></td>
+</tr>
+<tr>
+<td>#7130</td>
+<td>fix: handle BigInt status codes in res.status() and res.sendStatus()</td>
+<td><code>fix/bigint-status-handling</code></td>
+<td>@JivinSardine</td>
+<td>—</td>
+</tr>
+<tr>
+<td>#7132</td>
+<td>Fix fallback for unknown Content-Type values (#7034)</td>
+<td><code>fix/issue-7034-content-type-fallback</code></td>
+<td>@raashish1601</td>
+<td>—</td>
+</tr>
+<tr>
+<td>#7135</td>
+<td>Update path-to-regexp to 0.1.13 to fix CVE-2026-4867</td>
+<td><code>makkuznetsov/update-path-regexp</code></td>
+<td>@baryman</td>
+<td><code>4.x</code> · <code>deps</code> · <code>dependencies</code></td>
+</tr>
+<tr>
+<td>#7142</td>
+<td>fix: add path containment check in View.prototype.lookup()</td>
+<td><code>fix/view-lookup-path-containment</code></td>
+<td>@som14062005</td>
+<td>—</td>
+</tr>
+<tr>
+<td>#7144</td>
+<td>chore: ensure safe config in the npmrc</td>
+<td><code>safe-npmrc</code></td>
+<td>@sheplu</td>
+<td>—</td>
+</tr>
+<tr>
+<td>#7146</td>
+<td>fix(res.set): remove implicit mime lookup and charset injection for Content-Type</td>
+<td><code>fix/res-set-no-mime-lookup</code></td>
+<td>@Pandey-Krishnaa</td>
+<td>—</td>
+</tr>
+<tr>
+<td>#7151</td>
+<td>fix: keep repeated extended query params as arrays beyond 20 values</td>
+<td><code>fix-7147-query-array-limit</code></td>
+<td>@wwenrr</td>
+<td><code>5.x</code> · <code>awaiting reviewer</code></td>
+</tr>
+<tr>
+<td>#7152</td>
+<td>build(deps-dev): bump hbs from 4.2.0 to 4.2.1</td>
+<td><code>dependabot/npm_and_yarn/hbs-4.2.1</code></td>
+<td>@app/dependabot</td>
+<td><code>dependencies</code> · <code>javascript</code></td>
+</tr>
+<tr>
+<td>#7161</td>
+<td>fix: fall back to JSON when JSONP callback sanitizes to empty</td>
+<td><code>fix/jsonp-empty-callback</code></td>
+<td>@andrewstellman</td>
+<td>—</td>
+</tr>
+<tr>
+<td>#7171</td>
+<td>feat: add diagnostic channels for request lifecycle</td>
+<td><code>feat/diagnostics-channel-request-lifecycle</code></td>
+<td>@OussemaNehdi</td>
+<td>—</td>
+</tr>
+<tr>
+<td>#7210</td>
+<td>build(deps): bump actions/setup-node from 6.3.0 to 6.4.0</td>
+<td><code>dependabot/github_actions/actions/setup-node-6.4.0</code></td>
+<td>@app/dependabot</td>
+<td><code>dependencies</code> · <code>github_actions</code></td>
+</tr>
+<tr>
+<td>#7211</td>
+<td>build(deps): bump actions/upload-artifact from 7.0.0 to 7.0.1</td>
+<td><code>dependabot/github_actions/actions/upload-artifact-7.0.1</code></td>
+<td>@app/dependabot</td>
+<td><code>dependencies</code> · <code>github_actions</code></td>
+</tr>
+<tr>
+<td>#7212</td>
+<td>build(deps): bump github/codeql-action from 4.35.1 to 4.35.2</td>
+<td><code>dependabot/github_actions/github/codeql-action-4.35.2</code></td>
+<td>@app/dependabot</td>
+<td><code>dependencies</code> · <code>github_actions</code></td>
+</tr>
+<tr>
+<td>#7218</td>
+<td>ci: build express with node.js v26</td>
+<td><code>build-node26</code></td>
+<td>@shivarm</td>
+<td><code>dependencies</code> · <code>github_actions</code></td>
+</tr>
+<tr>
+<td>#7229</td>
+<td>Skip default logging for client errors</td>
+<td><code>codex/skip-client-error-logging</code></td>
+<td>@raashish1601</td>
+<td>—</td>
+</tr>
+<tr>
+<td>#7233</td>
+<td>Upgrade <code>content-disposition</code></td>
+<td><code>be/upgrade-content-disposition</code></td>
+<td>@blakeembrey</td>
+<td>—</td>
+</tr>
+<tr>
+<td>#7234</td>
+<td>Upgrade <code>content-type</code></td>
+<td><code>be/upgrade-content-type</code></td>
+<td>@blakeembrey</td>
+<td>—</td>
+</tr>
+</tbody></table>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">ARCHITECTURE</summary>
+  <div class="doc-md"><h1>express-pin — Architecture</h1>
+<p>Detected no containers, 1 persona, 0 external systems. The diagrams below are deterministic — they reflect manifests, framework scanners, and infrastructure files. Run <code>luxscope docs build --level hub --with-ai</code> to add narrative prose without overwriting the C4 blocks.</p>
+<h2>Context (C4 Level 1)</h2>
+<pre><code class="language-mermaid">C4Context
+  title System Context for express-pin
+  Person(user, &quot;End user&quot;, &quot;Application user&quot;)
+  System(system, &quot;express-pin&quot;, &quot;Application under documentation&quot;)
+  Rel(user, system, &quot;Uses&quot;, &quot;HTTPS&quot;)
+  UpdateLayoutConfig($c4ShapeInRow=&quot;3&quot;, $c4BoundaryInRow=&quot;2&quot;)
+</code></pre>
+<h2>Containers (C4 Level 2)</h2>
+<pre><code class="language-mermaid">C4Container
+  title Container View for express-pin
+  Person(user, &quot;End user&quot;)
+  System_Boundary(boundary_express_pin, &quot;express-pin&quot;) {
+  }
+</code></pre>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">API REFERENCE</summary>
+  <div class="doc-md"><h1>express-pin — API Reference</h1>
+<p>No NestJS controllers detected via AST scan. If this project uses a different HTTP framework or an OpenAPI spec, add <code>openapi.json</code> at the repo root and re-run <code>luxscope handoff</code>.</p>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">DB SCHEMA</summary>
+  <div class="doc-md"><h1>express-pin — Database Schema</h1>
+<p>No <code>prisma/schema.prisma</code> detected. If this project uses a different ORM (TypeORM, Drizzle, Sequelize), the ER diagram is not yet supported.</p>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">FRONTEND</summary>
+  <div class="doc-md"><h1>express-pin — Frontend</h1>
+<p>No Next.js <code>app/</code> or <code>pages/</code> routes detected.</p>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">BEST PRACTICES</summary>
+  <div class="doc-md"><h1>express-pin — Best Practices</h1>
+<p><em>No <code>CLAUDE.md</code> / <code>AGENTS.md</code> / <code>.cursorrules</code> detected. This document is a deterministic skeleton; run <code>luxscope handoff --ai</code> (premium) to fill guidance from CONTRIBUTING + CI config.</em></p>
+<h2>Testing</h2>
+<ul>
+<li>(not detected in scan)</li>
+</ul>
+<h2>Linting</h2>
+<ul>
+<li>Tools: eslint</li>
+<li>Scripts: <code>lint</code></li>
+</ul>
+<h2>CI</h2>
+<ul>
+<li><code>.github/workflows/ci.yml</code></li>
+<li><code>.github/workflows/codeql.yml</code></li>
+<li><code>.github/workflows/iojs.yml</code></li>
+</ul>
+<h2>Release</h2>
+<ul>
+<li>(not detected in scan)</li>
+</ul>
+<h2>Conventions to confirm</h2>
+<ul>
+<li>Branch + commit conventions</li>
+<li>PR flow and review gates</li>
+<li>Testing expectations</li>
+<li>Release / deploy process</li>
+</ul>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">DEPLOYMENT</summary>
+  <div class="doc-md"><h1>express-pin — Deployment</h1>
+<p><strong>Branch:</strong> <code>HEAD</code> · <strong>HEAD:</strong> <code>1faf228935aa</code></p>
+<h2>CI workflows detected</h2>
+<ul>
+<li><code>.github/workflows/ci.yml</code></li>
+<li><code>.github/workflows/codeql.yml</code></li>
+<li><code>.github/workflows/iojs.yml</code></li>
+</ul>
+<h2>Infrastructure detected</h2>
+<ul>
+<li>Dockerfiles: 0</li>
+<li>docker-compose files: 0</li>
+<li>Terraform dirs: 0</li>
+<li>Kubernetes manifests: 0</li>
+</ul>
+<p><em>Narrative deployment procedure deferred to <code>luxscope handoff --ai</code> (premium).</em></p>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">RUNBOOK</summary>
+  <div class="doc-md"><h1>express-pin — Runbook</h1>
+<p><em>No runbooks detected at <code>docs/runbooks/</code> or <code>runbooks/</code>. The skeleton below is a deterministic placeholder; run <code>luxscope handoff --ai</code> (premium) to synthesize an incident playbook from git history.</em></p>
+<h2>Observability</h2>
+<h2>Recent fix commits (auto-detected)</h2>
+<ul>
+<li><code>a024c8a7</code> fix(deps): <a href="mailto:cookie@0.7.1">cookie@0.7.1</a></li>
+<li><code>1bcde96b</code> fix(deps): <a href="mailto:qs@6.13.0">qs@6.13.0</a> (#5946)</li>
+<li><code>7d364775</code> fix(deps): <a href="mailto:serve-static@1.16.2">serve-static@1.16.2</a> (#5951)</li>
+<li><code>40d2d8f2</code> fix(deps): <a href="mailto:finalhandler@1.3.1">finalhandler@1.3.1</a></li>
+<li><code>54271f69</code> fix: don&#39;t render redirect values in anchor href</li>
+</ul>
+<h2>Common incidents</h2>
+<p>Each entry: <strong>Symptom → Diagnosis → Fix</strong>.</p>
+<ul>
+<li><strong>Deployment failure</strong>: check CI workflow logs in <code>.github/workflows/</code>. Last deployable commit: see fix commits above.</li>
+<li><strong>Database migration failure</strong>: check for pending migrations. Roll back to previous release tag.</li>
+<li><strong>Service unavailability</strong>: verify health endpoints and container/process status.</li>
+<li><em>Add repo-specific incidents as they occur.</em></li>
+</ul>
+<h2>Rollback procedures</h2>
+<ul>
+<li>Identify the last stable git tag: <code>git tag --sort=-creatordate | head -5</code></li>
+<li>Create a revert PR or cherry-pick the breaking commit.</li>
+<li>If DB migration ran: restore from pre-migration backup before reverting code.</li>
+<li><em>Document repo-specific rollback procedures here.</em></li>
+</ul>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">INFRASTRUCTURE</summary>
+  <div class="doc-md"><h1>express-pin — Infrastructure</h1>
+<h2>CI Workflows</h2>
+<ul>
+<li><code>.github/workflows/ci.yml</code></li>
+<li><code>.github/workflows/codeql.yml</code></li>
+<li><code>.github/workflows/iojs.yml</code></li>
+</ul>
+<h2>Stack version pins</h2>
+<p>Authoritative versions for the moving pieces. When upgrading, treat this table as the contract: bump it with the change, not after.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Version</th>
+<th>Category</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Node.js</td>
+<td><code>&gt;= 0.10.0</code></td>
+<td>runtime</td>
+<td>package.json <code>engines.node</code></td>
+</tr>
+</tbody></table>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">SECURITY</summary>
+  <div class="doc-md"><h1>express-pin — Security</h1>
+<p><em>No <code>docs/SECURITY.md</code> detected. This document is a deterministic skeleton; run <code>luxscope handoff --ai</code> (premium) to synthesize policy prose.</em></p>
+<h2>Detected auth libraries</h2>
+<ul>
+<li>(no auth libraries auto-detected)</li>
+</ul>
+<h2>Session / token model</h2>
+<ul>
+<li>express-session</li>
+<li>cookie-session</li>
+</ul>
+<h2>Roles / authorization</h2>
+<ul>
+<li>(not detected in scan)</li>
+</ul>
+<h2>Encryption at rest</h2>
+<ul>
+<li>(not detected in scan)</li>
+</ul>
+<h2>Audit logging</h2>
+<ul>
+<li>(not detected in scan)</li>
+</ul>
+<h3>Open gaps (verify manually)</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Rate limiting (express-rate-limit / @nestjs/throttler)</li>
+<li><input disabled="" type="checkbox"> Content Security Policy headers</li>
+<li><input disabled="" type="checkbox"> CSRF protection</li>
+<li><input disabled="" type="checkbox"> Audit log retention policy</li>
+<li><input disabled="" type="checkbox"> Secrets rotation procedure</li>
+</ul>
+<h2>Sections still requiring manual or AI authoring</h2>
+<ul>
+<li>Authentication flow (sequence diagram per identity source)</li>
+<li>Authorization model (roles, tenant scoping, RLS)</li>
+<li>Data protection (at rest, in transit, encrypted columns, DLQ encryption)</li>
+<li>CSP / WAF / rate limiting policies</li>
+<li>Audit logging retention</li>
+<li>Known open security issues</li>
+<li>SOC 2 / compliance posture</li>
+</ul>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">ENV VARS</summary>
+  <div class="doc-md"><h1>express-pin — Environment Variables</h1>
+<p>Detected <strong>3</strong> distinct environment variables.
+No <code>.env.example</code> / <code>.env.sample</code> / <code>.env.template</code> found at repo root — the table below is grep-only and <code>Required</code> is best-effort.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Required</th>
+<th>Default</th>
+<th>Consumers</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>MW</code></td>
+<td>yes</td>
+<td>—</td>
+<td><code>benchmarks/middleware.js</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>NO_DEPRECATION</code></td>
+<td>yes</td>
+<td>—</td>
+<td><code>test/support/env.js</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>NODE_ENV</code></td>
+<td>yes</td>
+<td>—</td>
+<td><code>examples/cookies/index.js</code>, <code>examples/error-pages/index.js</code> +4</td>
+<td></td>
+</tr>
+</tbody></table>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">MIGRATIONS</summary>
+  <div class="doc-md"><h1>express-pin — Migration History</h1>
+<p>No migrations directory detected. Luxscope looked in: <code>prisma/migrations</code>, <code>apps/api/prisma/migrations</code>, <code>packages/db/prisma/migrations</code>, <code>db/migrations</code>, <code>migrations</code>, <code>supabase/migrations</code>.</p>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">TEST STRATEGY</summary>
+  <div class="doc-md"><h1>express-pin — Test Strategy &amp; Coverage Map</h1>
+<p>Deterministic snapshot of test infrastructure: which runners are configured, where specs live, what coverage CI enforces, and what&#39;s currently shipping.</p>
+<h2>Latest coverage report</h2>
+<p><em>No <code>coverage/coverage-summary.json</code> found. Run the coverage script (often <code>test:cov</code>, <code>test --coverage</code>, or <code>vitest run --coverage</code>) to generate one before relying on these numbers.</em></p>
+<h2>Test scripts</h2>
+<p>Detected test entry points across workspaces.</p>
+<table>
+<thead>
+<tr>
+<th>Workspace</th>
+<th>Script</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>express</code></td>
+<td><code>test</code></td>
+<td><code>mocha --require test/support/env --reporter spec --bail --check-leaks test/ test/acceptance/</code></td>
+</tr>
+</tbody></table>
+<h2>Layer guidance</h2>
+<ul>
+<li><strong>Unit</strong> — pure functions, mock external dependencies, no network. Fast.</li>
+<li><strong>Integration</strong> — boots the framework, hits a real database or in-memory equivalent. Catches wiring bugs unit tests miss.</li>
+<li><strong>E2E</strong> — spawns the full stack, drives the public surface (HTTP, browser). Slowest; reserve for journey coverage.</li>
+</ul>
+<p>Default to the highest-speed layer that can still fail when the bug returns.</p>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">DEBUGGING</summary>
+  <div class="doc-md"><h1>express-pin — Local Debugging Recipes</h1>
+<p><em>No log directories, health endpoints, dev scripts, or stack-detected recipes found.</em></p>
+<p>Document the local debugging entry points by hand in <code>HOWTO.md</code> if they live outside the standard paths.</p>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">FIRST COMMIT</summary>
+  <div class="doc-md"><h1>express-pin — First Commit Guide</h1>
+<p>Everything a new contributor needs to land their first PR without burning a half-day on convention discovery.</p>
+<h2>1. Preflight checklist</h2>
+<ul>
+<li>Read <a href="../../CONTRIBUTING.md"><code>CONTRIBUTING.md</code></a> — repo-specific contribution rules.</li>
+<li>Pull <code>main</code> (or the project&#39;s default branch) and create your branch from it.</li>
+</ul>
+<h2>2. Branch naming</h2>
+<p><em>No branch policy detected. Conventional choice: <code>feat/short-slug</code> for features, <code>fix/short-slug</code> for fixes.</em></p>
+<h2>3. Commit format</h2>
+<p><em>No commitlint config detected. Default to Conventional Commits (<code>feat:</code> / <code>fix:</code> / <code>chore:</code> / <code>docs:</code>).</em></p>
+<h2>4. Hooks that run automatically</h2>
+<p><em>No <code>.husky/</code> hooks detected. CI is the only line of defense — pull recent main before pushing.</em></p>
+<h2>5. Low-risk first-PR ideas</h2>
+<p>Detected directly from the repo. Each one is small enough to ship in a single PR:</p>
+<ul>
+<li><strong>TODO</strong> at <a href="../../lib/request.js"><code>lib/request.js:452</code></a> — change req.host to return host in next major</li>
+<li><strong>TODO</strong> at <a href="../../test/express.static.js"><code>test/express.static.js:70</code></a> — @txt&#39;)</li>
+<li><strong>TODO</strong> at <a href="../../test/express.static.js"><code>test/express.static.js:720</code></a> — @txt&#39;)</li>
+</ul>
+<h2>6. Final checklist before pushing</h2>
+<ul>
+<li>Tests pass for the area you touched.</li>
+<li>TypeScript / build is clean for the affected workspace.</li>
+<li>Commit message matches the format above.</li>
+<li>Branch name matches the policy above.</li>
+<li>Push, then open a PR against the default branch.</li>
+</ul>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">ONBOARDING</summary>
+  <div class="doc-md"><h1>express-pin — Onboarding Checklist</h1>
+<p>Concrete deliverables for a new engineer joining this repo. Every item points at a real file, command, or signal already detected in this bundle — no aspirational filler.</p>
+<h2>Day 1 — Boot the system</h2>
+<p>Goal: clone the repo, get the local stack up, hit one endpoint successfully, and read enough docs to know where things live.</p>
+<ul>
+<li><input disabled="" type="checkbox"> Clone the repo and read <code>README.md</code> + <code>HOWTO.md</code> end-to-end.</li>
+<li><input disabled="" type="checkbox"> Install Node <code>&gt;= 0.10.0</code> (engine pinned in <code>package.json</code>).</li>
+<li><input disabled="" type="checkbox"> Run <code>npm install</code> (or the equivalent for your package manager).</li>
+<li><input disabled="" type="checkbox"> Confirm services are listening on their expected ports.</li>
+<li><input disabled="" type="checkbox"> Pair with someone for 30 minutes — let them walk you through their last PR.</li>
+</ul>
+<h2>Week 1 — Build a mental model</h2>
+<p>Goal: read enough code to know what&#39;s load-bearing, what&#39;s risky, and how the team works.</p>
+<ul>
+<li><input disabled="" type="checkbox"> Read the top-risk files end-to-end (these are where the team gets paged):<ul>
+<li><a href="../../lib/router/index.js"><code>lib/router/index.js</code></a> — band HIGH (56 findings)</li>
+<li><a href="../../test/res.redirect.js"><code>test/res.redirect.js</code></a> — band MED (4 findings)</li>
+<li><a href="../../lib/response.js"><code>lib/response.js</code></a> — band MED (32 findings)</li>
+<li><a href="../../examples/view-locals/index.js"><code>examples/view-locals/index.js</code></a> — band LOW (20 findings)</li>
+<li><a href="../../examples/route-middleware/index.js"><code>examples/route-middleware/index.js</code></a> — band LOW (16 findings)</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"> Run the full test suite at least once: <code>npm test</code> (so you know what &quot;green&quot; looks like locally).</li>
+<li><input disabled="" type="checkbox"> Ship a low-risk first PR — see <code>FIRST_COMMIT.md</code> for surfaced TODOs and skipped tests.</li>
+</ul>
+<h2>Month 1 — Own a slice</h2>
+<p>Goal: be the go-to person for at least one area of the system.</p>
+<ul>
+<li><input disabled="" type="checkbox"> Be primary reviewer on at least 5 PRs in your domain area.</li>
+<li><input disabled="" type="checkbox"> Lead a 30-minute walkthrough of one area for the next new hire.</li>
+</ul>
+<h2>Sign-off</h2>
+<p>Work down the boxes in order. When the Month-1 list is fully checked, you&#39;re no longer onboarding — you&#39;re a maintainer.</p>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">GLOSSARY</summary>
+  <div class="doc-md"><h1>express-pin — Glossary</h1>
+<p><em>No domain terms extracted. Add Prisma models, NestJS controllers, or hand-written runbooks to populate this section.</em></p>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">API RECIPES</summary>
+  <div class="doc-md"><h1>express-pin — API Recipes</h1>
+<p><em>No NestJS endpoints or Next.js routes detected.</em></p>
+<p>If the API uses a different framework (FastAPI, Express, Rails, ...), document the recipes by hand in <code>HOWTO.md</code>.</p>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">ADR INDEX</summary>
+  <div class="doc-md"><h1>express-pin — ADR Index</h1>
+<p><em>No ADRs detected. Luxscope looked under <code>docs/adr/</code>, <code>docs/decisions/</code>, and any <code>*.adr.md</code> files.</em></p>
+<p>Even one ADR is better than none — start with a 5-line decision record the next time the team makes a non-obvious call.</p>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">PERF + I18N</summary>
+  <div class="doc-md"><h1>express-pin — Performance &amp; Internationalization</h1>
+<p><em>No performance instrumentation or i18n machinery detected.</em></p>
+<p>If perf metrics or translations live elsewhere (separate ops repo, vendor UI), document the location here by hand.</p>
+</div>
+</details>
+<details class="handoff-doc-details">
+  <summary class="handoff-doc-summary">ER Diagram</summary>
+  <div class="doc-md"><h1>express-pin — ER Diagram</h1>
+<p>No Prisma schema detected. Diagram unavailable.</p>
+</div>
+</details>
+</section>
 <section id="gates">
   <h2>Gates</h2>
-  <div class="scanner-list"><div class="scanner-row"><div class="left"><span class="name">no_high_risk_files</span><span class="count">0 files exceed HIGH-risk threshold.</span></div><span class="badge pass">Pass</span></div><div class="scanner-row"><div class="left"><span class="name">no_secrets_detected</span><span class="count">No secrets detected.</span></div><span class="badge pass">Pass</span></div><div class="scanner-row"><div class="left"><span class="name">license_compliant</span><span class="count">No license violations.</span></div><span class="badge pass">Pass</span></div><div class="scanner-row"><div class="left"><span class="name">no_critical_findings</span><span class="count">2 high-severity high-confidence finding(s).</span></div><span class="badge found">Triggered</span></div><div class="scanner-row"><div class="left"><span class="name">test_coverage_minimum</span><span class="count">Coverage not measured.</span></div><span class="badge pass">Pass</span></div></div>
+  <div class="scanner-list"><div class="scanner-row"><div class="left"><span class="name">no_high_risk_files</span><span class="count">1 files in HIGH band — threshold is 0.</span></div><span class="badge found">Triggered</span></div><div class="scanner-row"><div class="left"><span class="name">no_secrets_detected</span><span class="count">No secrets detected.</span></div><span class="badge pass">Pass</span></div><div class="scanner-row"><div class="left"><span class="name">license_compliant</span><span class="count">No license violations.</span></div><span class="badge pass">Pass</span></div><div class="scanner-row"><div class="left"><span class="name">no_critical_findings</span><span class="count">4 high-severity high-confidence finding(s).</span></div><span class="badge found">Triggered</span></div><div class="scanner-row"><div class="left"><span class="name">test_coverage_minimum</span><span class="count">Coverage not measured.</span></div><span class="badge pass">Pass</span></div></div>
 </section>
 <section id="quick-wins">
   <h2>Quick Wins</h2>
-  <table class="findings-table"><thead><tr><th>Rule</th><th>Effort</th><th>Potential Gain</th><th>Evidence</th></tr></thead><tbody><tr><td><code>eval-usage</code></td><td>10 min</td><td>+5.0 pts</td><td>test/res.redirect.js:115 — eval()/exec() executes arbitrary code</td></tr><tr><td><code>eval-usage</code></td><td>10 min</td><td>+5.0 pts</td><td>test/res.redirect.js:116 — eval()/exec() executes arbitrary code</td></tr><tr><td><code>dangerous-innerhtml</code></td><td>10 min</td><td>+5.0 pts</td><td>test/res.redirect.js:115 — innerHTML / dangerouslySetInnerHTML bypasses escaping</td></tr><tr><td><code>dangerous-innerhtml</code></td><td>10 min</td><td>+5.0 pts</td><td>test/res.redirect.js:116 — innerHTML / dangerouslySetInnerHTML bypasses escaping</td></tr><tr><td><code>raw-sql-string-concat</code></td><td>10 min</td><td>+5.0 pts</td><td>examples/route-map/index.js:51 — SQL text joined with + or f-string — likely injection surface</td></tr></tbody></table>
+  <table class="findings-table"><thead><tr><th>Rule</th><th>Effort</th><th>Potential Gain</th><th>Evidence</th></tr></thead><tbody><tr><td><code>eval-usage</code></td><td>10 min</td><td>+5.0 pts</td><td>test/res.redirect.js:130 — eval()/exec() executes arbitrary code</td></tr><tr><td><code>eval-usage</code></td><td>10 min</td><td>+5.0 pts</td><td>test/res.redirect.js:131 — eval()/exec() executes arbitrary code</td></tr><tr><td><code>dangerous-innerhtml</code></td><td>10 min</td><td>+5.0 pts</td><td>test/res.redirect.js:130 — innerHTML / dangerouslySetInnerHTML bypasses escaping</td></tr><tr><td><code>dangerous-innerhtml</code></td><td>10 min</td><td>+5.0 pts</td><td>test/res.redirect.js:131 — innerHTML / dangerouslySetInnerHTML bypasses escaping</td></tr><tr><td><code>raw-sql-string-concat</code></td><td>10 min</td><td>+5.0 pts</td><td>examples/route-map/index.js:51 — SQL text joined with + or f-string — likely injection surface</td></tr></tbody></table>
 </section>
 <section id="risk-files">
   <h2>Risk Files</h2>
   <p>Files ranked by aggregated risk score, banded HIGH / MED / LOW. Expand a card to see the drivers that pushed it into its band, the top contributing findings, and concrete mitigation steps.</p>
 <div class="band-tabs" role="tablist">
-    <button class="band-tab high active" data-band="HIGH">HIGH <span class="count">0</span></button>
-    <button class="band-tab med" data-band="MED">MED <span class="count">1</span></button>
-    <button class="band-tab low" data-band="LOW">LOW <span class="count">3</span></button>
+    <button class="band-tab high active" data-band="HIGH">HIGH <span class="count">1</span></button>
+    <button class="band-tab med" data-band="MED">MED <span class="count">2</span></button>
+    <button class="band-tab low" data-band="LOW">LOW <span class="count">54</span></button>
   </div>
-<div class="risk-card-list"><details class="risk-card" data-band="MED">
+<div class="risk-card-list"><details class="risk-card" data-band="HIGH">
+    <summary>
+      <span class="risk-card-path">lib/router/index.js</span>
+      <span class="risk-card-meta">score <strong>73</strong> &nbsp; findings <strong>55</strong> &nbsp; Tj Holowaychuk</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="MED">
     <summary>
       <span class="risk-card-path">test/res.redirect.js</span>
-      <span class="risk-card-meta">score <strong>51</strong> &nbsp; findings <strong>4</strong> &nbsp; Open Source Zeal</span>
+      <span class="risk-card-meta">score <strong>51</strong> &nbsp; findings <strong>4</strong> &nbsp; Tj Holowaychuk</span>
     </summary>
     <div class="risk-card-body"><div class="risk-findings"><div class="risk-findings-label">TOP FINDINGS</div><div class="risk-finding">
     <div class="risk-finding-head"><span class="sev-pill high">HIGH FAIL</span><span class="rule-id">eval-usage</span><span class="effort-chip">~10m</span></div>
-    <div class="risk-finding-loc">test/res.redirect.js:115 — eval()/exec() executes arbitrary code</div>
+    <div class="risk-finding-loc">test/res.redirect.js:130 — eval()/exec() executes arbitrary code</div>
     
   </div><div class="risk-finding">
     <div class="risk-finding-head"><span class="sev-pill high">HIGH FAIL</span><span class="rule-id">eval-usage</span><span class="effort-chip">~10m</span></div>
-    <div class="risk-finding-loc">test/res.redirect.js:116 — eval()/exec() executes arbitrary code</div>
+    <div class="risk-finding-loc">test/res.redirect.js:131 — eval()/exec() executes arbitrary code</div>
     
   </div><div class="risk-finding">
     <div class="risk-finding-head"><span class="sev-pill high">HIGH FAIL</span><span class="rule-id">dangerous-innerhtml</span><span class="effort-chip">~10m</span></div>
-    <div class="risk-finding-loc">test/res.redirect.js:115 — innerHTML / dangerouslySetInnerHTML bypasses escaping</div>
+    <div class="risk-finding-loc">test/res.redirect.js:130 — innerHTML / dangerouslySetInnerHTML bypasses escaping</div>
     
   </div><div class="risk-finding">
     <div class="risk-finding-head"><span class="sev-pill high">HIGH FAIL</span><span class="rule-id">dangerous-innerhtml</span><span class="effort-chip">~10m</span></div>
-    <div class="risk-finding-loc">test/res.redirect.js:116 — innerHTML / dangerouslySetInnerHTML bypasses escaping</div>
+    <div class="risk-finding-loc">test/res.redirect.js:131 — innerHTML / dangerouslySetInnerHTML bypasses escaping</div>
+    
+  </div></div></div>
+  </details>
+<details class="risk-card" data-band="MED">
+    <summary>
+      <span class="risk-card-path">lib/response.js</span>
+      <span class="risk-card-meta">score <strong>46</strong> &nbsp; findings <strong>31</strong> &nbsp; Tj Holowaychuk</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/view-locals/index.js</span>
+      <span class="risk-card-meta">score <strong>19</strong> &nbsp; findings <strong>19</strong> &nbsp; TJ Holowaychuk</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/route-middleware/index.js</span>
+      <span class="risk-card-meta">score <strong>15</strong> &nbsp; findings <strong>15</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">lib/application.js</span>
+      <span class="risk-card-meta">score <strong>14</strong> &nbsp; findings <strong>11</strong> &nbsp; Tj Holowaychuk</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">lib/view.js</span>
+      <span class="risk-card-meta">score <strong>13.4</strong> &nbsp; findings <strong>12</strong> &nbsp; Tj Holowaychuk</span>
+    </summary>
+    <div class="risk-card-body"><div class="risk-findings"><div class="risk-findings-label">TOP FINDINGS</div><div class="risk-finding">
+    <div class="risk-finding-head"><span class="sev-pill med">MED FAIL</span><span class="rule-id">fs-sync-in-request-path</span><span class="effort-chip">~10m</span></div>
+    <div class="risk-finding-loc">lib/view.js:174 — tryStat calls sync fs API statSync</div>
     
   </div></div></div>
   </details>
 <details class="risk-card" data-band="LOW">
     <summary>
+      <span class="risk-card-path">examples/auth/index.js</span>
+      <span class="risk-card-meta">score <strong>11</strong> &nbsp; findings <strong>11</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">lib/router/layer.js</span>
+      <span class="risk-card-meta">score <strong>11</strong> &nbsp; findings <strong>11</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">lib/utils.js</span>
+      <span class="risk-card-meta">score <strong>11</strong> &nbsp; findings <strong>11</strong> &nbsp; TJ Holowaychuk</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">lib/router/route.js</span>
+      <span class="risk-card-meta">score <strong>10</strong> &nbsp; findings <strong>7</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
       <span class="risk-card-path">examples/resource/index.js</span>
-      <span class="risk-card-meta">score <strong>6</strong> &nbsp; findings <strong>1</strong> &nbsp; Open Source Zeal</span>
+      <span class="risk-card-meta">score <strong>9</strong> &nbsp; findings <strong>4</strong> &nbsp; Douglas Christopher Wilson</span>
     </summary>
     <div class="risk-card-body"><div class="risk-findings"><div class="risk-findings-label">TOP FINDINGS</div><div class="risk-finding">
     <div class="risk-finding-head"><span class="sev-pill high">HIGH FAIL</span><span class="rule-id">raw-sql-string-concat</span><span class="effort-chip">~10m</span></div>
@@ -345,7 +1299,7 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 <details class="risk-card" data-band="LOW">
     <summary>
       <span class="risk-card-path">examples/route-map/index.js</span>
-      <span class="risk-card-meta">score <strong>6</strong> &nbsp; findings <strong>1</strong> &nbsp; Open Source Zeal</span>
+      <span class="risk-card-meta">score <strong>9</strong> &nbsp; findings <strong>4</strong> &nbsp; Douglas Christopher Wilson</span>
     </summary>
     <div class="risk-card-body"><div class="risk-findings"><div class="risk-findings-label">TOP FINDINGS</div><div class="risk-finding">
     <div class="risk-finding-head"><span class="sev-pill high">HIGH FAIL</span><span class="rule-id">raw-sql-string-concat</span><span class="effort-chip">~10m</span></div>
@@ -355,19 +1309,320 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
   </details>
 <details class="risk-card" data-band="LOW">
     <summary>
-      <span class="risk-card-path">lib/view.js</span>
-      <span class="risk-card-meta">score <strong>2.4</strong> &nbsp; findings <strong>1</strong> &nbsp; Open Source Zeal</span>
+      <span class="risk-card-path">examples/error/index.js</span>
+      <span class="risk-card-meta">score <strong>7</strong> &nbsp; findings <strong>7</strong> &nbsp; Douglas Christopher Wilson</span>
     </summary>
-    <div class="risk-card-body"><div class="risk-findings"><div class="risk-findings-label">TOP FINDINGS</div><div class="risk-finding">
-    <div class="risk-finding-head"><span class="sev-pill med">MED FAIL</span><span class="rule-id">fs-sync-in-request-path</span><span class="effort-chip">~10m</span></div>
-    <div class="risk-finding-loc">lib/view.js:197 — tryStat calls sync fs API statSync</div>
-    
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/view-constructor/github-view.js</span>
+      <span class="risk-card-meta">score <strong>7</strong> &nbsp; findings <strong>7</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">lib/request.js</span>
+      <span class="risk-card-meta">score <strong>6</strong> &nbsp; findings <strong>3</strong> &nbsp; TJ Holowaychuk</span>
+    </summary>
+    <div class="risk-card-body"><div class="risk-drivers"><span class="risk-drivers-label">Risk drivers:</span> <strong>TODO debt</strong>.</div><div class="risk-findings"><div class="risk-findings-label">TOP FINDINGS</div><div class="risk-finding">
+    <div class="risk-finding-head"><span class="sev-pill low">INFO FAIL</span><span class="rule-id">todo-fixme-hack</span><span class="effort-chip">~5m</span></div>
+    <div class="risk-finding-loc">lib/request.js:452 — Tracked marker in comment</div>
+    <div class="finding-fix"><strong>Fix:</strong> Resolve TODO or convert to a tracked issue with a link.</div>
   </div></div></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/content-negotiation/db.js</span>
+      <span class="risk-card-meta">score <strong>4</strong> &nbsp; findings <strong>4</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/content-negotiation/users.js</span>
+      <span class="risk-card-meta">score <strong>4</strong> &nbsp; findings <strong>4</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/multi-router/controllers/api_v1.js</span>
+      <span class="risk-card-meta">score <strong>4</strong> &nbsp; findings <strong>4</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/multi-router/controllers/api_v2.js</span>
+      <span class="risk-card-meta">score <strong>4</strong> &nbsp; findings <strong>4</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/mvc/controllers/main/index.js</span>
+      <span class="risk-card-meta">score <strong>4</strong> &nbsp; findings <strong>4</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/route-separation/site.js</span>
+      <span class="risk-card-meta">score <strong>4</strong> &nbsp; findings <strong>4</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/search/public/client.js</span>
+      <span class="risk-card-meta">score <strong>4</strong> &nbsp; findings <strong>4</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">benchmarks/middleware.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/content-negotiation/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; TJ Holowaychuk</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/cookie-sessions/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/cookies/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/downloads/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/ejs/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/error-pages/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/hello-world/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/markdown/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; TJ Holowaychuk</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/multi-router/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/mvc/controllers/pet/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/mvc/controllers/user-pet/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/mvc/controllers/user/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/mvc/db.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/mvc/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/mvc/lib/boot.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; TJ Holowaychuk</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/online/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/params/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/route-separation/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/route-separation/post.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Tj Holowaychuk</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/route-separation/user.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Tj Holowaychuk</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/search/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/session/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/session/redis.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/static-files/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Roman Shtylman</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/static-files/public/js/app.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Alvin Smith</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/vhost/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/view-constructor/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/view-locals/user.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; agchou</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">examples/web-service/index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">index.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">lib/express.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Tj Holowaychuk</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">lib/middleware/init.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">lib/middleware/query.js</span>
+      <span class="risk-card-meta">score <strong>3</strong> &nbsp; findings <strong>3</strong> &nbsp; Douglas Christopher Wilson</span>
+    </summary>
+    <div class="risk-card-body"></div>
   </details></div>
 </section>
 <section id="findings">
   <h2>Findings</h2>
-  <table class="findings-table"><thead><tr><th>Severity</th><th>Rule</th><th>Location</th><th>Message</th><th>Effort</th></tr></thead><tbody><tr><td><span class="pill high">HIGH</span></td><td><code>eval-usage</code></td><td><code>test/res.redirect.js:115</code></td><td>eval()/exec() executes arbitrary code</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>eval-usage</code></td><td><code>test/res.redirect.js:116</code></td><td>eval()/exec() executes arbitrary code</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>dangerous-innerhtml</code></td><td><code>test/res.redirect.js:115</code></td><td>innerHTML / dangerouslySetInnerHTML bypasses escaping</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>dangerous-innerhtml</code></td><td><code>test/res.redirect.js:116</code></td><td>innerHTML / dangerouslySetInnerHTML bypasses escaping</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>raw-sql-string-concat</code></td><td><code>examples/route-map/index.js:51</code></td><td>SQL text joined with + or f-string — likely injection surface</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>raw-sql-string-concat</code></td><td><code>examples/resource/index.js:22</code></td><td>SQL text joined with + or f-string — likely injection surface</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>fs-sync-in-request-path</code></td><td><code>lib/view.js:197</code></td><td>tryStat calls sync fs API statSync</td><td>—</td></tr></tbody></table>
+  <table class="findings-table"><thead><tr><th>Severity</th><th>Rule</th><th>Location</th><th>Message</th><th>Effort</th></tr></thead><tbody><tr><td><span class="pill high">HIGH</span></td><td><code>eval-usage</code></td><td><code>test/res.redirect.js:130</code></td><td>eval()/exec() executes arbitrary code</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>eval-usage</code></td><td><code>test/res.redirect.js:131</code></td><td>eval()/exec() executes arbitrary code</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>dangerous-innerhtml</code></td><td><code>test/res.redirect.js:130</code></td><td>innerHTML / dangerouslySetInnerHTML bypasses escaping</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>dangerous-innerhtml</code></td><td><code>test/res.redirect.js:131</code></td><td>innerHTML / dangerouslySetInnerHTML bypasses escaping</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>raw-sql-string-concat</code></td><td><code>examples/route-map/index.js:51</code></td><td>SQL text joined with + or f-string — likely injection surface</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>raw-sql-string-concat</code></td><td><code>examples/resource/index.js:22</code></td><td>SQL text joined with + or f-string — likely injection surface</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>fs-sync-in-request-path</code></td><td><code>lib/view.js:174</code></td><td>tryStat calls sync fs API statSync</td><td>—</td></tr><tr><td><span class="pill low">INFO</span></td><td><code>todo-fixme-hack</code></td><td><code>lib/request.js:452</code></td><td>Tracked marker in comment</td><td>—</td></tr></tbody></table>
 </section>
 <section id="documents">
   <h2>Generated Documentation</h2>
@@ -378,7 +1633,7 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 </section>
 <section id="metadata">
   <h2>Metadata</h2>
-  <table class="findings-table"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Repo</td><td><code>express</code></td></tr><tr><td>Generated</td><td><code>2026-05-14 03:39:30 UTC</code></td></tr><tr><td>Luxscope version</td><td><code>0.1.0</code></td></tr><tr><td>Scoring version</td><td><code>default</code></td></tr><tr><td>Profile</td><td><code>default</code></td></tr><tr><td>Tier</td><td><code>Free</code></td></tr><tr><td>Files scanned</td><td><code>4</code></td></tr><tr><td>Total findings</td><td><code>7</code></td></tr></tbody></table>
+  <table class="findings-table"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Repo</td><td><code>express-pin</code></td></tr><tr><td>Generated</td><td><code>2026-05-15 03:58:32 UTC</code></td></tr><tr><td>Luxscope version</td><td><code>0.1.0</code></td></tr><tr><td>Scoring version</td><td><code>default</code></td></tr><tr><td>Profile</td><td><code>default</code></td></tr><tr><td>Level</td><td><code>recon</code></td></tr><tr><td>Files scanned</td><td><code>57</code></td></tr><tr><td>Total findings</td><td><code>8</code></td></tr></tbody></table>
 </section>
 <p style="color:var(--faint);font-size:12px;margin-top:48px;border-top:1px solid var(--border);padding-top:16px">Generated by Luxscope 0.1.0 &middot; scoring default</p>
   </main>

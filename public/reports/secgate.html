@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SecGate Report — nodegoat</title>
+<title>SecGate Report — NodeGoat</title>
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Inter%2C-apple-system%2Csans-serif' font-size='19' font-weight='700' fill='%23ff2d78'%3ES%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -129,6 +129,43 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
   .score-hero .desc { border-left: none; padding-left: 0; margin-left: 0; }
 }
 
+/* Risk file band tabs + expandable cards */
+.band-tabs { display: flex; gap: 8px; margin: 16px 0 20px; }
+.band-tab { background: var(--surface); border: 1px solid var(--border); color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; padding: 6px 14px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; text-transform: uppercase; transition: all .15s; }
+.band-tab:hover { color: var(--text); border-color: var(--border-bright); }
+.band-tab .count { background: var(--surface-2); color: var(--faint); padding: 1px 8px; border-radius: 999px; font-size: 10px; font-weight: 700; min-width: 18px; text-align: center; }
+.band-tab.active { background: var(--pink); color: #fff; border-color: var(--pink); }
+.band-tab.active .count { background: rgba(255,255,255,0.2); color: #fff; }
+
+.risk-card-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+.risk-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.risk-card[open] { border-color: var(--pink); }
+.risk-card summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; cursor: pointer; list-style: none; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
+.risk-card summary::-webkit-details-marker { display: none; }
+.risk-card summary::after { content: "▸"; color: var(--muted); transition: transform .15s; margin-left: 8px; flex-shrink: 0; }
+.risk-card[open] summary::after { transform: rotate(90deg); }
+.risk-card-path { color: var(--text); flex: 1; word-break: break-all; }
+.risk-card-meta { color: var(--muted); font-size: 12px; white-space: nowrap; }
+.risk-card-meta strong { color: var(--text); font-weight: 600; }
+.risk-card-body { padding: 16px 18px 18px; border-top: 1px solid var(--border); }
+.risk-drivers { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+.risk-drivers-label { font-weight: 600; color: var(--text); }
+.risk-drivers strong { color: var(--text); font-weight: 600; }
+.risk-findings-label { font-size: 10px; letter-spacing: 0.12em; color: var(--faint); font-weight: 700; text-transform: uppercase; margin-bottom: 10px; }
+.risk-findings { display: flex; flex-direction: column; gap: 10px; }
+.risk-finding { border: 1px solid var(--border); border-radius: 6px; padding: 12px 14px; font-size: 13px; }
+.risk-finding-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
+.sev-pill { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; padding: 2px 8px; border-radius: 3px; text-transform: uppercase; }
+.sev-pill.high { background: rgba(255, 45, 120, 0.16); color: var(--pink); }
+.sev-pill.med { background: rgba(255, 149, 0, 0.16); color: var(--warn); }
+.sev-pill.low { background: rgba(52, 199, 89, 0.12); color: var(--success); }
+.rule-id { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted); font-size: 12px; }
+.effort-chip { background: var(--surface-2); border: 1px solid var(--border); color: var(--muted); font-size: 11px; padding: 1px 7px; border-radius: 3px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.risk-finding-loc { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: var(--text); margin-bottom: 6px; word-break: break-all; }
+.finding-fix, .finding-why { border-left: 2px solid var(--success); padding-left: 10px; margin-top: 6px; font-size: 12px; color: var(--muted); line-height: 1.5; }
+.finding-why { border-left-color: var(--border-bright); }
+.finding-fix strong, .finding-why strong { color: var(--text); font-weight: 600; }
+
 /* KPI grid */
 .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
 .kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
@@ -213,8 +250,8 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
     
     <div class="pill-row"><span class="report-pill">SECURITY REPORT</span></div>
     <div class="aside-head">
-      <div class="product">SecGate Report</div>
-      <div class="target">nodegoat</div>
+      <div class="product">SecGate Report<span class="tier-pill warn">FAIL</span></div>
+      <div class="target">NodeGoat</div>
       <div class="score-line">
         <span class="score-num">468</span>
         <span class="score-denom">risk</span>
@@ -232,7 +269,7 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
       <a href="#recommendations">Recommendations <span class="count">4</span></a>
       <a href="#remediation">Remediation <span class="count">54</span></a>
     </nav>
-    <div class="aside-footer">Security Report · v0.2.7 · 2026-05-14T03:32:14.204Z</div>
+    <div class="aside-footer">Security Report · v0.2.7 · 2026-05-15T03:59:56.359Z</div>
   </aside>
 
   <main class="main">
@@ -269,7 +306,7 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 
     <section id="findings">
       <h2>Top findings <span class="lead">ranked by severity · top 10 of 54</span></h2>
-      <table class="findings-table"><thead><tr><th>Severity</th><th>Type</th><th>Signature</th><th>Location</th><th>Message</th><th>Fixable</th></tr></thead><tbody><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>python.django.security.django-no-csrf-token.django-no-csrf-token</code></td><td><code>nodegoat/app/views/benefits.html:54</code></td><td>Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks.</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>python.django.security.django-no-csrf-token.django-no-csrf-token</code></td><td><code>nodegoat/app/views/login.html:107</code></td><td>Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks.</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>python.django.security.django-no-csrf-token.django-no-csrf-token</code></td><td><code>nodegoat/app/views/memos.html:15</code></td><td>Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks.</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>generic.secrets.security.detected-private-key.detected-private-key</code></td><td><code>nodegoat/artifacts/cert/server.key:1</code></td><td>Private Key detected. This is a sensitive credential and should not be hardcoded here. Instead, store this in a separate, private file.</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash</code></td><td><code>nodegoat/artifacts/db-reset.js:19</code></td><td>bcrypt hash detected</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash</code></td><td><code>nodegoat/artifacts/db-reset.js:28</code></td><td>bcrypt hash detected</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash</code></td><td><code>nodegoat/artifacts/db-reset.js:36</code></td><td>bcrypt hash detected</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>javascript.express.security.audit.express-cookie-settings.express-cookie-session-default-name</code></td><td><code>nodegoat/server.js:78</code></td><td>Don’t use the default session cookie name Using the default session cookie name can open your app to attacks. The security issue posed is similar to X-Powered-By: a potential attacker can use it to fingerprint the server and target attacks accordingly.</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-domain</code></td><td><code>nodegoat/server.js:78</code></td><td>Default session middleware settings: `domain` not set. It indicates the domain of the cookie; use it to compare against the domain of the server in which the URL is being requested. If they match, then check the path attribute next.</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-expires</code></td><td><code>nodegoat/server.js:78</code></td><td>Default session middleware settings: `expires` not set. Use it to set expiration date for persistent cookies.</td><td>manual</td></tr></tbody></table>
+      <table class="findings-table"><thead><tr><th>Severity</th><th>Type</th><th>Signature</th><th>Location</th><th>Message</th><th>Fixable</th></tr></thead><tbody><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>python.django.security.django-no-csrf-token.django-no-csrf-token</code></td><td><code>NodeGoat/app/views/benefits.html:54</code></td><td>Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks.</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>python.django.security.django-no-csrf-token.django-no-csrf-token</code></td><td><code>NodeGoat/app/views/login.html:107</code></td><td>Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks.</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>python.django.security.django-no-csrf-token.django-no-csrf-token</code></td><td><code>NodeGoat/app/views/memos.html:15</code></td><td>Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks.</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>generic.secrets.security.detected-private-key.detected-private-key</code></td><td><code>NodeGoat/artifacts/cert/server.key:1</code></td><td>Private Key detected. This is a sensitive credential and should not be hardcoded here. Instead, store this in a separate, private file.</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash</code></td><td><code>NodeGoat/artifacts/db-reset.js:19</code></td><td>bcrypt hash detected</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash</code></td><td><code>NodeGoat/artifacts/db-reset.js:28</code></td><td>bcrypt hash detected</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash</code></td><td><code>NodeGoat/artifacts/db-reset.js:36</code></td><td>bcrypt hash detected</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>javascript.express.security.audit.express-cookie-settings.express-cookie-session-default-name</code></td><td><code>NodeGoat/server.js:78</code></td><td>Don’t use the default session cookie name Using the default session cookie name can open your app to attacks. The security issue posed is similar to X-Powered-By: a potential attacker can use it to fingerprint the server and target attacks accordingly.</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-domain</code></td><td><code>NodeGoat/server.js:78</code></td><td>Default session middleware settings: `domain` not set. It indicates the domain of the cookie; use it to compare against the domain of the server in which the URL is being requested. If they match, then check the path attribute next.</td><td>manual</td></tr><tr><td><span class="pill high">CRITICAL</span></td><td>code</td><td><code>javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-expires</code></td><td><code>NodeGoat/server.js:78</code></td><td>Default session middleware settings: `expires` not set. Use it to set expiration date for persistent cookies.</td><td>manual</td></tr></tbody></table>
       
       <details class="sg-details">
         <summary>
@@ -1323,119 +1360,119 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
       </li>
       <li>
         <span class="sg-mono">javascript.browser.security.eval-detected.eval-detected</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/app/routes/contributions.js:32</code>
+        <code class="sg-cmd"># Fix: NodeGoat/app/routes/contributions.js:32</code>
       </li>
       <li>
         <span class="sg-mono">javascript.lang.security.audit.code-string-concat.code-string-concat</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/app/routes/contributions.js:32</code>
+        <code class="sg-cmd"># Fix: NodeGoat/app/routes/contributions.js:32</code>
       </li>
       <li>
         <span class="sg-mono">javascript.browser.security.eval-detected.eval-detected</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/app/routes/contributions.js:33</code>
+        <code class="sg-cmd"># Fix: NodeGoat/app/routes/contributions.js:33</code>
       </li>
       <li>
         <span class="sg-mono">javascript.lang.security.audit.code-string-concat.code-string-concat</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/app/routes/contributions.js:33</code>
+        <code class="sg-cmd"># Fix: NodeGoat/app/routes/contributions.js:33</code>
       </li>
       <li>
         <span class="sg-mono">javascript.browser.security.eval-detected.eval-detected</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/app/routes/contributions.js:34</code>
+        <code class="sg-cmd"># Fix: NodeGoat/app/routes/contributions.js:34</code>
       </li>
       <li>
         <span class="sg-mono">javascript.lang.security.audit.code-string-concat.code-string-concat</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/app/routes/contributions.js:34</code>
+        <code class="sg-cmd"># Fix: NodeGoat/app/routes/contributions.js:34</code>
       </li>
       <li>
         <span class="sg-mono">javascript.express.security.audit.express-open-redirect.express-open-redirect</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/app/routes/index.js:72</code>
+        <code class="sg-cmd"># Fix: NodeGoat/app/routes/index.js:72</code>
       </li>
       <li>
         <span class="sg-mono">python.django.security.django-no-csrf-token.django-no-csrf-token</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/app/views/benefits.html:54</code>
+        <code class="sg-cmd"># Fix: NodeGoat/app/views/benefits.html:54</code>
       </li>
       <li>
         <span class="sg-mono">python.django.security.django-no-csrf-token.django-no-csrf-token</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/app/views/login.html:107</code>
+        <code class="sg-cmd"># Fix: NodeGoat/app/views/login.html:107</code>
       </li>
       <li>
         <span class="sg-mono">python.django.security.django-no-csrf-token.django-no-csrf-token</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/app/views/memos.html:15</code>
+        <code class="sg-cmd"># Fix: NodeGoat/app/views/memos.html:15</code>
       </li>
       <li>
         <span class="sg-mono">html.security.plaintext-http-link.plaintext-http-link</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/app/views/tutorial/a2.html:207</code>
+        <code class="sg-cmd"># Fix: NodeGoat/app/views/tutorial/a2.html:207</code>
       </li>
       <li>
         <span class="sg-mono">html.security.plaintext-http-link.plaintext-http-link</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/app/views/tutorial/a2.html:209</code>
+        <code class="sg-cmd"># Fix: NodeGoat/app/views/tutorial/a2.html:209</code>
       </li>
       <li>
         <span class="sg-mono">html.security.plaintext-http-link.plaintext-http-link</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/app/views/tutorial/a2.html:210</code>
+        <code class="sg-cmd"># Fix: NodeGoat/app/views/tutorial/a2.html:210</code>
       </li>
       <li>
         <span class="sg-mono">html.security.plaintext-http-link.plaintext-http-link</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/app/views/tutorial/a5.html:50</code>
+        <code class="sg-cmd"># Fix: NodeGoat/app/views/tutorial/a5.html:50</code>
       </li>
       <li>
         <span class="sg-mono">html.security.plaintext-http-link.plaintext-http-link</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/app/views/tutorial/a5.html:51</code>
+        <code class="sg-cmd"># Fix: NodeGoat/app/views/tutorial/a5.html:51</code>
       </li>
       <li>
         <span class="sg-mono">generic.secrets.security.detected-private-key.detected-private-key</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/artifacts/cert/server.key:1</code>
+        <code class="sg-cmd"># Fix: NodeGoat/artifacts/cert/server.key:1</code>
       </li>
       <li>
         <span class="sg-mono">generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/artifacts/db-reset.js:19</code>
+        <code class="sg-cmd"># Fix: NodeGoat/artifacts/db-reset.js:19</code>
       </li>
       <li>
         <span class="sg-mono">generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/artifacts/db-reset.js:28</code>
+        <code class="sg-cmd"># Fix: NodeGoat/artifacts/db-reset.js:28</code>
       </li>
       <li>
         <span class="sg-mono">generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/artifacts/db-reset.js:36</code>
+        <code class="sg-cmd"># Fix: NodeGoat/artifacts/db-reset.js:36</code>
       </li>
       <li>
         <span class="sg-mono">yaml.docker-compose.security.no-new-privileges.no-new-privileges</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/docker-compose.yml:13</code>
+        <code class="sg-cmd"># Fix: NodeGoat/docker-compose.yml:13</code>
       </li>
       <li>
         <span class="sg-mono">yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/docker-compose.yml:13</code>
+        <code class="sg-cmd"># Fix: NodeGoat/docker-compose.yml:13</code>
       </li>
       <li>
         <span class="sg-mono">javascript.express.security.audit.express-check-csurf-middleware-usage.express-check-csurf-middleware-usage</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/server.js:15</code>
+        <code class="sg-cmd"># Fix: NodeGoat/server.js:15</code>
       </li>
       <li>
         <span class="sg-mono">javascript.express.security.audit.express-cookie-settings.express-cookie-session-default-name</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/server.js:78</code>
+        <code class="sg-cmd"># Fix: NodeGoat/server.js:78</code>
       </li>
       <li>
         <span class="sg-mono">javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-domain</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/server.js:78</code>
+        <code class="sg-cmd"># Fix: NodeGoat/server.js:78</code>
       </li>
       <li>
         <span class="sg-mono">javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-expires</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/server.js:78</code>
+        <code class="sg-cmd"># Fix: NodeGoat/server.js:78</code>
       </li>
       <li>
         <span class="sg-mono">javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-httponly</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/server.js:78</code>
+        <code class="sg-cmd"># Fix: NodeGoat/server.js:78</code>
       </li>
       <li>
         <span class="sg-mono">javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-path</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/server.js:78</code>
+        <code class="sg-cmd"># Fix: NodeGoat/server.js:78</code>
       </li>
       <li>
         <span class="sg-mono">javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-secure</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/server.js:78</code>
+        <code class="sg-cmd"># Fix: NodeGoat/server.js:78</code>
       </li>
       <li>
         <span class="sg-mono">problem-based-packs.insecure-transport.js-node.using-http-server.using-http-server</span> — manual code fix
-        <code class="sg-cmd"># Fix: nodegoat/server.js:145</code>
+        <code class="sg-cmd"># Fix: NodeGoat/server.js:145</code>
       </li>
       <li>
         <span class="sg-mono">trivy-image:node:12-alpine:CVE-2022-4450</span> — fix misconfiguration

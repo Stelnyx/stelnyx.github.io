@@ -50,7 +50,7 @@ const ORG_JSONLD = {
   description:
     "Security infrastructure for engineers who ship. Stelnyx builds SecGate, LuxScope, LuxFaber, Intake, Engram, and Arbiter.",
   sameAs: FEATURE_PUBLIC_REPOS
-    ? ["https://github.com/tinydarkforge", "https://github.com/Stelnyx"]
+    ? ["https://github.com/Stelnyx"]
     : [],
 };
 

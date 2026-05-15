@@ -1,7 +1,7 @@
 {
   "version": "0.2.7",
-  "timestamp": "2026-05-14T03:32:14.204Z",
-  "target": "nodegoat",
+  "timestamp": "2026-05-15T03:59:56.359Z",
+  "target": "NodeGoat",
   "mode": "dry-run",
   "status": "FAIL",
   "securityScore": 0,
@@ -1124,7 +1124,7 @@
       "severity": "MEDIUM",
       "signature": "javascript.browser.security.eval-detected.eval-detected",
       "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
-      "file": "nodegoat/app/routes/contributions.js",
+      "file": "NodeGoat/app/routes/contributions.js",
       "line": 32,
       "col": 24,
       "endLine": 32,
@@ -1137,7 +1137,7 @@
       "severity": "HIGH",
       "signature": "javascript.lang.security.audit.code-string-concat.code-string-concat",
       "message": "Found data from an Express or Next web request flowing to `eval`. If this data is user-controllable this can lead to execution of arbitrary system commands in the context of your application process. Avoid `eval` whenever possible.",
-      "file": "nodegoat/app/routes/contributions.js",
+      "file": "NodeGoat/app/routes/contributions.js",
       "line": 32,
       "col": 24,
       "endLine": 32,
@@ -1150,7 +1150,7 @@
       "severity": "MEDIUM",
       "signature": "javascript.browser.security.eval-detected.eval-detected",
       "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
-      "file": "nodegoat/app/routes/contributions.js",
+      "file": "NodeGoat/app/routes/contributions.js",
       "line": 33,
       "col": 26,
       "endLine": 33,
@@ -1163,7 +1163,7 @@
       "severity": "HIGH",
       "signature": "javascript.lang.security.audit.code-string-concat.code-string-concat",
       "message": "Found data from an Express or Next web request flowing to `eval`. If this data is user-controllable this can lead to execution of arbitrary system commands in the context of your application process. Avoid `eval` whenever possible.",
-      "file": "nodegoat/app/routes/contributions.js",
+      "file": "NodeGoat/app/routes/contributions.js",
       "line": 33,
       "col": 26,
       "endLine": 33,
@@ -1176,7 +1176,7 @@
       "severity": "MEDIUM",
       "signature": "javascript.browser.security.eval-detected.eval-detected",
       "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
-      "file": "nodegoat/app/routes/contributions.js",
+      "file": "NodeGoat/app/routes/contributions.js",
       "line": 34,
       "col": 22,
       "endLine": 34,
@@ -1189,7 +1189,7 @@
       "severity": "HIGH",
       "signature": "javascript.lang.security.audit.code-string-concat.code-string-concat",
       "message": "Found data from an Express or Next web request flowing to `eval`. If this data is user-controllable this can lead to execution of arbitrary system commands in the context of your application process. Avoid `eval` whenever possible.",
-      "file": "nodegoat/app/routes/contributions.js",
+      "file": "NodeGoat/app/routes/contributions.js",
       "line": 34,
       "col": 22,
       "endLine": 34,
@@ -1202,7 +1202,7 @@
       "severity": "MEDIUM",
       "signature": "javascript.express.security.audit.express-open-redirect.express-open-redirect",
       "message": "The application redirects to a URL specified by user-supplied input `req` that is not validated. This could redirect users to malicious locations. Consider using an allow-list approach to validate URLs, or warn users they are being redirected to a third-party website.",
-      "file": "nodegoat/app/routes/index.js",
+      "file": "NodeGoat/app/routes/index.js",
       "line": 72,
       "col": 29,
       "endLine": 72,
@@ -1215,7 +1215,7 @@
       "severity": "CRITICAL",
       "signature": "python.django.security.django-no-csrf-token.django-no-csrf-token",
       "message": "Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks.",
-      "file": "nodegoat/app/views/benefits.html",
+      "file": "NodeGoat/app/views/benefits.html",
       "line": 54,
       "col": 29,
       "endLine": 63,
@@ -1228,7 +1228,7 @@
       "severity": "CRITICAL",
       "signature": "python.django.security.django-no-csrf-token.django-no-csrf-token",
       "message": "Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks.",
-      "file": "nodegoat/app/views/login.html",
+      "file": "NodeGoat/app/views/login.html",
       "line": 107,
       "col": 29,
       "endLine": 127,
@@ -1241,7 +1241,7 @@
       "severity": "CRITICAL",
       "signature": "python.django.security.django-no-csrf-token.django-no-csrf-token",
       "message": "Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks.",
-      "file": "nodegoat/app/views/memos.html",
+      "file": "NodeGoat/app/views/memos.html",
       "line": 15,
       "col": 17,
       "endLine": 23,
@@ -1254,7 +1254,7 @@
       "severity": "MEDIUM",
       "signature": "html.security.plaintext-http-link.plaintext-http-link",
       "message": "This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible.",
-      "file": "nodegoat/app/views/tutorial/a2.html",
+      "file": "NodeGoat/app/views/tutorial/a2.html",
       "line": 207,
       "col": 33,
       "endLine": 207,
@@ -1267,7 +1267,7 @@
       "severity": "MEDIUM",
       "signature": "html.security.plaintext-http-link.plaintext-http-link",
       "message": "This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible.",
-      "file": "nodegoat/app/views/tutorial/a2.html",
+      "file": "NodeGoat/app/views/tutorial/a2.html",
       "line": 209,
       "col": 33,
       "endLine": 209,
@@ -1280,7 +1280,7 @@
       "severity": "MEDIUM",
       "signature": "html.security.plaintext-http-link.plaintext-http-link",
       "message": "This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible.",
-      "file": "nodegoat/app/views/tutorial/a2.html",
+      "file": "NodeGoat/app/views/tutorial/a2.html",
       "line": 210,
       "col": 33,
       "endLine": 210,
@@ -1293,7 +1293,7 @@
       "severity": "MEDIUM",
       "signature": "html.security.plaintext-http-link.plaintext-http-link",
       "message": "This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible.",
-      "file": "nodegoat/app/views/tutorial/a5.html",
+      "file": "NodeGoat/app/views/tutorial/a5.html",
       "line": 50,
       "col": 226,
       "endLine": 50,
@@ -1306,7 +1306,7 @@
       "severity": "MEDIUM",
       "signature": "html.security.plaintext-http-link.plaintext-http-link",
       "message": "This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible.",
-      "file": "nodegoat/app/views/tutorial/a5.html",
+      "file": "NodeGoat/app/views/tutorial/a5.html",
       "line": 51,
       "col": 25,
       "endLine": 51,
@@ -1319,7 +1319,7 @@
       "severity": "CRITICAL",
       "signature": "generic.secrets.security.detected-private-key.detected-private-key",
       "message": "Private Key detected. This is a sensitive credential and should not be hardcoded here. Instead, store this in a separate, private file.",
-      "file": "nodegoat/artifacts/cert/server.key",
+      "file": "NodeGoat/artifacts/cert/server.key",
       "line": 1,
       "col": 1,
       "endLine": 2,
@@ -1332,7 +1332,7 @@
       "severity": "CRITICAL",
       "signature": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
       "message": "bcrypt hash detected",
-      "file": "nodegoat/artifacts/db-reset.js",
+      "file": "NodeGoat/artifacts/db-reset.js",
       "line": 19,
       "col": 25,
       "endLine": 19,
@@ -1345,7 +1345,7 @@
       "severity": "CRITICAL",
       "signature": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
       "message": "bcrypt hash detected",
-      "file": "nodegoat/artifacts/db-reset.js",
+      "file": "NodeGoat/artifacts/db-reset.js",
       "line": 28,
       "col": 26,
       "endLine": 28,
@@ -1358,7 +1358,7 @@
       "severity": "CRITICAL",
       "signature": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
       "message": "bcrypt hash detected",
-      "file": "nodegoat/artifacts/db-reset.js",
+      "file": "NodeGoat/artifacts/db-reset.js",
       "line": 36,
       "col": 25,
       "endLine": 36,
@@ -1371,7 +1371,7 @@
       "severity": "MEDIUM",
       "signature": "yaml.docker-compose.security.no-new-privileges.no-new-privileges",
       "message": "Service 'mongo' allows for privilege escalation via setuid or setgid binaries. Add 'no-new-privileges:true' in 'security_opt' to prevent this.",
-      "file": "nodegoat/docker-compose.yml",
+      "file": "NodeGoat/docker-compose.yml",
       "line": 13,
       "col": 3,
       "endLine": 13,
@@ -1384,7 +1384,7 @@
       "severity": "MEDIUM",
       "signature": "yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service",
       "message": "Service 'mongo' is running with a writable root filesystem. This may allow malicious applications to download and run additional payloads, or modify container files. If an application inside a container has to save something temporarily consider using a tmpfs. Add 'read_only: true' to this service to prevent this.",
-      "file": "nodegoat/docker-compose.yml",
+      "file": "NodeGoat/docker-compose.yml",
       "line": 13,
       "col": 3,
       "endLine": 13,
@@ -1397,7 +1397,7 @@
       "severity": "LOW",
       "signature": "javascript.express.security.audit.express-check-csurf-middleware-usage.express-check-csurf-middleware-usage",
       "message": "A CSRF middleware was not detected in your express application. Ensure you are either using one such as `csurf` or `csrf` (see rule references) and/or you are properly doing CSRF validation in your routes with a token or cookies.",
-      "file": "nodegoat/server.js",
+      "file": "NodeGoat/server.js",
       "line": 15,
       "col": 7,
       "endLine": 15,
@@ -1410,7 +1410,7 @@
       "severity": "CRITICAL",
       "signature": "javascript.express.security.audit.express-cookie-settings.express-cookie-session-default-name",
       "message": "Don’t use the default session cookie name Using the default session cookie name can open your app to attacks. The security issue posed is similar to X-Powered-By: a potential attacker can use it to fingerprint the server and target attacks accordingly.",
-      "file": "nodegoat/server.js",
+      "file": "NodeGoat/server.js",
       "line": 78,
       "col": 13,
       "endLine": 102,
@@ -1423,7 +1423,7 @@
       "severity": "CRITICAL",
       "signature": "javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-domain",
       "message": "Default session middleware settings: `domain` not set. It indicates the domain of the cookie; use it to compare against the domain of the server in which the URL is being requested. If they match, then check the path attribute next.",
-      "file": "nodegoat/server.js",
+      "file": "NodeGoat/server.js",
       "line": 78,
       "col": 13,
       "endLine": 102,
@@ -1436,7 +1436,7 @@
       "severity": "CRITICAL",
       "signature": "javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-expires",
       "message": "Default session middleware settings: `expires` not set. Use it to set expiration date for persistent cookies.",
-      "file": "nodegoat/server.js",
+      "file": "NodeGoat/server.js",
       "line": 78,
       "col": 13,
       "endLine": 102,
@@ -1449,7 +1449,7 @@
       "severity": "CRITICAL",
       "signature": "javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-httponly",
       "message": "Default session middleware settings: `httpOnly` not set. It ensures the cookie is sent only over HTTP(S), not client JavaScript, helping to protect against cross-site scripting attacks.",
-      "file": "nodegoat/server.js",
+      "file": "NodeGoat/server.js",
       "line": 78,
       "col": 13,
       "endLine": 102,
@@ -1462,7 +1462,7 @@
       "severity": "CRITICAL",
       "signature": "javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-path",
       "message": "Default session middleware settings: `path` not set. It indicates the path of the cookie; use it to compare against the request path. If this and domain match, then send the cookie in the request.",
-      "file": "nodegoat/server.js",
+      "file": "NodeGoat/server.js",
       "line": 78,
       "col": 13,
       "endLine": 102,
@@ -1475,7 +1475,7 @@
       "severity": "CRITICAL",
       "signature": "javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-secure",
       "message": "Default session middleware settings: `secure` not set. It ensures the browser only sends the cookie over HTTPS.",
-      "file": "nodegoat/server.js",
+      "file": "NodeGoat/server.js",
       "line": 78,
       "col": 13,
       "endLine": 102,
@@ -1488,7 +1488,7 @@
       "severity": "MEDIUM",
       "signature": "problem-based-packs.insecure-transport.js-node.using-http-server.using-http-server",
       "message": "Checks for any usage of http servers instead of https servers. Encourages the usage of https protocol instead of http, which does not have TLS and is therefore unencrypted. Using http can lead to man-in-the-middle attacks in which the attacker is able to read sensitive information.",
-      "file": "nodegoat/server.js",
+      "file": "NodeGoat/server.js",
       "line": 145,
       "col": 5,
       "endLine": 145,
@@ -2716,203 +2716,203 @@
       {
         "issue": "javascript.browser.security.eval-detected.eval-detected",
         "why": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources. at contributions.js:32",
-        "file": "/tmp/nodegoat/app/routes/contributions.js",
+        "file": "/private/tmp/NodeGoat/app/routes/contributions.js",
         "line": 32,
         "severity": "MEDIUM"
       },
       {
         "issue": "javascript.lang.security.audit.code-string-concat.code-string-concat",
         "why": "Found data from an Express or Next web request flowing to `eval`. If this data is user-controllable this can lead to execution of arbitrary system commands in the context of your application process. Avoid `eval` whenever possible. at contributions.js:32",
-        "file": "/tmp/nodegoat/app/routes/contributions.js",
+        "file": "/private/tmp/NodeGoat/app/routes/contributions.js",
         "line": 32,
         "severity": "HIGH"
       },
       {
         "issue": "javascript.browser.security.eval-detected.eval-detected",
         "why": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources. at contributions.js:33",
-        "file": "/tmp/nodegoat/app/routes/contributions.js",
+        "file": "/private/tmp/NodeGoat/app/routes/contributions.js",
         "line": 33,
         "severity": "MEDIUM"
       },
       {
         "issue": "javascript.lang.security.audit.code-string-concat.code-string-concat",
         "why": "Found data from an Express or Next web request flowing to `eval`. If this data is user-controllable this can lead to execution of arbitrary system commands in the context of your application process. Avoid `eval` whenever possible. at contributions.js:33",
-        "file": "/tmp/nodegoat/app/routes/contributions.js",
+        "file": "/private/tmp/NodeGoat/app/routes/contributions.js",
         "line": 33,
         "severity": "HIGH"
       },
       {
         "issue": "javascript.browser.security.eval-detected.eval-detected",
         "why": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources. at contributions.js:34",
-        "file": "/tmp/nodegoat/app/routes/contributions.js",
+        "file": "/private/tmp/NodeGoat/app/routes/contributions.js",
         "line": 34,
         "severity": "MEDIUM"
       },
       {
         "issue": "javascript.lang.security.audit.code-string-concat.code-string-concat",
         "why": "Found data from an Express or Next web request flowing to `eval`. If this data is user-controllable this can lead to execution of arbitrary system commands in the context of your application process. Avoid `eval` whenever possible. at contributions.js:34",
-        "file": "/tmp/nodegoat/app/routes/contributions.js",
+        "file": "/private/tmp/NodeGoat/app/routes/contributions.js",
         "line": 34,
         "severity": "HIGH"
       },
       {
         "issue": "javascript.express.security.audit.express-open-redirect.express-open-redirect",
         "why": "The application redirects to a URL specified by user-supplied input `req` that is not validated. This could redirect users to malicious locations. Consider using an allow-list approach to validate URLs, or warn users they are being redirected to a third-party website. at index.js:72",
-        "file": "/tmp/nodegoat/app/routes/index.js",
+        "file": "/private/tmp/NodeGoat/app/routes/index.js",
         "line": 72,
         "severity": "MEDIUM"
       },
       {
         "issue": "python.django.security.django-no-csrf-token.django-no-csrf-token",
         "why": "Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks. at benefits.html:54",
-        "file": "/tmp/nodegoat/app/views/benefits.html",
+        "file": "/private/tmp/NodeGoat/app/views/benefits.html",
         "line": 54,
         "severity": "CRITICAL"
       },
       {
         "issue": "python.django.security.django-no-csrf-token.django-no-csrf-token",
         "why": "Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks. at login.html:107",
-        "file": "/tmp/nodegoat/app/views/login.html",
+        "file": "/private/tmp/NodeGoat/app/views/login.html",
         "line": 107,
         "severity": "CRITICAL"
       },
       {
         "issue": "python.django.security.django-no-csrf-token.django-no-csrf-token",
         "why": "Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks. at memos.html:15",
-        "file": "/tmp/nodegoat/app/views/memos.html",
+        "file": "/private/tmp/NodeGoat/app/views/memos.html",
         "line": 15,
         "severity": "CRITICAL"
       },
       {
         "issue": "html.security.plaintext-http-link.plaintext-http-link",
         "why": "This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible. at a2.html:207",
-        "file": "/tmp/nodegoat/app/views/tutorial/a2.html",
+        "file": "/private/tmp/NodeGoat/app/views/tutorial/a2.html",
         "line": 207,
         "severity": "MEDIUM"
       },
       {
         "issue": "html.security.plaintext-http-link.plaintext-http-link",
         "why": "This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible. at a2.html:209",
-        "file": "/tmp/nodegoat/app/views/tutorial/a2.html",
+        "file": "/private/tmp/NodeGoat/app/views/tutorial/a2.html",
         "line": 209,
         "severity": "MEDIUM"
       },
       {
         "issue": "html.security.plaintext-http-link.plaintext-http-link",
         "why": "This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible. at a2.html:210",
-        "file": "/tmp/nodegoat/app/views/tutorial/a2.html",
+        "file": "/private/tmp/NodeGoat/app/views/tutorial/a2.html",
         "line": 210,
         "severity": "MEDIUM"
       },
       {
         "issue": "html.security.plaintext-http-link.plaintext-http-link",
         "why": "This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible. at a5.html:50",
-        "file": "/tmp/nodegoat/app/views/tutorial/a5.html",
+        "file": "/private/tmp/NodeGoat/app/views/tutorial/a5.html",
         "line": 50,
         "severity": "MEDIUM"
       },
       {
         "issue": "html.security.plaintext-http-link.plaintext-http-link",
         "why": "This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible. at a5.html:51",
-        "file": "/tmp/nodegoat/app/views/tutorial/a5.html",
+        "file": "/private/tmp/NodeGoat/app/views/tutorial/a5.html",
         "line": 51,
         "severity": "MEDIUM"
       },
       {
         "issue": "generic.secrets.security.detected-private-key.detected-private-key",
         "why": "Private Key detected. This is a sensitive credential and should not be hardcoded here. Instead, store this in a separate, private file. at server.key:1",
-        "file": "/tmp/nodegoat/artifacts/cert/server.key",
+        "file": "/private/tmp/NodeGoat/artifacts/cert/server.key",
         "line": 1,
         "severity": "CRITICAL"
       },
       {
         "issue": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
         "why": "bcrypt hash detected at db-reset.js:19",
-        "file": "/tmp/nodegoat/artifacts/db-reset.js",
+        "file": "/private/tmp/NodeGoat/artifacts/db-reset.js",
         "line": 19,
         "severity": "CRITICAL"
       },
       {
         "issue": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
         "why": "bcrypt hash detected at db-reset.js:28",
-        "file": "/tmp/nodegoat/artifacts/db-reset.js",
+        "file": "/private/tmp/NodeGoat/artifacts/db-reset.js",
         "line": 28,
         "severity": "CRITICAL"
       },
       {
         "issue": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
         "why": "bcrypt hash detected at db-reset.js:36",
-        "file": "/tmp/nodegoat/artifacts/db-reset.js",
+        "file": "/private/tmp/NodeGoat/artifacts/db-reset.js",
         "line": 36,
         "severity": "CRITICAL"
       },
       {
         "issue": "yaml.docker-compose.security.no-new-privileges.no-new-privileges",
         "why": "Service 'mongo' allows for privilege escalation via setuid or setgid binaries. Add 'no-new-privileges:true' in 'security_opt' to prevent this. at docker-compose.yml:13",
-        "file": "/tmp/nodegoat/docker-compose.yml",
+        "file": "/private/tmp/NodeGoat/docker-compose.yml",
         "line": 13,
         "severity": "MEDIUM"
       },
       {
         "issue": "yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service",
         "why": "Service 'mongo' is running with a writable root filesystem. This may allow malicious applications to download and run additional payloads, or modify container files. If an application inside a container has to save something temporarily consider using a tmpfs. Add 'read_only: true' to this service to prevent this. at docker-compose.yml:13",
-        "file": "/tmp/nodegoat/docker-compose.yml",
+        "file": "/private/tmp/NodeGoat/docker-compose.yml",
         "line": 13,
         "severity": "MEDIUM"
       },
       {
         "issue": "javascript.express.security.audit.express-check-csurf-middleware-usage.express-check-csurf-middleware-usage",
         "why": "A CSRF middleware was not detected in your express application. Ensure you are either using one such as `csurf` or `csrf` (see rule references) and/or you are properly doing CSRF validation in your routes with a token or cookies. at server.js:15",
-        "file": "/tmp/nodegoat/server.js",
+        "file": "/private/tmp/NodeGoat/server.js",
         "line": 15,
         "severity": "LOW"
       },
       {
         "issue": "javascript.express.security.audit.express-cookie-settings.express-cookie-session-default-name",
         "why": "Don’t use the default session cookie name Using the default session cookie name can open your app to attacks. The security issue posed is similar to X-Powered-By: a potential attacker can use it to fingerprint the server and target attacks accordingly. at server.js:78",
-        "file": "/tmp/nodegoat/server.js",
+        "file": "/private/tmp/NodeGoat/server.js",
         "line": 78,
         "severity": "CRITICAL"
       },
       {
         "issue": "javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-domain",
         "why": "Default session middleware settings: `domain` not set. It indicates the domain of the cookie; use it to compare against the domain of the server in which the URL is being requested. If they match, then check the path attribute next. at server.js:78",
-        "file": "/tmp/nodegoat/server.js",
+        "file": "/private/tmp/NodeGoat/server.js",
         "line": 78,
         "severity": "CRITICAL"
       },
       {
         "issue": "javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-expires",
         "why": "Default session middleware settings: `expires` not set. Use it to set expiration date for persistent cookies. at server.js:78",
-        "file": "/tmp/nodegoat/server.js",
+        "file": "/private/tmp/NodeGoat/server.js",
         "line": 78,
         "severity": "CRITICAL"
       },
       {
         "issue": "javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-httponly",
         "why": "Default session middleware settings: `httpOnly` not set. It ensures the cookie is sent only over HTTP(S), not client JavaScript, helping to protect against cross-site scripting attacks. at server.js:78",
-        "file": "/tmp/nodegoat/server.js",
+        "file": "/private/tmp/NodeGoat/server.js",
         "line": 78,
         "severity": "CRITICAL"
       },
       {
         "issue": "javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-path",
         "why": "Default session middleware settings: `path` not set. It indicates the path of the cookie; use it to compare against the request path. If this and domain match, then send the cookie in the request. at server.js:78",
-        "file": "/tmp/nodegoat/server.js",
+        "file": "/private/tmp/NodeGoat/server.js",
         "line": 78,
         "severity": "CRITICAL"
       },
       {
         "issue": "javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-secure",
         "why": "Default session middleware settings: `secure` not set. It ensures the browser only sends the cookie over HTTPS. at server.js:78",
-        "file": "/tmp/nodegoat/server.js",
+        "file": "/private/tmp/NodeGoat/server.js",
         "line": 78,
         "severity": "CRITICAL"
       },
       {
         "issue": "problem-based-packs.insecure-transport.js-node.using-http-server.using-http-server",
         "why": "Checks for any usage of http servers instead of https servers. Encourages the usage of https protocol instead of http, which does not have TLS and is therefore unencrypted. Using http can lead to man-in-the-middle attacks in which the attacker is able to read sensitive information. at server.js:145",
-        "file": "/tmp/nodegoat/server.js",
+        "file": "/private/tmp/NodeGoat/server.js",
         "line": 145,
         "severity": "MEDIUM"
       },
@@ -3806,7 +3806,7 @@
         "issue": "javascript.browser.security.eval-detected.eval-detected",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/app/routes/contributions.js:32",
+          "cmd": "# Fix: NodeGoat/app/routes/contributions.js:32",
           "note": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources."
         }
       },
@@ -3814,7 +3814,7 @@
         "issue": "javascript.lang.security.audit.code-string-concat.code-string-concat",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/app/routes/contributions.js:32",
+          "cmd": "# Fix: NodeGoat/app/routes/contributions.js:32",
           "note": "Found data from an Express or Next web request flowing to `eval`. If this data is user-controllable this can lead to execution of arbitrary system commands in the context of your application process. Avoid `eval` whenever possible."
         }
       },
@@ -3822,7 +3822,7 @@
         "issue": "javascript.browser.security.eval-detected.eval-detected",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/app/routes/contributions.js:33",
+          "cmd": "# Fix: NodeGoat/app/routes/contributions.js:33",
           "note": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources."
         }
       },
@@ -3830,7 +3830,7 @@
         "issue": "javascript.lang.security.audit.code-string-concat.code-string-concat",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/app/routes/contributions.js:33",
+          "cmd": "# Fix: NodeGoat/app/routes/contributions.js:33",
           "note": "Found data from an Express or Next web request flowing to `eval`. If this data is user-controllable this can lead to execution of arbitrary system commands in the context of your application process. Avoid `eval` whenever possible."
         }
       },
@@ -3838,7 +3838,7 @@
         "issue": "javascript.browser.security.eval-detected.eval-detected",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/app/routes/contributions.js:34",
+          "cmd": "# Fix: NodeGoat/app/routes/contributions.js:34",
           "note": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources."
         }
       },
@@ -3846,7 +3846,7 @@
         "issue": "javascript.lang.security.audit.code-string-concat.code-string-concat",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/app/routes/contributions.js:34",
+          "cmd": "# Fix: NodeGoat/app/routes/contributions.js:34",
           "note": "Found data from an Express or Next web request flowing to `eval`. If this data is user-controllable this can lead to execution of arbitrary system commands in the context of your application process. Avoid `eval` whenever possible."
         }
       },
@@ -3854,7 +3854,7 @@
         "issue": "javascript.express.security.audit.express-open-redirect.express-open-redirect",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/app/routes/index.js:72",
+          "cmd": "# Fix: NodeGoat/app/routes/index.js:72",
           "note": "The application redirects to a URL specified by user-supplied input `req` that is not validated. This could redirect users to malicious locations. Consider using an allow-list approach to validate URLs, or warn users they are being redirected to a third-party website."
         }
       },
@@ -3862,7 +3862,7 @@
         "issue": "python.django.security.django-no-csrf-token.django-no-csrf-token",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/app/views/benefits.html:54",
+          "cmd": "# Fix: NodeGoat/app/views/benefits.html:54",
           "note": "Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks."
         }
       },
@@ -3870,7 +3870,7 @@
         "issue": "python.django.security.django-no-csrf-token.django-no-csrf-token",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/app/views/login.html:107",
+          "cmd": "# Fix: NodeGoat/app/views/login.html:107",
           "note": "Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks."
         }
       },
@@ -3878,7 +3878,7 @@
         "issue": "python.django.security.django-no-csrf-token.django-no-csrf-token",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/app/views/memos.html:15",
+          "cmd": "# Fix: NodeGoat/app/views/memos.html:15",
           "note": "Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks."
         }
       },
@@ -3886,7 +3886,7 @@
         "issue": "html.security.plaintext-http-link.plaintext-http-link",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/app/views/tutorial/a2.html:207",
+          "cmd": "# Fix: NodeGoat/app/views/tutorial/a2.html:207",
           "note": "This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible."
         }
       },
@@ -3894,7 +3894,7 @@
         "issue": "html.security.plaintext-http-link.plaintext-http-link",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/app/views/tutorial/a2.html:209",
+          "cmd": "# Fix: NodeGoat/app/views/tutorial/a2.html:209",
           "note": "This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible."
         }
       },
@@ -3902,7 +3902,7 @@
         "issue": "html.security.plaintext-http-link.plaintext-http-link",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/app/views/tutorial/a2.html:210",
+          "cmd": "# Fix: NodeGoat/app/views/tutorial/a2.html:210",
           "note": "This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible."
         }
       },
@@ -3910,7 +3910,7 @@
         "issue": "html.security.plaintext-http-link.plaintext-http-link",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/app/views/tutorial/a5.html:50",
+          "cmd": "# Fix: NodeGoat/app/views/tutorial/a5.html:50",
           "note": "This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible."
         }
       },
@@ -3918,7 +3918,7 @@
         "issue": "html.security.plaintext-http-link.plaintext-http-link",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/app/views/tutorial/a5.html:51",
+          "cmd": "# Fix: NodeGoat/app/views/tutorial/a5.html:51",
           "note": "This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible."
         }
       },
@@ -3926,7 +3926,7 @@
         "issue": "generic.secrets.security.detected-private-key.detected-private-key",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/artifacts/cert/server.key:1",
+          "cmd": "# Fix: NodeGoat/artifacts/cert/server.key:1",
           "note": "Private Key detected. This is a sensitive credential and should not be hardcoded here. Instead, store this in a separate, private file."
         }
       },
@@ -3934,7 +3934,7 @@
         "issue": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/artifacts/db-reset.js:19",
+          "cmd": "# Fix: NodeGoat/artifacts/db-reset.js:19",
           "note": "bcrypt hash detected"
         }
       },
@@ -3942,7 +3942,7 @@
         "issue": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/artifacts/db-reset.js:28",
+          "cmd": "# Fix: NodeGoat/artifacts/db-reset.js:28",
           "note": "bcrypt hash detected"
         }
       },
@@ -3950,7 +3950,7 @@
         "issue": "generic.secrets.security.detected-bcrypt-hash.detected-bcrypt-hash",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/artifacts/db-reset.js:36",
+          "cmd": "# Fix: NodeGoat/artifacts/db-reset.js:36",
           "note": "bcrypt hash detected"
         }
       },
@@ -3958,7 +3958,7 @@
         "issue": "yaml.docker-compose.security.no-new-privileges.no-new-privileges",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/docker-compose.yml:13",
+          "cmd": "# Fix: NodeGoat/docker-compose.yml:13",
           "note": "Service 'mongo' allows for privilege escalation via setuid or setgid binaries. Add 'no-new-privileges:true' in 'security_opt' to prevent this."
         }
       },
@@ -3966,7 +3966,7 @@
         "issue": "yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/docker-compose.yml:13",
+          "cmd": "# Fix: NodeGoat/docker-compose.yml:13",
           "note": "Service 'mongo' is running with a writable root filesystem. This may allow malicious applications to download and run additional payloads, or modify container files. If an application inside a container has to save something temporarily consider using a tmpfs. Add 'read_only: true' to this service to prevent this."
         }
       },
@@ -3974,7 +3974,7 @@
         "issue": "javascript.express.security.audit.express-check-csurf-middleware-usage.express-check-csurf-middleware-usage",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/server.js:15",
+          "cmd": "# Fix: NodeGoat/server.js:15",
           "note": "A CSRF middleware was not detected in your express application. Ensure you are either using one such as `csurf` or `csrf` (see rule references) and/or you are properly doing CSRF validation in your routes with a token or cookies."
         }
       },
@@ -3982,7 +3982,7 @@
         "issue": "javascript.express.security.audit.express-cookie-settings.express-cookie-session-default-name",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/server.js:78",
+          "cmd": "# Fix: NodeGoat/server.js:78",
           "note": "Don’t use the default session cookie name Using the default session cookie name can open your app to attacks. The security issue posed is similar to X-Powered-By: a potential attacker can use it to fingerprint the server and target attacks accordingly."
         }
       },
@@ -3990,7 +3990,7 @@
         "issue": "javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-domain",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/server.js:78",
+          "cmd": "# Fix: NodeGoat/server.js:78",
           "note": "Default session middleware settings: `domain` not set. It indicates the domain of the cookie; use it to compare against the domain of the server in which the URL is being requested. If they match, then check the path attribute next."
         }
       },
@@ -3998,7 +3998,7 @@
         "issue": "javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-expires",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/server.js:78",
+          "cmd": "# Fix: NodeGoat/server.js:78",
           "note": "Default session middleware settings: `expires` not set. Use it to set expiration date for persistent cookies."
         }
       },
@@ -4006,7 +4006,7 @@
         "issue": "javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-httponly",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/server.js:78",
+          "cmd": "# Fix: NodeGoat/server.js:78",
           "note": "Default session middleware settings: `httpOnly` not set. It ensures the cookie is sent only over HTTP(S), not client JavaScript, helping to protect against cross-site scripting attacks."
         }
       },
@@ -4014,7 +4014,7 @@
         "issue": "javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-path",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/server.js:78",
+          "cmd": "# Fix: NodeGoat/server.js:78",
           "note": "Default session middleware settings: `path` not set. It indicates the path of the cookie; use it to compare against the request path. If this and domain match, then send the cookie in the request."
         }
       },
@@ -4022,7 +4022,7 @@
         "issue": "javascript.express.security.audit.express-cookie-settings.express-cookie-session-no-secure",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/server.js:78",
+          "cmd": "# Fix: NodeGoat/server.js:78",
           "note": "Default session middleware settings: `secure` not set. It ensures the browser only sends the cookie over HTTPS."
         }
       },
@@ -4030,7 +4030,7 @@
         "issue": "problem-based-packs.insecure-transport.js-node.using-http-server.using-http-server",
         "patch": {
           "action": "manual code fix",
-          "cmd": "# Fix: nodegoat/server.js:145",
+          "cmd": "# Fix: NodeGoat/server.js:145",
           "note": "Checks for any usage of http servers instead of https servers. Encourages the usage of https protocol instead of http, which does not have TLS and is therefore unencrypted. Using http can lead to man-in-the-middle attacks in which the attacker is able to read sensitive information."
         }
       },
@@ -4360,67 +4360,67 @@
     "blocked": [
       {
         "action": "manual code fix",
-        "cmd": "# Fix: nodegoat/app/views/benefits.html:54",
+        "cmd": "# Fix: NodeGoat/app/views/benefits.html:54",
         "note": "Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks."
       },
       {
         "action": "manual code fix",
-        "cmd": "# Fix: nodegoat/app/views/login.html:107",
+        "cmd": "# Fix: NodeGoat/app/views/login.html:107",
         "note": "Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks."
       },
       {
         "action": "manual code fix",
-        "cmd": "# Fix: nodegoat/app/views/memos.html:15",
+        "cmd": "# Fix: NodeGoat/app/views/memos.html:15",
         "note": "Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks."
       },
       {
         "action": "manual code fix",
-        "cmd": "# Fix: nodegoat/artifacts/cert/server.key:1",
+        "cmd": "# Fix: NodeGoat/artifacts/cert/server.key:1",
         "note": "Private Key detected. This is a sensitive credential and should not be hardcoded here. Instead, store this in a separate, private file."
       },
       {
         "action": "manual code fix",
-        "cmd": "# Fix: nodegoat/artifacts/db-reset.js:19",
+        "cmd": "# Fix: NodeGoat/artifacts/db-reset.js:19",
         "note": "bcrypt hash detected"
       },
       {
         "action": "manual code fix",
-        "cmd": "# Fix: nodegoat/artifacts/db-reset.js:28",
+        "cmd": "# Fix: NodeGoat/artifacts/db-reset.js:28",
         "note": "bcrypt hash detected"
       },
       {
         "action": "manual code fix",
-        "cmd": "# Fix: nodegoat/artifacts/db-reset.js:36",
+        "cmd": "# Fix: NodeGoat/artifacts/db-reset.js:36",
         "note": "bcrypt hash detected"
       },
       {
         "action": "manual code fix",
-        "cmd": "# Fix: nodegoat/server.js:78",
+        "cmd": "# Fix: NodeGoat/server.js:78",
         "note": "Don’t use the default session cookie name Using the default session cookie name can open your app to attacks. The security issue posed is similar to X-Powered-By: a potential attacker can use it to fingerprint the server and target attacks accordingly."
       },
       {
         "action": "manual code fix",
-        "cmd": "# Fix: nodegoat/server.js:78",
+        "cmd": "# Fix: NodeGoat/server.js:78",
         "note": "Default session middleware settings: `domain` not set. It indicates the domain of the cookie; use it to compare against the domain of the server in which the URL is being requested. If they match, then check the path attribute next."
       },
       {
         "action": "manual code fix",
-        "cmd": "# Fix: nodegoat/server.js:78",
+        "cmd": "# Fix: NodeGoat/server.js:78",
         "note": "Default session middleware settings: `expires` not set. Use it to set expiration date for persistent cookies."
       },
       {
         "action": "manual code fix",
-        "cmd": "# Fix: nodegoat/server.js:78",
+        "cmd": "# Fix: NodeGoat/server.js:78",
         "note": "Default session middleware settings: `httpOnly` not set. It ensures the cookie is sent only over HTTP(S), not client JavaScript, helping to protect against cross-site scripting attacks."
       },
       {
         "action": "manual code fix",
-        "cmd": "# Fix: nodegoat/server.js:78",
+        "cmd": "# Fix: NodeGoat/server.js:78",
         "note": "Default session middleware settings: `path` not set. It indicates the path of the cookie; use it to compare against the request path. If this and domain match, then send the cookie in the request."
       },
       {
         "action": "manual code fix",
-        "cmd": "# Fix: nodegoat/server.js:78",
+        "cmd": "# Fix: NodeGoat/server.js:78",
         "note": "Default session middleware settings: `secure` not set. It ensures the browser only sends the cookie over HTTPS."
       },
       {

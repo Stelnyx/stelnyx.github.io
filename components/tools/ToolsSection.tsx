@@ -20,7 +20,8 @@ const TOOLS: Product[] = [
       "Know which files will break before you touch them. Identify the tech debt due-diligence will surface — before the investor does. Give a new hire a working mental model in one report instead of two weeks of context-gathering. Audit AI-generated code you didn't write and can't fully vouch for. LuxScope reads your codebase deterministically — no LLMs, no cloud, runs on your machine.",
     stack: ["AST", "Risk scoring", "Diagrams", "Docs", "MCP"],
     status: "Open source — early release",
-    github: "https://github.com/tinydarkforge/luxscope",
+    sampleStats: "Sample: 82/100 · 149 files · 399 findings · 24 handoff docs (express 4.21.2)",
+    github: "https://github.com/Stelnyx/luxscope",
     page: "/preview/luxscope",
     audit: { price: "$499", href: "/preview/audit/luxscope.html" },
     audiences: {
@@ -39,7 +40,8 @@ const TOOLS: Product[] = [
       "Know whether AI agents can traverse and use your site — before they silently can't. ChatGPT shopping, Operator, and Claude computer use are already buying and acting on behalf of users; most sites quietly fail when they try. LuxFaber scores any URL across crawl access, structured data, semantic HTML, content clarity, and UA-cloaking determinism — with a prioritized fix list. Be readable. Be usable. Be operable.",
     stack: ["CLI", "HTTP", "Agent scoring"],
     status: "Open source — coming soon",
-    github: "https://github.com/tinydarkforge/LuxFaber",
+    sampleStats: "Sample: 72/100 · 5 rubrics scored (developer.mozilla.org)",
+    github: "https://github.com/Stelnyx/LuxFaber",
     page: "/preview/luxfaber",
     audit: { price: "$499", href: "/preview/audit/luxfaber.html" },
     audiences: {
@@ -59,8 +61,9 @@ const TOOLS: Product[] = [
       "Runs Semgrep, Gitleaks, osv-scanner, Trivy, and npm audit in one command. Normalizes findings into one report and fails the pipeline on CRITICAL or HIGH.",
     stack: ["Semgrep", "Gitleaks", "osv-scanner", "Trivy", "npm audit"],
     status: "v0.2.7 — MIT · published to npm",
+    sampleStats: "Sample: FAIL · 154 findings across 6 scanners (OWASP NodeGoat)",
     npm: "https://www.npmjs.com/package/@tinydarkforge/secgate",
-    github: "https://github.com/tinydarkforge/SecGate",
+    github: "https://github.com/Stelnyx/SecGate",
     audit: { price: "Free", href: "/preview/audit/secgate.html" },
   },
   {
@@ -73,7 +76,7 @@ const TOOLS: Product[] = [
       "Paste a Slack thread, bug report, or vague complaint — Intake uses local AI via Ollama to return a structured GitHub issue in one command. No cloud, no account.",
     stack: ["Ollama", "GitHub CLI", "Bubble Tea", "Go"],
     status: "MIT license — published",
-    github: "https://github.com/tinydarkforge/Intake",
+    github: "https://github.com/Stelnyx/Intake",
   },
   {
     name: "Engram",
@@ -85,7 +88,7 @@ const TOOLS: Product[] = [
       "Memory ledger for AI systems. Sessions, facts, confidence scoring, and MCP support. Local-first — one context budget, no account, no telemetry.",
     stack: ["Sessions", "Facts", "Confidence scoring", "MCP"],
     status: "MIT license — active development",
-    github: "https://github.com/tinydarkforge/Engram",
+    github: "https://github.com/Stelnyx/Engram",
   },
   {
     name: "Arbiter",
@@ -98,7 +101,7 @@ const TOOLS: Product[] = [
     stack: ["Limits", "Schema validation", "Tool allowlist", "Cost tracking", "Loop detection"],
     status: "MIT license — published to npm",
     npm: "https://www.npmjs.com/package/@tinydarkforge/arbiter",
-    github: "https://github.com/tinydarkforge/Arbiter",
+    github: "https://github.com/Stelnyx/Arbiter",
   },
 ];
 
