@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/nav/Navbar";
 import { Footer } from "@/components/footer/Footer";
-import { ContactModal, type ContactContext } from "@/components/contact/ContactModal";
+import { useContact } from "@/components/contact/ContactProvider";
 import { FEATURE_PRICING } from "@/lib/features";
 
 export interface ToolLandingData {
@@ -24,10 +23,10 @@ export interface ToolLandingData {
 }
 
 export function ToolLanding({ data }: { data: ToolLandingData }) {
-  const [ctx, setCtx] = useState<ContactContext | null>(null);
+  const openContact = useContact();
 
   function openAudit() {
-    setCtx({
+    openContact({
       product: data.auditName,
       tier: `${data.auditName} · ${data.auditPrice}`,
       source: `stelnyx · ${data.slug} · landing · audit`,
@@ -35,8 +34,8 @@ export function ToolLanding({ data }: { data: ToolLandingData }) {
     });
   }
 
-  function openContact() {
-    setCtx({
+  function openFounderContact() {
+    openContact({
       source: `stelnyx · ${data.slug} · landing`,
       title: "Talk to founder",
       intro:
@@ -194,7 +193,7 @@ export function ToolLanding({ data }: { data: ToolLandingData }) {
                   {" · "}
                 </>
               )}
-              <button type="button" onClick={openContact} className="text-stel-text-muted hover:text-stel-text-primary underline-offset-2 hover:underline cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber rounded-sm">
+              <button type="button" onClick={openFounderContact} className="text-stel-text-muted hover:text-stel-text-primary underline-offset-2 hover:underline cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-amber rounded-sm">
                 talk to the founder
               </button>
             </p>
@@ -203,7 +202,6 @@ export function ToolLanding({ data }: { data: ToolLandingData }) {
       </main>
       <Footer />
 
-      <ContactModal isOpen={!!ctx} onClose={() => setCtx(null)} context={ctx ?? undefined} />
     </>
   );
 }

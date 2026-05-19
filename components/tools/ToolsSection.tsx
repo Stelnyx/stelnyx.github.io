@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ProductCard, type Product } from "@/components/products/ProductCard";
 import { Modal } from "@/components/ui/Modal";
-import { ContactModal, type ContactContext } from "@/components/contact/ContactModal";
+import { useContact } from "@/components/contact/ContactProvider";
 import { FEATURE_PRICING, FEATURE_PUBLIC_REPOS } from "@/lib/features";
 
 const PAID_AUDITS_OPEN = FEATURE_PRICING;
@@ -147,14 +147,13 @@ function AudienceTabs({ audiences }: { audiences: NonNullable<Product["audiences
 
 export function ToolsSection() {
   const [selected, setSelected] = useState<Product | null>(null);
-  const [contactCtx, setContactCtx] = useState<ContactContext | null>(null);
+  const openContact = useContact();
 
   function openAuditRequest(product: Product) {
     if (!product.audit) return;
     const isFree = /free/i.test(product.audit.price);
-    setContactCtx({
+    openContact({
       product: product.name,
-      // tier: `1-hr audit · ${product.audit.price}`,
       tier: "1-hr audit",
       source: `stelnyx · ${product.name}`,
       title: `Request · ${product.name} 1-hr audit`,
@@ -222,7 +221,7 @@ export function ToolsSection() {
                     <button
                       type="button"
                       onClick={() =>
-                        setContactCtx({
+                        openContact({
                           product: "Stelnyx Full-Surface Audit",
                           tier: "$799 · 90-min · 3-in-1",
                           source: "stelnyx · bundle",
@@ -356,11 +355,6 @@ export function ToolsSection() {
         </Modal>
       )}
 
-      <ContactModal
-        isOpen={!!contactCtx}
-        onClose={() => setContactCtx(null)}
-        context={contactCtx ?? undefined}
-      />
     </>
   );
 }

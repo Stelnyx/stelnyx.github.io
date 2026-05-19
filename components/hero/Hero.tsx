@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { ContactModal } from "@/components/contact/ContactModal";
+import { useContact } from "@/components/contact/ContactProvider";
+import { PkgName } from "@/components/ui/PkgName";
 import { FEATURE_PUBLIC_REPOS } from "@/lib/features";
 
 const TERMINAL_LINES = [
-  { type: "cmd", text: "$ luxscope open expressjs/express@4.21.2 --level recon" },
+  { type: "cmd", text: "$ luxscope open expressjs/express@4.21.2 --level recon", pkg: "expressjs/express@4.21.2" },
   { type: "blank", text: "" },
   { type: "score", text: "LuxScope Score: 82 / 100   rule v0.1.0" },
   { type: "blank", text: "" },
@@ -17,7 +17,7 @@ const TERMINAL_LINES = [
 ];
 
 export function Hero() {
-  const [contactOpen, setContactOpen] = useState(false);
+  const openContact = useContact();
 
   return (
     <section
@@ -44,7 +44,7 @@ export function Hero() {
               className="text-stel-text-muted mt-5 leading-[1.7] max-w-[520px] text-balance"
               style={{ fontSize: "18px" }}
             >
-              AI shipped your codebase. We tell you what&apos;s actually inside — before your acquirer, investor, or new hire finds out. We ran LuxScope against <span className="text-stel-text-primary font-semibold">expressjs/express@4.21.2</span> — score <span className="text-stel-text-primary font-semibold">82/100</span>, <span className="text-stel-text-primary font-semibold">8 findings</span> across <span className="text-stel-text-primary font-semibold">57 risk files</span>, plus <span className="text-stel-text-primary font-semibold">23 deterministic handoff docs</span>.{" "}
+              AI shipped your codebase. We tell you what&apos;s actually inside — before your acquirer, investor, or new hire finds out. We ran LuxScope against <PkgName text="expressjs/express@4.21.2" className="text-stel-text-primary font-semibold" /> — score <span className="text-stel-text-primary font-semibold">82/100</span>, <span className="text-stel-text-primary font-semibold">8 findings</span> across <span className="text-stel-text-primary font-semibold">57 risk files</span>, plus <span className="text-stel-text-primary font-semibold">23 deterministic handoff docs</span>.{" "}
               <a
                 href="/reports/luxscope.html"
                 target="_blank"
@@ -67,7 +67,14 @@ export function Hero() {
               </a>
               <button
                 type="button"
-                onClick={() => setContactOpen(true)}
+                onClick={() =>
+                  openContact({
+                    source: "stelnyx · hero",
+                    title: "Talk to founder",
+                    intro:
+                      "15-minute call with Daniel. Tell us about your stack, what you're shipping, and what you'd want scored. We reply within a day.",
+                  })
+                }
                 className="inline-flex items-center justify-center text-stel-text-primary border border-stel-border px-6 py-3.5 rounded-md hover:border-stel-border-bright hover:text-stel-text-primary transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright focus-visible:ring-offset-2 focus-visible:ring-offset-stel-bg cursor-pointer"
                 style={{ minHeight: "44px" }}
               >
@@ -108,6 +115,17 @@ export function Hero() {
                     }
                     if (line.type === "cmd") {
                       if (!FEATURE_PUBLIC_REPOS) return null;
+                      const pkg = line.pkg;
+                      if (pkg && line.text.includes(pkg)) {
+                        const [before, after] = line.text.split(pkg);
+                        return (
+                          <div key={i} className="text-stel-text-muted">
+                            {before}
+                            <PkgName text={pkg} />
+                            {after}
+                          </div>
+                        );
+                      }
                       return (
                         <div key={i} className="text-stel-text-muted">
                           {line.text}
@@ -157,15 +175,6 @@ export function Hero() {
         </div>
       </div>
 
-      <ContactModal
-        isOpen={contactOpen}
-        onClose={() => setContactOpen(false)}
-        context={{
-          source: "stelnyx · hero",
-          title: "Talk to founder",
-          intro: "15-minute call with Daniel. Tell us about your stack, what you're shipping, and what you'd want scored. We reply within a day.",
-        }}
-      />
     </section>
   );
 }

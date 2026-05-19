@@ -1,7 +1,8 @@
 import { FEATURE_PUBLIC_REPOS } from "@/lib/features";
+import { PkgName } from "@/components/ui/PkgName";
 
 type RuleLine = { type: "rule"; label: string; score: string };
-type CmdLine = { type: "cmd"; text: string };
+type CmdLine = { type: "cmd"; text: string; pkg?: string };
 type HeadLine = { type: "score"; text: string };
 type BlankLine = { type: "blank" };
 type Line = RuleLine | CmdLine | HeadLine | BlankLine;
@@ -40,7 +41,7 @@ const SECGATE: ScoreBlock = {
   caption: "SecGate — deterministic security gate. Same inputs → same score, every run. Run against OWASP NodeGoat (intentionally vulnerable).",
   reportHref: "/reports/secgate.html",
   lines: [
-    { type: "cmd", text: "$ npx @stelnyx/secgate OWASP/NodeGoat" },
+    { type: "cmd", text: "$ npx @stelnyx/secgate OWASP/NodeGoat", pkg: "@stelnyx/secgate" },
     { type: "score", text: "Status: FAIL · Risk 468 · rule v1" },
     { type: "blank" },
     { type: "rule", label: "  Semgrep     ", score: "29 findings" },
@@ -86,6 +87,16 @@ function Terminal({ block }: { block: ScoreBlock }) {
             }
             if (line.type === "cmd") {
               if (!FEATURE_PUBLIC_REPOS) return null;
+              if (line.pkg && line.text.includes(line.pkg)) {
+                const [before, after] = line.text.split(line.pkg);
+                return (
+                  <div key={i} className="text-stel-text-muted">
+                    {before}
+                    <PkgName text={line.pkg} />
+                    {after}
+                  </div>
+                );
+              }
               return (
                 <div key={i} className="text-stel-text-muted">
                   {line.text}

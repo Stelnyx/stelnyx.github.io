@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { ContactProvider } from "@/components/contact/ContactProvider";
 import { FEATURE_PUBLIC_REPOS } from "@/lib/features";
 
 const inter = Inter({
@@ -62,6 +63,49 @@ const SITE_JSONLD = {
   publisher: { "@type": "Organization", name: "Stelnyx" },
 };
 
+const PRODUCT_JSONLDS = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "LuxScope",
+    description:
+      "Codebase intelligence scanner. Deterministic — no LLMs, no cloud, runs on your machine. Sample run against expressjs/express 4.21.2: score 82/100, 8 findings across 57 risk files, plus 23 deterministic handoff docs.",
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "macOS, Linux, Windows",
+    url: `${SITE_URL}/preview/luxscope`,
+    publisher: { "@type": "Organization", name: "Stelnyx", url: SITE_URL },
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    license: "https://www.apache.org/licenses/LICENSE-2.0",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "LuxFaber",
+    description:
+      "Agent-readiness (AEO) scanner. Scores any URL across crawl accessibility, structured data, semantic HTML, content clarity, and UA-cloaking determinism. Local-first; no telemetry. Sample run against developer.mozilla.org: 72/100 across 5 rubrics.",
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "macOS, Linux, Windows",
+    url: `${SITE_URL}/preview/luxfaber`,
+    publisher: { "@type": "Organization", name: "Stelnyx", url: SITE_URL },
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    license: "https://www.apache.org/licenses/LICENSE-2.0",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "SecGate",
+    description:
+      "Deterministic security gate. One command runs Semgrep, Gitleaks, osv-scanner, Trivy, and npm audit; normalizes findings; fails the pipeline on CRITICAL or HIGH. Aggregation is byte-identical across runs, locked by determinism + golden snapshot tests. v0.2.13 — published to npm as @stelnyx/secgate. Sample run against OWASP NodeGoat: FAIL · risk 468 · 154 findings.",
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "macOS, Linux, Windows",
+    url: "https://www.npmjs.com/package/@stelnyx/secgate",
+    publisher: { "@type": "Organization", name: "Stelnyx", url: SITE_URL },
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    license: "https://opensource.org/licenses/MIT",
+    softwareVersion: "0.2.13",
+  },
+];
+
 const PLAUSIBLE_DOMAIN = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 
 export default function RootLayout({
@@ -83,6 +127,13 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_JSONLD) }}
         />
+        {PRODUCT_JSONLDS.map((ld) => (
+          <script
+            key={ld.name}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }}
+          />
+        ))}
         {PLAUSIBLE_DOMAIN && (
           <script defer data-domain={PLAUSIBLE_DOMAIN} src="https://plausible.io/js/script.js" />
         )}
@@ -91,7 +142,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-nav">
           Skip to main content
         </a>
-        {children}
+        <ContactProvider>{children}</ContactProvider>
       </body>
     </html>
   );

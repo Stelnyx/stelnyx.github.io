@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ContactModal, type ContactContext } from "@/components/contact/ContactModal";
+import { useContact } from "@/components/contact/ContactProvider";
 import { InstallModal } from "@/components/pricing/InstallModal";
 import { FEATURE_PRICING } from "@/lib/features";
 
@@ -49,11 +49,11 @@ const AUDIT_CARDS: AuditCard[] = [
 ];
 
 export function PricingSectionPublic() {
-  const [ctx, setCtx] = useState<ContactContext | null>(null);
+  const openContact = useContact();
   const [installOpen, setInstallOpen] = useState(false);
 
   function openAudit(card: AuditCard) {
-    setCtx({
+    openContact({
       product: card.name,
       tier: card.ctaTier,
       source: `stelnyx · pricing · audit · ${card.key}`,
@@ -227,7 +227,6 @@ export function PricingSectionPublic() {
       </section>
 
       <InstallModal isOpen={installOpen} onClose={() => setInstallOpen(false)} />
-      <ContactModal isOpen={!!ctx} onClose={() => setCtx(null)} context={ctx ?? undefined} />
     </>
   );
 }

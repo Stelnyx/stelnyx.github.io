@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ContactModal } from "@/components/contact/ContactModal";
+import { useContact } from "@/components/contact/ContactProvider";
 import { FEATURE_PRICING } from "@/lib/features";
 
 function StarMark() {
@@ -18,7 +18,7 @@ return (
 export function Navbar() {
 const [drawerOpen, setDrawerOpen] = useState(false);
 const [scrolled, setScrolled] = useState(false);
-const [contactOpen, setContactOpen] = useState(false);
+const openContact = useContact();
 
 useEffect(() => {
 const handler = () => setScrolled(window.scrollY > 8);
@@ -66,7 +66,7 @@ return (
           Pricing
         </Link>
       )}
-      <button type="button" onClick={()=> setContactOpen(true)}
+      <button type="button" onClick={()=> openContact({ source: "stelnyx · navbar" })}
         className="text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150 text-[15px]
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
         >
@@ -119,7 +119,7 @@ return (
             Pricing
           </Link>
         )}
-        <button type="button" onClick={()=> { setDrawerOpen(false); setContactOpen(true); }}
+        <button type="button" onClick={()=> { setDrawerOpen(false); openContact({ source: "stelnyx · navbar" }); }}
           className="text-left text-stel-text-muted hover:text-stel-text-primary transition-colors duration-150
           text-[18px] py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright
           rounded-sm"
@@ -128,9 +128,6 @@ return (
         </button>
       </nav>
     </div>
-    <ContactModal isOpen={contactOpen} onClose={()=> setContactOpen(false)}
-      context={{ source: "stelnyx · navbar" }}
-      />
 </header>
 );
 }

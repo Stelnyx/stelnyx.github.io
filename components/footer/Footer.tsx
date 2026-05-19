@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { ContactModal } from "@/components/contact/ContactModal";
+import { useContact } from "@/components/contact/ContactProvider";
 import { FEATURE_PRICING, FEATURE_PUBLIC_REPOS } from "@/lib/features";
 
 const FOOTER_LINKS: { label: string; href: string; external?: boolean }[] = [
@@ -54,7 +53,7 @@ function StarMark() {
 
 export function Footer() {
   const year = new Date().getFullYear();
-  const [contactOpen, setContactOpen] = useState(false);
+  const openContact = useContact();
 
   return (
     <footer className="bg-stel-bg border-t border-stel-border py-12">
@@ -100,7 +99,7 @@ export function Footer() {
             <li>
               <button
                 type="button"
-                onClick={() => setContactOpen(true)}
+                onClick={() => openContact({ source: "stelnyx · footer" })}
                 className="text-[14px] text-stel-text-faint hover:text-stel-text-muted transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
               >
                 Contact
@@ -115,11 +114,6 @@ export function Footer() {
         </p>
       </div>
 
-      <ContactModal
-        isOpen={contactOpen}
-        onClose={() => setContactOpen(false)}
-        context={{ source: "stelnyx · footer" }}
-      />
     </footer>
   );
 }

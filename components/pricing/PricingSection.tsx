@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ContactModal, type ContactContext } from "@/components/contact/ContactModal";
+import { useContact } from "@/components/contact/ContactProvider";
 
 type ToolVariant = "bundle" | "luxscope" | "luxfaber";
 
@@ -118,13 +118,13 @@ const TOOL_TOGGLE: { key: ToolVariant; label: string }[] = [
 ];
 
 export function PricingSection() {
-  const [ctx, setCtx] = useState<ContactContext | null>(null);
+  const openContact = useContact();
   const [variant, setVariant] = useState<ToolVariant>("bundle");
 
   const team = TEAM_VARIANTS[variant];
 
   function openFree() {
-    setCtx({
+    openContact({
       product: "Stelnyx CLI",
       tier: "Free · CLI",
       source: "stelnyx · pricing · free",
@@ -133,7 +133,7 @@ export function PricingSection() {
   }
 
   function openTeam() {
-    setCtx({
+    openContact({
       product: team.name,
       tier: team.ctaTier,
       source: `stelnyx · pricing · team · ${variant}`,
@@ -142,7 +142,7 @@ export function PricingSection() {
   }
 
   function openOrg() {
-    setCtx({
+    openContact({
       product: "Stelnyx Org",
       tier: "Org · custom",
       source: "stelnyx · pricing · org",
@@ -151,7 +151,7 @@ export function PricingSection() {
   }
 
   function openAudit(card: AuditCard) {
-    setCtx({
+    openContact({
       product: card.name,
       tier: card.ctaTier,
       source: `stelnyx · pricing · audit · ${card.key}`,
@@ -385,7 +385,6 @@ export function PricingSection() {
         </div>
       </section>
 
-      <ContactModal isOpen={!!ctx} onClose={() => setCtx(null)} context={ctx ?? undefined} />
     </>
   );
 }
