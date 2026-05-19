@@ -34,14 +34,14 @@ const LUXFABER: ScoreBlock = {
 };
 
 const SECGATE: ScoreBlock = {
-  title: "secgate v0.2.7",
-  version: "rule v7",
+  title: "secgate v0.2.13",
+  version: "rule v1",
   ariaLabel: "SecGate status for OWASP NodeGoat: FAIL, risk 468 across 6 scanners",
-  caption: "SecGate — security gate scanner. Run against OWASP NodeGoat (intentionally vulnerable).",
+  caption: "SecGate — deterministic security gate. Same inputs → same score, every run. Run against OWASP NodeGoat (intentionally vulnerable).",
   reportHref: "/reports/secgate.html",
   lines: [
-    { type: "cmd", text: "$ npx @tinydarkforge/secgate OWASP/NodeGoat" },
-    { type: "score", text: "Status: FAIL · Risk 468 · rule v7" },
+    { type: "cmd", text: "$ npx @stelnyx/secgate OWASP/NodeGoat" },
+    { type: "score", text: "Status: FAIL · Risk 468 · rule v1" },
     { type: "blank" },
     { type: "rule", label: "  Semgrep     ", score: "29 findings" },
     { type: "rule", label: "  Gitleaks    ", score: "0 findings" },
