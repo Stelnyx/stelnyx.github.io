@@ -41,7 +41,7 @@ const TOOLS: Product[] = [
       "Know whether AI agents can traverse and use your site — before they silently can't. ChatGPT shopping, Operator, and Claude computer use are already buying and acting on behalf of users; most sites quietly fail when they try. LuxFaber scores any URL across crawl access, structured data, semantic HTML, content clarity, and UA-cloaking determinism — with a prioritized fix list. Be readable. Be usable. Be operable.",
     stack: ["CLI", "HTTP", "Agent scoring"],
     status: "Open source — coming soon",
-    sampleStats: "Sample: 72/100 · 5 rubrics · 16 issues (developer.mozilla.org)",
+    sampleStats: "Sample: 70/100 · 5 rubrics · 11 issues (developer.mozilla.org)",
     sampleReportHref: "/reports/luxfaber.html",
     github: "https://github.com/Stelnyx/LuxFaber",
     page: "/preview/luxfaber",

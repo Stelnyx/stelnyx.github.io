@@ -82,7 +82,7 @@ const PRODUCT_JSONLDS = [
     "@type": "SoftwareApplication",
     name: "LuxFaber",
     description:
-      "Agent-readiness (AEO) scanner. Scores any URL across crawl accessibility, structured data, semantic HTML, content clarity, and UA-cloaking determinism. Local-first; no telemetry. Sample run against developer.mozilla.org: 72/100 across 5 rubrics.",
+      "Agent-readiness (AEO) scanner. Scores any URL across crawl accessibility, structured data, semantic HTML, content clarity, and UA-cloaking determinism. Local-first; no telemetry. Sample run against developer.mozilla.org: 70/100 across 5 rubrics.",
     applicationCategory: "DeveloperApplication",
     operatingSystem: "macOS, Linux, Windows",
     url: `${SITE_URL}/preview/luxfaber`,

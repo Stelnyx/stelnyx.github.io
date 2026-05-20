@@ -3,257 +3,112 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E">
 <title>Luxfaber Report — https://developer.mozilla.org</title>
-<meta name="robots" content="noindex">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Inter%2C-apple-system%2Csans-serif' font-size='19' font-weight='700' fill='%23ff2d78'%3ES%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
-<style>/* Unified report theme — SecGate palette + Lux sidebar shell */
-:root {
-  --bg: #0a0a0a;
-  --surface: #141414;
-  --surface-2: #1a1a1a;
-  --border: #1f1f1f;
-  --border-bright: #2a2a2a;
-  --text: #e5e5e7;
-  --muted: #a3a3a8; /* bumped from #8e8e93 for WCAG */
-  --faint: #6e6e73;
-  --success: #34c759;
-  --warn: #ff9500;
-  --error: #ff3b30;
-  --med-sev: #ffcc00;
-  --accent: #e5e5e7;
-  --pink: #ff2d78;
-  --sidebar-w: 240px;
-  --content-max: 1200px;
-  --font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  /* Aliases for LuxFaber --color-* convention */
-  --color-pink: var(--pink);
-  --color-green: var(--success);
-  --color-amber: var(--warn);
-  --color-red: var(--error);
-  --color-bg: var(--bg);
-  --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
-  --color-border: var(--border);
-  --color-border-bright: var(--border-bright);
-  --color-text: var(--text);
-  --color-text-secondary: var(--muted);
-  --color-muted: var(--muted);
-  --radius: 6px;
-  --max-w: 960px;
-  --header-bg: var(--surface);
-  --score-glow: none;
+<meta name="description" content="Agent-readiness score: 70/100 for https://developer.mozilla.org">
+<meta property="og:title" content="Luxfaber Report — https://developer.mozilla.org">
+<meta property="og:description" content="Agent-readiness score: 70/100 for https://developer.mozilla.org">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://developer.mozilla.org">
+<meta name="twitter:card" content="summary">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  /* Dawn Blossom — light */
+  --color-pink:#e8155f;
+  --color-green:#00976a;
+  --color-amber:#b45309;
+  --color-red:#c5173a;
+  --color-muted:#7c5e9e;
+  --color-bg:#fef8ff;
+  --color-surface:#f4ecff;
+  --color-border:#e2cefd;
+  --color-text:#1a0a2e;
+  --color-text-secondary:#3d1f5a;
+  --score-glow:none;
+  --header-bg:var(--color-surface);
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --radius:6px;
+  --max-w:960px;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font);
-  font-size: 14px;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
+[data-theme="dark"]{
+  /* Midnight Blossom — dark */
+  --color-pink:#ff2d78;
+  --color-green:#00d68f;
+  --color-amber:#ffaa00;
+  --color-red:#ff4d6a;
+  --color-muted:#8b7aa8;
+  --color-bg:#0a0a0f;
+  --color-surface:#13131f;
+  --color-border:#2a1f3d;
+  --color-text:#f0e6ff;
+  --color-text-secondary:#c4b5e8;
+  --score-glow:none;
+  --header-bg:var(--color-surface);
 }
-a { color: var(--text); text-decoration: none; }
-a:hover { text-decoration: underline; }
-code, .mono { font-family: var(--mono); font-size: 13px; }
-
-/* Pill row */
-.report-pill { display: inline-flex; align-items: center; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; background: var(--pink); color: #fff; }
-.pill-row { padding: 16px 24px 14px; border-bottom: 1px solid var(--border); }
-
-/* Layout */
-.shell { display: grid; grid-template-columns: var(--sidebar-w) 1fr; min-height: 100vh; }
-.aside {
-  background: var(--surface);
-  border-right: 1px solid var(--border);
-  padding: 24px 0;
-  position: sticky; top: 0; height: 100vh;
-  display: flex; flex-direction: column;
-  overflow-y: auto;
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --color-pink:#ff2d78;
+    --color-green:#00d68f;
+    --color-amber:#ffaa00;
+    --color-red:#ff4d6a;
+    --color-muted:#8b7aa8;
+    --color-bg:#0a0a0f;
+    --color-surface:#13131f;
+    --color-border:#2a1f3d;
+    --color-text:#f0e6ff;
+    --color-text-secondary:#c4b5e8;
+    --score-glow:none;
+    --header-bg:var(--color-surface);
+  }
 }
-.aside-head { padding: 0 24px 20px; border-bottom: 1px solid var(--border); }
-.aside-head .product { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; margin-bottom: 12px; }
-.aside-head .tier-pill { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; margin-left: 6px; vertical-align: 1px; text-transform: uppercase; }
-.aside-head .tier-pill.neutral { background: rgba(255,255,255,0.06); color: var(--muted); }
-.aside-head .tier-pill.premium { background: rgba(255,45,120,0.12); color: var(--pink); }
-.aside-head .tier-pill.pass { background: rgba(52,199,89,0.12); color: var(--success); }
-.aside-head .tier-pill.warn { background: rgba(255,149,0,0.12); color: var(--warn); }
-.aside-head .target { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 4px; word-break: break-all; }
-.aside-head .score-line { display: flex; align-items: baseline; gap: 10px; margin-top: 12px; }
-.aside-head .score-num { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; color: var(--pink); }
-.aside-head .score-denom { font-size: 13px; color: var(--muted); }
-.aside-head .score-badge { padding: 3px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-.aside-head .score-badge.pass { background: rgba(52, 199, 89, 0.12); color: var(--success); }
-.aside-head .score-badge.good { background: rgba(52, 199, 89, 0.12); color: var(--success); }
-.aside-head .score-badge.warn { background: rgba(255, 149, 0, 0.12); color: var(--warn); }
-.aside-head .report-type { margin-top: 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; }
-
-.aside-nav { padding: 20px 12px; }
-.aside-nav h6 { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: var(--faint); text-transform: uppercase; padding: 0 12px 8px; }
-.aside-nav a { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; border-radius: 4px; font-size: 13px; color: var(--muted); border-left: 2px solid transparent; margin: 2px 0; }
-.aside-nav a:hover { color: var(--text); background: var(--surface-2); text-decoration: none; }
-.aside-nav a.active { color: var(--pink); background: var(--surface-2); border-left-color: var(--pink); font-weight: 600; }
-.aside-nav a .count { font-size: 11px; color: var(--faint); background: var(--surface-2); padding: 1px 7px; border-radius: 999px; min-width: 22px; text-align: center; }
-.aside-nav a.active .count { background: var(--bg); color: var(--pink); }
-
-.aside-footer { margin-top: auto; padding: 20px 24px 0; border-top: 1px solid var(--border); font-size: 10px; color: var(--faint); letter-spacing: 0.08em; text-transform: uppercase; }
-
-/* Main */
-.main { padding: 32px 32px 96px; max-width: var(--content-max); width: 100%; }
-.main h1 { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 8px; }
-.main h2 { font-size: 16px; font-weight: 600; margin: 36px 0 14px; letter-spacing: -0.01em; }
-.main h3 { font-size: 14px; font-weight: 600; margin: 24px 0 10px; }
-.main p { color: var(--muted); margin: 8px 0 16px; max-width: 70ch; }
-.main .lead { color: var(--faint); font-size: 12px; margin-left: 8px; font-weight: 400; }
-
-/* Score hero */
-.score-hero {
-  display: flex; align-items: center; gap: 32px;
-  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
-  padding: 28px 32px; margin-bottom: 24px;
-}
-.score-hero .gauge { width: 96px; height: 96px; flex-shrink: 0; }
-.score-hero .gauge-ring { stroke-width: 8; fill: none; }
-.score-hero .gauge-bg { stroke: var(--border-bright); }
-.score-hero .gauge-fill { stroke: var(--success); stroke-linecap: round; transform: rotate(-90deg); transform-origin: center; }
-.score-hero .info .label { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-.score-hero .info .num { font-size: 48px; font-weight: 700; letter-spacing: -0.03em; color: var(--text); margin-top: 4px; line-height: 1; }
-.score-hero .info .num small { font-size: 18px; color: var(--muted); font-weight: 400; margin-left: 6px; }
-.score-hero .info .sub { font-size: 12px; color: var(--muted); margin-top: 8px; }
-.score-hero .desc { flex: 1; color: var(--muted); font-size: 14px; line-height: 1.6; max-width: 60ch; padding-left: 16px; border-left: 1px solid var(--border); margin-left: 8px; }
-@media (max-width: 900px) {
-  .score-hero { flex-direction: column; align-items: flex-start; }
-  .score-hero .desc { border-left: none; padding-left: 0; margin-left: 0; }
-}
-
-/* Risk file band tabs + expandable cards */
-.band-tabs { display: flex; gap: 8px; margin: 16px 0 20px; }
-.band-tab { background: var(--surface); border: 1px solid var(--border); color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; padding: 6px 14px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; text-transform: uppercase; transition: all .15s; }
-.band-tab:hover { color: var(--text); border-color: var(--border-bright); }
-.band-tab .count { background: var(--surface-2); color: var(--faint); padding: 1px 8px; border-radius: 999px; font-size: 10px; font-weight: 700; min-width: 18px; text-align: center; }
-.band-tab.active { background: var(--pink); color: #fff; border-color: var(--pink); }
-.band-tab.active .count { background: rgba(255,255,255,0.2); color: #fff; }
-
-.risk-card-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
-.risk-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-.risk-card[open] { border-color: var(--pink); }
-.risk-card summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; cursor: pointer; list-style: none; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
-.risk-card summary::-webkit-details-marker { display: none; }
-.risk-card summary::after { content: "▸"; color: var(--muted); transition: transform .15s; margin-left: 8px; flex-shrink: 0; }
-.risk-card[open] summary::after { transform: rotate(90deg); }
-.risk-card-path { color: var(--text); flex: 1; word-break: break-all; }
-.risk-card-meta { color: var(--muted); font-size: 12px; white-space: nowrap; }
-.risk-card-meta strong { color: var(--text); font-weight: 600; }
-.risk-card-body { padding: 16px 18px 18px; border-top: 1px solid var(--border); }
-.risk-drivers { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
-.risk-drivers-label { font-weight: 600; color: var(--text); }
-.risk-drivers strong { color: var(--text); font-weight: 600; }
-.risk-findings-label { font-size: 10px; letter-spacing: 0.12em; color: var(--faint); font-weight: 700; text-transform: uppercase; margin-bottom: 10px; }
-.risk-findings { display: flex; flex-direction: column; gap: 10px; }
-.risk-finding { border: 1px solid var(--border); border-radius: 6px; padding: 12px 14px; font-size: 13px; }
-.risk-finding-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
-.sev-pill { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; padding: 2px 8px; border-radius: 3px; text-transform: uppercase; }
-.sev-pill.high { background: rgba(255, 45, 120, 0.16); color: var(--pink); }
-.sev-pill.med { background: rgba(255, 149, 0, 0.16); color: var(--warn); }
-.sev-pill.low { background: rgba(52, 199, 89, 0.12); color: var(--success); }
-.rule-id { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted); font-size: 12px; }
-.effort-chip { background: var(--surface-2); border: 1px solid var(--border); color: var(--muted); font-size: 11px; padding: 1px 7px; border-radius: 3px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
-.risk-finding-loc { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: var(--text); margin-bottom: 6px; word-break: break-all; }
-.finding-fix, .finding-why { border-left: 2px solid var(--success); padding-left: 10px; margin-top: 6px; font-size: 12px; color: var(--muted); line-height: 1.5; }
-.finding-why { border-left-color: var(--border-bright); }
-.finding-fix strong, .finding-why strong { color: var(--text); font-weight: 600; }
-
-/* KPI grid */
-.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
-.kpi .label { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-.kpi .value { font-size: 22px; font-weight: 600; color: var(--text); margin-top: 4px; letter-spacing: -0.02em; }
-.kpi.crit .value { color: var(--error); }
-.kpi.high .value { color: var(--warn); }
-.kpi.med .value { color: var(--med-sev); }
-.kpi.low .value { color: var(--success); }
-
-/* Bars */
-.bars { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 18px 20px; }
-.bar-row { display: grid; grid-template-columns: 160px 40px 1fr 40px; align-items: center; gap: 12px; padding: 8px 0; }
-.bar-row + .bar-row { border-top: 1px solid var(--border); }
-.bar-row .name { font-size: 13px; color: var(--text); }
-.bar-row .score { font-size: 13px; color: var(--text); font-weight: 600; font-family: var(--mono); }
-.bar-row .track { height: 6px; background: var(--border-bright); border-radius: 3px; overflow: hidden; }
-.bar-row .fill { height: 100%; background: var(--success); border-radius: 3px; }
-.bar-row .fill.warn { background: var(--warn); }
-.bar-row .fill.med { background: var(--med-sev); }
-.bar-row .weight { font-size: 11px; color: var(--muted); text-align: right; }
-
-/* Findings + scanners */
-.scanner-list { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-.scanner-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--border); }
-.scanner-row:last-child { border-bottom: 0; }
-.scanner-row .left { display: flex; align-items: center; gap: 14px; }
-.scanner-row .name { font-size: 13px; color: var(--text); font-weight: 500; }
-.scanner-row .count { font-size: 11px; color: var(--muted); background: var(--surface-2); padding: 2px 8px; border-radius: 999px; }
-.badge { padding: 3px 10px; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-.badge.clean { background: rgba(52, 199, 89, 0.12); color: var(--success); }
-.badge.found { background: rgba(255, 149, 0, 0.12); color: var(--warn); }
-.badge.pass { background: rgba(52, 199, 89, 0.12); color: var(--success); }
-
-/* Tables */
-.findings-table { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; border-collapse: separate; border-spacing: 0; overflow: hidden; }
-.findings-table th { text-align: left; font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--surface-2); }
-.findings-table td { padding: 12px 16px; font-size: 13px; border-bottom: 1px solid var(--border); color: var(--text); }
-.findings-table tr:last-child td { border-bottom: 0; }
-.findings-table .pill { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
-.findings-table .pill.low { background: rgba(52, 199, 89, 0.12); color: var(--success); }
-.findings-table .pill.med { background: rgba(255, 204, 0, 0.12); color: var(--med-sev); }
-.findings-table .pill.high { background: rgba(255, 149, 0, 0.12); color: var(--warn); }
-.findings-table code { background: var(--surface-2); padding: 1px 6px; border-radius: 3px; color: var(--muted); }
-
-/* Doc grid */
-.doc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
-.doc-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; }
-.doc-card .head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
-.doc-card .title { font-size: 13px; font-weight: 600; color: var(--text); }
-.doc-card .status { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-.doc-card .status.ok { color: var(--success); }
-.doc-card .status.missing { color: var(--error); }
-.doc-card .type { font-size: 10px; color: var(--faint); font-family: var(--mono); border: 1px solid var(--border); padding: 1px 6px; border-radius: 3px; display: inline-block; margin-bottom: 8px; }
-.doc-card .desc { font-size: 12px; color: var(--muted); line-height: 1.45; }
-
-/* Mobile */
-@media(max-width:900px){
-  .shell{grid-template-columns:1fr}
-  .aside{position:static;height:auto;max-height:none;border-right:none;border-bottom:1px solid var(--border)}
-}
-
-/* Logo + client label in aside (for white-label reports) */
-.logo-row{padding:14px 24px 0}
-.aside-logo{max-width:80%;max-height:48px;height:auto;width:auto;display:block}
-.client-label{padding:8px 24px 0;font-size:11px;color:var(--muted)}
-.client-label strong{color:var(--text);font-weight:600}
-.target-link{color:inherit;text-decoration:none}
-.target-link:hover{text-decoration:underline}
-
-/* Mockup banner */
-.mockup-banner { background: rgba(255, 149, 0, 0.08); border-bottom: 1px solid rgba(255, 149, 0, 0.2); padding: 8px 24px; font-size: 12px; color: var(--warn); text-align: center; letter-spacing: 0.04em; }
-.mockup-banner strong { color: var(--text); }
-.mockup-banner a { color: var(--warn); text-decoration: underline; }
-</style>
-<style>.container{max-width:var(--max-w);margin:0 auto;padding:1.5rem 1rem}
+body{font-family:var(--font);background:var(--color-bg);color:var(--color-text);line-height:1.5;font-size:15px}
+a{color:inherit;text-decoration:underline}
+a:hover{opacity:.8}
+.container{max-width:var(--max-w);margin:0 auto;padding:1.5rem 1rem}
+/* Header */
+header{border-bottom:1px solid var(--color-border);padding-bottom:1.25rem;margin-bottom:2rem;background:var(--header-bg);padding-top:1rem}
 .site-title{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-pink);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
 .page-type-badge,.render-mode-badge{font-size:.65rem;padding:.15em .5em;border-radius:3px;background:var(--color-surface);border:1px solid var(--color-border);color:var(--color-text-secondary);letter-spacing:.04em}
-.page-type-auth,.page-type-app{background:#3b2c12;border-color:#a16207;color:#ffaa00}
-.render-mode-js{background:#2d1b4e;border-color:#4c1d95;color:#c4b5fd}
+.page-type-auth,.page-type-app{background:#fef3c7;border-color:#fde68a;color:#92400e}
+[data-theme="dark"] .page-type-auth,[data-theme="dark"] .page-type-app{background:#3b2c12;border-color:#a16207;color:#ffaa00}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .page-type-auth,:root:not([data-theme="light"]) .page-type-app{background:#3b2c12;border-color:#a16207;color:#ffaa00}}
+.render-mode-js{background:#ede0ff;border-color:#e2cefd;color:#6b21a8}
+[data-theme="dark"] .render-mode-js{background:#2d1b4e;border-color:#4c1d95;color:#c4b5fd}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .render-mode-js{background:#2d1b4e;border-color:#4c1d95;color:#c4b5fd}}
 .scanned-url{font-size:1rem;word-break:break-all;font-weight:500;line-height:1.4;margin:0}
 .scanned-url a{font-weight:500}
 .final-url{font-size:.85rem;color:var(--color-muted);margin-top:.25rem;word-break:break-all}
 .generated-at{font-size:.8rem;color:var(--color-muted);margin-top:.5rem}
+/* Gauge gradient — stops driven by theme vars */
+#lf-gauge-grad-stop-1{stop-color:var(--color-pink)}
+#lf-gauge-grad-stop-2{stop-color:var(--color-green)}
+/* Score hero */
+.score-hero{display:flex;align-items:center;gap:2rem;margin-bottom:2rem;padding:1.5rem;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius)}
+.gauge-wrap{flex-shrink:0}
+.score-details{flex:1}
+.score-number{font-size:3rem;font-weight:700;line-height:1;letter-spacing:-.02em;text-shadow:var(--score-glow,none);color:var(--color-pink)}
+.score-label{font-size:.85rem;color:var(--color-muted);margin-top:.25rem}
+.score-raw{font-size:.8rem;color:var(--color-muted);margin-top:.15rem}
 .score-cap{font-size:.85rem;color:var(--color-red);margin-top:.5rem;font-weight:600}
 .score-cap a{color:inherit}
 .score-cap code{font-family:monospace;font-size:.85em}
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* Sections */
+section{margin-bottom:2rem}
+h1{font-size:1.6rem;font-weight:700;margin-bottom:1rem}
+h2{font-size:1.1rem;font-weight:600;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--color-border)}
+/* Breakdown bars */
+.breakdown-table{width:100%;border-collapse:collapse}
+.breakdown-table th{padding:.35rem .25rem;text-align:left;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--color-muted);font-weight:600;border-bottom:1px solid var(--color-border)}
+.breakdown-table th.cat-score,.breakdown-table th.cat-weight{text-align:right}
+.breakdown-table td{padding:.45rem .25rem;vertical-align:middle}
+.cat-name{font-size:.9rem;font-weight:500;width:180px}
+.cat-score{font-size:.9rem;width:52px;text-align:right;padding-right:.5rem}
+.bar-cell{width:100%}
+.bar-track{background:var(--color-border);border-radius:3px;height:10px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;transition:width .3s}
+.cat-weight{font-size:.75rem;color:var(--color-muted);width:50px;text-align:right}
 /* Gates */
 .gates-banner{padding:.75rem 1rem;border-radius:var(--radius);font-weight:600;margin-bottom:1rem;font-size:.9rem}
 .gates-banner.triggered{background:rgba(232,21,95,.08);border:1px solid rgba(232,21,95,.35);color:var(--color-red)}
@@ -346,6 +201,47 @@ footer{border-top:1px solid var(--color-border);padding-top:1rem;font-size:.8rem
   a{text-decoration:none}
   .finding,.gate-item,.findings-category{page-break-inside:avoid;break-inside:avoid}
 }
+/* === Shell layout === */
+.lf-shell{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh}
+.lf-aside{position:sticky;top:0;align-self:start;height:100vh;border-right:1px solid var(--color-border);background:var(--header-bg);padding:1.25rem 0;overflow-y:auto;z-index:10;display:flex;flex-direction:column}
+.lf-cover{padding:0 1.25rem 1rem;border-bottom:1px solid var(--color-border);margin-bottom:1rem;display:flex;flex-direction:column;align-items:flex-start;gap:.5rem}
+.lf-cover-logo{max-width:80%;max-height:60px;height:auto;width:auto;display:block}
+.lf-cover-tier{display:inline-flex;align-items:center;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.18rem .55rem;border-radius:999px;background:var(--color-pink);color:#fff}
+.lf-cover-client{font-size:.78rem;color:var(--color-text-secondary);line-height:1.3}
+.lf-cover-client strong{color:var(--color-text);font-weight:600}
+.lf-brand{padding:0 1.25rem 1rem;border-bottom:1px solid var(--color-border);margin-bottom:1rem}
+.lf-brand-name{font-size:.7rem;text-transform:uppercase;letter-spacing:.14em;color:var(--color-pink);font-weight:700}
+.lf-brand-url{font-size:.95rem;font-weight:600;margin-top:.5rem;word-break:break-all}
+.lf-brand-url a{text-decoration:none}
+.lf-brand-score{display:flex;align-items:baseline;gap:.4rem;margin-top:.6rem}
+.lf-brand-score .num{font-size:1.7rem;font-weight:700;color:var(--color-pink);text-shadow:var(--score-glow,none);line-height:1}
+.lf-brand-score .denom{font-size:.7rem;color:var(--color-muted)}
+.lf-brand-band{display:inline-flex;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.15rem .55rem;border-radius:999px;margin-top:.5rem}
+.lf-brand-band-strong{background:#dcfce7;color:#166534}
+.lf-brand-band-good{background:#dbeafe;color:#1d4ed8}
+.lf-brand-band-mixed{background:#fef3c7;color:#92400e}
+.lf-brand-band-weak{background:#fee2e2;color:#991b1b}
+[data-theme="dark"] .lf-brand-band-strong{background:#0a2e1e;color:#00d68f}
+[data-theme="dark"] .lf-brand-band-good{background:#1a0f35;color:#c4b5e8}
+[data-theme="dark"] .lf-brand-band-mixed{background:#2e1f0a;color:#ffaa00}
+[data-theme="dark"] .lf-brand-band-weak{background:#2e0a18;color:#ff8aad}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .lf-brand-band-strong{background:#0a2e1e;color:#00d68f}
+  :root:not([data-theme="light"]) .lf-brand-band-good{background:#1a0f35;color:#c4b5e8}
+  :root:not([data-theme="light"]) .lf-brand-band-mixed{background:#2e1f0a;color:#ffaa00}
+  :root:not([data-theme="light"]) .lf-brand-band-weak{background:#2e0a18;color:#ff8aad}
+}
+.lf-brand-meta{font-size:.7rem;color:var(--color-muted);margin-top:.5rem;line-height:1.4}
+
+.lf-nav-section{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--color-muted);font-weight:700;padding:.75rem 1.25rem .35rem}
+.lf-nav{flex:1}
+.lf-nav ul{list-style:none}
+.lf-nav a{display:flex;align-items:center;gap:.6rem;padding:.55rem 1.25rem;text-decoration:none;color:var(--color-text-secondary);font-size:.88rem;font-weight:500;letter-spacing:.02em;border-left:3px solid transparent;transition:background .15s,color .15s,border-color .15s}
+.lf-nav a:hover{background:var(--color-surface);color:var(--color-text);opacity:1}
+.lf-nav a.active{background:var(--color-surface);color:var(--color-pink);border-left-color:var(--color-pink);font-weight:700}
+.lf-nav a .lf-count{margin-left:auto;font-size:.7rem;font-weight:700;color:var(--color-muted);background:var(--color-surface);border:1px solid var(--color-border);border-radius:10px;padding:.05em .45em;font-variant-numeric:tabular-nums}
+.lf-nav a.active .lf-count{color:var(--color-pink);border-color:var(--color-pink)}
+
 .lf-export-row{padding:1rem 1.25rem;border-top:1px solid var(--color-border);margin-top:.75rem;display:flex;flex-direction:column;gap:.4rem}
 .lf-export-row .lf-btn{width:100%}
 .lf-btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;padding:.5rem .75rem;border:1px solid var(--color-border);border-radius:var(--radius);font-size:.78rem;color:var(--color-text);background:transparent;cursor:pointer;text-decoration:none;font-weight:500;transition:border-color .15s,color .15s,background .15s}
@@ -360,6 +256,10 @@ footer{border-top:1px solid var(--color-border);padding-top:1rem;font-size:.8rem
 .lf-main h1{font-size:1.5rem;font-weight:700;margin-bottom:1rem}
 .lf-main h2{font-size:1.2rem;font-weight:700;margin-bottom:1rem;padding-bottom:0;border-bottom:none;letter-spacing:-.01em}
 
+/* Hide legacy floating theme toggle when shell is active (sidebar holds it) */
+.lf-shell ~ #lf-theme-toggle,
+.lf-shell #lf-theme-toggle{position:static;margin:0}
+
 /* Free-tier upgrade card */
 .lf-upgrade{background:var(--color-surface);border:1px solid var(--color-pink);border-radius:calc(var(--radius)*2);padding:1.25rem;margin-top:1.5rem}
 .lf-upgrade-kicker{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--color-pink);font-weight:700;margin-bottom:.5rem}
@@ -368,8 +268,10 @@ footer{border-top:1px solid var(--color-border);padding-top:1rem;font-size:.8rem
 .lf-upgrade ul{padding-left:1.1rem;color:var(--color-text-secondary);font-size:.88rem;margin-bottom:1rem}
 .lf-upgrade ul li+li{margin-top:.3rem}
 
-/* Mobile */
+/* Mobile: collapse sidebar */
 @media(max-width:900px){
+  .lf-shell{grid-template-columns:1fr}
+  .lf-aside{position:static;height:auto;border-right:none;border-bottom:1px solid var(--color-border)}
   .lf-main{padding:1.25rem}
 }
 
@@ -392,7 +294,8 @@ footer{border-top:1px solid var(--color-border);padding-top:1rem;font-size:.8rem
   }
   *{color-adjust:exact;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   body{background:#fff;font-size:11pt;line-height:1.4}
-  .aside{display:none}
+  .lf-shell{display:block}
+  .lf-aside{display:none}
   .lf-main{max-width:none;padding:0;margin:0}
   /* Print cover: brand kicker + url + score on first page */
   .lf-main::before{
@@ -478,6 +381,14 @@ footer{border-top:1px solid var(--color-border);padding-top:1rem;font-size:.8rem
   .premium-grid,.premium-reco-grid{grid-template-columns:1fr}
 }
 
+/* === Site-score stat grid (mockup parity — Score / Raw / Pages / Gates / Findings) === */
+.site-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.75rem;margin:1rem 0}
+.site-stat-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius);padding:1rem}
+.site-stat-card-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--color-muted);font-weight:600}
+.site-stat-card-value{font-size:1.8rem;font-weight:700;line-height:1;margin-top:.4rem;letter-spacing:-.01em}
+.site-stat-card-value.score{color:var(--color-pink);text-shadow:var(--score-glow,none)}
+.site-stat-card-value.bad{color:var(--color-red)}
+
 /* === Findings flat list (site report) === */
 .findings-flat-list{display:flex;flex-direction:column;gap:.55rem;margin-top:.75rem}
 .finding-flat{border:1px solid var(--color-border);border-radius:var(--radius);padding:.75rem 1rem;background:var(--color-surface)}
@@ -504,49 +415,71 @@ details.finding-flat[open]>summary .finding-flat-toggle{transform:rotate(90deg)}
 .finding-affected-pages li{margin-bottom:.2rem;line-height:1.4}
 .findings-toggle-btn{margin-top:.75rem;padding:.4rem .85rem;border:1px solid var(--color-border);border-radius:var(--radius);background:transparent;font-size:.78rem;color:var(--color-text-secondary);cursor:pointer;transition:border-color .15s,color .15s}
 .findings-toggle-btn:hover{border-color:var(--color-pink);color:var(--color-pink)}
-.findings-hidden-group{flex-direction:column;gap:.55rem;margin-top:.55rem}</style>
+.findings-hidden-group{flex-direction:column;gap:.55rem;margin-top:.55rem}
+</style>
+
+<script>
+(function(){
+  var s=localStorage.getItem('lf-theme');
+  var d=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));
+})();
+</script>
 </head>
 <body>
-<div class="shell">
-  <aside class="aside">
+<div class="lf-shell">
+  <aside class="lf-aside">
     
-    
-    <div class="pill-row"><span class="report-pill">AEO Score Report</span></div>
-    <div class="aside-head">
-      <div class="product">Luxfaber Report<span class="tier-pill neutral">FREE</span></div>
-      <div class="target"><a href="https://developer.mozilla.org" class="target-link">developer.mozilla.org</a></div>
-      <div class="score-line">
-        <span class="score-num">72</span>
-        <span class="score-denom">/ 100</span>
-        <span class="score-badge good">GOOD</span>
-      </div>
-      <div class="report-type">AEO · GOOD</div>
+    <div class="lf-brand">
+      <div class="lf-brand-name">Luxfaber Free</div>
+      <div class="lf-brand-url"><a href="https://developer.mozilla.org">developer.mozilla.org</a></div>
+      <div class="lf-brand-score"><span class="num">70</span><span class="denom">/100</span></div>
+      <div class="lf-brand-band lf-brand-band-good">GOOD</div>
+      <div class="lf-brand-meta">Generated 2026-05-20 · scoring v1 · HTTP 200</div>
     </div>
-    <nav class="aside-nav">
-      <h6>Report</h6>
-      <a href="#score" class="active">Score <span class="count">·</span></a>
-      <a href="#breakdown">Categories <span class="count">5</span></a>
-      <a href="#gates">Gates <span class="count">·</span></a>
-      <a href="#findings">Findings <span class="count">16</span></a>
-      <a href="#metadata">Metadata <span class="count">·</span></a>
-      <a href="#premium-upsell">Upgrade <span class="count">·</span></a>
+    <div class="lf-nav-section">Report</div>
+    <nav class="lf-nav" aria-label="Report sections">
+      <ul><li><a href="#score" class="lf-nav-link active" data-target="score">Score</a></li><li><a href="#breakdown" class="lf-nav-link" data-target="breakdown">Categories<span class="lf-count">5</span></a></li><li><a href="#gates" class="lf-nav-link" data-target="gates">Gates</a></li><li><a href="#findings" class="lf-nav-link" data-target="findings">Findings<span class="lf-count">18</span></a></li><li><a href="#metadata" class="lf-nav-link" data-target="metadata">Metadata</a></li><li><a href="#premium-upsell" class="lf-nav-link" data-target="premium-upsell">Upgrade</a></li></ul>
     </nav>
-    <div class="aside-footer">AEO Score Report · v1</div>
+    <div class="lf-export-row">
+      <button id="lf-theme-toggle" class="lf-btn" aria-label="Toggle theme" title="Toggle light/dark">🌙 Theme</button>
+    </div>
   </aside>
-
-  <main class="main">
-<section id="score"><div class="score-hero">
-  <svg class="gauge" viewBox="0 0 100 100">
-    <circle class="gauge-ring gauge-bg" cx="50" cy="50" r="42" />
-    <circle class="gauge-ring gauge-fill" cx="50" cy="50" r="42"
-      stroke-dasharray="263.9" stroke-dashoffset="73.89" />
-  </svg>
-  <div class="info">
-    <div class="label">Score</div>
-    <div class="num">72<small>/ 100</small></div>
-    <div class="sub">scoring v1</div>
+  <main class="lf-main">
+    <h1 class="visually-hidden">Luxfaber Report — https://developer.mozilla.org</h1>
+    <div id="lf-print-header" aria-hidden="true">
+      <div class="lf-brand-name">Luxfaber Free</div>
+      <div class="lf-brand-url">developer.mozilla.org</div>
+      <div class="lf-brand-score"><span class="num">70</span><span class="denom">/100</span></div>
+      <div class="lf-brand-band lf-brand-band-good">GOOD</div>
+      <div class="lf-brand-meta">Generated 2026-05-20 · scoring v1 · HTTP 200</div>
+    </div>
+<section id="score"><div class="container">
+  <div class="score-hero">
+    <div class="gauge-wrap">
+      <svg width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Agent-readiness score: 70 out of 100">
+  <defs>
+    <linearGradient id="lf-gauge-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop id="lf-gauge-grad-stop-1" offset="0%"/>
+      <stop id="lf-gauge-grad-stop-2" offset="100%"/>
+    </linearGradient>
+  </defs>
+  <title>Agent-readiness score: 70 out of 100</title>
+  <circle cx="60" cy="60" r="52" fill="none" stroke="var(--color-border)" stroke-width="10"/>
+  <circle cx="60" cy="60" r="52" fill="none" stroke="url(#lf-gauge-grad)" stroke-width="10"
+    stroke-dasharray="229.30 97.43"
+    stroke-dashoffset="81.68"
+    stroke-linecap="round"
+    transform="rotate(-90 60 60)"/>
+</svg>
+    </div>
+    <div class="score-details">
+      <div class="score-number">70</div>
+      <div class="score-label">out of 100 &middot; scoring v1</div>
+      
+      
+    </div>
   </div>
-  
 </div></section>
 <section id="breakdown">
   <div class="container">
@@ -579,7 +512,7 @@ details.finding-flat[open]>summary .finding-flat-toggle{transform:rotate(90deg)}
           <div class="bar-fill" style="width:24%;background:var(--color-red)"></div>
         </div>
       </td>
-      <td class="cat-weight">22%</td>
+      <td class="cat-weight">14%</td>
     </tr>
 <tr>
       <td class="cat-name">Semantic HTML</td>
@@ -593,20 +526,20 @@ details.finding-flat[open]>summary .finding-flat-toggle{transform:rotate(90deg)}
     </tr>
 <tr>
       <td class="cat-name">Content Clarity</td>
-      <td class="cat-score">75</td>
+      <td class="cat-score">83</td>
       <td class="bar-cell">
         <div class="bar-track">
-          <div class="bar-fill" style="width:75%;background:var(--color-green)"></div>
+          <div class="bar-fill" style="width:83%;background:var(--color-green)"></div>
         </div>
       </td>
-      <td class="cat-weight">17%</td>
+      <td class="cat-weight">25%</td>
     </tr>
 <tr>
       <td class="cat-name">Determinism</td>
-      <td class="cat-score">100</td>
+      <td class="cat-score">56</td>
       <td class="bar-cell">
         <div class="bar-track">
-          <div class="bar-fill" style="width:100%;background:var(--color-green)"></div>
+          <div class="bar-fill" style="width:56%;background:var(--color-amber)"></div>
         </div>
       </td>
       <td class="cat-weight">18%</td>
@@ -651,7 +584,7 @@ details.finding-flat[open]>summary .finding-flat-toggle{transform:rotate(90deg)}
     <div class="quick-wins-list">
       <article class="quick-win">
   <div class="quick-win-header">
-    <span class="qw-gain">+22.0 pts</span>
+    <span class="qw-gain">+14.0 pts</span>
     <span class="qw-effort">~10m</span>
     <code class="finding-rule">sd.opengraph.complete</code>
   </div>
@@ -665,7 +598,7 @@ details.finding-flat[open]>summary .finding-flat-toggle{transform:rotate(90deg)}
 </article>
 <article class="quick-win">
   <div class="quick-win-header">
-    <span class="qw-gain">+22.0 pts</span>
+    <span class="qw-gain">+14.0 pts</span>
     <span class="qw-effort">~15m</span>
     <code class="finding-rule">sd.jsonld.count</code>
   </div>
@@ -675,23 +608,6 @@ details.finding-flat[open]>summary .finding-flat-toggle{transform:rotate(90deg)}
 {
   &quot;@context&quot;: &quot;https://schema.org&quot;,
   &quot;@type&quot;: &quot;Organization&quot;,
-  &quot;name&quot;: &quot;MDN Web Docs&quot;,
-  &quot;url&quot;: &quot;https://developer.mozilla.org&quot;
-}
-&lt;/script&gt;</code></pre>
-</article>
-<article class="quick-win">
-  <div class="quick-win-header">
-    <span class="qw-gain">+22.0 pts</span>
-    <span class="qw-effort">~20m</span>
-    <code class="finding-rule">sd.jsonld.entity-types</code>
-  </div>
-  <p class="finding-evidence">No valid JSON-LD blocks to check for entity types</p>
-  <p class="finding-fix"><strong>Fix:</strong> Add Organization, WebSite, or Article/Product/Service JSON-LD</p>
-  <pre class="qw-snippet"><code>&lt;script type=&quot;application/ld+json&quot;&gt;
-{
-  &quot;@context&quot;: &quot;https://schema.org&quot;,
-  &quot;@type&quot;: &quot;WebSite&quot;,
   &quot;name&quot;: &quot;MDN Web Docs&quot;,
   &quot;url&quot;: &quot;https://developer.mozilla.org&quot;
 }
@@ -732,6 +648,23 @@ details.finding-flat[open]>summary .finding-flat-toggle{transform:rotate(90deg)}
   &lt;!-- add one &lt;url&gt;&lt;loc&gt;…&lt;/loc&gt;&lt;/url&gt; per public page --&gt;
 &lt;/urlset&gt;</code></pre>
 </article>
+<article class="quick-win">
+  <div class="quick-win-header">
+    <span class="qw-gain">+14.0 pts</span>
+    <span class="qw-effort">~20m</span>
+    <code class="finding-rule">sd.jsonld.entity-types</code>
+  </div>
+  <p class="finding-evidence">No valid JSON-LD blocks to check for entity types</p>
+  <p class="finding-fix"><strong>Fix:</strong> Add Organization, WebSite, or Article/Product/Service JSON-LD</p>
+  <pre class="qw-snippet"><code>&lt;script type=&quot;application/ld+json&quot;&gt;
+{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;TechArticle&quot;,
+  &quot;name&quot;: &quot;MDN Web Docs&quot;,
+  &quot;url&quot;: &quot;https://developer.mozilla.org&quot;
+}
+&lt;/script&gt;</code></pre>
+</article>
     </div>
   </div>
 </section>
@@ -739,7 +672,7 @@ details.finding-flat[open]>summary .finding-flat-toggle{transform:rotate(90deg)}
   <div class="container">
     <h2>All findings</h2>
     <details class="findings-category">
-  <summary>Crawl Accessibility <small>(22)</small></summary>
+  <summary>Crawl Accessibility <small>(23)</small></summary>
   <div class="findings-list">
     <article class="finding">
   <div class="finding-header">
@@ -815,6 +748,19 @@ details.finding-flat[open]>summary .finding-flat-toggle{transform:rotate(90deg)}
   
   <p class="finding-why"><strong>Why:</strong> LLM crawlers use canonical to dedupe and pick the authoritative URL.</p>
   <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code>&lt;link rel=&quot;canonical&quot; href=&quot;https://developer.mozilla.org/en-US/&quot;&gt;</code></pre></details>
+</article>
+<article class="finding">
+  <div class="finding-header">
+    <span class="badge badge-info"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 7v4 M8 4.5v.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> INFO</span>
+    <code class="finding-rule">crawl.common-crawl.indexed</code>
+    
+    <span class="finding-effort" title="Rough hands-on time to ship the fix">~0m</span>
+    <span class="finding-score">score: 100</span>
+  </div>
+  <p class="finding-evidence">Indexed in CC-MAIN-2026-17 (21 captures, last seen 20260422180624)</p>
+  
+  <p class="finding-why"><strong>Why:</strong> Common Crawl is the corpus most major LLMs (GPT-4, Claude, Llama) used for pre-training. Presence in CC is a necessary-but-not-sufficient condition for an LLM to know about your site. Absence from recent CC snapshots means your content is invisible to the next training cycle.</p>
+  
 </article>
 <article class="finding">
   <div class="finding-header">
@@ -1168,7 +1114,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
   <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code>&lt;script type=&quot;application/ld+json&quot;&gt;
 {
   &quot;@context&quot;: &quot;https://schema.org&quot;,
-  &quot;@type&quot;: &quot;WebSite&quot;,
+  &quot;@type&quot;: &quot;TechArticle&quot;,
   &quot;name&quot;: &quot;MDN Web Docs&quot;,
   &quot;url&quot;: &quot;https://developer.mozilla.org&quot;
 }
@@ -1234,7 +1180,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
   </div>
 </details>
 <details class="findings-category">
-  <summary>Semantic HTML <small>(5)</small></summary>
+  <summary>Semantic HTML <small>(6)</small></summary>
   <div class="findings-list">
     <article class="finding">
   <div class="finding-header">
@@ -1305,12 +1251,32 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
     <code class="finding-rule">html.link-text-quality</code>
     
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~20m</span>
-    <span class="finding-score">score: 96</span>
+    <span class="finding-score">score: 97</span>
   </div>
-  <p class="finding-evidence">6/165 link(s) have poor anchor text</p>
+  <p class="finding-evidence">5/162 link(s) have poor anchor text</p>
   <p class="finding-fix"><strong>Fix:</strong> Replace generic link text (&quot;click here&quot;, empty) with descriptive phrases</p>
   <p class="finding-why"><strong>Why:</strong> &quot;click here&quot; / &quot;learn more&quot; tells agents nothing about the destination. Use descriptive link text.</p>
   
+</article>
+<article class="finding">
+  <div class="finding-header">
+    <span class="badge badge-warn"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M8 2L1 14h14z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 6v4 M8 12.2v.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> WARN</span>
+    <code class="finding-rule">semantic.axe-violations</code>
+    
+    <span class="finding-effort" title="Rough hands-on time to ship the fix">~0m</span>
+    <span class="finding-score">score: 75</span>
+  </div>
+  <p class="finding-evidence">axe-core 4.11.4: 4 violations (0 critical, 1 serious, 3 moderate, 0 minor)</p>
+  <p class="finding-fix"><strong>Fix:</strong> Address axe-core violations — see top findings in metadata. Start with critical and serious impact items.</p>
+  <p class="finding-why"><strong>Why:</strong> axe-core (Deque) is the WCAG 2.1/2.2 scanner used by GitHub, Microsoft, and Google. Violations here are the same accessibility issues regulated-industry buyers (gov, finance, EDU) flag in procurement.</p>
+  <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code>// color-contrast (serious): Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds
+// More info: https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright
+
+// region (moderate): Ensure all page content is contained by landmarks
+// More info: https://dequeuniversity.com/rules/axe/4.11/region?application=playwright
+
+// landmark-one-main (moderate): Ensure the document has a main landmark
+// More info: https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright</code></pre></details>
 </article>
   </div>
 </details>
@@ -1325,7 +1291,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~0m</span>
     <span class="finding-score">score: 100</span>
   </div>
-  <p class="finding-evidence">Action surface: 17 entry points — 0 form(s), 17 button(s), 0 mailto, 0 tel, 0 ARIA button(s)</p>
+  <p class="finding-evidence">Action surface: 9 entry points — 0 form(s), 9 button(s), 0 mailto, 0 tel, 0 ARIA button(s)</p>
   
   <p class="finding-why"><strong>Why:</strong> Forms, CTA buttons, and contact links are conversion entry points. Agent-driven buyers (using AI to evaluate vendors) look for these signals when deciding whether a site is a real business.</p>
   
@@ -1338,7 +1304,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~90m</span>
     <span class="finding-score">score: 60</span>
   </div>
-  <p class="finding-evidence">Boilerplate ratio: 16.5% (4492 extracted / 27151 total visible bytes)</p>
+  <p class="finding-evidence">Boilerplate ratio: 18.9% (5045 extracted / 26693 total visible bytes)</p>
   
   <p class="finding-why"><strong>Why:</strong> Lots of nav/footer chrome relative to page body dilutes the signal in agent excerpts.</p>
   
@@ -1351,7 +1317,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~60m</span>
     <span class="finding-score">score: 100</span>
   </div>
-  <p class="finding-evidence">Readability extracted 4492 chars of text</p>
+  <p class="finding-evidence">Readability extracted 5045 chars of text</p>
   
   <p class="finding-why"><strong>Why:</strong> If readability extraction returns null, agents likely can&#39;t isolate the article body.</p>
   
@@ -1364,7 +1330,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~0m</span>
     <span class="finding-score">score: 100</span>
   </div>
-  <p class="finding-evidence">Mozilla Readability extracted 4492 chars · siteName: MDN Web Docs</p>
+  <p class="finding-evidence">Mozilla Readability extracted 5045 chars · siteName: MDN Web Docs</p>
   
   <p class="finding-why"><strong>Why:</strong> Mozilla Readability is the same library Firefox Reader View uses; if it can&#39;t extract your content, neither can most third-party article scrapers.</p>
   
@@ -1384,13 +1350,13 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
 </article>
 <article class="finding">
   <div class="finding-header">
-    <span class="badge badge-warn"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M8 2L1 14h14z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 6v4 M8 12.2v.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> WARN</span>
+    <span class="badge badge-pass"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M2 8.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> PASS</span>
     <code class="finding-rule">content.signal-noise</code>
     
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~90m</span>
-    <span class="finding-score">score: 60</span>
+    <span class="finding-score">score: 85</span>
   </div>
-  <p class="finding-evidence">Signal-noise ratio: 23.6% (27321 text bytes / 115589 total bytes)</p>
+  <p class="finding-evidence">Signal-noise ratio: 35.6% (26792 text bytes / 75278 total bytes)</p>
   
   <p class="finding-why"><strong>Why:</strong> High script/style-to-text ratio buries the actual content agents are trying to extract.</p>
   
@@ -1406,23 +1372,23 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
     <code class="finding-rule">det.bot-cloaking</code>
     
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~60m</span>
-    <span class="finding-score">score: 100</span>
+    <span class="finding-score">score: 80</span>
   </div>
-  <p class="finding-evidence">gptbot and browser fetches returned identical content</p>
-  
+  <p class="finding-evidence">GPTBot receives ~0% different content than browsers — possible partial bot filtering</p>
+  <p class="finding-fix"><strong>Fix:</strong> Your CDN or WAF may be serving a stripped or cached variant to bot User-Agents. Check: (1) Cloudflare Cache Rules — ensure GPTBot is not hitting a stale or bot-specific cache variant. (2) Server-side bot detection middleware that conditionally renders less content. (3) Add GPTBot to your verified-crawlers allowlist so it receives the same response as a normal browser.</p>
   <p class="finding-why"><strong>Why:</strong> Different content to GPTBot vs a browser is the textbook cloaking pattern. Search engines flag this.</p>
   
 </article>
 <article class="finding">
   <div class="finding-header">
-    <span class="badge badge-pass"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M2 8.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> PASS</span>
+    <span class="badge badge-fail"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> FAIL</span>
     <code class="finding-rule">det.fetch-stability</code>
     
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~60m</span>
-    <span class="finding-score">score: 100</span>
+    <span class="finding-score">score: 0</span>
   </div>
-  <p class="finding-evidence">Two luxfaber fetches returned identical body hash</p>
-  
+  <p class="finding-evidence">Body hash changed between fetches (10f59cae… → 88569874…)</p>
+  <p class="finding-fix"><strong>Fix:</strong> Page content is non-deterministic; fix server-side randomness or caching headers</p>
   <p class="finding-why"><strong>Why:</strong> If the same URL serves different bytes on every fetch, no agent can cache/cite reliably.</p>
   
 </article>
@@ -1432,10 +1398,10 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
     <code class="finding-rule">det.ua-cloaking</code>
     
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~60m</span>
-    <span class="finding-score">score: 100</span>
+    <span class="finding-score">score: 80</span>
   </div>
-  <p class="finding-evidence">luxfaber and browser fetches returned identical content</p>
-  
+  <p class="finding-evidence">Body hash differs between luxfaber and browser (byte diff ~0%)</p>
+  <p class="finding-fix"><strong>Fix:</strong> Ensure identical content is served regardless of User-Agent</p>
   <p class="finding-why"><strong>Why:</strong> Serving different content to a Luxfaber UA vs a browser UA = SEO/agent cloaking risk.</p>
   
 </article>
@@ -1470,22 +1436,30 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
       <div class="meta-item">
         <span class="meta-label">Schema version</span>
         <span class="meta-value">1.0.0</span>
-      }
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Common Crawl index</span>
+        <span class="meta-value">CC-MAIN-2026-17</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">axe-core</span>
+        <span class="meta-value">4.11.4</span>
+      </div>
     </div>
     <details class="metadata-details raw-json">
       <summary>Raw JSON report</summary>
       <pre><code>{
   &quot;schemaVersion&quot;: &quot;1.0.0&quot;,
   &quot;scoringVersion&quot;: &quot;v1&quot;,
-  &quot;generatedAt&quot;: &quot;2026-05-15T03:59:09.396Z&quot;,
+  &quot;generatedAt&quot;: &quot;2026-05-20T02:21:01.834Z&quot;,
   &quot;url&quot;: &quot;https://developer.mozilla.org&quot;,
   &quot;finalUrl&quot;: &quot;https://developer.mozilla.org/en-US/&quot;,
   &quot;status&quot;: 200,
   &quot;pageType&quot;: &quot;marketing&quot;,
-  &quot;renderMode&quot;: &quot;static&quot;,
-  &quot;vertical&quot;: &quot;generic&quot;,
-  &quot;score&quot;: 72.14,
-  &quot;rawScore&quot;: 72.14,
+  &quot;renderMode&quot;: &quot;js&quot;,
+  &quot;vertical&quot;: &quot;docs&quot;,
+  &quot;score&quot;: 70.18,
+  &quot;rawScore&quot;: 70.18,
   &quot;categories&quot;: [
     {
       &quot;category&quot;: &quot;crawl_accessibility&quot;,
@@ -1553,6 +1527,22 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           }
         },
         {
+          &quot;ruleId&quot;: &quot;crawl.common-crawl.indexed&quot;,
+          &quot;category&quot;: &quot;crawl_accessibility&quot;,
+          &quot;severity&quot;: &quot;info&quot;,
+          &quot;score&quot;: 100,
+          &quot;evidence&quot;: &quot;Indexed in CC-MAIN-2026-17 (21 captures, last seen 20260422180624)&quot;,
+          &quot;metadata&quot;: {
+            &quot;present&quot;: true,
+            &quot;latestIndex&quot;: &quot;CC-MAIN-2026-17&quot;,
+            &quot;captureCount&quot;: 21,
+            &quot;lastSeenTimestamp&quot;: &quot;20260422180624&quot;,
+            &quot;latestStatus&quot;: 200,
+            &quot;effortMinutes&quot;: 0,
+            &quot;why&quot;: &quot;Common Crawl is the corpus most major LLMs (GPT-4, Claude, Llama) used for pre-training. Presence in CC is a necessary-but-not-sufficient condition for an LLM to know about your site. Absence from recent CC snapshots means your content is invisible to the next training cycle.&quot;
+          }
+        },
+        {
           &quot;ruleId&quot;: &quot;crawl.hreflang-alternates&quot;,
           &quot;category&quot;: &quot;crawl_accessibility&quot;,
           &quot;severity&quot;: &quot;info&quot;,
@@ -1583,8 +1573,8 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;evidence&quot;: &quot;Static and browser bodies within 0% — no significant JS divergence&quot;,
           &quot;metadata&quot;: {
             &quot;deltaPercent&quot;: 0,
-            &quot;staticBytes&quot;: 115589,
-            &quot;browserBytes&quot;: 115589,
+            &quot;staticBytes&quot;: 75278,
+            &quot;browserBytes&quot;: 75274,
             &quot;effortMinutes&quot;: 120,
             &quot;why&quot;: &quot;When static HTML and browser-rendered HTML diverge heavily, AI crawlers that can&#39;t execute JS only see the shell — structured data, headings, and content are invisible.&quot;
           }
@@ -1764,7 +1754,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
     {
       &quot;category&quot;: &quot;structured_data&quot;,
       &quot;score&quot;: 24.39,
-      &quot;weight&quot;: 22,
+      &quot;weight&quot;: 14,
       &quot;findings&quot;: [
         {
           &quot;ruleId&quot;: &quot;sd.jsonld.count&quot;,
@@ -1789,7 +1779,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 20,
             &quot;why&quot;: &quot;Generic JSON-LD without recognised @type doesn&#39;t disambiguate the entity for agents.&quot;,
-            &quot;snippet&quot;: &quot;&lt;script type=\&quot;application/ld+json\&quot;&gt;\n{\n  \&quot;@context\&quot;: \&quot;https://schema.org\&quot;,\n  \&quot;@type\&quot;: \&quot;WebSite\&quot;,\n  \&quot;name\&quot;: \&quot;MDN Web Docs\&quot;,\n  \&quot;url\&quot;: \&quot;https://developer.mozilla.org\&quot;\n}\n&lt;/script&gt;&quot;
+            &quot;snippet&quot;: &quot;&lt;script type=\&quot;application/ld+json\&quot;&gt;\n{\n  \&quot;@context\&quot;: \&quot;https://schema.org\&quot;,\n  \&quot;@type\&quot;: \&quot;TechArticle\&quot;,\n  \&quot;name\&quot;: \&quot;MDN Web Docs\&quot;,\n  \&quot;url\&quot;: \&quot;https://developer.mozilla.org\&quot;\n}\n&lt;/script&gt;&quot;
           }
         },
         {
@@ -1844,7 +1834,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
     },
     {
       &quot;category&quot;: &quot;semantic_html&quot;,
-      &quot;score&quot;: 93.2,
+      &quot;score&quot;: 93.4,
       &quot;weight&quot;: 18,
       &quot;findings&quot;: [
         {
@@ -1900,31 +1890,82 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;ruleId&quot;: &quot;html.link-text-quality&quot;,
           &quot;category&quot;: &quot;semantic_html&quot;,
           &quot;severity&quot;: &quot;pass&quot;,
-          &quot;score&quot;: 96,
-          &quot;evidence&quot;: &quot;6/165 link(s) have poor anchor text&quot;,
+          &quot;score&quot;: 97,
+          &quot;evidence&quot;: &quot;5/162 link(s) have poor anchor text&quot;,
           &quot;fix&quot;: &quot;Replace generic link text (\&quot;click here\&quot;, empty) with descriptive phrases&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 20,
             &quot;why&quot;: &quot;\&quot;click here\&quot; / \&quot;learn more\&quot; tells agents nothing about the destination. Use descriptive link text.&quot;
+          }
+        },
+        {
+          &quot;ruleId&quot;: &quot;semantic.axe-violations&quot;,
+          &quot;category&quot;: &quot;semantic_html&quot;,
+          &quot;severity&quot;: &quot;warn&quot;,
+          &quot;score&quot;: 75,
+          &quot;evidence&quot;: &quot;axe-core 4.11.4: 4 violations (0 critical, 1 serious, 3 moderate, 0 minor)&quot;,
+          &quot;fix&quot;: &quot;Address axe-core violations — see top findings in metadata. Start with critical and serious impact items.&quot;,
+          &quot;metadata&quot;: {
+            &quot;axeVersion&quot;: &quot;4.11.4&quot;,
+            &quot;totalViolations&quot;: 4,
+            &quot;violationCounts&quot;: {
+              &quot;critical&quot;: 0,
+              &quot;serious&quot;: 1,
+              &quot;moderate&quot;: 3,
+              &quot;minor&quot;: 0
+            },
+            &quot;topViolations&quot;: [
+              {
+                &quot;id&quot;: &quot;color-contrast&quot;,
+                &quot;impact&quot;: &quot;serious&quot;,
+                &quot;description&quot;: &quot;Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds&quot;,
+                &quot;helpUrl&quot;: &quot;https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright&quot;,
+                &quot;nodeCount&quot;: 3
+              },
+              {
+                &quot;id&quot;: &quot;region&quot;,
+                &quot;impact&quot;: &quot;moderate&quot;,
+                &quot;description&quot;: &quot;Ensure all page content is contained by landmarks&quot;,
+                &quot;helpUrl&quot;: &quot;https://dequeuniversity.com/rules/axe/4.11/region?application=playwright&quot;,
+                &quot;nodeCount&quot;: 6
+              },
+              {
+                &quot;id&quot;: &quot;landmark-one-main&quot;,
+                &quot;impact&quot;: &quot;moderate&quot;,
+                &quot;description&quot;: &quot;Ensure the document has a main landmark&quot;,
+                &quot;helpUrl&quot;: &quot;https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright&quot;,
+                &quot;nodeCount&quot;: 1
+              },
+              {
+                &quot;id&quot;: &quot;landmark-unique&quot;,
+                &quot;impact&quot;: &quot;moderate&quot;,
+                &quot;description&quot;: &quot;Ensure landmarks are unique&quot;,
+                &quot;helpUrl&quot;: &quot;https://dequeuniversity.com/rules/axe/4.11/landmark-unique?application=playwright&quot;,
+                &quot;nodeCount&quot;: 1
+              }
+            ],
+            &quot;effortMinutes&quot;: 0,
+            &quot;why&quot;: &quot;axe-core (Deque) is the WCAG 2.1/2.2 scanner used by GitHub, Microsoft, and Google. Violations here are the same accessibility issues regulated-industry buyers (gov, finance, EDU) flag in procurement.&quot;,
+            &quot;snippet&quot;: &quot;// color-contrast (serious): Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\n// More info: https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright\n\n// region (moderate): Ensure all page content is contained by landmarks\n// More info: https://dequeuniversity.com/rules/axe/4.11/region?application=playwright\n\n// landmark-one-main (moderate): Ensure the document has a main landmark\n// More info: https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright&quot;
           }
         }
       ]
     },
     {
       &quot;category&quot;: &quot;content_clarity&quot;,
-      &quot;score&quot;: 75,
-      &quot;weight&quot;: 17,
+      &quot;score&quot;: 82.5,
+      &quot;weight&quot;: 25,
       &quot;findings&quot;: [
         {
           &quot;ruleId&quot;: &quot;content.action-surface&quot;,
           &quot;category&quot;: &quot;content_clarity&quot;,
           &quot;severity&quot;: &quot;info&quot;,
           &quot;score&quot;: 100,
-          &quot;evidence&quot;: &quot;Action surface: 17 entry points — 0 form(s), 17 button(s), 0 mailto, 0 tel, 0 ARIA button(s)&quot;,
+          &quot;evidence&quot;: &quot;Action surface: 9 entry points — 0 form(s), 9 button(s), 0 mailto, 0 tel, 0 ARIA button(s)&quot;,
           &quot;metadata&quot;: {
-            &quot;total&quot;: 17,
+            &quot;total&quot;: 9,
             &quot;forms&quot;: 0,
-            &quot;enabledButtons&quot;: 17,
+            &quot;enabledButtons&quot;: 9,
             &quot;mailtoLinks&quot;: 0,
             &quot;telLinks&quot;: 0,
             &quot;ariaButtons&quot;: 0,
@@ -1937,7 +1978,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;category&quot;: &quot;content_clarity&quot;,
           &quot;severity&quot;: &quot;warn&quot;,
           &quot;score&quot;: 60,
-          &quot;evidence&quot;: &quot;Boilerplate ratio: 16.5% (4492 extracted / 27151 total visible bytes)&quot;,
+          &quot;evidence&quot;: &quot;Boilerplate ratio: 18.9% (5045 extracted / 26693 total visible bytes)&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 90,
             &quot;why&quot;: &quot;Lots of nav/footer chrome relative to page body dilutes the signal in agent excerpts.&quot;
@@ -1948,7 +1989,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;category&quot;: &quot;content_clarity&quot;,
           &quot;severity&quot;: &quot;pass&quot;,
           &quot;score&quot;: 100,
-          &quot;evidence&quot;: &quot;Readability extracted 4492 chars of text&quot;,
+          &quot;evidence&quot;: &quot;Readability extracted 5045 chars of text&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 60,
             &quot;why&quot;: &quot;If readability extraction returns null, agents likely can&#39;t isolate the article body.&quot;
@@ -1959,10 +2000,10 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;category&quot;: &quot;content_clarity&quot;,
           &quot;severity&quot;: &quot;info&quot;,
           &quot;score&quot;: 100,
-          &quot;evidence&quot;: &quot;Mozilla Readability extracted 4492 chars · siteName: MDN Web Docs&quot;,
+          &quot;evidence&quot;: &quot;Mozilla Readability extracted 5045 chars · siteName: MDN Web Docs&quot;,
           &quot;metadata&quot;: {
             &quot;present&quot;: true,
-            &quot;textLength&quot;: 4492,
+            &quot;textLength&quot;: 5045,
             &quot;byline&quot;: null,
             &quot;siteName&quot;: &quot;MDN Web Docs&quot;,
             &quot;excerpt&quot;: &quot;The MDN Web Docs site provides information about Open Web technologies including HTML, CSS, and APIs for both Web sites and progressive web apps.&quot;,
@@ -1985,9 +2026,9 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
         {
           &quot;ruleId&quot;: &quot;content.signal-noise&quot;,
           &quot;category&quot;: &quot;content_clarity&quot;,
-          &quot;severity&quot;: &quot;warn&quot;,
-          &quot;score&quot;: 60,
-          &quot;evidence&quot;: &quot;Signal-noise ratio: 23.6% (27321 text bytes / 115589 total bytes)&quot;,
+          &quot;severity&quot;: &quot;pass&quot;,
+          &quot;score&quot;: 85,
+          &quot;evidence&quot;: &quot;Signal-noise ratio: 35.6% (26792 text bytes / 75278 total bytes)&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 90,
             &quot;why&quot;: &quot;High script/style-to-text ratio buries the actual content agents are trying to extract.&quot;
@@ -1997,16 +2038,20 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
     },
     {
       &quot;category&quot;: &quot;determinism&quot;,
-      &quot;score&quot;: 100,
+      &quot;score&quot;: 56,
       &quot;weight&quot;: 18,
       &quot;findings&quot;: [
         {
           &quot;ruleId&quot;: &quot;det.bot-cloaking&quot;,
           &quot;category&quot;: &quot;determinism&quot;,
           &quot;severity&quot;: &quot;pass&quot;,
-          &quot;score&quot;: 100,
-          &quot;evidence&quot;: &quot;gptbot and browser fetches returned identical content&quot;,
+          &quot;score&quot;: 80,
+          &quot;evidence&quot;: &quot;GPTBot receives ~0% different content than browsers — possible partial bot filtering&quot;,
+          &quot;fix&quot;: &quot;Your CDN or WAF may be serving a stripped or cached variant to bot User-Agents. Check: (1) Cloudflare Cache Rules — ensure GPTBot is not hitting a stale or bot-specific cache variant. (2) Server-side bot detection middleware that conditionally renders less content. (3) Add GPTBot to your verified-crawlers allowlist so it receives the same response as a normal browser.&quot;,
           &quot;metadata&quot;: {
+            &quot;gptbotBytes&quot;: 75278,
+            &quot;browserBytes&quot;: 75274,
+            &quot;diffPct&quot;: 0,
             &quot;effortMinutes&quot;: 60,
             &quot;why&quot;: &quot;Different content to GPTBot vs a browser is the textbook cloaking pattern. Search engines flag this.&quot;
           }
@@ -2014,9 +2059,10 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
         {
           &quot;ruleId&quot;: &quot;det.fetch-stability&quot;,
           &quot;category&quot;: &quot;determinism&quot;,
-          &quot;severity&quot;: &quot;pass&quot;,
-          &quot;score&quot;: 100,
-          &quot;evidence&quot;: &quot;Two luxfaber fetches returned identical body hash&quot;,
+          &quot;severity&quot;: &quot;fail&quot;,
+          &quot;score&quot;: 0,
+          &quot;evidence&quot;: &quot;Body hash changed between fetches (10f59cae… → 88569874…)&quot;,
+          &quot;fix&quot;: &quot;Page content is non-deterministic; fix server-side randomness or caching headers&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 60,
             &quot;why&quot;: &quot;If the same URL serves different bytes on every fetch, no agent can cache/cite reliably.&quot;
@@ -2026,9 +2072,13 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;ruleId&quot;: &quot;det.ua-cloaking&quot;,
           &quot;category&quot;: &quot;determinism&quot;,
           &quot;severity&quot;: &quot;pass&quot;,
-          &quot;score&quot;: 100,
-          &quot;evidence&quot;: &quot;luxfaber and browser fetches returned identical content&quot;,
+          &quot;score&quot;: 80,
+          &quot;evidence&quot;: &quot;Body hash differs between luxfaber and browser (byte diff ~0%)&quot;,
+          &quot;fix&quot;: &quot;Ensure identical content is served regardless of User-Agent&quot;,
           &quot;metadata&quot;: {
+            &quot;luxBytes&quot;: 75278,
+            &quot;browserBytes&quot;: 75274,
+            &quot;diffPct&quot;: 0,
             &quot;effortMinutes&quot;: 60,
             &quot;why&quot;: &quot;Serving different content to a Luxfaber UA vs a browser UA = SEO/agent cloaking risk.&quot;
           }
@@ -2060,7 +2110,9 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
   &quot;toolVersions&quot;: {
     &quot;node&quot;: &quot;v20.19.6&quot;,
     &quot;luxfaber&quot;: &quot;0.2.0&quot;,
-    &quot;ruleset&quot;: &quot;v1&quot;
+    &quot;ruleset&quot;: &quot;v1&quot;,
+    &quot;commonCrawlIndex&quot;: &quot;CC-MAIN-2026-17&quot;,
+    &quot;axe&quot;: &quot;4.11.4&quot;
   }
 }</code></pre>
     </details>
@@ -2082,17 +2134,36 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
     </p>
   </div>
 </section>
-<footer class="lf-footer">&lt;div class=&quot;container&quot;&gt;
-  Generated by Luxfaber 0.2.0 &amp;middot; scoring v1
-&lt;/div&gt;</footer>
+    <footer>
+      <div class="container">
+  Generated by Luxfaber 0.2.0 &middot; scoring v1
+</div>
+    </footer>
   </main>
 </div>
-<script>(function(){
-  var links=document.querySelectorAll('.aside-nav a[href^="#"]');
+<script>
+(function(){
+  var btn=document.getElementById('lf-theme-toggle');
+  if(btn){
+    function sync(){
+      var dark=document.documentElement.getAttribute('data-theme')==='dark';
+      btn.textContent=dark?'☀ Theme':'🌙 Theme';
+      btn.setAttribute('aria-label',dark?'Switch to Dawn Blossom (light)':'Switch to Midnight Blossom (dark)');
+    }
+    sync();
+    btn.addEventListener('click',function(){
+      var dark=document.documentElement.getAttribute('data-theme')==='dark';
+      var next=dark?'light':'dark';
+      document.documentElement.setAttribute('data-theme',next);
+      localStorage.setItem('lf-theme',next);
+      sync();
+    });
+  }
+  var links=document.querySelectorAll('.lf-nav-link[data-target]');
   var byId={};
   var sections=[];
   links.forEach(function(l){
-    var id=l.getAttribute('href').slice(1);
+    var id=l.getAttribute('data-target');
     var el=document.getElementById(id);
     byId[id]=l;
     if(el)sections.push(el);
@@ -2109,6 +2180,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
     },{rootMargin:'-20% 0% -70% 0%',threshold:0});
     sections.forEach(function(s){io.observe(s)});
   }
-})();</script>
+})();
+</script>
 </body>
 </html>

@@ -19,18 +19,18 @@ interface ScoreBlock {
 const LUXFABER: ScoreBlock = {
   title: "luxfaber v0.2",
   version: "rule v1",
-  ariaLabel: "LuxFaber AEO score for developer.mozilla.org: 72 out of 100",
+  ariaLabel: "LuxFaber AEO score for developer.mozilla.org: 70 out of 100",
   caption: "LuxFaber — agent-readiness scanner. Recon run against developer.mozilla.org.",
   reportHref: "/reports/luxfaber.html",
   lines: [
     { type: "cmd", text: "$ luxfaber https://developer.mozilla.org --tier recon" },
-    { type: "score", text: "LuxFaber Score: 72 / 100   rule v1" },
+    { type: "score", text: "LuxFaber Score: 70 / 100   rule v1" },
     { type: "blank" },
     { type: "rule", label: "  Crawl Accessibility ", score: "77 / 100" },
     { type: "rule", label: "  Structured Data     ", score: "24 / 100" },
     { type: "rule", label: "  Semantic HTML       ", score: "93 / 100" },
-    { type: "rule", label: "  Content Clarity     ", score: "75 / 100" },
-    { type: "rule", label: "  Determinism         ", score: "100 / 100" },
+    { type: "rule", label: "  Content Clarity     ", score: "82 / 100" },
+    { type: "rule", label: "  Determinism         ", score: "56 / 100" },
   ],
 };
 
