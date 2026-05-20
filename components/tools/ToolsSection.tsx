@@ -187,7 +187,7 @@ export function ToolsSection() {
       <section
         id="tools"
         aria-labelledby="tools-heading"
-        className="bg-stel-bg py-16 md:py-24"
+        className="bg-stel-bg py-16 border-t border-stel-border md:py-16"
       >
         <div className="max-w-[1280px] mx-auto px-6 md:px-12 xl:px-20">
           <h2
