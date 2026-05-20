@@ -167,14 +167,21 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 .finding-fix strong, .finding-why strong { color: var(--text); font-weight: 600; }
 
 /* KPI grid */
-.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
-.kpi .label { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 12px; margin-bottom: 24px; }
+.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; min-width: 0; }
+.kpi .label { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .kpi .value { font-size: 22px; font-weight: 600; color: var(--text); margin-top: 4px; letter-spacing: -0.02em; }
 .kpi.crit .value { color: var(--error); }
 .kpi.high .value { color: var(--warn); }
 .kpi.med .value { color: var(--med-sev); }
 .kpi.low .value { color: var(--success); }
+/* Narrow screens: drop labels so all kpis stay on one row */
+@media (max-width: 900px) {
+  .kpis { grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); gap: 8px; }
+  .kpi { padding: 10px 12px; text-align: center; }
+  .kpi .label { display: none; }
+  .kpi .value { font-size: 20px; margin-top: 0; }
+}
 
 /* Bars */
 .bars { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 18px 20px; }
@@ -242,6 +249,7 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 .mockup-banner a { color: var(--warn); text-decoration: underline; }
 </style>
 <style>.container{max-width:var(--max-w);margin:0 auto;padding:1.5rem 1rem}
+.main section > .container{max-width:none;padding:0;margin:0}
 .site-title{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-pink);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
 .page-type-badge,.render-mode-badge{font-size:.65rem;padding:.15em .5em;border-radius:3px;background:var(--color-surface);border:1px solid var(--color-border);color:var(--color-text-secondary);letter-spacing:.04em}
 .page-type-auth,.page-type-app{background:#3b2c12;border-color:#a16207;color:#ffaa00}
@@ -552,7 +560,6 @@ details.finding-flat[open]>summary .finding-flat-toggle{transform:rotate(90deg)}
 </div>
 </section>
 <section id="breakdown">
-  <h2>Score Breakdown</h2>
   <div class="kpis"><div class="kpi"><div class="label">Crawl Accessibility · 25%</div><div class="value">77</div></div><div class="kpi crit"><div class="label">Structured Data · 22%</div><div class="value">24</div></div><div class="kpi"><div class="label">Semantic HTML · 18%</div><div class="value">93</div></div><div class="kpi"><div class="label">Content Clarity · 17%</div><div class="value">75</div></div><div class="kpi"><div class="label">Determinism · 18%</div><div class="value">100</div></div></div>
 </section>
 <section id="gates">
@@ -1417,7 +1424,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
       <pre><code>{
   &quot;schemaVersion&quot;: &quot;1.0.0&quot;,
   &quot;scoringVersion&quot;: &quot;v1&quot;,
-  &quot;generatedAt&quot;: &quot;2026-05-20T02:43:19.388Z&quot;,
+  &quot;generatedAt&quot;: &quot;2026-05-20T12:07:43.831Z&quot;,
   &quot;url&quot;: &quot;https://developer.mozilla.org&quot;,
   &quot;finalUrl&quot;: &quot;https://developer.mozilla.org/en-US/&quot;,
   &quot;status&quot;: 200,
