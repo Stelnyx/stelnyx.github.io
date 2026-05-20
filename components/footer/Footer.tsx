@@ -19,7 +19,7 @@ const FOOTER_LINKS: { label: string; href: string; external?: boolean }[] = [
       ]
     : []),
   { label: "Privacy", href: "/privacy" },
-  { label: "GitHub", href: "https://github.com/Stelnyx/" },
+  { label: "GitHub", href: "https://github.com/Stelnyx", external: true },
   { label: "Terms", href: "/terms" },
 ];
 
