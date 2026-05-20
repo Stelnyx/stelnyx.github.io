@@ -5,14 +5,38 @@ import Link from "next/link";
 import { useContact } from "@/components/contact/ContactProvider";
 import { FEATURE_PRICING } from "@/lib/features";
 
-function StarMark() {
-return (
-<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-  <path d="M10 1L11.8 7.5H18.5L13 11.5L14.8 18L10 14L5.2 18L7 11.5L1.5 7.5H8.2L10 1Z" fill="#6C63FF" stroke="#7B73FF"
-    strokeWidth="0.5" />
-  <path d="M10 4.5L10 15.5M4.5 10L15.5 10" stroke="#7B73FF" strokeWidth="0.8" strokeOpacity="0.5" />
-</svg>
-);
+function StelMark() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M17 3 L7 3 C4.8 3 3.5 4.3 3.5 6.5 L3.5 8.5"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+      />
+      <path
+        d="M2.5 10 L17.5 10"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="square"
+      />
+      <path
+        d="M16.5 11.5 L16.5 13.5 C16.5 15.7 15.2 17 13 17 L3 17"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+      />
+    </svg>
+  );
 }
 
 export function Navbar() {
@@ -44,7 +68,7 @@ return (
     <Link href="/"
       className="flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright rounded-sm"
       aria-label="Stelnyx home">
-      <StarMark />
+      <StelMark />
       <span className="font-sans font-semibold text-[18px] text-stel-text-primary tracking-tight">
         Stelnyx
       </span>
