@@ -52,6 +52,24 @@ const SECGATE: ScoreBlock = {
   ],
 };
 
+const APIGATE: ScoreBlock = {
+  title: "apigate v0.3.0",
+  version: "rubric v1",
+  ariaLabel: "ApiGate API auth posture score for Immich: 51 out of 100, FAIL",
+  caption: "ApiGate — static API surface auditor. Run against Immich (~50k★ NestJS).",
+  reportHref: "/reports/apigate.html",
+  lines: [
+    { type: "cmd", text: "$ npx @stelnyx/apigate immich", pkg: "@stelnyx/apigate" },
+    { type: "score", text: "Headline: 51 / 100   FAIL   rubric v1" },
+    { type: "blank" },
+    { type: "rule", label: "  Inventory       ", score: "85 / 100" },
+    { type: "rule", label: "  Auth Coverage   ", score: "72 / 100" },
+    { type: "rule", label: "  Open Risk       ", score: "0 / 100" },
+    { type: "rule", label: "  Spec Drift      ", score: "0 / 100" },
+    { type: "rule", label: "  Determinism     ", score: "100 / 100" },
+  ],
+};
+
 function Terminal({ block }: { block: ScoreBlock }) {
   return (
     <div>
@@ -162,25 +180,26 @@ export function ScoresShowcase() {
       className="relative bg-stel-bg border-t border-stel-border scroll-mt-20"
     >
       <div className="relative w-full max-w-[1280px] mx-auto px-6 md:px-12 xl:px-20 py-16 md:py-24">
-        <div className="max-w-[680px] mb-10 md:mb-14">
+        <div className="max-w-[720px] mb-10 md:mb-14">
           <h2
             id="scores-heading"
             className="text-stel-text-primary font-semibold tracking-[-0.03em] leading-[1.1] text-balance"
             style={{ fontSize: "clamp(28px, 4vw, 40px)" }}
           >
-            One pattern. Three surfaces. Three deterministic scores.
+            One pattern. Four surfaces. Four deterministic scores.
           </h2>
           <p
             className="text-stel-text-muted mt-4 leading-[1.7] text-balance"
             style={{ fontSize: "16px" }}
           >
-            LuxFaber scores your web surface for AI agents. LuxScope scores your codebase. SecGate scores your security posture. Same scoring discipline, three different angles on the same buyer. Run any of them in 30 seconds.
+            LuxScope is in the hero above — same pattern, applied to your codebase. Here are the other three: LuxFaber scores your web surface for AI agents, SecGate scores your security posture, ApiGate scores your API auth surface. Same scoring discipline. Run any of them in 30 seconds.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           <Terminal block={LUXFABER} />
           <Terminal block={SECGATE} />
+          <Terminal block={APIGATE} />
         </div>
       </div>
     </section>

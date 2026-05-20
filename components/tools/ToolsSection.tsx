@@ -21,6 +21,7 @@ const TOOLS: Product[] = [
     stack: ["AST", "Risk scoring", "Diagrams", "Docs", "MCP"],
     status: "Open source — early release",
     sampleStats: "Sample: 82/100 · 57 risk files · 8 findings · 23 handoff docs (express 4.21.2)",
+    sampleReportHref: "/reports/luxscope.html",
     github: "https://github.com/Stelnyx/luxscope",
     page: "/preview/luxscope",
     audit: { price: "$499", href: "/preview/audit/luxscope.html" },
@@ -41,6 +42,7 @@ const TOOLS: Product[] = [
     stack: ["CLI", "HTTP", "Agent scoring"],
     status: "Open source — coming soon",
     sampleStats: "Sample: 72/100 · 5 rubrics · 16 issues (developer.mozilla.org)",
+    sampleReportHref: "/reports/luxfaber.html",
     github: "https://github.com/Stelnyx/LuxFaber",
     page: "/preview/luxfaber",
     audit: { price: "$499", href: "/preview/audit/luxfaber.html" },
@@ -62,9 +64,27 @@ const TOOLS: Product[] = [
     stack: ["Semgrep", "Gitleaks", "osv-scanner", "Trivy", "npm audit"],
     status: "v0.2.13 — MIT · published to npm",
     sampleStats: "Sample: FAIL · 154 findings · risk 468 · 6 scanners (OWASP NodeGoat)",
+    sampleReportHref: "/reports/secgate.html",
     npm: "https://www.npmjs.com/package/@stelnyx/secgate",
     github: "https://github.com/Stelnyx/SecGate",
     audit: { price: "Free", href: "/preview/audit/secgate.html" },
+  },
+  {
+    name: "ApiGate",
+    badge: "API Surface",
+    license: "MIT",
+    tier: "tool",
+    tagline: "Every endpoint. Scored. One command.",
+    cli: "npx @stelnyx/apigate .",
+    description:
+      "Inventories every HTTP endpoint across Express, Fastify, NestJS, and OpenAPI specs. Classifies auth posture, diffs code vs spec, fails the pipeline on open writes. 100% static — no HTTP, no credentials, no running server. Same inputs → byte-identical report.",
+    stack: ["Express", "Fastify", "NestJS", "OpenAPI 2/3"],
+    status: "v0.3.0 — MIT · published to npm",
+    sampleStats: "Sample: FAIL · 51/100 · 255 endpoints · 35 open · 8 auth-drift (Immich)",
+    sampleReportHref: "/reports/apigate.html",
+    npm: "https://www.npmjs.com/package/@stelnyx/apigate",
+    github: "https://github.com/Stelnyx/ApiGate",
+    audit: { price: "Free", href: "/preview/audit/apigate.html" },
   },
   {
     name: "Intake",
@@ -183,26 +203,50 @@ export function ToolsSection() {
           </p>
 
           {(() => {
-            const audits = TOOLS.filter((t) => t.audit);
+            const luxRow = TOOLS.filter((t) => t.tier === "lux");
+            const freeRow = TOOLS.filter((t) => t.tier === "tool" && t.audit);
             const ossOnly = TOOLS.filter((t) => !t.audit);
             return (
               <>
-                <div className="mt-16 mb-6 max-w-[1280px]">
+                <div className="mt-16 mb-8 max-w-[1280px]">
                   <h3 className="font-sans font-semibold text-[20px] text-stel-text-primary tracking-[-0.01em]">
-                    Audited services
+                    Intelligence. Delivered as a session.
                   </h3>
-                  <p className="text-[14px] text-stel-text-muted mt-1 max-w-[560px]">
-                    A senior engineer runs the tool against your repo or site and walks you through every finding. One hour. Code never leaves your machine.
+                  <p className="text-[14px] text-stel-text-muted mt-1 max-w-[620px]">
+                    LuxScope reads your codebase. LuxFaber reads your web surface. Both produce a scored report a senior engineer walks you through — one hour, nothing leaves your machine.
                   </p>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {audits.map((tool) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {luxRow.map((tool) => (
                     <ProductCard
                       key={tool.name}
                       product={tool}
                       onLearnMore={setSelected}
                       onRequestAudit={openAuditRequest}
                       paidAuditsOpen={PAID_AUDITS_OPEN}
+                      cardHeadingSize="text-[22px]"
+                    />
+                  ))}
+                </div>
+
+                <div className="mt-20 mb-6 max-w-[1280px]">
+                  <h3 className="font-sans font-semibold text-[20px] text-stel-text-primary tracking-[-0.01em]">
+                    Run it now. Free. No account.
+                  </h3>
+                  <p className="text-[14px] text-stel-text-muted mt-1 max-w-[620px]">
+                    Two MIT tools. One command each. Same scoring discipline as the paid audits — without the session.
+                  </p>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {freeRow.map((tool) => (
+                    <ProductCard
+                      key={tool.name}
+                      product={tool}
+                      onLearnMore={setSelected}
+                      onRequestAudit={openAuditRequest}
+                      paidAuditsOpen={PAID_AUDITS_OPEN}
+                      cliProminent
+                      showFreeBadge
                     />
                   ))}
                 </div>
