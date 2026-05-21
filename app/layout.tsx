@@ -69,7 +69,7 @@ const PRODUCT_JSONLDS = [
     "@type": "SoftwareApplication",
     name: "LuxScope",
     description:
-      "Codebase intelligence scanner. Deterministic — no LLMs, no cloud, runs on your machine. Sample run against expressjs/express 4.21.2: score 82/100, 8 findings across 57 risk files, plus 23 deterministic handoff docs.",
+      "Codebase intelligence scanner. Deterministic — no LLMs, no cloud, runs on your machine. Sample run against express-pin: score 85/100, 7 findings across 51 risk files, plus 10 deterministic handoff docs.",
     applicationCategory: "DeveloperApplication",
     operatingSystem: "macOS, Linux, Windows",
     url: `${SITE_URL}/preview/luxscope`,
@@ -82,7 +82,7 @@ const PRODUCT_JSONLDS = [
     "@type": "SoftwareApplication",
     name: "LuxFaber",
     description:
-      "Agent-readiness (AEO) scanner. Scores any URL across crawl accessibility, structured data, semantic HTML, content clarity, and UA-cloaking determinism. Local-first; no telemetry. Sample run against developer.mozilla.org: 70/100 across 5 rubrics.",
+      "Agent-readiness (AEO) scanner. Scores any URL across crawl accessibility, structured data, semantic HTML, content clarity, and UA-cloaking determinism. Local-first; no telemetry. Sample run against expressjs.com: 39/100 across 5 rubrics.",
     applicationCategory: "DeveloperApplication",
     operatingSystem: "macOS, Linux, Windows",
     url: `${SITE_URL}/preview/luxfaber`,
@@ -95,7 +95,7 @@ const PRODUCT_JSONLDS = [
     "@type": "SoftwareApplication",
     name: "SecGate",
     description:
-      "Deterministic security gate. One command runs Semgrep, Gitleaks, osv-scanner, Trivy, and npm audit; normalizes findings; fails the pipeline on CRITICAL or HIGH. Aggregation is byte-identical across runs, locked by determinism + golden snapshot tests. v0.2.13 — published to npm as @stelnyx/secgate. Sample run against OWASP NodeGoat: FAIL · risk 468 · 154 findings.",
+      "Deterministic security gate. One command runs Semgrep, Gitleaks, osv-scanner, Trivy, and npm audit; normalizes findings; fails the pipeline on CRITICAL or HIGH. Aggregation is byte-identical across runs, locked by determinism + golden snapshot tests. v0.2.13 — published to npm as @stelnyx/secgate. Sample run against express-pin: FAIL · risk 365 · 43 findings.",
     applicationCategory: "DeveloperApplication",
     operatingSystem: "macOS, Linux, Windows",
     url: "https://www.npmjs.com/package/@stelnyx/secgate",

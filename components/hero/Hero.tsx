@@ -5,12 +5,12 @@ import { PkgName } from "@/components/ui/PkgName";
 import { FEATURE_PUBLIC_REPOS } from "@/lib/features";
 
 const TERMINAL_LINES = [
-  { type: "cmd", text: "$ luxscope open expressjs/express@4.21.2 --level recon", pkg: "expressjs/express@4.21.2" },
+  { type: "cmd", text: "$ luxscope open express-pin --level recon", pkg: "express-pin" },
   { type: "blank", text: "" },
-  { type: "score", text: "LuxScope Score: 82 / 100   rule v0.1.0" },
+  { type: "score", text: "LuxScope Score: 85 / 100   rule v0.1.0" },
   { type: "blank", text: "" },
   { type: "rule", label: "  Security        ", score: "69 / 100" },
-  { type: "rule", label: "  Complexity      ", score: "50 / 100" },
+  { type: "rule", label: "  Complexity      ", score: "67 / 100" },
   { type: "rule", label: "  Documentation   ", score: "99 / 100" },
   { type: "rule", label: "  Dependencies    ", score: "100 / 100" },
   { type: "rule", label: "  Dead Code       ", score: "100 / 100" },
@@ -44,7 +44,7 @@ export function Hero() {
               className="text-stel-text-muted mt-5 leading-[1.7] max-w-[520px] text-balance"
               style={{ fontSize: "18px" }}
             >
-              AI shipped your codebase. We tell you what&apos;s actually inside — before your acquirer, investor, or new hire finds out. We ran LuxScope against <PkgName text="expressjs/express@4.21.2" className="text-stel-text-primary font-semibold" /> — score <span className="text-stel-text-primary font-semibold">82/100</span>, <span className="text-stel-text-primary font-semibold">8 findings</span> across <span className="text-stel-text-primary font-semibold">57 risk files</span>, plus <span className="text-stel-text-primary font-semibold">23 deterministic handoff docs</span>.{" "}
+              AI shipped your codebase. We tell you what&apos;s actually inside — before your acquirer, investor, or new hire finds out. We ran LuxScope against <PkgName text="express-pin" className="text-stel-text-primary font-semibold" /> — score <span className="text-stel-text-primary font-semibold">85/100</span>, <span className="text-stel-text-primary font-semibold">7 findings</span> across <span className="text-stel-text-primary font-semibold">51 risk files</span>, plus <span className="text-stel-text-primary font-semibold">10 deterministic handoff docs</span>.{" "}
               <a
                 href="/reports/luxscope.html"
                 target="_blank"
@@ -87,11 +87,11 @@ export function Hero() {
           <div
             className="animate-fade-up-delay-2"
             role="img"
-            aria-label="LuxScope codebase scanner output for expressjs/express@4.21.2: score 82 out of 100"
+            aria-label="LuxScope codebase scanner output for express-pin: score 85 out of 100"
           >
             <figure className="m-0">
               <figcaption className="sr-only">
-                LuxScope — codebase intelligence scanner. Recon run against expressjs/express@4.21.2.
+                LuxScope — codebase intelligence scanner. Recon run against express-pin.
               </figcaption>
               <div
                 className="rounded-lg border border-stel-border bg-stel-surface overflow-hidden"

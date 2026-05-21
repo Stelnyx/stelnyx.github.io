@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Luxfaber Report — https://developer.mozilla.org</title>
+<title>Luxfaber Report — https://expressjs.com</title>
 <meta name="robots" content="noindex">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Inter%2C-apple-system%2Csans-serif' font-size='19' font-weight='700' fill='%23ff2d78'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAChElEQVR42u2XwUvaYRjHNUeaRAeT0EsH6RKEhB7UpJ0Ebx7KU4h16bZOTSYeGssOUjdxngKbB724vyDmOnRpgikxV8gSAkUaSENJ1Ol3PA9TcEkb2G8/Gj0gP3wefu/zed73+z7v+5NIJBKI/HsCeMQAUqkUCoVCPIDZ2Vns7++LB2C1WpFKpTAyMiIOgN1uRz6fx9jYmDgAbrcbNzffMTU1JQ6A3+8HmdFoFA5gfHwcKpVqYOzo4xEDbGy8GBjXajSQ/Vkf9wMsLy/j6uoK6+vrDNP122w2NBoNBshms5iYmOjFdDodwuEw60M9OTn8DLw7OOBEudxn7O3tYWdnB+VyGbe3t8hmshw7Pj6Gz+dDNBpFpVJBu93GysoK94qhNfBMJkMkEsHvRklNJhNarVafv9lswul0PqwIlUolJySj6si2t99AJpPh7Oysz+/1eoXZBc8XF3ndO50OP7vqDwQCverT6TTkcrkwADTw+ZdzTpRMJrl68uv1etYD2e7urnB9YHR0FLlcjhM5HI6+WCwWYz/NhmAAZrOZBXZ4eHhH3XNzc6hWq0ifnkKhEGAJqPrkhyQLjQ4htVoNi8XC/WB+fp6XJxgM8iy83Nx8WACqNhQK9YSWyWRQKpVYjN1td3FxgWKxyP9JD0tLSw8DQCdd+G2YB6ak8Xgc7xMJ1Ov1vq1XKBS4V9Dy0A7p9oKhG9Hq6iqqtRq2Xm9Bo9H0/C6XC63WD56Fr5eXmJ6e7sUMBgMSiQSuv11Dq9UOB0ADzMzM3PHTJeTTycmvxvNq4Lu0PUk7gh3HdC6QWSxmce4Da2trqNVqfzPN/+mVbGFhAen0aa8l/3MAUr7H43n6NHvcAD8BL61GndVgmAsAAAAASUVORK5CYII=">
+<link rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAChElEQVR42u2XwUvaYRjHNUeaRAeT0EsH6RKEhB7UpJ0Ebx7KU4h16bZOTSYeGssOUjdxngKbB724vyDmOnRpgikxV8gSAkUaSENJ1Ol3PA9TcEkb2G8/Gj0gP3wefu/zed73+z7v+5NIJBKI/HsCeMQAUqkUCoVCPIDZ2Vns7++LB2C1WpFKpTAyMiIOgN1uRz6fx9jYmDgAbrcbNzffMTU1JQ6A3+8HmdFoFA5gfHwcKpVqYOzo4xEDbGy8GBjXajSQ/Vkf9wMsLy/j6uoK6+vrDNP122w2NBoNBshms5iYmOjFdDodwuEw60M9OTn8DLw7OOBEudxn7O3tYWdnB+VyGbe3t8hmshw7Pj6Gz+dDNBpFpVJBu93GysoK94qhNfBMJkMkEsHvRklNJhNarVafv9lswul0PqwIlUolJySj6si2t99AJpPh7Oysz+/1eoXZBc8XF3ndO50OP7vqDwQCverT6TTkcrkwADTw+ZdzTpRMJrl68uv1etYD2e7urnB9YHR0FLlcjhM5HI6+WCwWYz/NhmAAZrOZBXZ4eHhH3XNzc6hWq0ifnkKhEGAJqPrkhyQLjQ4htVoNi8XC/WB+fp6XJxgM8iy83Nx8WACqNhQK9YSWyWRQKpVYjN1td3FxgWKxyP9JD0tLSw8DQCdd+G2YB6ak8Xgc7xMJ1Ov1vq1XKBS4V9Dy0A7p9oKhG9Hq6iqqtRq2Xm9Bo9H0/C6XC63WD56Fr5eXmJ6e7sUMBgMSiQSuv11Dq9UOB0ADzMzM3PHTJeTTycmvxvNq4Lu0PUk7gh3HdC6QWSxmce4Da2trqNVqfzPN/+mVbGFhAen0aa8l/3MAUr7H43n6NHvcAD8BL61GndVgmAsAAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAChElEQVR42u2XwUvaYRjHNUeaRAeT0EsH6RKEhB7UpJ0Ebx7KU4h16bZOTSYeGssOUjdxngKbB724vyDmOnRpgikxV8gSAkUaSENJ1Ol3PA9TcEkb2G8/Gj0gP3wefu/zed73+z7v+5NIJBKI/HsCeMQAUqkUCoVCPIDZ2Vns7++LB2C1WpFKpTAyMiIOgN1uRz6fx9jYmDgAbrcbNzffMTU1JQ6A3+8HmdFoFA5gfHwcKpVqYOzo4xEDbGy8GBjXajSQ/Vkf9wMsLy/j6uoK6+vrDNP122w2NBoNBshms5iYmOjFdDodwuEw60M9OTn8DLw7OOBEudxn7O3tYWdnB+VyGbe3t8hmshw7Pj6Gz+dDNBpFpVJBu93GysoK94qhNfBMJkMkEsHvRklNJhNarVafv9lswul0PqwIlUolJySj6si2t99AJpPh7Oysz+/1eoXZBc8XF3ndO50OP7vqDwQCverT6TTkcrkwADTw+ZdzTpRMJrl68uv1etYD2e7urnB9YHR0FLlcjhM5HI6+WCwWYz/NhmAAZrOZBXZ4eHhH3XNzc6hWq0ifnkKhEGAJqPrkhyQLjQ4htVoNi8XC/WB+fp6XJxgM8iy83Nx8WACqNhQK9YSWyWRQKpVYjN1td3FxgWKxyP9JD0tLSw8DQCdd+G2YB6ak8Xgc7xMJ1Ov1vq1XKBS4V9Dy0A7p9oKhG9Hq6iqqtRq2Xm9Bo9H0/C6XC63WD56Fr5eXmJ6e7sUMBgMSiQSuv11Dq9UOB0ADzMzM3PHTJeTTycmvxvNq4Lu0PUk7gh3HdC6QWSxmce4Da2trqNVqfzPN/+mVbGFhAen0aa8l/3MAUr7H43n6NHvcAD8BL61GndVgmAsAAAAASUVORK5CYII=">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
@@ -76,11 +78,6 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 }
 .aside-head { padding: 0 24px 20px; border-bottom: 1px solid var(--border); }
 .aside-head .product { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; margin-bottom: 12px; }
-.aside-head .tier-pill { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; margin-left: 6px; vertical-align: 1px; text-transform: uppercase; }
-.aside-head .tier-pill.neutral { background: rgba(255,255,255,0.06); color: var(--muted); }
-.aside-head .tier-pill.premium { background: rgba(255,45,120,0.12); color: var(--pink); }
-.aside-head .tier-pill.pass { background: rgba(52,199,89,0.12); color: var(--success); }
-.aside-head .tier-pill.warn { background: rgba(255,149,0,0.12); color: var(--warn); }
 .aside-head .target { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 4px; word-break: break-all; }
 .aside-head .score-line { display: flex; align-items: baseline; gap: 10px; margin-top: 12px; }
 .aside-head .score-num { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; color: var(--pink); }
@@ -102,7 +99,7 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 .aside-footer { margin-top: auto; padding: 20px 24px 0; border-top: 1px solid var(--border); font-size: 10px; color: var(--faint); letter-spacing: 0.08em; text-transform: uppercase; }
 
 /* Main */
-.main { padding: 32px 32px 96px; max-width: var(--content-max); width: 100%; }
+.main { padding: 32px 32px 96px; max-width: var(--content-max); width: 100%; margin-inline: auto; }
 .main h1 { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 8px; }
 .main h2 { font-size: 16px; font-weight: 600; margin: 36px 0 14px; letter-spacing: -0.01em; }
 .main h3 { font-size: 14px; font-weight: 600; margin: 24px 0 10px; }
@@ -521,21 +518,21 @@ details.finding-flat[open]>summary .finding-flat-toggle{transform:rotate(90deg)}
     
     <div class="pill-row"><span class="report-pill">AEO Score Report</span></div>
     <div class="aside-head">
-      <div class="product">Luxfaber Report<span class="tier-pill neutral">FREE</span></div>
-      <div class="target"><a href="https://developer.mozilla.org" class="target-link">developer.mozilla.org</a></div>
+      <div class="product">Luxfaber Report</div>
+      <div class="target"><a href="https://expressjs.com" class="target-link">expressjs.com</a></div>
       <div class="score-line">
-        <span class="score-num">72</span>
+        <span class="score-num">39</span>
         <span class="score-denom">/ 100</span>
-        <span class="score-badge good">GOOD</span>
+        <span class="score-badge warn">WEAK</span>
       </div>
-      <div class="report-type">AEO · GOOD</div>
+      <div class="report-type">AEO · WEAK</div>
     </div>
     <nav class="aside-nav">
       <h6>Report</h6>
       <a href="#overview" class="active">Overview <span class="count">·</span></a>
       <a href="#breakdown">Categories <span class="count">5</span></a>
       <a href="#gates">Gates <span class="count">·</span></a>
-      <a href="#findings">Findings <span class="count">16</span></a>
+      <a href="#findings">Findings <span class="count">25</span></a>
       <a href="#metadata">Metadata <span class="count">·</span></a>
       <a href="#premium-upsell">Upgrade <span class="count">·</span></a>
     </nav>
@@ -549,18 +546,18 @@ details.finding-flat[open]>summary .finding-flat-toggle{transform:rotate(90deg)}
   <svg class="gauge" viewBox="0 0 100 100">
     <circle class="gauge-ring gauge-bg" cx="50" cy="50" r="42" />
     <circle class="gauge-ring gauge-fill" cx="50" cy="50" r="42"
-      stroke-dasharray="263.9" stroke-dashoffset="73.89" />
+      stroke-dasharray="263.9" stroke-dashoffset="160.98" style="stroke: var(--error)" />
   </svg>
   <div class="info">
     <div class="label">Score</div>
-    <div class="num">72<small>/ 100</small></div>
-    <div class="sub">scoring v1</div>
+    <div class="num">39<small>/ 100</small></div>
+    <div class="sub">scoring v1.1</div>
   </div>
   <div class="desc">Luxfaber Score measures how cleanly AI agents can read and interpret this page. Scored across 5 categories — crawl accessibility, structured data, semantic HTML, content clarity, determinism. The breakdown below shows where pressure concentrates so you know what to fix first.</div>
 </div>
 </section>
 <section id="breakdown">
-  <div class="kpis"><div class="kpi"><div class="label">Crawl Accessibility · 25%</div><div class="value">77</div></div><div class="kpi crit"><div class="label">Structured Data · 22%</div><div class="value">24</div></div><div class="kpi"><div class="label">Semantic HTML · 18%</div><div class="value">93</div></div><div class="kpi"><div class="label">Content Clarity · 17%</div><div class="value">75</div></div><div class="kpi"><div class="label">Determinism · 18%</div><div class="value">100</div></div></div>
+  <div class="kpis"><div class="kpi"><div class="label">Crawl Accessibility · 25%</div><div class="value">73</div></div><div class="kpi crit"><div class="label">Structured Data · 22%</div><div class="value">0</div></div><div class="kpi crit"><div class="label">Semantic HTML · 18%</div><div class="value">0</div></div><div class="kpi crit"><div class="label">Content Clarity · 17%</div><div class="value">15</div></div><div class="kpi"><div class="label">Determinism · 18%</div><div class="value">100</div></div></div>
 </section>
 <section id="gates">
   <div class="container">
@@ -598,86 +595,54 @@ details.finding-flat[open]>summary .finding-flat-toggle{transform:rotate(90deg)}
     <div class="quick-wins-list">
       <article class="quick-win">
   <div class="quick-win-header">
-    <span class="qw-gain">+22.0 pts</span>
-    <span class="qw-effort">~10m</span>
-    <code class="finding-rule">sd.opengraph.complete</code>
+    <span class="qw-gain">+18.0 pts</span>
+    <span class="qw-effort">~1m</span>
+    <code class="finding-rule">html.lang-attr</code>
   </div>
-  <p class="finding-evidence">Open Graph missing: title, description, type, image, url</p>
-  <p class="finding-fix"><strong>Fix:</strong> Add missing og: meta tags: og:title, og:description, og:type, og:image, og:url</p>
-  <pre class="qw-snippet"><code>&lt;meta property=&quot;og:title&quot; content=&quot;MDN Web Docs&quot;&gt;
-&lt;meta property=&quot;og:description&quot; content=&quot;The MDN Web Docs site provides information about Open Web technologies including HTML, CSS, and APIs for both Web sites and progressive web apps.&quot;&gt;
-&lt;meta property=&quot;og:type&quot; content=&quot;website&quot;&gt;
-&lt;meta property=&quot;og:url&quot; content=&quot;https://developer.mozilla.org/en-US/&quot;&gt;
-&lt;meta property=&quot;og:image&quot; content=&quot;https://developer.mozilla.org/og-image.png&quot;&gt;</code></pre>
+  <p class="finding-evidence">&lt;html&gt; element is missing a lang attribute</p>
+  <p class="finding-fix"><strong>Fix:</strong> Add lang=&quot;en&quot; (or appropriate language code) to the &lt;html&gt; element</p>
+  <pre class="qw-snippet"><code>&lt;html lang=&quot;en&quot;&gt;</code></pre>
 </article>
 <article class="quick-win">
   <div class="quick-win-header">
     <span class="qw-gain">+22.0 pts</span>
-    <span class="qw-effort">~15m</span>
-    <code class="finding-rule">sd.jsonld.count</code>
+    <span class="qw-effort">~2m</span>
+    <code class="finding-rule">sd.twitter-card.present</code>
   </div>
-  <p class="finding-evidence">No JSON-LD blocks found</p>
-  <p class="finding-fix"><strong>Fix:</strong> Add at least one &lt;script type=&quot;application/ld+json&quot;&gt; block</p>
-  <pre class="qw-snippet"><code>&lt;script type=&quot;application/ld+json&quot;&gt;
-{
-  &quot;@context&quot;: &quot;https://schema.org&quot;,
-  &quot;@type&quot;: &quot;Organization&quot;,
-  &quot;name&quot;: &quot;MDN Web Docs&quot;,
-  &quot;url&quot;: &quot;https://developer.mozilla.org&quot;
-}
-&lt;/script&gt;</code></pre>
-</article>
-<article class="quick-win">
-  <div class="quick-win-header">
-    <span class="qw-gain">+22.0 pts</span>
-    <span class="qw-effort">~20m</span>
-    <code class="finding-rule">sd.jsonld.entity-types</code>
-  </div>
-  <p class="finding-evidence">No valid JSON-LD blocks to check for entity types</p>
-  <p class="finding-fix"><strong>Fix:</strong> Add Organization, WebSite, or Article/Product/Service JSON-LD</p>
-  <pre class="qw-snippet"><code>&lt;script type=&quot;application/ld+json&quot;&gt;
-{
-  &quot;@context&quot;: &quot;https://schema.org&quot;,
-  &quot;@type&quot;: &quot;WebSite&quot;,
-  &quot;name&quot;: &quot;MDN Web Docs&quot;,
-  &quot;url&quot;: &quot;https://developer.mozilla.org&quot;
-}
-&lt;/script&gt;</code></pre>
+  <p class="finding-evidence">No twitter:card meta tag found</p>
+  <p class="finding-fix"><strong>Fix:</strong> Add &lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;&gt;</p>
+  <pre class="qw-snippet"><code>&lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;&gt;</code></pre>
 </article>
 <article class="quick-win">
   <div class="quick-win-header">
     <span class="qw-gain">+25.0 pts</span>
-    <span class="qw-effort">~30m</span>
-    <code class="finding-rule">crawl.llms-txt.present</code>
+    <span class="qw-effort">~3m</span>
+    <code class="finding-rule">crawl.canonical.matches</code>
   </div>
-  <p class="finding-evidence">llms.txt was not found at /llms.txt</p>
-  <p class="finding-fix"><strong>Fix:</strong> Publish /llms.txt to guide LLM agents</p>
-  <pre class="qw-snippet"><code># https://developer.mozilla.org/llms.txt
-# (https://llmstxt.org)
-
-# MDN Web Docs
-
-&gt; One-paragraph site summary aimed at an LLM agent.
-
-## Docs
-- [Getting Started](https://developer.mozilla.org/docs)
-
-## Optional
-- [Changelog](https://developer.mozilla.org/changelog)</code></pre>
+  <p class="finding-evidence">Cannot check canonical match — no canonical tag present</p>
+  <p class="finding-fix"><strong>Fix:</strong> Add &lt;link rel=&quot;canonical&quot; href=&quot;...&quot;&gt; matching the final URL</p>
+  <pre class="qw-snippet"><code>&lt;link rel=&quot;canonical&quot; href=&quot;https://expressjs.com&quot;&gt;</code></pre>
 </article>
 <article class="quick-win">
   <div class="quick-win-header">
     <span class="qw-gain">+25.0 pts</span>
-    <span class="qw-effort">~30m</span>
-    <code class="finding-rule">crawl.sitemap.parseable</code>
+    <span class="qw-effort">~3m</span>
+    <code class="finding-rule">crawl.canonical.present</code>
   </div>
-  <p class="finding-evidence">Sitemap has 0 parseable URLs or is absent</p>
-  <p class="finding-fix"><strong>Fix:</strong> Ensure sitemap.xml is valid XML with at least one &lt;loc&gt;</p>
-  <pre class="qw-snippet"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&gt;
-  &lt;url&gt;&lt;loc&gt;https://developer.mozilla.org/&lt;/loc&gt;&lt;/url&gt;
-  &lt;!-- add one &lt;url&gt;&lt;loc&gt;…&lt;/loc&gt;&lt;/url&gt; per public page --&gt;
-&lt;/urlset&gt;</code></pre>
+  <p class="finding-evidence">No &lt;link rel=&quot;canonical&quot;&gt; found in &lt;head&gt;</p>
+  <p class="finding-fix"><strong>Fix:</strong> Add &lt;link rel=&quot;canonical&quot; href=&quot;...&quot;&gt; to the &lt;head&gt;</p>
+  <pre class="qw-snippet"><code>&lt;link rel=&quot;canonical&quot; href=&quot;https://expressjs.com&quot;&gt;</code></pre>
+</article>
+<article class="quick-win">
+  <div class="quick-win-header">
+    <span class="qw-gain">+22.0 pts</span>
+    <span class="qw-effort">~5m</span>
+    <code class="finding-rule">sd.title-meta.quality</code>
+  </div>
+  <p class="finding-evidence">Issues: title missing; meta description missing</p>
+  <p class="finding-fix"><strong>Fix:</strong> Title should be 10–60 chars; meta description should be 50–160 chars</p>
+  <pre class="qw-snippet"><code>&lt;title&gt;Your page title&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;One-sentence summary of what this page is — 50–160 chars, written for both humans and LLM agents.&quot;&gt;</code></pre>
 </article>
     </div>
   </div>
@@ -702,12 +667,12 @@ details.finding-flat[open]>summary .finding-flat-toggle{transform:rotate(90deg)}
   <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code>// /.well-known/ai-plugin.json
 {
   &quot;schema_version&quot;: &quot;v1&quot;,
-  &quot;name_for_human&quot;: &quot;MDN Web Docs&quot;,
-  &quot;name_for_model&quot;: &quot;mdn_web_docs&quot;,
-  &quot;description_for_model&quot;: &quot;API for MDN Web Docs. Use to answer questions about this product.&quot;,
+  &quot;name_for_human&quot;: &quot;Your Product&quot;,
+  &quot;name_for_model&quot;: &quot;your_product&quot;,
+  &quot;description_for_model&quot;: &quot;API for Your Product. Use to answer questions about this product.&quot;,
   &quot;api&quot;: {
     &quot;type&quot;: &quot;openapi&quot;,
-    &quot;url&quot;: &quot;https://developer.mozilla.org/openapi.json&quot;
+    &quot;url&quot;: &quot;https://expressjs.com/openapi.json&quot;
   }
 }</code></pre></details>
 </article>
@@ -739,29 +704,29 @@ details.finding-flat[open]>summary .finding-flat-toggle{transform:rotate(90deg)}
 </article>
 <article class="finding">
   <div class="finding-header">
-    <span class="badge badge-pass"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M2 8.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> PASS</span>
+    <span class="badge badge-fail"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> FAIL</span>
     <code class="finding-rule">crawl.canonical.matches</code>
     
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~3m</span>
-    <span class="finding-score">score: 100</span>
+    <span class="finding-score">score: 0</span>
   </div>
-  <p class="finding-evidence">Canonical matches final URL (https://developer.mozilla.org/en-US/)</p>
-  
+  <p class="finding-evidence">Cannot check canonical match — no canonical tag present</p>
+  <p class="finding-fix"><strong>Fix:</strong> Add &lt;link rel=&quot;canonical&quot; href=&quot;...&quot;&gt; matching the final URL</p>
   <p class="finding-why"><strong>Why:</strong> Mismatched canonical sends agents to a different URL than the one they fetched.</p>
-  <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code>&lt;link rel=&quot;canonical&quot; href=&quot;https://developer.mozilla.org/en-US/&quot;&gt;</code></pre></details>
+  <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code>&lt;link rel=&quot;canonical&quot; href=&quot;https://expressjs.com&quot;&gt;</code></pre></details>
 </article>
 <article class="finding">
   <div class="finding-header">
-    <span class="badge badge-pass"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M2 8.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> PASS</span>
+    <span class="badge badge-fail"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> FAIL</span>
     <code class="finding-rule">crawl.canonical.present</code>
     
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~3m</span>
-    <span class="finding-score">score: 100</span>
+    <span class="finding-score">score: 0</span>
   </div>
-  <p class="finding-evidence">Canonical tag present: https://developer.mozilla.org/en-US/</p>
-  
+  <p class="finding-evidence">No &lt;link rel=&quot;canonical&quot;&gt; found in &lt;head&gt;</p>
+  <p class="finding-fix"><strong>Fix:</strong> Add &lt;link rel=&quot;canonical&quot; href=&quot;...&quot;&gt; to the &lt;head&gt;</p>
   <p class="finding-why"><strong>Why:</strong> LLM crawlers use canonical to dedupe and pick the authoritative URL.</p>
-  <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code>&lt;link rel=&quot;canonical&quot; href=&quot;https://developer.mozilla.org/en-US/&quot;&gt;</code></pre></details>
+  <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code>&lt;link rel=&quot;canonical&quot; href=&quot;https://expressjs.com&quot;&gt;</code></pre></details>
 </article>
 <article class="finding">
   <div class="finding-header">
@@ -804,27 +769,27 @@ details.finding-flat[open]>summary .finding-flat-toggle{transform:rotate(90deg)}
 </article>
 <article class="finding">
   <div class="finding-header">
-    <span class="badge badge-fail"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> FAIL</span>
+    <span class="badge badge-pass"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M2 8.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> PASS</span>
     <code class="finding-rule">crawl.llms-txt.present</code>
     
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~30m</span>
-    <span class="finding-score">score: 0</span>
+    <span class="finding-score">score: 100</span>
   </div>
-  <p class="finding-evidence">llms.txt was not found at /llms.txt</p>
-  <p class="finding-fix"><strong>Fix:</strong> Publish /llms.txt to guide LLM agents</p>
+  <p class="finding-evidence">llms.txt is present</p>
+  
   <p class="finding-why"><strong>Why:</strong> /llms.txt is the emerging standard for site-level guidance to LLM agents.</p>
-  <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code># https://developer.mozilla.org/llms.txt
+  <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code># https://expressjs.com/llms.txt
 # (https://llmstxt.org)
 
-# MDN Web Docs
+# Your page title
 
 &gt; One-paragraph site summary aimed at an LLM agent.
 
 ## Docs
-- [Getting Started](https://developer.mozilla.org/docs)
+- [Getting Started](https://expressjs.com/docs)
 
 ## Optional
-- [Changelog](https://developer.mozilla.org/changelog)</code></pre></details>
+- [Changelog](https://expressjs.com/changelog)</code></pre></details>
 </article>
 <article class="finding">
   <div class="finding-header">
@@ -840,11 +805,11 @@ details.finding-flat[open]>summary .finding-flat-toggle{transform:rotate(90deg)}
   <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code>// /.well-known/mcp.json
 {
   &quot;version&quot;: &quot;1.0&quot;,
-  &quot;name&quot;: &quot;MDN Web Docs&quot;,
+  &quot;name&quot;: &quot;Your Product&quot;,
   &quot;tools&quot;: [
     {
       &quot;name&quot;: &quot;search&quot;,
-      &quot;url&quot;: &quot;https://developer.mozilla.org/mcp/search&quot;
+      &quot;url&quot;: &quot;https://expressjs.com/mcp/search&quot;
     }
   ]
 }</code></pre></details>
@@ -857,7 +822,7 @@ details.finding-flat[open]>summary .finding-flat-toggle{transform:rotate(90deg)}
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~15m</span>
     <span class="finding-score">score: 100</span>
   </div>
-  <p class="finding-evidence">Redirect chain length: 1</p>
+  <p class="finding-evidence">Redirect chain length: 0</p>
   
   <p class="finding-why"><strong>Why:</strong> Long redirect chains burn crawl budget and can lose query/state across hops.</p>
   
@@ -1020,7 +985,7 @@ Allow: /</code></pre></details>
   <p class="finding-evidence">robots.txt is present</p>
   
   <p class="finding-why"><strong>Why:</strong> robots.txt is the first file every crawler checks.</p>
-  <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code># https://developer.mozilla.org/robots.txt
+  <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code># https://expressjs.com/robots.txt
 User-agent: *
 Allow: /
 
@@ -1030,7 +995,7 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
+Sitemap: https://expressjs.com/sitemap.xml</code></pre></details>
 </article>
 <article class="finding">
   <div class="finding-header">
@@ -1044,7 +1009,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
   <p class="finding-fix"><strong>Fix:</strong> Deploy a valid sitemap.xml at the referenced URL</p>
   <p class="finding-why"><strong>Why:</strong> Without a sitemap, multi-page agents can&#39;t enumerate your site reliably.</p>
   <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code># Add to robots.txt:
-Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
+Sitemap: https://expressjs.com/sitemap.xml</code></pre></details>
 </article>
 <article class="finding">
   <div class="finding-header">
@@ -1059,7 +1024,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
   <p class="finding-why"><strong>Why:</strong> Empty/invalid sitemaps look the same to a crawler as none at all.</p>
   <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&gt;
-  &lt;url&gt;&lt;loc&gt;https://developer.mozilla.org/&lt;/loc&gt;&lt;/url&gt;
+  &lt;url&gt;&lt;loc&gt;https://expressjs.com/&lt;/loc&gt;&lt;/url&gt;
   &lt;!-- add one &lt;url&gt;&lt;loc&gt;…&lt;/loc&gt;&lt;/url&gt; per public page --&gt;
 &lt;/urlset&gt;</code></pre></details>
 </article>
@@ -1096,8 +1061,8 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
 {
   &quot;@context&quot;: &quot;https://schema.org&quot;,
   &quot;@type&quot;: &quot;Organization&quot;,
-  &quot;name&quot;: &quot;MDN Web Docs&quot;,
-  &quot;url&quot;: &quot;https://developer.mozilla.org&quot;
+  &quot;name&quot;: &quot;Your page title&quot;,
+  &quot;url&quot;: &quot;https://expressjs.com&quot;
 }
 &lt;/script&gt;</code></pre></details>
 </article>
@@ -1116,8 +1081,8 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
 {
   &quot;@context&quot;: &quot;https://schema.org&quot;,
   &quot;@type&quot;: &quot;WebSite&quot;,
-  &quot;name&quot;: &quot;MDN Web Docs&quot;,
-  &quot;url&quot;: &quot;https://developer.mozilla.org&quot;
+  &quot;name&quot;: &quot;Your page title&quot;,
+  &quot;url&quot;: &quot;https://expressjs.com&quot;
 }
 &lt;/script&gt;</code></pre></details>
 </article>
@@ -1145,36 +1110,36 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
   <p class="finding-evidence">Open Graph missing: title, description, type, image, url</p>
   <p class="finding-fix"><strong>Fix:</strong> Add missing og: meta tags: og:title, og:description, og:type, og:image, og:url</p>
   <p class="finding-why"><strong>Why:</strong> OpenGraph drives link previews everywhere (Slack, iMessage, agent UIs that render share cards).</p>
-  <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code>&lt;meta property=&quot;og:title&quot; content=&quot;MDN Web Docs&quot;&gt;
-&lt;meta property=&quot;og:description&quot; content=&quot;The MDN Web Docs site provides information about Open Web technologies including HTML, CSS, and APIs for both Web sites and progressive web apps.&quot;&gt;
+  <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code>&lt;meta property=&quot;og:title&quot; content=&quot;Your page title&quot;&gt;
+&lt;meta property=&quot;og:description&quot; content=&quot;One-sentence summary of what this page is — 50–160 chars, written for both humans and LLM agents.&quot;&gt;
 &lt;meta property=&quot;og:type&quot; content=&quot;website&quot;&gt;
-&lt;meta property=&quot;og:url&quot; content=&quot;https://developer.mozilla.org/en-US/&quot;&gt;
-&lt;meta property=&quot;og:image&quot; content=&quot;https://developer.mozilla.org/og-image.png&quot;&gt;</code></pre></details>
+&lt;meta property=&quot;og:url&quot; content=&quot;https://expressjs.com&quot;&gt;
+&lt;meta property=&quot;og:image&quot; content=&quot;https://expressjs.com/og-image.png&quot;&gt;</code></pre></details>
 </article>
 <article class="finding">
   <div class="finding-header">
-    <span class="badge badge-pass"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M2 8.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> PASS</span>
+    <span class="badge badge-fail"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> FAIL</span>
     <code class="finding-rule">sd.title-meta.quality</code>
     
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~5m</span>
-    <span class="finding-score">score: 100</span>
+    <span class="finding-score">score: 0</span>
   </div>
-  <p class="finding-evidence">Title (12 chars) and meta description (145 chars) within spec</p>
-  
+  <p class="finding-evidence">Issues: title missing; meta description missing</p>
+  <p class="finding-fix"><strong>Fix:</strong> Title should be 10–60 chars; meta description should be 50–160 chars</p>
   <p class="finding-why"><strong>Why:</strong> &lt;title&gt; + meta description are the snippet agents quote when summarising or citing your page.</p>
-  <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code>&lt;title&gt;MDN Web Docs&lt;/title&gt;
-&lt;meta name=&quot;description&quot; content=&quot;The MDN Web Docs site provides information about Open Web technologies including HTML, CSS, and APIs for both Web sites and progressive web apps.&quot;&gt;</code></pre></details>
+  <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code>&lt;title&gt;Your page title&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;One-sentence summary of what this page is — 50–160 chars, written for both humans and LLM agents.&quot;&gt;</code></pre></details>
 </article>
 <article class="finding">
   <div class="finding-header">
-    <span class="badge badge-pass"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M2 8.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> PASS</span>
+    <span class="badge badge-fail"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> FAIL</span>
     <code class="finding-rule">sd.twitter-card.present</code>
     
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~2m</span>
-    <span class="finding-score">score: 100</span>
+    <span class="finding-score">score: 0</span>
   </div>
-  <p class="finding-evidence">Twitter Card type: summary</p>
-  
+  <p class="finding-evidence">No twitter:card meta tag found</p>
+  <p class="finding-fix"><strong>Fix:</strong> Add &lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;&gt;</p>
   <p class="finding-why"><strong>Why:</strong> twitter:card extends OpenGraph with X/Twitter-specific layout hints.</p>
   <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code>&lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;&gt;</code></pre></details>
 </article>
@@ -1185,14 +1150,14 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
   <div class="findings-list">
     <article class="finding">
   <div class="finding-header">
-    <span class="badge badge-pass"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M2 8.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> PASS</span>
+    <span class="badge badge-fail"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> FAIL</span>
     <code class="finding-rule">html.heading-hierarchy</code>
     
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~30m</span>
-    <span class="finding-score">score: 100</span>
+    <span class="finding-score">score: 0</span>
   </div>
-  <p class="finding-evidence">Heading hierarchy is valid (13 headings, 1 h1, no skips)</p>
-  
+  <p class="finding-evidence">No heading elements found</p>
+  <p class="finding-fix"><strong>Fix:</strong> Add an &lt;h1&gt; and a logical heading hierarchy</p>
   <p class="finding-why"><strong>Why:</strong> Headings give agents the document outline. No h1 = no clear topic.</p>
   <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code>&lt;!-- Document outline --&gt;
 &lt;h1&gt;Page topic in one sentence&lt;/h1&gt;
@@ -1203,27 +1168,27 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
 </article>
 <article class="finding">
   <div class="finding-header">
-    <span class="badge badge-pass"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M2 8.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> PASS</span>
+    <span class="badge badge-info"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 7v4 M8 4.5v.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> INFO</span>
     <code class="finding-rule">html.img-alt-coverage</code>
     
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~30m</span>
     <span class="finding-score">score: 100</span>
   </div>
-  <p class="finding-evidence">1/1 image(s) have an alt attribute</p>
+  <p class="finding-evidence">no &lt;img&gt; elements found, rule skipped</p>
   
   <p class="finding-why"><strong>Why:</strong> Alt text is how agents (and screen readers) caption images. Missing alt = invisible content.</p>
   <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code>&lt;img src=&quot;/diagram.png&quot; alt=&quot;Concise description of what the diagram shows&quot;&gt;</code></pre></details>
 </article>
 <article class="finding">
   <div class="finding-header">
-    <span class="badge badge-pass"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M2 8.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> PASS</span>
+    <span class="badge badge-fail"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> FAIL</span>
     <code class="finding-rule">html.landmarks</code>
     
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~30m</span>
-    <span class="finding-score">score: 80</span>
+    <span class="finding-score">score: 0</span>
   </div>
-  <p class="finding-evidence">Landmarks present: nav, header, footer, article (4/5)</p>
-  <p class="finding-fix"><strong>Fix:</strong> Add missing landmark elements: main</p>
+  <p class="finding-evidence">No semantic landmark elements found</p>
+  <p class="finding-fix"><strong>Fix:</strong> Add missing landmark elements: main, nav, header, footer, article</p>
   <p class="finding-why"><strong>Why:</strong> Landmark elements let agents skip nav/footer chrome and zero in on the main content.</p>
   <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code>&lt;header&gt;
   &lt;nav&gt;…site nav…&lt;/nav&gt;
@@ -1235,27 +1200,27 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
 </article>
 <article class="finding">
   <div class="finding-header">
-    <span class="badge badge-pass"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M2 8.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> PASS</span>
+    <span class="badge badge-fail"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> FAIL</span>
     <code class="finding-rule">html.lang-attr</code>
     
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~1m</span>
-    <span class="finding-score">score: 100</span>
+    <span class="finding-score">score: 0</span>
   </div>
-  <p class="finding-evidence">&lt;html lang=&quot;en-US&quot;&gt; is set</p>
-  
+  <p class="finding-evidence">&lt;html&gt; element is missing a lang attribute</p>
+  <p class="finding-fix"><strong>Fix:</strong> Add lang=&quot;en&quot; (or appropriate language code) to the &lt;html&gt; element</p>
   <p class="finding-why"><strong>Why:</strong> Without lang, agents can&#39;t decide whether to translate or which language model to apply.</p>
   <details class="finding-snippet"><summary>Copy-paste fix</summary><pre><code>&lt;html lang=&quot;en&quot;&gt;</code></pre></details>
 </article>
 <article class="finding">
   <div class="finding-header">
-    <span class="badge badge-pass"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M2 8.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> PASS</span>
+    <span class="badge badge-info"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 7v4 M8 4.5v.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> INFO</span>
     <code class="finding-rule">html.link-text-quality</code>
     
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~20m</span>
-    <span class="finding-score">score: 97</span>
+    <span class="finding-score">score: 100</span>
   </div>
-  <p class="finding-evidence">6/173 link(s) have poor anchor text</p>
-  <p class="finding-fix"><strong>Fix:</strong> Replace generic link text (&quot;click here&quot;, empty) with descriptive phrases</p>
+  <p class="finding-evidence">no &lt;a&gt; elements found, rule skipped</p>
+  
   <p class="finding-why"><strong>Why:</strong> &quot;click here&quot; / &quot;learn more&quot; tells agents nothing about the destination. Use descriptive link text.</p>
   
 </article>
@@ -1272,34 +1237,34 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~0m</span>
     <span class="finding-score">score: 100</span>
   </div>
-  <p class="finding-evidence">Action surface: 17 entry points — 0 form(s), 17 button(s), 0 mailto, 0 tel, 0 ARIA button(s)</p>
+  <p class="finding-evidence">Action surface: 0 entry points — 0 form(s), 0 button(s), 0 mailto, 0 tel, 0 ARIA button(s)</p>
   
   <p class="finding-why"><strong>Why:</strong> Forms, CTA buttons, and contact links are conversion entry points. Agent-driven buyers (using AI to evaluate vendors) look for these signals when deciding whether a site is a real business.</p>
   
 </article>
 <article class="finding">
   <div class="finding-header">
-    <span class="badge badge-warn"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M8 2L1 14h14z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 6v4 M8 12.2v.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> WARN</span>
+    <span class="badge badge-fail"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> FAIL</span>
     <code class="finding-rule">content.boilerplate-ratio</code>
     
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~90m</span>
-    <span class="finding-score">score: 60</span>
+    <span class="finding-score">score: 0</span>
   </div>
-  <p class="finding-evidence">Boilerplate ratio: 18.0% (5045 extracted / 28054 total visible bytes)</p>
-  
+  <p class="finding-evidence">Readability extraction returned null — cannot compute boilerplate ratio</p>
+  <p class="finding-fix"><strong>Fix:</strong> Ensure page has extractable body content</p>
   <p class="finding-why"><strong>Why:</strong> Lots of nav/footer chrome relative to page body dilutes the signal in agent excerpts.</p>
   
 </article>
 <article class="finding">
   <div class="finding-header">
-    <span class="badge badge-pass"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M2 8.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> PASS</span>
+    <span class="badge badge-fail"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> FAIL</span>
     <code class="finding-rule">content.readability-extract</code>
     
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~60m</span>
-    <span class="finding-score">score: 100</span>
+    <span class="finding-score">score: 0</span>
   </div>
-  <p class="finding-evidence">Readability extracted 5045 chars of text</p>
-  
+  <p class="finding-evidence">Readability extraction returned null — page may be empty or unparseable</p>
+  <p class="finding-fix"><strong>Fix:</strong> Ensure the page has substantive body text (≥250 chars) that readability can extract</p>
   <p class="finding-why"><strong>Why:</strong> If readability extraction returns null, agents likely can&#39;t isolate the article body.</p>
   
 </article>
@@ -1311,7 +1276,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~0m</span>
     <span class="finding-score">score: 100</span>
   </div>
-  <p class="finding-evidence">Mozilla Readability extracted 5045 chars · siteName: MDN Web Docs</p>
+  <p class="finding-evidence">Mozilla Readability returned null — page is not extractable as an article</p>
   
   <p class="finding-why"><strong>Why:</strong> Mozilla Readability is the same library Firefox Reader View uses; if it can&#39;t extract your content, neither can most third-party article scrapers.</p>
   
@@ -1322,23 +1287,23 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
     <code class="finding-rule">content.script-density</code>
     
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~60m</span>
-    <span class="finding-score">score: 80</span>
+    <span class="finding-score">score: 100</span>
   </div>
-  <p class="finding-evidence">6 script/iframe elements (6 &lt;script&gt;, 0 cross-origin &lt;iframe&gt;)</p>
+  <p class="finding-evidence">1 script/iframe elements (1 &lt;script&gt;, 0 cross-origin &lt;iframe&gt;)</p>
   
   <p class="finding-why"><strong>Why:</strong> Heavy client-side script density is a red flag that content depends on JS to render.</p>
   
 </article>
 <article class="finding">
   <div class="finding-header">
-    <span class="badge badge-warn"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M8 2L1 14h14z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 6v4 M8 12.2v.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> WARN</span>
+    <span class="badge badge-fail"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> FAIL</span>
     <code class="finding-rule">content.signal-noise</code>
     
     <span class="finding-effort" title="Rough hands-on time to ship the fix">~90m</span>
-    <span class="finding-score">score: 60</span>
+    <span class="finding-score">score: 0</span>
   </div>
-  <p class="finding-evidence">Signal-noise ratio: 23.6% (28196 text bytes / 119366 total bytes)</p>
-  
+  <p class="finding-evidence">Signal-noise ratio: 0.0% (0 text bytes / 561 total bytes)</p>
+  <p class="finding-fix"><strong>Fix:</strong> Reduce script/style bloat or increase substantive text content</p>
   <p class="finding-why"><strong>Why:</strong> High script/style-to-text ratio buries the actual content agents are trying to extract.</p>
   
 </article>
@@ -1400,7 +1365,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
       </div>
       <div class="meta-item">
         <span class="meta-label">Ruleset</span>
-        <span class="meta-value">v1</span>
+        <span class="meta-value">v1.1</span>
       </div>
       <div class="meta-item">
         <span class="meta-label">Node</span>
@@ -1423,20 +1388,20 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
       <summary>Raw JSON report</summary>
       <pre><code>{
   &quot;schemaVersion&quot;: &quot;1.0.0&quot;,
-  &quot;scoringVersion&quot;: &quot;v1&quot;,
-  &quot;generatedAt&quot;: &quot;2026-05-20T12:07:43.831Z&quot;,
-  &quot;url&quot;: &quot;https://developer.mozilla.org&quot;,
-  &quot;finalUrl&quot;: &quot;https://developer.mozilla.org/en-US/&quot;,
+  &quot;scoringVersion&quot;: &quot;v1.1&quot;,
+  &quot;generatedAt&quot;: &quot;2026-05-21T01:06:46.329Z&quot;,
+  &quot;url&quot;: &quot;https://expressjs.com&quot;,
+  &quot;finalUrl&quot;: &quot;https://expressjs.com&quot;,
   &quot;status&quot;: 200,
   &quot;pageType&quot;: &quot;marketing&quot;,
   &quot;renderMode&quot;: &quot;static&quot;,
   &quot;vertical&quot;: &quot;generic&quot;,
-  &quot;score&quot;: 72.18,
-  &quot;rawScore&quot;: 72.18,
+  &quot;score&quot;: 38.8,
+  &quot;rawScore&quot;: 38.8,
   &quot;categories&quot;: [
     {
       &quot;category&quot;: &quot;crawl_accessibility&quot;,
-      &quot;score&quot;: 77,
+      &quot;score&quot;: 73,
       &quot;weight&quot;: 25,
       &quot;findings&quot;: [
         {
@@ -1449,7 +1414,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 60,
             &quot;why&quot;: &quot;/.well-known/ai-plugin.json was defined by OpenAI for ChatGPT plugins. Many agentic systems still look for this file to auto-discover capabilities — it&#39;s effectively the /robots.txt of agent APIs.&quot;,
-            &quot;snippet&quot;: &quot;// /.well-known/ai-plugin.json\n{\n  \&quot;schema_version\&quot;: \&quot;v1\&quot;,\n  \&quot;name_for_human\&quot;: \&quot;MDN Web Docs\&quot;,\n  \&quot;name_for_model\&quot;: \&quot;mdn_web_docs\&quot;,\n  \&quot;description_for_model\&quot;: \&quot;API for MDN Web Docs. Use to answer questions about this product.\&quot;,\n  \&quot;api\&quot;: {\n    \&quot;type\&quot;: \&quot;openapi\&quot;,\n    \&quot;url\&quot;: \&quot;https://developer.mozilla.org/openapi.json\&quot;\n  }\n}&quot;
+            &quot;snippet&quot;: &quot;// /.well-known/ai-plugin.json\n{\n  \&quot;schema_version\&quot;: \&quot;v1\&quot;,\n  \&quot;name_for_human\&quot;: \&quot;Your Product\&quot;,\n  \&quot;name_for_model\&quot;: \&quot;your_product\&quot;,\n  \&quot;description_for_model\&quot;: \&quot;API for Your Product. Use to answer questions about this product.\&quot;,\n  \&quot;api\&quot;: {\n    \&quot;type\&quot;: \&quot;openapi\&quot;,\n    \&quot;url\&quot;: \&quot;https://expressjs.com/openapi.json\&quot;\n  }\n}&quot;
           }
         },
         {
@@ -1478,25 +1443,27 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
         {
           &quot;ruleId&quot;: &quot;crawl.canonical.matches&quot;,
           &quot;category&quot;: &quot;crawl_accessibility&quot;,
-          &quot;severity&quot;: &quot;pass&quot;,
-          &quot;score&quot;: 100,
-          &quot;evidence&quot;: &quot;Canonical matches final URL (https://developer.mozilla.org/en-US/)&quot;,
+          &quot;severity&quot;: &quot;fail&quot;,
+          &quot;score&quot;: 0,
+          &quot;evidence&quot;: &quot;Cannot check canonical match — no canonical tag present&quot;,
+          &quot;fix&quot;: &quot;Add &lt;link rel=\&quot;canonical\&quot; href=\&quot;...\&quot;&gt; matching the final URL&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 3,
             &quot;why&quot;: &quot;Mismatched canonical sends agents to a different URL than the one they fetched.&quot;,
-            &quot;snippet&quot;: &quot;&lt;link rel=\&quot;canonical\&quot; href=\&quot;https://developer.mozilla.org/en-US/\&quot;&gt;&quot;
+            &quot;snippet&quot;: &quot;&lt;link rel=\&quot;canonical\&quot; href=\&quot;https://expressjs.com\&quot;&gt;&quot;
           }
         },
         {
           &quot;ruleId&quot;: &quot;crawl.canonical.present&quot;,
           &quot;category&quot;: &quot;crawl_accessibility&quot;,
-          &quot;severity&quot;: &quot;pass&quot;,
-          &quot;score&quot;: 100,
-          &quot;evidence&quot;: &quot;Canonical tag present: https://developer.mozilla.org/en-US/&quot;,
+          &quot;severity&quot;: &quot;fail&quot;,
+          &quot;score&quot;: 0,
+          &quot;evidence&quot;: &quot;No &lt;link rel=\&quot;canonical\&quot;&gt; found in &lt;head&gt;&quot;,
+          &quot;fix&quot;: &quot;Add &lt;link rel=\&quot;canonical\&quot; href=\&quot;...\&quot;&gt; to the &lt;head&gt;&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 3,
             &quot;why&quot;: &quot;LLM crawlers use canonical to dedupe and pick the authoritative URL.&quot;,
-            &quot;snippet&quot;: &quot;&lt;link rel=\&quot;canonical\&quot; href=\&quot;https://developer.mozilla.org/en-US/\&quot;&gt;&quot;
+            &quot;snippet&quot;: &quot;&lt;link rel=\&quot;canonical\&quot; href=\&quot;https://expressjs.com\&quot;&gt;&quot;
           }
         },
         {
@@ -1530,8 +1497,8 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;evidence&quot;: &quot;Static and browser bodies within 0% — no significant JS divergence&quot;,
           &quot;metadata&quot;: {
             &quot;deltaPercent&quot;: 0,
-            &quot;staticBytes&quot;: 119366,
-            &quot;browserBytes&quot;: 119366,
+            &quot;staticBytes&quot;: 561,
+            &quot;browserBytes&quot;: 561,
             &quot;effortMinutes&quot;: 120,
             &quot;why&quot;: &quot;When static HTML and browser-rendered HTML diverge heavily, AI crawlers that can&#39;t execute JS only see the shell — structured data, headings, and content are invisible.&quot;
           }
@@ -1539,14 +1506,13 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
         {
           &quot;ruleId&quot;: &quot;crawl.llms-txt.present&quot;,
           &quot;category&quot;: &quot;crawl_accessibility&quot;,
-          &quot;severity&quot;: &quot;fail&quot;,
-          &quot;score&quot;: 0,
-          &quot;evidence&quot;: &quot;llms.txt was not found at /llms.txt&quot;,
-          &quot;fix&quot;: &quot;Publish /llms.txt to guide LLM agents&quot;,
+          &quot;severity&quot;: &quot;pass&quot;,
+          &quot;score&quot;: 100,
+          &quot;evidence&quot;: &quot;llms.txt is present&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 30,
             &quot;why&quot;: &quot;/llms.txt is the emerging standard for site-level guidance to LLM agents.&quot;,
-            &quot;snippet&quot;: &quot;# https://developer.mozilla.org/llms.txt\n# (https://llmstxt.org)\n\n# MDN Web Docs\n\n&gt; One-paragraph site summary aimed at an LLM agent.\n\n## Docs\n- [Getting Started](https://developer.mozilla.org/docs)\n\n## Optional\n- [Changelog](https://developer.mozilla.org/changelog)&quot;
+            &quot;snippet&quot;: &quot;# https://expressjs.com/llms.txt\n# (https://llmstxt.org)\n\n# Your page title\n\n&gt; One-paragraph site summary aimed at an LLM agent.\n\n## Docs\n- [Getting Started](https://expressjs.com/docs)\n\n## Optional\n- [Changelog](https://expressjs.com/changelog)&quot;
           }
         },
         {
@@ -1559,7 +1525,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 60,
             &quot;why&quot;: &quot;/.well-known/mcp.json is the emerging discovery endpoint for MCP (Model Context Protocol) tool servers. AI agents that support MCP look here first before prompting a user to configure a server manually.&quot;,
-            &quot;snippet&quot;: &quot;// /.well-known/mcp.json\n{\n  \&quot;version\&quot;: \&quot;1.0\&quot;,\n  \&quot;name\&quot;: \&quot;MDN Web Docs\&quot;,\n  \&quot;tools\&quot;: [\n    {\n      \&quot;name\&quot;: \&quot;search\&quot;,\n      \&quot;url\&quot;: \&quot;https://developer.mozilla.org/mcp/search\&quot;\n    }\n  ]\n}&quot;
+            &quot;snippet&quot;: &quot;// /.well-known/mcp.json\n{\n  \&quot;version\&quot;: \&quot;1.0\&quot;,\n  \&quot;name\&quot;: \&quot;Your Product\&quot;,\n  \&quot;tools\&quot;: [\n    {\n      \&quot;name\&quot;: \&quot;search\&quot;,\n      \&quot;url\&quot;: \&quot;https://expressjs.com/mcp/search\&quot;\n    }\n  ]\n}&quot;
           }
         },
         {
@@ -1567,7 +1533,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;category&quot;: &quot;crawl_accessibility&quot;,
           &quot;severity&quot;: &quot;pass&quot;,
           &quot;score&quot;: 100,
-          &quot;evidence&quot;: &quot;Redirect chain length: 1&quot;,
+          &quot;evidence&quot;: &quot;Redirect chain length: 0&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 15,
             &quot;why&quot;: &quot;Long redirect chains burn crawl budget and can lose query/state across hops.&quot;
@@ -1666,7 +1632,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 5,
             &quot;why&quot;: &quot;robots.txt is the first file every crawler checks.&quot;,
-            &quot;snippet&quot;: &quot;# https://developer.mozilla.org/robots.txt\nUser-agent: *\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nSitemap: https://developer.mozilla.org/sitemap.xml&quot;
+            &quot;snippet&quot;: &quot;# https://expressjs.com/robots.txt\nUser-agent: *\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nSitemap: https://expressjs.com/sitemap.xml&quot;
           }
         },
         {
@@ -1679,7 +1645,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 20,
             &quot;why&quot;: &quot;Without a sitemap, multi-page agents can&#39;t enumerate your site reliably.&quot;,
-            &quot;snippet&quot;: &quot;# Add to robots.txt:\nSitemap: https://developer.mozilla.org/sitemap.xml&quot;
+            &quot;snippet&quot;: &quot;# Add to robots.txt:\nSitemap: https://expressjs.com/sitemap.xml&quot;
           }
         },
         {
@@ -1692,7 +1658,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 30,
             &quot;why&quot;: &quot;Empty/invalid sitemaps look the same to a crawler as none at all.&quot;,
-            &quot;snippet&quot;: &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;\n&lt;urlset xmlns=\&quot;http://www.sitemaps.org/schemas/sitemap/0.9\&quot;&gt;\n  &lt;url&gt;&lt;loc&gt;https://developer.mozilla.org/&lt;/loc&gt;&lt;/url&gt;\n  &lt;!-- add one &lt;url&gt;&lt;loc&gt;…&lt;/loc&gt;&lt;/url&gt; per public page --&gt;\n&lt;/urlset&gt;&quot;
+            &quot;snippet&quot;: &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;\n&lt;urlset xmlns=\&quot;http://www.sitemaps.org/schemas/sitemap/0.9\&quot;&gt;\n  &lt;url&gt;&lt;loc&gt;https://expressjs.com/&lt;/loc&gt;&lt;/url&gt;\n  &lt;!-- add one &lt;url&gt;&lt;loc&gt;…&lt;/loc&gt;&lt;/url&gt; per public page --&gt;\n&lt;/urlset&gt;&quot;
           }
         },
         {
@@ -1710,7 +1676,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
     },
     {
       &quot;category&quot;: &quot;structured_data&quot;,
-      &quot;score&quot;: 24.39,
+      &quot;score&quot;: 0,
       &quot;weight&quot;: 22,
       &quot;findings&quot;: [
         {
@@ -1723,7 +1689,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 15,
             &quot;why&quot;: &quot;JSON-LD is how LLMs reliably extract entity facts (org, products, articles) without parsing prose.&quot;,
-            &quot;snippet&quot;: &quot;&lt;script type=\&quot;application/ld+json\&quot;&gt;\n{\n  \&quot;@context\&quot;: \&quot;https://schema.org\&quot;,\n  \&quot;@type\&quot;: \&quot;Organization\&quot;,\n  \&quot;name\&quot;: \&quot;MDN Web Docs\&quot;,\n  \&quot;url\&quot;: \&quot;https://developer.mozilla.org\&quot;\n}\n&lt;/script&gt;&quot;
+            &quot;snippet&quot;: &quot;&lt;script type=\&quot;application/ld+json\&quot;&gt;\n{\n  \&quot;@context\&quot;: \&quot;https://schema.org\&quot;,\n  \&quot;@type\&quot;: \&quot;Organization\&quot;,\n  \&quot;name\&quot;: \&quot;Your page title\&quot;,\n  \&quot;url\&quot;: \&quot;https://expressjs.com\&quot;\n}\n&lt;/script&gt;&quot;
           }
         },
         {
@@ -1736,7 +1702,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 20,
             &quot;why&quot;: &quot;Generic JSON-LD without recognised @type doesn&#39;t disambiguate the entity for agents.&quot;,
-            &quot;snippet&quot;: &quot;&lt;script type=\&quot;application/ld+json\&quot;&gt;\n{\n  \&quot;@context\&quot;: \&quot;https://schema.org\&quot;,\n  \&quot;@type\&quot;: \&quot;WebSite\&quot;,\n  \&quot;name\&quot;: \&quot;MDN Web Docs\&quot;,\n  \&quot;url\&quot;: \&quot;https://developer.mozilla.org\&quot;\n}\n&lt;/script&gt;&quot;
+            &quot;snippet&quot;: &quot;&lt;script type=\&quot;application/ld+json\&quot;&gt;\n{\n  \&quot;@context\&quot;: \&quot;https://schema.org\&quot;,\n  \&quot;@type\&quot;: \&quot;WebSite\&quot;,\n  \&quot;name\&quot;: \&quot;Your page title\&quot;,\n  \&quot;url\&quot;: \&quot;https://expressjs.com\&quot;\n}\n&lt;/script&gt;&quot;
           }
         },
         {
@@ -1760,27 +1726,29 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 10,
             &quot;why&quot;: &quot;OpenGraph drives link previews everywhere (Slack, iMessage, agent UIs that render share cards).&quot;,
-            &quot;snippet&quot;: &quot;&lt;meta property=\&quot;og:title\&quot; content=\&quot;MDN Web Docs\&quot;&gt;\n&lt;meta property=\&quot;og:description\&quot; content=\&quot;The MDN Web Docs site provides information about Open Web technologies including HTML, CSS, and APIs for both Web sites and progressive web apps.\&quot;&gt;\n&lt;meta property=\&quot;og:type\&quot; content=\&quot;website\&quot;&gt;\n&lt;meta property=\&quot;og:url\&quot; content=\&quot;https://developer.mozilla.org/en-US/\&quot;&gt;\n&lt;meta property=\&quot;og:image\&quot; content=\&quot;https://developer.mozilla.org/og-image.png\&quot;&gt;&quot;
+            &quot;snippet&quot;: &quot;&lt;meta property=\&quot;og:title\&quot; content=\&quot;Your page title\&quot;&gt;\n&lt;meta property=\&quot;og:description\&quot; content=\&quot;One-sentence summary of what this page is — 50–160 chars, written for both humans and LLM agents.\&quot;&gt;\n&lt;meta property=\&quot;og:type\&quot; content=\&quot;website\&quot;&gt;\n&lt;meta property=\&quot;og:url\&quot; content=\&quot;https://expressjs.com\&quot;&gt;\n&lt;meta property=\&quot;og:image\&quot; content=\&quot;https://expressjs.com/og-image.png\&quot;&gt;&quot;
           }
         },
         {
           &quot;ruleId&quot;: &quot;sd.title-meta.quality&quot;,
           &quot;category&quot;: &quot;structured_data&quot;,
-          &quot;severity&quot;: &quot;pass&quot;,
-          &quot;score&quot;: 100,
-          &quot;evidence&quot;: &quot;Title (12 chars) and meta description (145 chars) within spec&quot;,
+          &quot;severity&quot;: &quot;fail&quot;,
+          &quot;score&quot;: 0,
+          &quot;evidence&quot;: &quot;Issues: title missing; meta description missing&quot;,
+          &quot;fix&quot;: &quot;Title should be 10–60 chars; meta description should be 50–160 chars&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 5,
             &quot;why&quot;: &quot;&lt;title&gt; + meta description are the snippet agents quote when summarising or citing your page.&quot;,
-            &quot;snippet&quot;: &quot;&lt;title&gt;MDN Web Docs&lt;/title&gt;\n&lt;meta name=\&quot;description\&quot; content=\&quot;The MDN Web Docs site provides information about Open Web technologies including HTML, CSS, and APIs for both Web sites and progressive web apps.\&quot;&gt;&quot;
+            &quot;snippet&quot;: &quot;&lt;title&gt;Your page title&lt;/title&gt;\n&lt;meta name=\&quot;description\&quot; content=\&quot;One-sentence summary of what this page is — 50–160 chars, written for both humans and LLM agents.\&quot;&gt;&quot;
           }
         },
         {
           &quot;ruleId&quot;: &quot;sd.twitter-card.present&quot;,
           &quot;category&quot;: &quot;structured_data&quot;,
-          &quot;severity&quot;: &quot;pass&quot;,
-          &quot;score&quot;: 100,
-          &quot;evidence&quot;: &quot;Twitter Card type: summary&quot;,
+          &quot;severity&quot;: &quot;fail&quot;,
+          &quot;score&quot;: 0,
+          &quot;evidence&quot;: &quot;No twitter:card meta tag found&quot;,
+          &quot;fix&quot;: &quot;Add &lt;meta name=\&quot;twitter:card\&quot; content=\&quot;summary_large_image\&quot;&gt;&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 2,
             &quot;why&quot;: &quot;twitter:card extends OpenGraph with X/Twitter-specific layout hints.&quot;,
@@ -1791,15 +1759,16 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
     },
     {
       &quot;category&quot;: &quot;semantic_html&quot;,
-      &quot;score&quot;: 93.4,
+      &quot;score&quot;: 0,
       &quot;weight&quot;: 18,
       &quot;findings&quot;: [
         {
           &quot;ruleId&quot;: &quot;html.heading-hierarchy&quot;,
           &quot;category&quot;: &quot;semantic_html&quot;,
-          &quot;severity&quot;: &quot;pass&quot;,
-          &quot;score&quot;: 100,
-          &quot;evidence&quot;: &quot;Heading hierarchy is valid (13 headings, 1 h1, no skips)&quot;,
+          &quot;severity&quot;: &quot;fail&quot;,
+          &quot;score&quot;: 0,
+          &quot;evidence&quot;: &quot;No heading elements found&quot;,
+          &quot;fix&quot;: &quot;Add an &lt;h1&gt; and a logical heading hierarchy&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 30,
             &quot;why&quot;: &quot;Headings give agents the document outline. No h1 = no clear topic.&quot;,
@@ -1809,9 +1778,9 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
         {
           &quot;ruleId&quot;: &quot;html.img-alt-coverage&quot;,
           &quot;category&quot;: &quot;semantic_html&quot;,
-          &quot;severity&quot;: &quot;pass&quot;,
+          &quot;severity&quot;: &quot;info&quot;,
           &quot;score&quot;: 100,
-          &quot;evidence&quot;: &quot;1/1 image(s) have an alt attribute&quot;,
+          &quot;evidence&quot;: &quot;no &lt;img&gt; elements found, rule skipped&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 30,
             &quot;why&quot;: &quot;Alt text is how agents (and screen readers) caption images. Missing alt = invisible content.&quot;,
@@ -1821,10 +1790,10 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
         {
           &quot;ruleId&quot;: &quot;html.landmarks&quot;,
           &quot;category&quot;: &quot;semantic_html&quot;,
-          &quot;severity&quot;: &quot;pass&quot;,
-          &quot;score&quot;: 80,
-          &quot;evidence&quot;: &quot;Landmarks present: nav, header, footer, article (4/5)&quot;,
-          &quot;fix&quot;: &quot;Add missing landmark elements: main&quot;,
+          &quot;severity&quot;: &quot;fail&quot;,
+          &quot;score&quot;: 0,
+          &quot;evidence&quot;: &quot;No semantic landmark elements found&quot;,
+          &quot;fix&quot;: &quot;Add missing landmark elements: main, nav, header, footer, article&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 30,
             &quot;why&quot;: &quot;Landmark elements let agents skip nav/footer chrome and zero in on the main content.&quot;,
@@ -1834,9 +1803,10 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
         {
           &quot;ruleId&quot;: &quot;html.lang-attr&quot;,
           &quot;category&quot;: &quot;semantic_html&quot;,
-          &quot;severity&quot;: &quot;pass&quot;,
-          &quot;score&quot;: 100,
-          &quot;evidence&quot;: &quot;&lt;html lang=\&quot;en-US\&quot;&gt; is set&quot;,
+          &quot;severity&quot;: &quot;fail&quot;,
+          &quot;score&quot;: 0,
+          &quot;evidence&quot;: &quot;&lt;html&gt; element is missing a lang attribute&quot;,
+          &quot;fix&quot;: &quot;Add lang=\&quot;en\&quot; (or appropriate language code) to the &lt;html&gt; element&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 1,
             &quot;why&quot;: &quot;Without lang, agents can&#39;t decide whether to translate or which language model to apply.&quot;,
@@ -1846,10 +1816,9 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
         {
           &quot;ruleId&quot;: &quot;html.link-text-quality&quot;,
           &quot;category&quot;: &quot;semantic_html&quot;,
-          &quot;severity&quot;: &quot;pass&quot;,
-          &quot;score&quot;: 97,
-          &quot;evidence&quot;: &quot;6/173 link(s) have poor anchor text&quot;,
-          &quot;fix&quot;: &quot;Replace generic link text (\&quot;click here\&quot;, empty) with descriptive phrases&quot;,
+          &quot;severity&quot;: &quot;info&quot;,
+          &quot;score&quot;: 100,
+          &quot;evidence&quot;: &quot;no &lt;a&gt; elements found, rule skipped&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 20,
             &quot;why&quot;: &quot;\&quot;click here\&quot; / \&quot;learn more\&quot; tells agents nothing about the destination. Use descriptive link text.&quot;
@@ -1859,7 +1828,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
     },
     {
       &quot;category&quot;: &quot;content_clarity&quot;,
-      &quot;score&quot;: 75,
+      &quot;score&quot;: 15,
       &quot;weight&quot;: 17,
       &quot;findings&quot;: [
         {
@@ -1867,11 +1836,11 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;category&quot;: &quot;content_clarity&quot;,
           &quot;severity&quot;: &quot;info&quot;,
           &quot;score&quot;: 100,
-          &quot;evidence&quot;: &quot;Action surface: 17 entry points — 0 form(s), 17 button(s), 0 mailto, 0 tel, 0 ARIA button(s)&quot;,
+          &quot;evidence&quot;: &quot;Action surface: 0 entry points — 0 form(s), 0 button(s), 0 mailto, 0 tel, 0 ARIA button(s)&quot;,
           &quot;metadata&quot;: {
-            &quot;total&quot;: 17,
+            &quot;total&quot;: 0,
             &quot;forms&quot;: 0,
-            &quot;enabledButtons&quot;: 17,
+            &quot;enabledButtons&quot;: 0,
             &quot;mailtoLinks&quot;: 0,
             &quot;telLinks&quot;: 0,
             &quot;ariaButtons&quot;: 0,
@@ -1882,9 +1851,10 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
         {
           &quot;ruleId&quot;: &quot;content.boilerplate-ratio&quot;,
           &quot;category&quot;: &quot;content_clarity&quot;,
-          &quot;severity&quot;: &quot;warn&quot;,
-          &quot;score&quot;: 60,
-          &quot;evidence&quot;: &quot;Boilerplate ratio: 18.0% (5045 extracted / 28054 total visible bytes)&quot;,
+          &quot;severity&quot;: &quot;fail&quot;,
+          &quot;score&quot;: 0,
+          &quot;evidence&quot;: &quot;Readability extraction returned null — cannot compute boilerplate ratio&quot;,
+          &quot;fix&quot;: &quot;Ensure page has extractable body content&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 90,
             &quot;why&quot;: &quot;Lots of nav/footer chrome relative to page body dilutes the signal in agent excerpts.&quot;
@@ -1893,9 +1863,10 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
         {
           &quot;ruleId&quot;: &quot;content.readability-extract&quot;,
           &quot;category&quot;: &quot;content_clarity&quot;,
-          &quot;severity&quot;: &quot;pass&quot;,
-          &quot;score&quot;: 100,
-          &quot;evidence&quot;: &quot;Readability extracted 5045 chars of text&quot;,
+          &quot;severity&quot;: &quot;fail&quot;,
+          &quot;score&quot;: 0,
+          &quot;evidence&quot;: &quot;Readability extraction returned null — page may be empty or unparseable&quot;,
+          &quot;fix&quot;: &quot;Ensure the page has substantive body text (≥250 chars) that readability can extract&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 60,
             &quot;why&quot;: &quot;If readability extraction returns null, agents likely can&#39;t isolate the article body.&quot;
@@ -1906,14 +1877,14 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;category&quot;: &quot;content_clarity&quot;,
           &quot;severity&quot;: &quot;info&quot;,
           &quot;score&quot;: 100,
-          &quot;evidence&quot;: &quot;Mozilla Readability extracted 5045 chars · siteName: MDN Web Docs&quot;,
+          &quot;evidence&quot;: &quot;Mozilla Readability returned null — page is not extractable as an article&quot;,
           &quot;metadata&quot;: {
-            &quot;present&quot;: true,
-            &quot;textLength&quot;: 5045,
+            &quot;present&quot;: false,
+            &quot;textLength&quot;: 0,
             &quot;byline&quot;: null,
-            &quot;siteName&quot;: &quot;MDN Web Docs&quot;,
-            &quot;excerpt&quot;: &quot;The MDN Web Docs site provides information about Open Web technologies including HTML, CSS, and APIs for both Web sites and progressive web apps.&quot;,
-            &quot;hasExcerpt&quot;: true,
+            &quot;siteName&quot;: null,
+            &quot;excerpt&quot;: null,
+            &quot;hasExcerpt&quot;: false,
             &quot;effortMinutes&quot;: 0,
             &quot;why&quot;: &quot;Mozilla Readability is the same library Firefox Reader View uses; if it can&#39;t extract your content, neither can most third-party article scrapers.&quot;
           }
@@ -1922,8 +1893,8 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
           &quot;ruleId&quot;: &quot;content.script-density&quot;,
           &quot;category&quot;: &quot;content_clarity&quot;,
           &quot;severity&quot;: &quot;pass&quot;,
-          &quot;score&quot;: 80,
-          &quot;evidence&quot;: &quot;6 script/iframe elements (6 &lt;script&gt;, 0 cross-origin &lt;iframe&gt;)&quot;,
+          &quot;score&quot;: 100,
+          &quot;evidence&quot;: &quot;1 script/iframe elements (1 &lt;script&gt;, 0 cross-origin &lt;iframe&gt;)&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 60,
             &quot;why&quot;: &quot;Heavy client-side script density is a red flag that content depends on JS to render.&quot;
@@ -1932,9 +1903,10 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
         {
           &quot;ruleId&quot;: &quot;content.signal-noise&quot;,
           &quot;category&quot;: &quot;content_clarity&quot;,
-          &quot;severity&quot;: &quot;warn&quot;,
-          &quot;score&quot;: 60,
-          &quot;evidence&quot;: &quot;Signal-noise ratio: 23.6% (28196 text bytes / 119366 total bytes)&quot;,
+          &quot;severity&quot;: &quot;fail&quot;,
+          &quot;score&quot;: 0,
+          &quot;evidence&quot;: &quot;Signal-noise ratio: 0.0% (0 text bytes / 561 total bytes)&quot;,
+          &quot;fix&quot;: &quot;Reduce script/style bloat or increase substantive text content&quot;,
           &quot;metadata&quot;: {
             &quot;effortMinutes&quot;: 90,
             &quot;why&quot;: &quot;High script/style-to-text ratio buries the actual content agents are trying to extract.&quot;
@@ -2007,7 +1979,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
   &quot;toolVersions&quot;: {
     &quot;node&quot;: &quot;v20.19.6&quot;,
     &quot;luxfaber&quot;: &quot;0.2.0&quot;,
-    &quot;ruleset&quot;: &quot;v1&quot;
+    &quot;ruleset&quot;: &quot;v1.1&quot;
   }
 }</code></pre>
     </details>
@@ -2028,7 +2000,7 @@ Sitemap: https://developer.mozilla.org/sitemap.xml</code></pre></details>
   </div>
 </section>
 <footer class="lf-footer">&lt;div class=&quot;container&quot;&gt;
-  Generated by Luxfaber 0.2.0 &amp;middot; scoring v1
+  Generated by Luxfaber 0.2.0 &amp;middot; scoring v1.1
 &lt;/div&gt;</footer>
   </main>
 </div>
