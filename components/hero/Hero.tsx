@@ -83,7 +83,7 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right column — LuxFaber terminal block */}
+          {/* Right column — LuxScope terminal block */}
           <div
             className="animate-fade-up-delay-2"
             role="img"

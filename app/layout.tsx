@@ -49,7 +49,7 @@ const ORG_JSONLD = {
   url: SITE_URL,
   logo: `${SITE_URL}/icon.svg`,
   description:
-    "Security infrastructure for engineers who ship. Stelnyx builds SecGate, LuxScope, LuxFaber, Intake, Engram, and Arbiter.",
+    "Security infrastructure for engineers who ship. Stelnyx builds LuxScope, SecGate, ApiGate, Intake, Engram, and Arbiter.",
   sameAs: FEATURE_PUBLIC_REPOS
     ? ["https://github.com/Stelnyx"]
     : [],
@@ -73,19 +73,6 @@ const PRODUCT_JSONLDS = [
     applicationCategory: "DeveloperApplication",
     operatingSystem: "macOS, Linux, Windows",
     url: `${SITE_URL}/preview/luxscope`,
-    publisher: { "@type": "Organization", name: "Stelnyx", url: SITE_URL },
-    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-    license: "https://www.apache.org/licenses/LICENSE-2.0",
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "LuxFaber",
-    description:
-      "Agent-readiness (AEO) scanner. Scores any URL across crawl accessibility, structured data, semantic HTML, content clarity, and UA-cloaking determinism. Local-first; no telemetry. Sample run against expressjs.com: 39/100 across 5 rubrics.",
-    applicationCategory: "DeveloperApplication",
-    operatingSystem: "macOS, Linux, Windows",
-    url: `${SITE_URL}/preview/luxfaber`,
     publisher: { "@type": "Organization", name: "Stelnyx", url: SITE_URL },
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     license: "https://www.apache.org/licenses/LICENSE-2.0",

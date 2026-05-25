@@ -5,6 +5,7 @@ import { ProductCard, type Product } from "@/components/products/ProductCard";
 import { Modal } from "@/components/ui/Modal";
 import { useContact } from "@/components/contact/ContactProvider";
 import { FEATURE_PRICING, FEATURE_PUBLIC_REPOS } from "@/lib/features";
+import { Terminal, SECGATE, APIGATE } from "@/components/scores/ScoresShowcase";
 
 const PAID_AUDITS_OPEN = FEATURE_PRICING;
 const BUNDLE_OPEN = false;
@@ -29,27 +30,6 @@ const TOOLS: Product[] = [
       dev: "LuxScope runs deterministic static analysis across your entire codebase — no LLMs, no network calls, no hallucinations. It builds accurate dependency graphs, surfaces architectural risk, and generates documentation that reflects what the code actually does. Everything runs locally; nothing leaves your machine.\n\nOutput: call graphs, module ownership maps, dead code detection, risk-scored change impact. Accurate because it's deterministic. Fast because it's local. When you're about to touch a system you don't fully understand, LuxScope tells you what you're actually touching — before you break it. Works on inherited codebases and AI-generated code alike.",
       ceo: "Your engineers spend 40–60% of their time reverse-engineering code before they can safely change it. LuxScope eliminates that. It gives teams an on-demand map of their systems: what depends on what, what's risky to touch, what's documented versus assumed.\n\nNo setup, no external service, no code leaving your environment. AI-assisted development is widening the gap between \"code that exists\" and \"code anyone understands.\" LuxScope closes it. Fewer outages. Faster reviews. Engineers who move instead of stall.",
       investor: "AI coding tools produce code 3–5× faster than teams can absorb it. The result: opaque systems, undocumented dependencies, compounding risk — at every engineering org, simultaneously.\n\nLuxScope is deterministic static analysis infrastructure, local-first, LLM-free, that turns codebases into navigable knowledge graphs. TAM: every software company with more than 5 engineers. Urgency: AI-generated code compounds complexity today, not in three years. Defensibility is technical — the architecture map gets stickier the longer teams use it. First mover in verifiable codebase intelligence.",
-    },
-  },
-  {
-    name: "LuxFaber",
-    badge: "Agent Readiness",
-    license: "Apache-2.0",
-    tier: "lux",
-    tagline: "Score your site for the agents already using it.",
-    description:
-      "Know whether AI agents can traverse and use your site — before they silently can't. ChatGPT shopping, Operator, and Claude computer use are already buying and acting on behalf of users; most sites quietly fail when they try. LuxFaber scores any URL across crawl access, structured data, semantic HTML, content clarity, and UA-cloaking determinism — with a prioritized fix list. Be readable. Be usable. Be operable.",
-    stack: ["CLI", "HTTP", "Agent scoring"],
-    status: "Open source — coming soon",
-    sampleStats: "Sample: 39/100 · 5 rubrics · 25 issues (expressjs.com)",
-    sampleReportHref: "/reports/luxfaber.html",
-    github: "https://github.com/Stelnyx/LuxFaber",
-    page: "/preview/luxfaber",
-    audit: { price: "$499", href: "/preview/audit/luxfaber.html" },
-    audiences: {
-      dev: "LuxFaber is an AEO scanner built for agent operability, not just citation. It analyzes any URL and scores agent-readability across a structured rubric: crawl accessibility (robots.txt, sitemap, llms.txt, AI-bot allow-rules, canonical), structured data (JSON-LD, OpenGraph, schema.org), semantic HTML (landmarks, heading hierarchy, alt coverage), content clarity (signal:noise, boilerplate density), and determinism (UA-cloaking diff between browser, Luxfaber, and GPTBot). Output is a scored report with specific, actionable fixes — not vague recommendations.\n\nThink Lighthouse, but for AI agent compatibility. Runs as a CLI, GitHub Action, or hosted API. Integrate into your deploy pipeline to catch regressions before they cost you agent traffic. Most AEO tooling stops at citation readiness — whether your content gets quoted inside an answer. LuxFaber goes one rubric deeper: whether an agent that follows the open standards can actually operate on your site.",
-      ceo: "Search engines sent you traffic because they could crawl you. AI agents work the same way — except the rules changed and most companies haven't noticed.\n\nAEO (Answer Engine Optimization) is the consensus term for getting cited inside AI answers. LuxFaber goes one layer further: not just being cited, but being operable by autonomous agents that browse and act on a user's behalf. We audit your web presence across the full AEO surface and score it, give you a prioritized fix list, and a clear path to becoming the default result when an agent acts. Companies that optimize now will capture agent-driven traffic before competitors realize the channel exists.",
-      investor: "Search is being disintermediated. AI agents — ChatGPT shopping, Operator-style task completion, Google's agentic layer — are becoming the primary interface between users and web services. Most of the web is invisible to them: unstructured markup, JavaScript-rendered content, missing semantic signals.\n\nAEO (Answer Engine Optimization) is the term the market has settled on, and existing tools (HubSpot AEO Grader, etc.) optimize for citation. LuxFaber takes AEO one rubric deeper: agent operability — not whether you get quoted, but whether an agent can act on your site. The market is every business that depends on web-driven distribution. The timing mirrors early SEO (2003–2006): the channel exists, best practices don't, and first-mover OSS tooling captures the category.",
     },
   },
   {
@@ -213,10 +193,10 @@ export function ToolsSection() {
                     Intelligence. Delivered as a session.
                   </h3>
                   <p className="text-[14px] text-stel-text-muted mt-1 max-w-[620px]">
-                    LuxScope reads your codebase. LuxFaber reads your web surface. Both produce a scored report a senior engineer walks you through — one hour, nothing leaves your machine.
+                    LuxScope reads your codebase deterministically and ships a scored report a senior engineer walks you through — one hour, nothing leaves your machine.
                   </p>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                   {luxRow.map((tool) => (
                     <ProductCard
                       key={tool.name}
@@ -225,16 +205,66 @@ export function ToolsSection() {
                       onRequestAudit={openAuditRequest}
                       paidAuditsOpen={PAID_AUDITS_OPEN}
                       cardHeadingSize="text-[22px]"
+                      className="h-full"
                     />
                   ))}
+
+                  {/* Companion panel — what ships, fills visual void next to LuxScope card */}
+                  <aside
+                    aria-label="What ships in a LuxScope audit"
+                    className="bg-stel-surface border border-stel-border rounded-xl p-7 flex flex-col h-full"
+                  >
+                    <div className="mb-5">
+                      <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber mb-2">
+                        What ships
+                      </p>
+                      <h4 className="font-sans font-semibold text-[18px] text-stel-text-primary tracking-[-0.01em]">
+                        One scan. One debrief. One PDF you can hand to a buyer.
+                      </h4>
+                    </div>
+
+                    <ul className="space-y-2.5 mb-6 flex-1">
+                      {[
+                        "Deterministic score (0–100) + rule-versioned report",
+                        "Risk-scored file list — what to touch first",
+                        "Architecture map + dependency graph",
+                        "10 handoff docs (acquirer, investor, new hire)",
+                        "60-min architecture debrief with the author",
+                        "Branded PDF — board-ready, diligence-ready",
+                      ].map((item) => (
+                        <li
+                          key={item}
+                          className="flex gap-2.5 text-[14px] text-stel-text-muted leading-relaxed"
+                        >
+                          <span className="text-stel-amber mt-0.5 select-none" aria-hidden="true">→</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="border-t border-stel-border pt-4 space-y-2">
+                      <div className="flex items-center justify-between text-[12px] text-stel-text-faint">
+                        <span>Turnaround</span>
+                        <span className="text-stel-text-muted">Same week</span>
+                      </div>
+                      <div className="flex items-center justify-between text-[12px] text-stel-text-faint">
+                        <span>Data residency</span>
+                        <span className="text-stel-text-muted">Stays on your machine</span>
+                      </div>
+                      <div className="flex items-center justify-between text-[12px] text-stel-text-faint">
+                        <span>Format</span>
+                        <span className="text-stel-text-muted">HTML + PDF + JSON</span>
+                      </div>
+                    </div>
+                  </aside>
                 </div>
 
                 <div className="mt-20 mb-6 max-w-[1280px]">
                   <h3 className="font-sans font-semibold text-[20px] text-stel-text-primary tracking-[-0.01em]">
-                    Run it now. Free. No account.
+                    Also free for engineering teams.
                   </h3>
                   <p className="text-[14px] text-stel-text-muted mt-1 max-w-[620px]">
-                    Two MIT tools. One command each. Same scoring discipline as the paid audits — without the session.
+                    Two MIT-licensed CLIs we maintain alongside LuxScope. One command, no account, same scoring discipline — built for engineers who already own the codebase, not for buyers commissioning a review.
                   </p>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -249,6 +279,12 @@ export function ToolsSection() {
                       showFreeBadge
                     />
                   ))}
+                </div>
+
+                {/* Live score output — visual proof of deterministic scoring */}
+                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <Terminal block={SECGATE} />
+                  <Terminal block={APIGATE} />
                 </div>
 
                 {BUNDLE_OPEN && (

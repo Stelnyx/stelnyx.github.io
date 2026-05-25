@@ -16,25 +16,7 @@ interface ScoreBlock {
   reportHref?: string;
 }
 
-const LUXFABER: ScoreBlock = {
-  title: "luxfaber v0.2",
-  version: "rule v1",
-  ariaLabel: "LuxFaber AEO score for expressjs.com: 39 out of 100",
-  caption: "LuxFaber — agent-readiness scanner. Recon run against expressjs.com.",
-  reportHref: "/reports/luxfaber.html",
-  lines: [
-    { type: "cmd", text: "$ luxfaber https://expressjs.com --tier recon" },
-    { type: "score", text: "LuxFaber Score: 39 / 100   rule v1" },
-    { type: "blank" },
-    { type: "rule", label: "  Crawl Accessibility ", score: "73 / 100" },
-    { type: "rule", label: "  Structured Data     ", score: "0 / 100" },
-    { type: "rule", label: "  Semantic HTML       ", score: "0 / 100" },
-    { type: "rule", label: "  Content Clarity     ", score: "15 / 100" },
-    { type: "rule", label: "  Determinism         ", score: "100 / 100" },
-  ],
-};
-
-const SECGATE: ScoreBlock = {
+export const SECGATE: ScoreBlock = {
   title: "secgate v0.2.13",
   version: "rule v1",
   ariaLabel: "SecGate status for express-pin: FAIL, risk 365 across 5 scanners",
@@ -52,7 +34,7 @@ const SECGATE: ScoreBlock = {
   ],
 };
 
-const APIGATE: ScoreBlock = {
+export const APIGATE: ScoreBlock = {
   title: "apigate v0.3.0",
   version: "rubric v1",
   ariaLabel: "ApiGate API auth posture score for express-pin: 50 out of 100, FAIL",
@@ -70,7 +52,7 @@ const APIGATE: ScoreBlock = {
   ],
 };
 
-function Terminal({ block }: { block: ScoreBlock }) {
+export function Terminal({ block }: { block: ScoreBlock }) {
   return (
     <div>
     <figure
@@ -186,18 +168,17 @@ export function ScoresShowcase() {
             className="text-stel-text-primary font-semibold tracking-[-0.03em] leading-[1.1] text-balance"
             style={{ fontSize: "clamp(28px, 4vw, 40px)" }}
           >
-            One pattern. Four surfaces. Four deterministic scores.
+            One pattern. Three surfaces. Three deterministic scores.
           </h2>
           <p
             className="text-stel-text-muted mt-4 leading-[1.7] text-balance"
             style={{ fontSize: "16px" }}
           >
-            LuxScope is in the hero above — same pattern, applied to your codebase. Here are the other three: LuxFaber scores your web surface for AI agents, SecGate scores your security posture, ApiGate scores your API auth surface. Same scoring discipline. Run any of them in 30 seconds.
+            LuxScope is in the hero above — same pattern, applied to your codebase. SecGate scores your security posture. ApiGate scores your API auth surface. Same scoring discipline. Run any of them in 30 seconds.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          <Terminal block={LUXFABER} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           <Terminal block={SECGATE} />
           <Terminal block={APIGATE} />
         </div>

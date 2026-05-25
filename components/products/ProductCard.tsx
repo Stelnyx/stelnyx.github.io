@@ -47,6 +47,7 @@ interface ProductCardProps {
   cardHeadingSize?: string;
   cliProminent?: boolean;
   showFreeBadge?: boolean;
+  className?: string;
 }
 
 export function ProductCard({
@@ -58,13 +59,15 @@ export function ProductCard({
   cardHeadingSize,
   cliProminent = false,
   showFreeBadge = false,
+  className = "",
 }: ProductCardProps) {
   const isLux = product.tier === "lux";
   const padding = cardPadding ?? "p-6";
   const headingSize = cardHeadingSize ?? "text-[19px]";
-  const cardClasses = isLux
+  const baseCardClasses = isLux
     ? `relative bg-stel-surface border border-stel-amber/30 rounded-lg ${padding} transition-colors duration-150 hover:border-stel-amber/70 before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-stel-amber before:to-transparent before:rounded-t-lg`
     : `bg-stel-surface border border-stel-border rounded-lg ${padding} transition-colors duration-150 hover:border-stel-border-bright`;
+  const cardClasses = className ? `${baseCardClasses} ${className}` : baseCardClasses;
   return (
     <article className={cardClasses}>
       <div className="flex items-start justify-between gap-3">

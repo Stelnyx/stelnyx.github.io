@@ -6,7 +6,7 @@ import { InstallModal } from "@/components/pricing/InstallModal";
 import { FEATURE_PRICING } from "@/lib/features";
 
 interface AuditCard {
-  key: "luxscope" | "luxfaber" | "combined";
+  key: "luxscope";
   name: string;
   price: string;
   tagline: string;
@@ -25,26 +25,7 @@ const AUDIT_CARDS: AuditCard[] = [
     description:
       "Full architecture map, risk-scored change impact, dependency drift, prioritized fix list, PDF report. 60-min architecture debrief with the author.",
     ctaTier: "LuxScope Audit · $499",
-  },
-  {
-    key: "luxfaber",
-    name: "LuxFaber Audit",
-    price: "$699",
-    tagline: "Agent traffic · growth recovery · CMO/Head of Growth",
-    description:
-      "Agent-readiness score across crawl, structured data, semantic HTML, content clarity, and UA-cloaking determinism. Prioritized fix list, conversion-recovery framing. 60-min debrief with the author.",
-    ctaTier: "LuxFaber Audit · $699",
-  },
-  {
-    key: "combined",
-    name: "Stelnyx Full Audit",
-    price: "$799",
-    tagline: "Both scanners · founders prepping a sale, raise, or full handoff",
-    description:
-      "LuxScope + LuxFaber together. 90-min architecture + agent-readiness debrief. Save $399 vs separate audits.",
-    ctaTier: "Stelnyx Full Audit · $799",
     emphasis: true,
-    badge: "Save $399",
   },
 ];
 
@@ -86,7 +67,7 @@ export function PricingSectionPublic() {
               className="text-stel-text-muted mt-4 leading-[1.7] text-balance"
               style={{ fontSize: "16px" }}
             >
-              The open-source CLI is permanent and unmetered — run both scanners on any public repo or URL. When you need a senior engineer&apos;s read on what the score means, book an audit.
+              The open-source CLI is permanent and unmetered — run LuxScope on any public repo. When you need a senior engineer&apos;s read on what the score means, book an audit.
             </p>
           </div>
 
@@ -106,8 +87,8 @@ export function PricingSectionPublic() {
               </div>
               <ul className="space-y-2.5 mb-7 flex-1">
                 {[
-                  "LuxScope + LuxFaber CLI (Apache-2.0)",
-                  "Unlimited local scans on public repos / URLs",
+                  "LuxScope CLI (Apache-2.0)",
+                  "Unlimited local scans on public repos",
                   "Deterministic score + JSON report",
                   "GitHub Action — basic gate",
                   "Community support",
@@ -136,11 +117,11 @@ export function PricingSectionPublic() {
                   Founder-led audit
                 </h3>
                 <p className="text-[13px] text-stel-text-muted italic mt-1">
-                  One-time. Architecture debrief with the author. Pick your surface below.
+                  One-time. Codebase architecture debrief with the author.
                 </p>
               </div>
               <div className="mb-6 flex items-baseline gap-2">
-                <span className="font-sans font-semibold text-[36px] text-stel-text-primary tracking-[-0.02em]">$499+</span>
+                <span className="font-sans font-semibold text-[36px] text-stel-text-primary tracking-[-0.02em]">$499</span>
                 <span className="text-[13px] text-stel-text-faint">one-time</span>
               </div>
               <ul className="space-y-2.5 mb-7 flex-1">
@@ -168,17 +149,17 @@ export function PricingSectionPublic() {
 
           <div id="audits" className="mt-16 mb-6 scroll-mt-24">
             <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-stel-amber mb-2">
-              One-time engineering audits
+              One-time engineering audit
             </p>
             <h3 className="font-sans font-semibold text-stel-text-primary tracking-[-0.02em]" style={{ fontSize: "clamp(22px, 3vw, 28px)" }}>
-              Architecture debrief with the author. Pick your surface.
+              Architecture debrief with the author.
             </h3>
             <p className="text-[14px] text-stel-text-muted mt-2 max-w-[640px]">
               For founders, due-diligence teams, and acquisition prep. Deterministic scan plus a senior engineer&apos;s read on what it means and what to fix first.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 max-w-[560px]">
             {AUDIT_CARDS.map((card) => {
               const cardClasses = card.emphasis
                 ? "relative bg-stel-surface border border-stel-amber/40 rounded-xl p-6 flex flex-col shadow-[0_2px_24px_rgba(245,158,11,0.06)]"
