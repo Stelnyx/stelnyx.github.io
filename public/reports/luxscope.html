@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Luxscope Report — express-pin</title>
+<title>Luxscope Report — express</title>
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,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">
 <link rel="shortcut icon" type="image/png" href="data:image/png;base64,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">
@@ -255,11 +255,11 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
     <div class="pill-row"><span class="report-pill">CODE RISK REPORT</span></div>
     <div class="aside-head">
       <div class="product">LuxScope Report</div>
-      <div class="target">express-pin</div>
+      <div class="target">express</div>
       <div class="score-line">
-        <span class="score-num">85</span>
+        <span class="score-num">84</span>
         <span class="score-denom">/ 100</span>
-        <span class="score-badge pass">STRONG</span>
+        <span class="score-badge pass">GOOD</span>
       </div>
       <div class="report-type">Code Risk · Standard</div>
     </div>
@@ -276,33 +276,34 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
       <a href="#handoff-docs">Documents <span class="count">23</span></a>
       <a href="#gates">Gates <span class="count">1/5</span></a>
       <a href="#quick-wins">Quick Wins <span class="count">5</span></a>
-      <a href="#risk-files">Risk Files <span class="count">51</span></a>
-      <a href="#findings">Findings <span class="count">7</span></a>
+      <a href="#risk-files">Risk Files <span class="count">56</span></a>
+      <a href="#findings">Findings <span class="count">25</span></a>
       <a href="#documents">Generated Documentation <span class="count">10</span></a>
       <a href="#metadata">Metadata <span class="count">·</span></a>
     </nav>
-    <div class="aside-footer">Code Risk Report · v0.1.0 · 2026-05-21 01:06:54 U</div>
+    <div class="aside-footer">Code Risk Report · v0.1.0 · 2026-05-26 00:29:05 U</div>
   </aside>
 
   <main class="main">
+
 <section id="overview">
     <h1>Overview <span class="lead">Weighted score across 7 buckets</span></h1>
     <div class="score-hero">
   <svg class="gauge" viewBox="0 0 100 100">
     <circle class="gauge-ring gauge-bg" cx="50" cy="50" r="42" />
     <circle class="gauge-ring gauge-fill" cx="50" cy="50" r="42"
-      stroke-dasharray="263.9" stroke-dashoffset="39.59" />
+      stroke-dasharray="263.9" stroke-dashoffset="42.22" />
   </svg>
   <div class="info">
     <div class="label">Luxscope Score</div>
-    <div class="num">85<small>/ 100</small></div>
-    <div class="sub">51 risk files · 7 findings · profile default</div>
+    <div class="num">84<small>/ 100</small></div>
+    <div class="sub">56 risk files · 25 findings · profile default</div>
   </div>
   <div class="desc">Luxscope Score reflects findings across Security, Complexity, Documentation, Dependencies, Dead Code, Test Coverage, Other. The breakdown below shows where pressure concentrates so you know what to fix first.</div>
 </div>
-    <div class="kpis"><div class="kpi crit"><div class="label">Critical</div><div class="value">0</div></div><div class="kpi high"><div class="label">High</div><div class="value">6</div></div><div class="kpi med"><div class="label">Medium</div><div class="value">1</div></div><div class="kpi low"><div class="label">Low</div><div class="value">0</div></div><div class="kpi"><div class="label">Risk Files</div><div class="value">51</div></div><div class="kpi"><div class="label">Findings</div><div class="value">7</div></div></div>
+    <div class="kpis"><div class="kpi crit"><div class="label">Critical</div><div class="value">0</div></div><div class="kpi high"><div class="label">High</div><div class="value">6</div></div><div class="kpi med"><div class="label">Medium</div><div class="value">19</div></div><div class="kpi low"><div class="label">Low</div><div class="value">0</div></div><div class="kpi"><div class="label">Risk Files</div><div class="value">56</div></div><div class="kpi"><div class="label">Findings</div><div class="value">25</div></div></div>
     <h2>Score breakdown <span class="lead">7 buckets · weighted</span></h2>
-    <div class="bars"><div class="bar-row"><span class="name">Security</span><span class="score">69</span><div class="track"><div class="fill warn" style="width: 69%"></div></div><span class="weight">25%</span></div><div class="bar-row"><span class="name">Complexity</span><span class="score">67</span><div class="track"><div class="fill warn" style="width: 67%"></div></div><span class="weight">20%</span></div><div class="bar-row"><span class="name">Documentation</span><span class="score">99</span><div class="track"><div class="fill" style="width: 99%"></div></div><span class="weight">15%</span></div><div class="bar-row"><span class="name">Dependencies</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">15%</span></div><div class="bar-row"><span class="name">Dead Code</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">10%</span></div><div class="bar-row"><span class="name">Test Coverage</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">10%</span></div><div class="bar-row"><span class="name">Other</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">5%</span></div></div>
+    <div class="bars"><div class="bar-row"><span class="name">Security</span><span class="score">69</span><div class="track"><div class="fill warn" style="width: 69%"></div></div><span class="weight">25%</span></div><div class="bar-row"><span class="name">Complexity</span><span class="score">67</span><div class="track"><div class="fill warn" style="width: 67%"></div></div><span class="weight">20%</span></div><div class="bar-row"><span class="name">Documentation</span><span class="score">99</span><div class="track"><div class="fill" style="width: 99%"></div></div><span class="weight">15%</span></div><div class="bar-row"><span class="name">Dependencies</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">15%</span></div><div class="bar-row"><span class="name">Dead Code</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">10%</span></div><div class="bar-row"><span class="name">Test Coverage</span><span class="score">82</span><div class="track"><div class="fill" style="width: 82%"></div></div><span class="weight">10%</span></div><div class="bar-row"><span class="name">Other</span><span class="score">100</span><div class="track"><div class="fill" style="width: 100%"></div></div><span class="weight">5%</span></div></div>
   </section>
 <section id="history">
   <h2>History</h2>
@@ -340,11 +341,11 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
   <p>23 handoff document(s) generated from the codebase. Expand each to read inline.</p>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">HANDOFF</summary>
-  <div class="doc-md"><h1>express-pin — Developer Handoff</h1>
+  <div class="doc-md"><h1>express — Developer Handoff</h1>
 <blockquote>
 <p><strong>Entry point.</strong> Read this first. Everything else is referenced from here.</p>
 </blockquote>
-<p>Generated: 2026-05-21 01:06:54 UTC · Repo root: <code>/tmp/express-pin</code> · Remote: <code>https://github.com/expressjs/express.git</code></p>
+<p>Generated: 2026-05-26 00:29:05 UTC · Repo root: <code>/tmp/express</code> · Remote: <code>https://github.com/expressjs/express.git</code></p>
 <hr>
 <h2>1. What is this?</h2>
 <p><strong>express</strong> — project manifest detected from <code>package.json</code>.</p>
@@ -371,7 +372,7 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 <hr>
 <h2>3. Top 10 risks (bus-factor warning)</h2>
 <p>Generated by Luxscope static analysis (static + churn + ownership).</p>
-<p><strong>Band totals:</strong> 0 HIGH · 2 MED · 49 LOW (51 files scanned)</p>
+<p><strong>Band totals:</strong> 0 HIGH · 3 MED · 53 LOW (56 files scanned)</p>
 <table>
 <thead>
 <tr>
@@ -393,6 +394,14 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 </tr>
 <tr>
 <td>2</td>
+<td><code>test/res.location.js</code></td>
+<td><strong>46.2</strong></td>
+<td>dependabot[bot]</td>
+<td>1</td>
+<td>MED</td>
+</tr>
+<tr>
+<td>3</td>
 <td><code>lib/response.js</code></td>
 <td><strong>46</strong></td>
 <td>dependabot[bot]</td>
@@ -400,7 +409,7 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 <td>MED</td>
 </tr>
 <tr>
-<td>3</td>
+<td>4</td>
 <td><code>examples/view-locals/index.js</code></td>
 <td><strong>19</strong></td>
 <td>dependabot[bot]</td>
@@ -408,7 +417,7 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 <td>LOW</td>
 </tr>
 <tr>
-<td>4</td>
+<td>5</td>
 <td><code>examples/route-middleware/index.js</code></td>
 <td><strong>15</strong></td>
 <td>dependabot[bot]</td>
@@ -416,7 +425,7 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 <td>LOW</td>
 </tr>
 <tr>
-<td>5</td>
+<td>6</td>
 <td><code>lib/application.js</code></td>
 <td><strong>14</strong></td>
 <td>dependabot[bot]</td>
@@ -424,7 +433,7 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 <td>LOW</td>
 </tr>
 <tr>
-<td>6</td>
+<td>7</td>
 <td><code>lib/view.js</code></td>
 <td><strong>13.4</strong></td>
 <td>dependabot[bot]</td>
@@ -432,7 +441,15 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 <td>LOW</td>
 </tr>
 <tr>
-<td>7</td>
+<td>8</td>
+<td><code>test/Router.js</code></td>
+<td><strong>12.6</strong></td>
+<td>dependabot[bot]</td>
+<td>1</td>
+<td>LOW</td>
+</tr>
+<tr>
+<td>9</td>
 <td><code>examples/auth/index.js</code></td>
 <td><strong>11</strong></td>
 <td>dependabot[bot]</td>
@@ -440,25 +457,9 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 <td>LOW</td>
 </tr>
 <tr>
-<td>8</td>
+<td>10</td>
 <td><code>lib/utils.js</code></td>
 <td><strong>11</strong></td>
-<td>dependabot[bot]</td>
-<td>1</td>
-<td>LOW</td>
-</tr>
-<tr>
-<td>9</td>
-<td><code>examples/resource/index.js</code></td>
-<td><strong>9</strong></td>
-<td>dependabot[bot]</td>
-<td>1</td>
-<td>LOW</td>
-</tr>
-<tr>
-<td>10</td>
-<td><code>examples/route-map/index.js</code></td>
-<td><strong>9</strong></td>
 <td>dependabot[bot]</td>
 <td>1</td>
 <td>LOW</td>
@@ -490,7 +491,7 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">README</summary>
-  <div class="doc-md"><h1>express-pin — Local Developer Setup</h1>
+  <div class="doc-md"><h1>express — Local Developer Setup</h1>
 <p>Generated by Luxscope handoff. Re-run <code>luxscope handoff</code> to refresh.</p>
 <h2>Prerequisites</h2>
 <ul>
@@ -500,7 +501,7 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 <h2>Setup</h2>
 <ol>
 <li><code>git clone https://github.com/expressjs/express.git</code></li>
-<li><code>cd express-pin</code></li>
+<li><code>cd express</code></li>
 <li><code>npm install</code></li>
 </ol>
 <h2>Run dev</h2>
@@ -532,7 +533,7 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">HOWTO</summary>
-  <div class="doc-md"><h1>express-pin — How To</h1>
+  <div class="doc-md"><h1>express — How To</h1>
 <p>Stack-specific playbook. Read <a href="./README.md"><code>README.md</code></a> first for setup; this file is the day-1 / week-1 task playbook.</p>
 <h2>Day 1</h2>
 <ul>
@@ -580,13 +581,6 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 </tr>
 </thead>
 <tbody><tr>
-<td>#7014</td>
-<td>feat: add app.renderAsync() for promise-based view rendering</td>
-<td><code>render_async</code></td>
-<td>@Abdel-Monaam-Aouini</td>
-<td>—</td>
-</tr>
-<tr>
 <td>#7035</td>
 <td>fix: prevent Content-Type header from being set to &#39;false&#39;</td>
 <td><code>fix/content-type-false-value</code></td>
@@ -789,51 +783,58 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 <td>@tejgokani</td>
 <td>—</td>
 </tr>
+<tr>
+<td>#7275</td>
+<td>feat: handle circular structure serialization</td>
+<td><code>feat-circular-structure</code></td>
+<td>@leandro-costa-oliveira</td>
+<td>—</td>
+</tr>
 </tbody></table>
 </div>
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">ARCHITECTURE</summary>
-  <div class="doc-md"><h1>express-pin — Architecture</h1>
+  <div class="doc-md"><h1>express — Architecture</h1>
 <p>Detected no containers, 1 persona, 0 external systems. The diagrams below are deterministic — they reflect manifests, framework scanners, and infrastructure files. Run <code>luxscope docs build --level hub --with-ai</code> to add narrative prose without overwriting the C4 blocks.</p>
 <h2>Context (C4 Level 1)</h2>
 <pre><code class="language-mermaid">C4Context
-  title System Context for express-pin
+  title System Context for express
   Person(user, &quot;End user&quot;, &quot;Application user&quot;)
-  System(system, &quot;express-pin&quot;, &quot;Application under documentation&quot;)
+  System(system, &quot;express&quot;, &quot;Application under documentation&quot;)
   Rel(user, system, &quot;Uses&quot;, &quot;HTTPS&quot;)
   UpdateLayoutConfig($c4ShapeInRow=&quot;3&quot;, $c4BoundaryInRow=&quot;2&quot;)
 </code></pre>
 <h2>Containers (C4 Level 2)</h2>
 <pre><code class="language-mermaid">C4Container
-  title Container View for express-pin
+  title Container View for express
   Person(user, &quot;End user&quot;)
-  System_Boundary(boundary_express_pin, &quot;express-pin&quot;) {
+  System_Boundary(boundary_express, &quot;express&quot;) {
   }
 </code></pre>
 </div>
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">API REFERENCE</summary>
-  <div class="doc-md"><h1>express-pin — API Reference</h1>
+  <div class="doc-md"><h1>express — API Reference</h1>
 <p>No NestJS controllers detected via AST scan. If this project uses a different HTTP framework or an OpenAPI spec, add <code>openapi.json</code> at the repo root and re-run <code>luxscope handoff</code>.</p>
 </div>
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">DB SCHEMA</summary>
-  <div class="doc-md"><h1>express-pin — Database Schema</h1>
+  <div class="doc-md"><h1>express — Database Schema</h1>
 <p>No <code>prisma/schema.prisma</code> detected. If this project uses a different ORM (TypeORM, Drizzle, Sequelize), the ER diagram is not yet supported.</p>
 </div>
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">FRONTEND</summary>
-  <div class="doc-md"><h1>express-pin — Frontend</h1>
+  <div class="doc-md"><h1>express — Frontend</h1>
 <p>No Next.js <code>app/</code> or <code>pages/</code> routes detected.</p>
 </div>
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">BEST PRACTICES</summary>
-  <div class="doc-md"><h1>express-pin — Best Practices</h1>
+  <div class="doc-md"><h1>express — Best Practices</h1>
 <p><em>No <code>CLAUDE.md</code> / <code>AGENTS.md</code> / <code>.cursorrules</code> detected. This document is a deterministic skeleton; run <code>luxscope handoff --ai</code> (premium) to fill guidance from CONTRIBUTING + CI config.</em></p>
 <h2>Testing</h2>
 <ul>
@@ -866,7 +867,7 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">DEPLOYMENT</summary>
-  <div class="doc-md"><h1>express-pin — Deployment</h1>
+  <div class="doc-md"><h1>express — Deployment</h1>
 <p><strong>Branch:</strong> <code>master</code> · <strong>HEAD:</strong> <code>dae209ae6559</code></p>
 <h2>CI workflows detected</h2>
 <ul>
@@ -887,7 +888,7 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">RUNBOOK</summary>
-  <div class="doc-md"><h1>express-pin — Runbook</h1>
+  <div class="doc-md"><h1>express — Runbook</h1>
 <p><em>No runbooks detected at <code>docs/runbooks/</code> or <code>runbooks/</code>. The skeleton below is a deterministic placeholder; run <code>luxscope handoff --ai</code> (premium) to synthesize an incident playbook from git history.</em></p>
 <h2>Observability</h2>
 <h2>Recent fix commits (auto-detected)</h2>
@@ -911,7 +912,7 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">INFRASTRUCTURE</summary>
-  <div class="doc-md"><h1>express-pin — Infrastructure</h1>
+  <div class="doc-md"><h1>express — Infrastructure</h1>
 <h2>CI Workflows</h2>
 <ul>
 <li><code>.github/workflows/ci.yml</code></li>
@@ -941,7 +942,7 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">SECURITY</summary>
-  <div class="doc-md"><h1>express-pin — Security</h1>
+  <div class="doc-md"><h1>express — Security</h1>
 <p><em>No <code>docs/SECURITY.md</code> detected. This document is a deterministic skeleton; run <code>luxscope handoff --ai</code> (premium) to synthesize policy prose.</em></p>
 <h2>Detected auth libraries</h2>
 <ul>
@@ -986,7 +987,7 @@ code, .mono { font-family: var(--mono); font-size: 13px; }
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">ENV VARS</summary>
-  <div class="doc-md"><h1>express-pin — Environment Variables</h1>
+  <div class="doc-md"><h1>express — Environment Variables</h1>
 <p>Detected <strong>2</strong> distinct environment variables.
 No <code>.env.example</code> / <code>.env.sample</code> / <code>.env.template</code> found at repo root — the table below is grep-only and <code>Required</code> is best-effort.</p>
 <table>
@@ -1018,13 +1019,13 @@ No <code>.env.example</code> / <code>.env.sample</code> / <code>.env.template</c
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">MIGRATIONS</summary>
-  <div class="doc-md"><h1>express-pin — Migration History</h1>
+  <div class="doc-md"><h1>express — Migration History</h1>
 <p>No migrations directory detected. Luxscope looked in: <code>prisma/migrations</code>, <code>apps/api/prisma/migrations</code>, <code>packages/db/prisma/migrations</code>, <code>db/migrations</code>, <code>migrations</code>, <code>supabase/migrations</code>.</p>
 </div>
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">TEST STRATEGY</summary>
-  <div class="doc-md"><h1>express-pin — Test Strategy &amp; Coverage Map</h1>
+  <div class="doc-md"><h1>express — Test Strategy &amp; Coverage Map</h1>
 <p>Deterministic snapshot of test infrastructure: which runners are configured, where specs live, what coverage CI enforces, and what&#39;s currently shipping.</p>
 <h2>Latest coverage report</h2>
 <p><em>No <code>coverage/coverage-summary.json</code> found. Run the coverage script (often <code>test:cov</code>, <code>test --coverage</code>, or <code>vitest run --coverage</code>) to generate one before relying on these numbers.</em></p>
@@ -1055,14 +1056,14 @@ No <code>.env.example</code> / <code>.env.sample</code> / <code>.env.template</c
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">DEBUGGING</summary>
-  <div class="doc-md"><h1>express-pin — Local Debugging Recipes</h1>
+  <div class="doc-md"><h1>express — Local Debugging Recipes</h1>
 <p><em>No log directories, health endpoints, dev scripts, or stack-detected recipes found.</em></p>
 <p>Document the local debugging entry points by hand in <code>HOWTO.md</code> if they live outside the standard paths.</p>
 </div>
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">FIRST COMMIT</summary>
-  <div class="doc-md"><h1>express-pin — First Commit Guide</h1>
+  <div class="doc-md"><h1>express — First Commit Guide</h1>
 <p>Everything a new contributor needs to land their first PR without burning a half-day on convention discovery.</p>
 <h2>1. Preflight checklist</h2>
 <ul>
@@ -1093,7 +1094,7 @@ No <code>.env.example</code> / <code>.env.sample</code> / <code>.env.template</c
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">ONBOARDING</summary>
-  <div class="doc-md"><h1>express-pin — Onboarding Checklist</h1>
+  <div class="doc-md"><h1>express — Onboarding Checklist</h1>
 <p>Concrete deliverables for a new engineer joining this repo. Every item points at a real file, command, or signal already detected in this bundle — no aspirational filler.</p>
 <h2>Day 1 — Boot the system</h2>
 <p>Goal: clone the repo, get the local stack up, hit one endpoint successfully, and read enough docs to know where things live.</p>
@@ -1109,10 +1110,10 @@ No <code>.env.example</code> / <code>.env.sample</code> / <code>.env.template</c
 <ul>
 <li><input disabled="" type="checkbox"> Read the top-risk files end-to-end (these are where the team gets paged):<ul>
 <li><a href="../../test/res.redirect.js"><code>test/res.redirect.js</code></a> — band MED (4 findings)</li>
+<li><a href="../../test/res.location.js"><code>test/res.location.js</code></a> — band MED (11 findings)</li>
 <li><a href="../../lib/response.js"><code>lib/response.js</code></a> — band MED (32 findings)</li>
 <li><a href="../../examples/view-locals/index.js"><code>examples/view-locals/index.js</code></a> — band LOW (20 findings)</li>
 <li><a href="../../examples/route-middleware/index.js"><code>examples/route-middleware/index.js</code></a> — band LOW (16 findings)</li>
-<li><a href="../../lib/application.js"><code>lib/application.js</code></a> — band LOW (12 findings)</li>
 </ul>
 </li>
 <li><input disabled="" type="checkbox"> Run the full test suite at least once: <code>npm test</code> (so you know what &quot;green&quot; looks like locally).</li>
@@ -1130,34 +1131,34 @@ No <code>.env.example</code> / <code>.env.sample</code> / <code>.env.template</c
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">GLOSSARY</summary>
-  <div class="doc-md"><h1>express-pin — Glossary</h1>
+  <div class="doc-md"><h1>express — Glossary</h1>
 <p><em>No domain terms extracted. Add Prisma models, NestJS controllers, or hand-written runbooks to populate this section.</em></p>
 </div>
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">API RECIPES</summary>
-  <div class="doc-md"><h1>express-pin — API Recipes</h1>
+  <div class="doc-md"><h1>express — API Recipes</h1>
 <p><em>No NestJS endpoints or Next.js routes detected.</em></p>
 <p>If the API uses a different framework (FastAPI, Express, Rails, ...), document the recipes by hand in <code>HOWTO.md</code>.</p>
 </div>
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">ADR INDEX</summary>
-  <div class="doc-md"><h1>express-pin — ADR Index</h1>
+  <div class="doc-md"><h1>express — ADR Index</h1>
 <p><em>No ADRs detected. Luxscope looked under <code>docs/adr/</code>, <code>docs/decisions/</code>, and any <code>*.adr.md</code> files.</em></p>
 <p>Even one ADR is better than none — start with a 5-line decision record the next time the team makes a non-obvious call.</p>
 </div>
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">PERF + I18N</summary>
-  <div class="doc-md"><h1>express-pin — Performance &amp; Internationalization</h1>
+  <div class="doc-md"><h1>express — Performance &amp; Internationalization</h1>
 <p><em>No performance instrumentation or i18n machinery detected.</em></p>
 <p>If perf metrics or translations live elsewhere (separate ops repo, vendor UI), document the location here by hand.</p>
 </div>
 </details>
 <details class="handoff-doc-details">
   <summary class="handoff-doc-summary">ER Diagram</summary>
-  <div class="doc-md"><h1>express-pin — ER Diagram</h1>
+  <div class="doc-md"><h1>express — ER Diagram</h1>
 <p>No Prisma schema detected. Diagram unavailable.</p>
 </div>
 </details>
@@ -1175,8 +1176,8 @@ No <code>.env.example</code> / <code>.env.sample</code> / <code>.env.template</c
   <p>Files ranked by aggregated risk score, banded HIGH / MED / LOW. Expand a card to see the drivers that pushed it into its band, the top contributing findings, and concrete mitigation steps.</p>
 <div class="band-tabs" role="tablist">
     <button class="band-tab high active" data-band="HIGH">HIGH <span class="count">0</span></button>
-    <button class="band-tab med" data-band="MED">MED <span class="count">2</span></button>
-    <button class="band-tab low" data-band="LOW">LOW <span class="count">49</span></button>
+    <button class="band-tab med" data-band="MED">MED <span class="count">3</span></button>
+    <button class="band-tab low" data-band="LOW">LOW <span class="count">53</span></button>
   </div>
 <div class="risk-card-list"><details class="risk-card" data-band="MED">
     <summary>
@@ -1198,6 +1199,37 @@ No <code>.env.example</code> / <code>.env.sample</code> / <code>.env.template</c
   </div><div class="risk-finding">
     <div class="risk-finding-head"><span class="sev-pill high">HIGH FAIL</span><span class="rule-id">dangerous-innerhtml</span><span class="effort-chip">~10m</span></div>
     <div class="risk-finding-loc">test/res.redirect.js:116 — innerHTML / dangerouslySetInnerHTML bypasses escaping</div>
+    
+  </div></div></div>
+  </details>
+<details class="risk-card" data-band="MED">
+    <summary>
+      <span class="risk-card-path">test/res.location.js</span>
+      <span class="risk-card-meta">score <strong>46.2</strong> &nbsp; findings <strong>11</strong> &nbsp; dependabot[bot]</span>
+    </summary>
+    <div class="risk-card-body"><div class="risk-findings"><div class="risk-findings-label">TOP FINDINGS</div><div class="risk-finding">
+    <div class="risk-finding-head"><span class="sev-pill med">MED FAIL</span><span class="rule-id">test-asserts-nothing</span><span class="effort-chip">~10m</span></div>
+    <div class="risk-finding-loc">test/res.location.js:183 — Test &quot;should consistently handle relative urls&quot; has no assertion — body has 8 statement line(s) but nothing checked</div>
+    
+  </div><div class="risk-finding">
+    <div class="risk-finding-head"><span class="sev-pill med">MED FAIL</span><span class="rule-id">test-asserts-nothing</span><span class="effort-chip">~10m</span></div>
+    <div class="risk-finding-loc">test/res.location.js:194 — Test &quot;should not encode urls in such a way that they can bypass redirect allow lists&quot; has no assertion — body has 8 statement line(s) but nothing checked</div>
+    
+  </div><div class="risk-finding">
+    <div class="risk-finding-head"><span class="sev-pill med">MED FAIL</span><span class="rule-id">test-asserts-nothing</span><span class="effort-chip">~10m</span></div>
+    <div class="risk-finding-loc">test/res.location.js:205 — Test &quot;should not be case sensitive&quot; has no assertion — body has 8 statement line(s) but nothing checked</div>
+    
+  </div><div class="risk-finding">
+    <div class="risk-finding-head"><span class="sev-pill med">MED FAIL</span><span class="rule-id">test-asserts-nothing</span><span class="effort-chip">~10m</span></div>
+    <div class="risk-finding-loc">test/res.location.js:216 — Test &quot;should work with https&quot; has no assertion — body has 8 statement line(s) but nothing checked</div>
+    
+  </div><div class="risk-finding">
+    <div class="risk-finding-head"><span class="sev-pill med">MED FAIL</span><span class="rule-id">test-asserts-nothing</span><span class="effort-chip">~10m</span></div>
+    <div class="risk-finding-loc">test/res.location.js:227 — Test &quot;should correctly encode schemaless paths&quot; has no assertion — body has 8 statement line(s) but nothing checked</div>
+    
+  </div><div class="risk-finding">
+    <div class="risk-finding-head"><span class="sev-pill med">MED FAIL</span><span class="rule-id">test-asserts-nothing</span><span class="effort-chip">~10m</span></div>
+    <div class="risk-finding-loc">test/res.location.js:238 — Test &quot;should keep backslashes in the path&quot; has no assertion — body has 8 statement line(s) but nothing checked</div>
     
   </div></div></div>
   </details>
@@ -1242,6 +1274,25 @@ No <code>.env.example</code> / <code>.env.sample</code> / <code>.env.template</c
   </details>
 <details class="risk-card" data-band="LOW">
     <summary>
+      <span class="risk-card-path">test/Router.js</span>
+      <span class="risk-card-meta">score <strong>12.6</strong> &nbsp; findings <strong>3</strong> &nbsp; dependabot[bot]</span>
+    </summary>
+    <div class="risk-card-body"><div class="risk-findings"><div class="risk-findings-label">TOP FINDINGS</div><div class="risk-finding">
+    <div class="risk-finding-head"><span class="sev-pill med">MED FAIL</span><span class="rule-id">test-asserts-nothing</span><span class="effort-chip">~10m</span></div>
+    <div class="risk-finding-loc">test/Router.js:19 — Test &quot;should support .use of other routers&quot; has no assertion — body has 7 statement line(s) but nothing checked</div>
+    
+  </div><div class="risk-finding">
+    <div class="risk-finding-head"><span class="sev-pill med">MED FAIL</span><span class="rule-id">test-asserts-nothing</span><span class="effort-chip">~10m</span></div>
+    <div class="risk-finding-loc">test/Router.js:91 — Test &quot;should not stack overflow with many registered routes&quot; has no assertion — body has 10 statement line(s) but nothing checked</div>
+    
+  </div><div class="risk-finding">
+    <div class="risk-finding-head"><span class="sev-pill med">MED FAIL</span><span class="rule-id">test-asserts-nothing</span><span class="effort-chip">~10m</span></div>
+    <div class="risk-finding-loc">test/Router.js:202 — Test &quot;should not throw if all callbacks are functions&quot; has no assertion — body has 2 statement line(s) but nothing checked</div>
+    
+  </div></div></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
       <span class="risk-card-path">examples/auth/index.js</span>
       <span class="risk-card-meta">score <strong>11</strong> &nbsp; findings <strong>11</strong> &nbsp; dependabot[bot]</span>
     </summary>
@@ -1278,6 +1329,21 @@ No <code>.env.example</code> / <code>.env.sample</code> / <code>.env.template</c
   </details>
 <details class="risk-card" data-band="LOW">
     <summary>
+      <span class="risk-card-path">test/app.listen.js</span>
+      <span class="risk-card-meta">score <strong>8.4</strong> &nbsp; findings <strong>2</strong> &nbsp; dependabot[bot]</span>
+    </summary>
+    <div class="risk-card-body"><div class="risk-findings"><div class="risk-findings-label">TOP FINDINGS</div><div class="risk-finding">
+    <div class="risk-finding-head"><span class="sev-pill med">MED FAIL</span><span class="rule-id">test-asserts-nothing</span><span class="effort-chip">~10m</span></div>
+    <div class="risk-finding-loc">test/app.listen.js:7 — Test &quot;should wrap with an HTTP server&quot; has no assertion — body has 4 statement line(s) but nothing checked</div>
+    
+  </div><div class="risk-finding">
+    <div class="risk-finding-head"><span class="sev-pill med">MED FAIL</span><span class="rule-id">test-asserts-nothing</span><span class="effort-chip">~10m</span></div>
+    <div class="risk-finding-loc">test/app.listen.js:38 — Test &quot;accepts just a callback (no args)&quot; has no assertion — body has 3 statement line(s) but nothing checked</div>
+    
+  </div></div></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
       <span class="risk-card-path">examples/error/index.js</span>
       <span class="risk-card-meta">score <strong>7</strong> &nbsp; findings <strong>7</strong> &nbsp; dependabot[bot]</span>
     </summary>
@@ -1303,6 +1369,28 @@ No <code>.env.example</code> / <code>.env.sample</code> / <code>.env.template</c
       <span class="risk-card-meta">score <strong>6</strong> &nbsp; findings <strong>3</strong> &nbsp; dependabot[bot]</span>
     </summary>
     <div class="risk-card-body"></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">test/app.js</span>
+      <span class="risk-card-meta">score <strong>4.2</strong> &nbsp; findings <strong>1</strong> &nbsp; dependabot[bot]</span>
+    </summary>
+    <div class="risk-card-body"><div class="risk-findings"><div class="risk-findings-label">TOP FINDINGS</div><div class="risk-finding">
+    <div class="risk-finding-head"><span class="sev-pill med">MED FAIL</span><span class="rule-id">test-asserts-nothing</span><span class="effort-chip">~10m</span></div>
+    <div class="risk-finding-loc">test/app.js:8 — Test &quot;should inherit from event emitter&quot; has no assertion — body has 3 statement line(s) but nothing checked</div>
+    
+  </div></div></div>
+  </details>
+<details class="risk-card" data-band="LOW">
+    <summary>
+      <span class="risk-card-path">test/Route.js</span>
+      <span class="risk-card-meta">score <strong>4.2</strong> &nbsp; findings <strong>1</strong> &nbsp; dependabot[bot]</span>
+    </summary>
+    <div class="risk-card-body"><div class="risk-findings"><div class="risk-findings-label">TOP FINDINGS</div><div class="risk-finding">
+    <div class="risk-finding-head"><span class="sev-pill med">MED FAIL</span><span class="rule-id">test-asserts-nothing</span><span class="effort-chip">~10m</span></div>
+    <div class="risk-finding-loc">test/Route.js:10 — Test &quot;should work without handlers&quot; has no assertion — body has 3 statement line(s) but nothing checked</div>
+    
+  </div></div></div>
   </details>
 <details class="risk-card" data-band="LOW">
     <summary>
@@ -1566,7 +1654,7 @@ No <code>.env.example</code> / <code>.env.sample</code> / <code>.env.template</c
 </section>
 <section id="findings">
   <h2>Findings</h2>
-  <table class="findings-table"><thead><tr><th>Severity</th><th>Rule</th><th>Location</th><th>Message</th><th>Effort</th></tr></thead><tbody><tr><td><span class="pill high">HIGH</span></td><td><code>eval-usage</code></td><td><code>test/res.redirect.js:115</code></td><td>eval()/exec() executes arbitrary code</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>eval-usage</code></td><td><code>test/res.redirect.js:116</code></td><td>eval()/exec() executes arbitrary code</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>dangerous-innerhtml</code></td><td><code>test/res.redirect.js:115</code></td><td>innerHTML / dangerouslySetInnerHTML bypasses escaping</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>dangerous-innerhtml</code></td><td><code>test/res.redirect.js:116</code></td><td>innerHTML / dangerouslySetInnerHTML bypasses escaping</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>raw-sql-string-concat</code></td><td><code>examples/route-map/index.js:51</code></td><td>SQL text joined with + or f-string — likely injection surface</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>raw-sql-string-concat</code></td><td><code>examples/resource/index.js:22</code></td><td>SQL text joined with + or f-string — likely injection surface</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>fs-sync-in-request-path</code></td><td><code>lib/view.js:197</code></td><td>tryStat calls sync fs API statSync</td><td>—</td></tr></tbody></table>
+  <table class="findings-table"><thead><tr><th>Severity</th><th>Rule</th><th>Location</th><th>Message</th><th>Effort</th></tr></thead><tbody><tr><td><span class="pill high">HIGH</span></td><td><code>eval-usage</code></td><td><code>test/res.redirect.js:115</code></td><td>eval()/exec() executes arbitrary code</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>eval-usage</code></td><td><code>test/res.redirect.js:116</code></td><td>eval()/exec() executes arbitrary code</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>dangerous-innerhtml</code></td><td><code>test/res.redirect.js:115</code></td><td>innerHTML / dangerouslySetInnerHTML bypasses escaping</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>dangerous-innerhtml</code></td><td><code>test/res.redirect.js:116</code></td><td>innerHTML / dangerouslySetInnerHTML bypasses escaping</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>raw-sql-string-concat</code></td><td><code>examples/route-map/index.js:51</code></td><td>SQL text joined with + or f-string — likely injection surface</td><td>—</td></tr><tr><td><span class="pill high">HIGH</span></td><td><code>raw-sql-string-concat</code></td><td><code>examples/resource/index.js:22</code></td><td>SQL text joined with + or f-string — likely injection surface</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>test-asserts-nothing</code></td><td><code>test/Route.js:10</code></td><td>Test &quot;should work without handlers&quot; has no assertion — body has 3 statement line(s) but nothing checked</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>test-asserts-nothing</code></td><td><code>test/Router.js:19</code></td><td>Test &quot;should support .use of other routers&quot; has no assertion — body has 7 statement line(s) but nothing checked</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>test-asserts-nothing</code></td><td><code>test/Router.js:91</code></td><td>Test &quot;should not stack overflow with many registered routes&quot; has no assertion — body has 10 statement line(s) but nothing checked</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>test-asserts-nothing</code></td><td><code>test/Router.js:202</code></td><td>Test &quot;should not throw if all callbacks are functions&quot; has no assertion — body has 2 statement line(s) but nothing checked</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>test-asserts-nothing</code></td><td><code>test/app.js:8</code></td><td>Test &quot;should inherit from event emitter&quot; has no assertion — body has 3 statement line(s) but nothing checked</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>test-asserts-nothing</code></td><td><code>test/app.listen.js:7</code></td><td>Test &quot;should wrap with an HTTP server&quot; has no assertion — body has 4 statement line(s) but nothing checked</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>test-asserts-nothing</code></td><td><code>test/app.listen.js:38</code></td><td>Test &quot;accepts just a callback (no args)&quot; has no assertion — body has 3 statement line(s) but nothing checked</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>test-asserts-nothing</code></td><td><code>test/res.location.js:183</code></td><td>Test &quot;should consistently handle relative urls&quot; has no assertion — body has 8 statement line(s) but nothing checked</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>test-asserts-nothing</code></td><td><code>test/res.location.js:194</code></td><td>Test &quot;should not encode urls in such a way that they can bypass redirect allow lists&quot; has no assertion — body has 8 statement line(s) but nothing checked</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>test-asserts-nothing</code></td><td><code>test/res.location.js:205</code></td><td>Test &quot;should not be case sensitive&quot; has no assertion — body has 8 statement line(s) but nothing checked</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>test-asserts-nothing</code></td><td><code>test/res.location.js:216</code></td><td>Test &quot;should work with https&quot; has no assertion — body has 8 statement line(s) but nothing checked</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>test-asserts-nothing</code></td><td><code>test/res.location.js:227</code></td><td>Test &quot;should correctly encode schemaless paths&quot; has no assertion — body has 8 statement line(s) but nothing checked</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>test-asserts-nothing</code></td><td><code>test/res.location.js:238</code></td><td>Test &quot;should keep backslashes in the path&quot; has no assertion — body has 8 statement line(s) but nothing checked</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>test-asserts-nothing</code></td><td><code>test/res.location.js:249</code></td><td>Test &quot;should escape header splitting for old node versions&quot; has no assertion — body has 8 statement line(s) but nothing checked</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>test-asserts-nothing</code></td><td><code>test/res.location.js:260</code></td><td>Test &quot;should encode unicode correctly&quot; has no assertion — body has 8 statement line(s) but nothing checked</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>test-asserts-nothing</code></td><td><code>test/res.location.js:271</code></td><td>Test &quot;should encode unicode correctly even with a bad host&quot; has no assertion — body has 8 statement line(s) but nothing checked</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>test-asserts-nothing</code></td><td><code>test/res.location.js:282</code></td><td>Test &quot;should work correctly despite using deprecated url.parse&quot; has no assertion — body has 8 statement line(s) but nothing checked</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>test-asserts-nothing</code></td><td><code>test/res.location.js:293</code></td><td>Test &quot;should encode file uri path&quot; has no assertion — body has 8 statement line(s) but nothing checked</td><td>—</td></tr><tr><td><span class="pill med">MEDIUM</span></td><td><code>fs-sync-in-request-path</code></td><td><code>lib/view.js:197</code></td><td>tryStat calls sync fs API statSync</td><td>—</td></tr></tbody></table>
 </section>
 <section id="documents">
   <h2>Generated Documentation</h2>
@@ -1577,7 +1665,7 @@ No <code>.env.example</code> / <code>.env.sample</code> / <code>.env.template</c
 </section>
 <section id="metadata">
   <h2>Metadata</h2>
-  <table class="findings-table"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Repo</td><td><code>express-pin</code></td></tr><tr><td>Generated</td><td><code>2026-05-21 01:06:54 UTC</code></td></tr><tr><td>Luxscope version</td><td><code>0.1.0</code></td></tr><tr><td>Scoring version</td><td><code>default</code></td></tr><tr><td>Profile</td><td><code>default</code></td></tr><tr><td>Level</td><td><code>standard</code></td></tr><tr><td>Files scanned</td><td><code>51</code></td></tr><tr><td>Total findings</td><td><code>7</code></td></tr></tbody></table>
+  <table class="findings-table"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Repo</td><td><code>express</code></td></tr><tr><td>Generated</td><td><code>2026-05-26 00:29:05 UTC</code></td></tr><tr><td>Luxscope version</td><td><code>0.1.0</code></td></tr><tr><td>Scoring version</td><td><code>default</code></td></tr><tr><td>Profile</td><td><code>default</code></td></tr><tr><td>Level</td><td><code>standard</code></td></tr><tr><td>Files scanned</td><td><code>56</code></td></tr><tr><td>Total findings</td><td><code>25</code></td></tr></tbody></table>
 </section>
 <p style="color:var(--faint);font-size:12px;margin-top:48px;border-top:1px solid var(--border);padding-top:16px">Generated by Luxscope 0.1.0 &middot; scoring default</p>
   </main>
