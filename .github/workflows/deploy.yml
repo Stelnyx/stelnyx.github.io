@@ -30,7 +30,7 @@ jobs:
 
       - name: Build Next.js static export
         env:
-          NEXT_PUBLIC_FEATURE_PRICING: "true"
+          NEXT_PUBLIC_FEATURE_PRICING: "false"
           NEXT_PUBLIC_FEATURE_PUBLIC_REPOS: "true"
         run: npm run build
 
