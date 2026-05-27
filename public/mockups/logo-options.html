@@ -28,7 +28,8 @@
   h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 600; letter-spacing: -0.03em; margin: 0 0 12px; }
   header p { color: var(--muted); max-width: 640px; font-size: 15px; }
   .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  @media (min-width: 1100px) { .grid { grid-template-columns: repeat(4, 1fr); } }
+  @media (min-width: 1100px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1400px) { .grid { grid-template-columns: repeat(5, 1fr); } }
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 18px; }
   .card h2 { font-size: 14px; font-weight: 600; letter-spacing: 0.02em; margin: 0; display: flex; align-items: center; gap: 10px; }
   .card h2 .key { font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 2px 7px; background: var(--surface-2); color: var(--amber); border-radius: 4px; letter-spacing: 0.04em; }
@@ -43,6 +44,8 @@
   .lockup { display: flex; align-items: center; gap: 10px; }
   .lockup .word { font-weight: 600; font-size: 18px; letter-spacing: -0.01em; }
   .lockup-loose .word { letter-spacing: 0.32em; font-weight: 500; text-transform: uppercase; font-size: 15px; }
+  .lockup-spaced .word { letter-spacing: 0.18em; font-weight: 400; text-transform: uppercase; font-size: 15px; }
+  .lockup-compact .word { letter-spacing: -0.01em; font-weight: 600; font-size: 16px; }
   .lockup-mono .word { font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 16px; letter-spacing: -0.02em; }
   .lockup-light .word { color: #0a0a0f; }
   .pros, .cons { font-size: 12.5px; color: var(--muted); margin: 0; padding-left: 16px; }
@@ -77,7 +80,7 @@
     </header>
 
     <div class="recommendation">
-      <strong>Recommended:</strong> Option A — sharp star w/ triangle cutout, tight Inter wordmark. Keeps the existing concept but enforces 60° rotational symmetry, sharpens spike tips, ditches loose tracking. Lowest risk against current site.
+      <strong>Recommended:</strong> Option E — A's mark + B's wordmark (spaced caps), with tracking dialed to 0.18em, weight to 400, and a compact "Stelnyx" alt for small surfaces. Hybrid lockup system: spaced for hero/marketing, compact for nav/footer/tabs. Lowest risk while preserving brand recognition.
     </div>
 
     <div class="grid">
@@ -335,6 +338,74 @@
         </ul>
       </article>
 
+      <!-- ============== OPTION E: A mark + spaced caps wordmark (hybrid lockup) ============== -->
+      <article class="card" style="border-color: rgba(99,102,241,0.4); background: linear-gradient(180deg, rgba(99,102,241,0.04), var(--surface));">
+        <h2><span class="key" style="background: rgba(99,102,241,0.15); color: var(--indigo);">E</span> A · sharp star · spaced caps</h2>
+        <p class="tag">A's mark, B's wordmark — refined. Spaced 0.18em / weight 400. Compact alt for tight surfaces.</p>
+
+        <div class="stage">
+          <svg class="mark" width="96" height="96" viewBox="0 0 100 100">
+            <defs>
+              <mask id="cutE"><rect width="100" height="100" fill="white"/><polygon points="50,30 65,60 35,60" fill="black"/></mask>
+            </defs>
+            <polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7" mask="url(#cutE)"/>
+          </svg>
+        </div>
+
+        <div class="sizes">
+          <div class="size">
+            <svg width="16" height="16" viewBox="0 0 100 100"><mask id="cutE16"><rect width="100" height="100" fill="white"/><polygon points="50,30 65,60 35,60" fill="black"/></mask><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7" mask="url(#cutE16)"/></svg>
+            <span>16</span>
+          </div>
+          <div class="size">
+            <svg width="32" height="32" viewBox="0 0 100 100"><mask id="cutE32"><rect width="100" height="100" fill="white"/><polygon points="50,30 65,60 35,60" fill="black"/></mask><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7" mask="url(#cutE32)"/></svg>
+            <span>32</span>
+          </div>
+          <div class="size">
+            <svg width="64" height="64" viewBox="0 0 100 100"><mask id="cutE64"><rect width="100" height="100" fill="white"/><polygon points="50,30 65,60 35,60" fill="black"/></mask><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7" mask="url(#cutE64)"/></svg>
+            <span>64</span>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--faint); text-transform:uppercase; letter-spacing:0.08em;">Primary · hero / marketing</span>
+          <div class="lockup lockup-spaced">
+            <svg width="28" height="28" viewBox="0 0 100 100"><mask id="cutElk"><rect width="100" height="100" fill="white"/><polygon points="50,30 65,60 35,60" fill="black"/></mask><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7" mask="url(#cutElk)"/></svg>
+            <span class="word">Stelnyx</span>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--faint); text-transform:uppercase; letter-spacing:0.08em;">Compact · nav / footer / tabs</span>
+          <div class="lockup lockup-compact">
+            <svg width="22" height="22" viewBox="0 0 100 100"><mask id="cutEc"><rect width="100" height="100" fill="white"/><polygon points="50,30 65,60 35,60" fill="black"/></mask><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7" mask="url(#cutEc)"/></svg>
+            <span class="word">Stelnyx</span>
+          </div>
+        </div>
+
+        <div class="stage stage-light">
+          <div class="lockup lockup-spaced lockup-light">
+            <svg width="28" height="28" viewBox="0 0 100 100"><mask id="cutElt"><rect width="100" height="100" fill="white"/><polygon points="50,30 65,60 35,60" fill="black"/></mask><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#0a0a0f" mask="url(#cutElt)"/></svg>
+            <span class="word">Stelnyx</span>
+          </div>
+        </div>
+
+        <div class="browser-bar">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="tab"><svg width="14" height="14" viewBox="0 0 100 100"><mask id="cutEtab"><rect width="100" height="100" fill="white"/><polygon points="50,30 65,60 35,60" fill="black"/></mask><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7" mask="url(#cutEtab)"/></svg> Stelnyx</span>
+        </div>
+
+        <ul class="pros">
+          <li>Preserves brand recognition (existing PNGs use spaced caps)</li>
+          <li>Hybrid lockup avoids small-size legibility loss</li>
+          <li>Mark carries personality; wordmark stays quiet label</li>
+        </ul>
+        <ul class="cons">
+          <li>Two lockups = more rules to police (design system needed)</li>
+          <li>Spaced caps still skew editorial — depends on context discipline</li>
+        </ul>
+      </article>
+
     </div>
 
     <div class="divider">Side-by-side · tab favicons</div>
@@ -359,6 +430,30 @@
           <path d="M78 18 L90 18 L90 82 L78 82" stroke="#f4f4f7" stroke-width="14" fill="none"/>
           <path d="M65 32 Q65 22 50 22 Q35 22 35 36 Q35 46 50 50 Q65 54 65 64 Q65 78 50 78 Q35 78 35 68" stroke="#f4f4f7" stroke-width="14" fill="none" stroke-linecap="round"/>
         </svg>
+      </div>
+      <div class="lockup">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--indigo);width:14px;">E</span>
+        <svg width="16" height="16" viewBox="0 0 100 100"><mask id="cutEside"><rect width="100" height="100" fill="white"/><polygon points="50,30 65,60 35,60" fill="black"/></mask><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7" mask="url(#cutEside)"/></svg>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--faint);">= A mark</span>
+      </div>
+    </div>
+
+    <div class="divider">Option E · hybrid lockup system</div>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div class="stage" style="flex-direction:column; gap:18px; align-items:flex-start; padding: 28px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--faint); text-transform:uppercase; letter-spacing:0.08em;">Primary · hero · marketing · OG card</span>
+        <div class="lockup lockup-spaced" style="gap:14px;">
+          <svg width="44" height="44" viewBox="0 0 100 100"><mask id="cutEh1"><rect width="100" height="100" fill="white"/><polygon points="50,30 65,60 35,60" fill="black"/></mask><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7" mask="url(#cutEh1)"/></svg>
+          <span class="word" style="font-size:22px;">Stelnyx</span>
+        </div>
+      </div>
+      <div class="stage" style="flex-direction:column; gap:18px; align-items:flex-start; padding: 28px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--faint); text-transform:uppercase; letter-spacing:0.08em;">Compact · nav · footer · tabs · mobile</span>
+        <div class="lockup lockup-compact" style="gap:10px;">
+          <svg width="24" height="24" viewBox="0 0 100 100"><mask id="cutEh2"><rect width="100" height="100" fill="white"/><polygon points="50,30 65,60 35,60" fill="black"/></mask><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7" mask="url(#cutEh2)"/></svg>
+          <span class="word">Stelnyx</span>
+        </div>
       </div>
     </div>
 
