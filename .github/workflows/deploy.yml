@@ -32,6 +32,7 @@ jobs:
         env:
           NEXT_PUBLIC_FEATURE_PRICING: "false"
           NEXT_PUBLIC_FEATURE_PUBLIC_REPOS: "true"
+          NEXT_PUBLIC_WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
         run: npm run build
 
       - name: Add .nojekyll

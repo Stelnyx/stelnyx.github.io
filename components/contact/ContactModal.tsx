@@ -43,38 +43,65 @@ export function ContactModal({ isOpen, onClose, context }: ContactModalProps) {
         : `Tell us about your project. We'll reply within a day with availability and next steps.`
       : "Drop us a line — we read everything and reply within a day.");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (status === "sending") return;
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+    if (!accessKey) {
+      setStatus("error");
+      setErrorText("Form not configured. Email hello@stelnyx.com directly.");
+      return;
+    }
     const product = context?.product ?? "";
     const tier = context?.tier ?? "";
     const source = context?.source ?? "stelnyx";
     const subject = product
       ? `[Stelnyx · ${product}${tier ? ` · ${tier}` : ""}] ${name || email}`
       : `[Stelnyx · contact] ${name || email}`;
-    const lines = [
-      `From: ${name || "(no name)"} <${email}>`,
-      company ? `Company: ${company}` : null,
-      product ? `Product: ${product}` : null,
-      tier ? `Tier: ${tier}` : null,
-      `Source: ${source}`,
-      "",
-      message,
-    ].filter(Boolean) as string[];
-    const href = `mailto:hello@stelnyx.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
-    window.location.href = href;
-    setStatus("sent");
-    setName("");
-    setEmail("");
-    setCompany("");
-    setMessage("");
+    setStatus("sending");
+    setErrorText("");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject,
+          from_name: name || "Stelnyx contact",
+          replyto: email,
+          email,
+          name,
+          company,
+          product,
+          tier,
+          source,
+          message,
+          botcheck: "",
+        }),
+      });
+      const json = (await res.json().catch(() => null)) as { success?: boolean; message?: string } | null;
+      if (!res.ok || !json?.success) {
+        setStatus("error");
+        setErrorText(json?.message ?? "Send failed. Email hello@stelnyx.com directly.");
+        return;
+      }
+      setStatus("sent");
+      setName("");
+      setEmail("");
+      setCompany("");
+      setMessage("");
+    } catch {
+      setStatus("error");
+      setErrorText("Network error. Email hello@stelnyx.com directly.");
+    }
   }
 
   return (
     <Modal isOpen={isOpen} onClose={handleClose} title={title}>
       {status === "sent" ? (
         <div className="space-y-3">
-          <p className="text-[15px] text-stel-text-primary">Opening your mail app…</p>
-          <p className="text-[14px] text-stel-text-muted">If nothing opened, email <a className="underline" href="mailto:hello@stelnyx.com">hello@stelnyx.com</a> directly.</p>
+          <p className="text-[15px] text-stel-text-primary">Got it — message sent.</p>
+          <p className="text-[14px] text-stel-text-muted">We&apos;ll reply within a day. Check spam if you don&apos;t see anything by tomorrow.</p>
           <button
             type="button"
             onClick={handleClose}
