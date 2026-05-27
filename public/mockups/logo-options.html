@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Stelnyx — Logo Options · Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #14141c;
+    --surface-2: #1e1e28;
+    --border: #2a2a36;
+    --text: #f4f4f7;
+    --muted: #a1a1aa;
+    --faint: #5b5b66;
+    --amber: #f59e0b;
+    --indigo: #6366f1;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; font-feature-settings: "cv11"; }
+  body { line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 56px 32px 96px; }
+  header { margin-bottom: 48px; }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--amber); margin: 0 0 8px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 600; letter-spacing: -0.03em; margin: 0 0 12px; }
+  header p { color: var(--muted); max-width: 640px; font-size: 15px; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  @media (min-width: 1100px) { .grid { grid-template-columns: repeat(4, 1fr); } }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+  .card h2 { font-size: 14px; font-weight: 600; letter-spacing: 0.02em; margin: 0; display: flex; align-items: center; gap: 10px; }
+  .card h2 .key { font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 2px 7px; background: var(--surface-2); color: var(--amber); border-radius: 4px; letter-spacing: 0.04em; }
+  .card p.tag { font-size: 13px; color: var(--muted); margin: 0; }
+  .stage { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 20px; display: flex; align-items: center; justify-content: center; min-height: 132px; }
+  .stage-light { background: #fafaf7; border-color: #e4e4e7; }
+  .row { display: flex; gap: 12px; }
+  .row > .stage { flex: 1; }
+  .sizes { display: flex; align-items: flex-end; gap: 14px; }
+  .size { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .size span { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--faint); text-transform: uppercase; letter-spacing: 0.08em; }
+  .lockup { display: flex; align-items: center; gap: 10px; }
+  .lockup .word { font-weight: 600; font-size: 18px; letter-spacing: -0.01em; }
+  .lockup-loose .word { letter-spacing: 0.32em; font-weight: 500; text-transform: uppercase; font-size: 15px; }
+  .lockup-mono .word { font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 16px; letter-spacing: -0.02em; }
+  .lockup-light .word { color: #0a0a0f; }
+  .pros, .cons { font-size: 12.5px; color: var(--muted); margin: 0; padding-left: 16px; }
+  .pros li::marker { color: #10b981; }
+  .cons li::marker { color: #ef4444; }
+  .notes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; font-size: 12.5px; }
+  .notes h3 { margin: 0 0 6px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint); font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+  .browser-bar { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px 8px 0 0; padding: 8px 12px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
+  .browser-bar .dots { display: flex; gap: 4px; }
+  .browser-bar .dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--border); display: inline-block; }
+  .browser-bar .tab { background: var(--bg); border-radius: 6px 6px 0 0; padding: 6px 10px 8px; margin-left: 8px; display: flex; align-items: center; gap: 6px; font-size: 11.5px; }
+  footer { margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--faint); font-size: 13px; }
+  footer code { font-family: 'JetBrains Mono', monospace; color: var(--muted); }
+  .recommendation { background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(245,158,11,0.04)); border: 1px solid rgba(99,102,241,0.3); border-radius: 12px; padding: 18px 22px; margin: 0 0 32px; font-size: 14px; }
+  .recommendation strong { color: var(--indigo); }
+
+  /* SVG mark sizing helpers */
+  .mark { display: block; }
+  .mark-light path, .mark-light polygon, .mark-light circle { fill: #0a0a0f; }
+
+  /* Section divider */
+  .divider { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--faint); margin: 48px 0 20px; display: flex; align-items: center; gap: 12px; }
+  .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <p class="eyebrow">Brand · Mark exploration</p>
+      <h1>Stelnyx logo — 4 directions</h1>
+      <p>Four candidate marks, rendered at favicon (16px), nav (32px), and hero (96px) scale, on dark and light. Wordmark lockups paired with each. Picks should survive being shrunk to a Safari tab favicon — that is the real test.</p>
+    </header>
+
+    <div class="recommendation">
+      <strong>Recommended:</strong> Option A — sharp star w/ triangle cutout, tight Inter wordmark. Keeps the existing concept but enforces 60° rotational symmetry, sharpens spike tips, ditches loose tracking. Lowest risk against current site.
+    </div>
+
+    <div class="grid">
+
+      <!-- ============== OPTION A: Sharp star + triangle cutout ============== -->
+      <article class="card">
+        <h2><span class="key">A</span> Sharp star · cut triangle</h2>
+        <p class="tag">Refines the existing mark: snap to 60° symmetry, sharpen tips, tighten wordmark.</p>
+
+        <div class="stage">
+          <svg class="mark" width="96" height="96" viewBox="0 0 100 100">
+            <defs>
+              <mask id="cutA">
+                <rect width="100" height="100" fill="white"/>
+                <polygon points="50,30 65,60 35,60" fill="black"/>
+              </mask>
+            </defs>
+            <polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7" mask="url(#cutA)"/>
+          </svg>
+        </div>
+
+        <div class="sizes">
+          <div class="size">
+            <svg width="16" height="16" viewBox="0 0 100 100"><mask id="cutA16"><rect width="100" height="100" fill="white"/><polygon points="50,30 65,60 35,60" fill="black"/></mask><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7" mask="url(#cutA16)"/></svg>
+            <span>16</span>
+          </div>
+          <div class="size">
+            <svg width="32" height="32" viewBox="0 0 100 100"><mask id="cutA32"><rect width="100" height="100" fill="white"/><polygon points="50,30 65,60 35,60" fill="black"/></mask><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7" mask="url(#cutA32)"/></svg>
+            <span>32</span>
+          </div>
+          <div class="size">
+            <svg width="64" height="64" viewBox="0 0 100 100"><mask id="cutA64"><rect width="100" height="100" fill="white"/><polygon points="50,30 65,60 35,60" fill="black"/></mask><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7" mask="url(#cutA64)"/></svg>
+            <span>64</span>
+          </div>
+        </div>
+
+        <div class="lockup">
+          <svg width="28" height="28" viewBox="0 0 100 100"><mask id="cutAlk"><rect width="100" height="100" fill="white"/><polygon points="50,30 65,60 35,60" fill="black"/></mask><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7" mask="url(#cutAlk)"/></svg>
+          <span class="word">Stelnyx</span>
+        </div>
+
+        <div class="stage stage-light">
+          <div class="lockup lockup-light">
+            <svg width="28" height="28" viewBox="0 0 100 100"><mask id="cutAlt"><rect width="100" height="100" fill="white"/><polygon points="50,30 65,60 35,60" fill="black"/></mask><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#0a0a0f" mask="url(#cutAlt)"/></svg>
+            <span class="word">Stelnyx</span>
+          </div>
+        </div>
+
+        <div class="browser-bar">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="tab"><svg width="14" height="14" viewBox="0 0 100 100"><mask id="cutAtab"><rect width="100" height="100" fill="white"/><polygon points="50,30 65,60 35,60" fill="black"/></mask><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7" mask="url(#cutAtab)"/></svg> Stelnyx</span>
+        </div>
+
+        <ul class="pros">
+          <li>Continuity with existing brand</li>
+          <li>Distinctive negative-space triangle</li>
+          <li>Tight Inter feels infra/dev-tool</li>
+        </ul>
+        <ul class="cons">
+          <li>Triangle interior ambiguous at 16px</li>
+          <li>12 outer vertices = busy at favicon scale</li>
+        </ul>
+      </article>
+
+      <!-- ============== OPTION B: Solid star, no cutout ============== -->
+      <article class="card">
+        <h2><span class="key">B</span> Solid star · no cutout</h2>
+        <p class="tag">Drop the triangle. Pure 6-point spike. Reads instantly at any size.</p>
+
+        <div class="stage">
+          <svg class="mark" width="96" height="96" viewBox="0 0 100 100">
+            <polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7"/>
+          </svg>
+        </div>
+
+        <div class="sizes">
+          <div class="size">
+            <svg width="16" height="16" viewBox="0 0 100 100"><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7"/></svg>
+            <span>16</span>
+          </div>
+          <div class="size">
+            <svg width="32" height="32" viewBox="0 0 100 100"><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7"/></svg>
+            <span>32</span>
+          </div>
+          <div class="size">
+            <svg width="64" height="64" viewBox="0 0 100 100"><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7"/></svg>
+            <span>64</span>
+          </div>
+        </div>
+
+        <div class="lockup lockup-loose">
+          <svg width="22" height="22" viewBox="0 0 100 100"><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7"/></svg>
+          <span class="word">Stelnyx</span>
+        </div>
+
+        <div class="stage stage-light">
+          <div class="lockup lockup-loose lockup-light">
+            <svg width="22" height="22" viewBox="0 0 100 100"><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#0a0a0f"/></svg>
+            <span class="word">Stelnyx</span>
+          </div>
+        </div>
+
+        <div class="browser-bar">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="tab"><svg width="14" height="14" viewBox="0 0 100 100"><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7"/></svg> Stelnyx</span>
+        </div>
+
+        <ul class="pros">
+          <li>Crisp at every size, including 16px</li>
+          <li>No semantic ambiguity in negative space</li>
+          <li>Spiked-caps wordmark = editorial / Linear-adjacent</li>
+        </ul>
+        <ul class="cons">
+          <li>Loses the "aperture / scope" reading</li>
+          <li>Generic 6-point star is well-trodden</li>
+        </ul>
+      </article>
+
+      <!-- ============== OPTION C: Aperture / iris ============== -->
+      <article class="card">
+        <h2><span class="key">C</span> Aperture · iris</h2>
+        <p class="tag">Triangle blades inside a hex frame — direct "LuxScope / lens / scanner" semantic.</p>
+
+        <div class="stage">
+          <svg class="mark" width="96" height="96" viewBox="0 0 100 100">
+            <!-- hex frame -->
+            <polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" fill="none" stroke="#f4f4f7" stroke-width="6" stroke-linejoin="miter"/>
+            <!-- iris triangle 1 -->
+            <polygon points="50,28 64,55 36,55" fill="#f4f4f7"/>
+            <!-- iris triangle 2 (rotated 60° around 50,50) -->
+            <polygon points="73.32,40.5 59.32,67.5 73.32,67.5" fill="#f4f4f7" opacity="0.6"/>
+            <polygon points="26.68,40.5 26.68,67.5 40.68,67.5" fill="#f4f4f7" opacity="0.6"/>
+          </svg>
+        </div>
+
+        <div class="sizes">
+          <div class="size">
+            <svg width="16" height="16" viewBox="0 0 100 100"><polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" fill="none" stroke="#f4f4f7" stroke-width="10"/><polygon points="50,32 62,56 38,56" fill="#f4f4f7"/></svg>
+            <span>16</span>
+          </div>
+          <div class="size">
+            <svg width="32" height="32" viewBox="0 0 100 100"><polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" fill="none" stroke="#f4f4f7" stroke-width="8"/><polygon points="50,30 63,56 37,56" fill="#f4f4f7"/></svg>
+            <span>32</span>
+          </div>
+          <div class="size">
+            <svg width="64" height="64" viewBox="0 0 100 100"><polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" fill="none" stroke="#f4f4f7" stroke-width="6"/><polygon points="50,28 64,55 36,55" fill="#f4f4f7"/><polygon points="73.32,40.5 59.32,67.5 73.32,67.5" fill="#f4f4f7" opacity="0.6"/><polygon points="26.68,40.5 26.68,67.5 40.68,67.5" fill="#f4f4f7" opacity="0.6"/></svg>
+            <span>64</span>
+          </div>
+        </div>
+
+        <div class="lockup lockup-mono">
+          <svg width="26" height="26" viewBox="0 0 100 100"><polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" fill="none" stroke="#f4f4f7" stroke-width="6"/><polygon points="50,28 64,55 36,55" fill="#f4f4f7"/></svg>
+          <span class="word">stelnyx</span>
+        </div>
+
+        <div class="stage stage-light">
+          <div class="lockup lockup-mono lockup-light">
+            <svg width="26" height="26" viewBox="0 0 100 100"><polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" fill="none" stroke="#0a0a0f" stroke-width="6"/><polygon points="50,28 64,55 36,55" fill="#0a0a0f"/></svg>
+            <span class="word">stelnyx</span>
+          </div>
+        </div>
+
+        <div class="browser-bar">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="tab"><svg width="14" height="14" viewBox="0 0 100 100"><polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" fill="none" stroke="#f4f4f7" stroke-width="12"/><polygon points="50,32 62,56 38,56" fill="#f4f4f7"/></svg> Stelnyx</span>
+        </div>
+
+        <ul class="pros">
+          <li>Tells the product story: scope / scan / lens</li>
+          <li>Hex frame = engineering / honeycomb / lattice</li>
+          <li>Mono wordmark grounds it in dev-tool territory</li>
+        </ul>
+        <ul class="cons">
+          <li>Most complex — loses fidelity at 16px</li>
+          <li>"Iris" feels close to Twitter X / Discord Nitro</li>
+        </ul>
+      </article>
+
+      <!-- ============== OPTION D: Bracket monogram ============== -->
+      <article class="card">
+        <h2><span class="key">D</span> Bracket monogram · [S]</h2>
+        <p class="tag">Stelnyx-S inside square brackets. Direct dev-tool semiotic. Compact, terminal-flavored.</p>
+
+        <div class="stage">
+          <svg class="mark" width="96" height="96" viewBox="0 0 100 100">
+            <!-- left bracket -->
+            <path d="M22 18 L10 18 L10 82 L22 82" stroke="#f4f4f7" stroke-width="7" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+            <!-- right bracket -->
+            <path d="M78 18 L90 18 L90 82 L78 82" stroke="#f4f4f7" stroke-width="7" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+            <!-- stylized S -->
+            <path d="M65 30 Q65 22 50 22 Q35 22 35 35 Q35 45 50 50 Q65 55 65 65 Q65 78 50 78 Q35 78 35 70" stroke="#f4f4f7" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="sizes">
+          <div class="size">
+            <svg width="16" height="16" viewBox="0 0 100 100">
+              <path d="M22 18 L10 18 L10 82 L22 82" stroke="#f4f4f7" stroke-width="14" fill="none"/>
+              <path d="M78 18 L90 18 L90 82 L78 82" stroke="#f4f4f7" stroke-width="14" fill="none"/>
+              <path d="M65 32 Q65 22 50 22 Q35 22 35 36 Q35 46 50 50 Q65 54 65 64 Q65 78 50 78 Q35 78 35 68" stroke="#f4f4f7" stroke-width="14" fill="none" stroke-linecap="round"/>
+            </svg>
+            <span>16</span>
+          </div>
+          <div class="size">
+            <svg width="32" height="32" viewBox="0 0 100 100">
+              <path d="M22 18 L10 18 L10 82 L22 82" stroke="#f4f4f7" stroke-width="10" fill="none"/>
+              <path d="M78 18 L90 18 L90 82 L78 82" stroke="#f4f4f7" stroke-width="10" fill="none"/>
+              <path d="M65 32 Q65 22 50 22 Q35 22 35 36 Q35 46 50 50 Q65 54 65 64 Q65 78 50 78 Q35 78 35 68" stroke="#f4f4f7" stroke-width="10" fill="none" stroke-linecap="round"/>
+            </svg>
+            <span>32</span>
+          </div>
+          <div class="size">
+            <svg width="64" height="64" viewBox="0 0 100 100">
+              <path d="M22 18 L10 18 L10 82 L22 82" stroke="#f4f4f7" stroke-width="8" fill="none"/>
+              <path d="M78 18 L90 18 L90 82 L78 82" stroke="#f4f4f7" stroke-width="8" fill="none"/>
+              <path d="M65 30 Q65 22 50 22 Q35 22 35 35 Q35 45 50 50 Q65 55 65 65 Q65 78 50 78 Q35 78 35 70" stroke="#f4f4f7" stroke-width="8" fill="none" stroke-linecap="round"/>
+            </svg>
+            <span>64</span>
+          </div>
+        </div>
+
+        <div class="lockup lockup-mono">
+          <svg width="26" height="26" viewBox="0 0 100 100">
+            <path d="M22 18 L10 18 L10 82 L22 82" stroke="#f4f4f7" stroke-width="10" fill="none"/>
+            <path d="M78 18 L90 18 L90 82 L78 82" stroke="#f4f4f7" stroke-width="10" fill="none"/>
+            <path d="M65 30 Q65 22 50 22 Q35 22 35 35 Q35 45 50 50 Q65 55 65 65 Q65 78 50 78 Q35 78 35 70" stroke="#f4f4f7" stroke-width="10" fill="none" stroke-linecap="round"/>
+          </svg>
+          <span class="word">stelnyx</span>
+        </div>
+
+        <div class="stage stage-light">
+          <div class="lockup lockup-mono lockup-light">
+            <svg width="26" height="26" viewBox="0 0 100 100">
+              <path d="M22 18 L10 18 L10 82 L22 82" stroke="#0a0a0f" stroke-width="10" fill="none"/>
+              <path d="M78 18 L90 18 L90 82 L78 82" stroke="#0a0a0f" stroke-width="10" fill="none"/>
+              <path d="M65 30 Q65 22 50 22 Q35 22 35 35 Q35 45 50 50 Q65 55 65 65 Q65 78 50 78 Q35 78 35 70" stroke="#0a0a0f" stroke-width="10" fill="none" stroke-linecap="round"/>
+            </svg>
+            <span class="word">stelnyx</span>
+          </div>
+        </div>
+
+        <div class="browser-bar">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="tab"><svg width="14" height="14" viewBox="0 0 100 100"><path d="M22 18 L10 18 L10 82 L22 82" stroke="#f4f4f7" stroke-width="14" fill="none"/><path d="M78 18 L90 18 L90 82 L78 82" stroke="#f4f4f7" stroke-width="14" fill="none"/></svg> Stelnyx</span>
+        </div>
+
+        <ul class="pros">
+          <li>Engineering vocabulary (CLI, JSON, RegEx)</li>
+          <li>Reads as monogram, not yet-another-star</li>
+          <li>Easier trademark search than star geometry</li>
+        </ul>
+        <ul class="cons">
+          <li>Throws away existing brand equity (PNGs, docs)</li>
+          <li>Brackets are crowded — Replit, Linear, Sentry all flirt</li>
+        </ul>
+      </article>
+
+    </div>
+
+    <div class="divider">Side-by-side · tab favicons</div>
+
+    <div class="stage" style="justify-content: flex-start; gap: 24px; flex-wrap: wrap;">
+      <div class="lockup">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--faint);width:14px;">A</span>
+        <svg width="16" height="16" viewBox="0 0 100 100"><mask id="cutAside"><rect width="100" height="100" fill="white"/><polygon points="50,30 65,60 35,60" fill="black"/></mask><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7" mask="url(#cutAside)"/></svg>
+      </div>
+      <div class="lockup">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--faint);width:14px;">B</span>
+        <svg width="16" height="16" viewBox="0 0 100 100"><polygon points="50,4 57.5,37 88.97,27.5 65,50 88.97,72.5 57.5,63 50,96 42.5,63 11.03,72.5 35,50 11.03,27.5 42.5,37" fill="#f4f4f7"/></svg>
+      </div>
+      <div class="lockup">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--faint);width:14px;">C</span>
+        <svg width="16" height="16" viewBox="0 0 100 100"><polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" fill="none" stroke="#f4f4f7" stroke-width="10"/><polygon points="50,32 62,56 38,56" fill="#f4f4f7"/></svg>
+      </div>
+      <div class="lockup">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--faint);width:14px;">D</span>
+        <svg width="16" height="16" viewBox="0 0 100 100">
+          <path d="M22 18 L10 18 L10 82 L22 82" stroke="#f4f4f7" stroke-width="14" fill="none"/>
+          <path d="M78 18 L90 18 L90 82 L78 82" stroke="#f4f4f7" stroke-width="14" fill="none"/>
+          <path d="M65 32 Q65 22 50 22 Q35 22 35 36 Q35 46 50 50 Q65 54 65 64 Q65 78 50 78 Q35 78 35 68" stroke="#f4f4f7" stroke-width="14" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <footer>
+      Mockup · <code>public/mockups/logo-options.html</code> · live at <code>https://stelnyx.github.io/mockups/logo-options.html</code> after deploy. Marks are inline SVG, no rasterized assets — pick one and the existing <code>app/icon.svg</code> + footer <code>StelMark</code> get rewritten against the chosen geometry.
+    </footer>
+  </div>
+</body>
+</html>
