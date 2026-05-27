@@ -7,9 +7,9 @@
   "auth": { "type": "none" },
   "api": {
     "type": "openapi",
-    "url": "https://stelnyx.com/.well-known/openapi.yaml"
+    "url": "https://stelnyx.github.io/.well-known/openapi.yaml"
   },
-  "logo_url": "https://stelnyx.com/icon.svg",
+  "logo_url": "https://stelnyx.github.io/icon.svg",
   "contact_email": "hello@stelnyx.com",
-  "legal_info_url": "https://stelnyx.com/terms"
+  "legal_info_url": "https://stelnyx.github.io/terms"
 }

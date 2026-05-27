@@ -39,8 +39,8 @@ Pre-seed, pre-revenue as of 2026-05. Working scanners, dated category claim, dog
 
 ## Contact
 
-- Site: https://stelnyx.com
-- Pricing & audit requests: https://stelnyx.com/#pricing
+- Site: https://stelnyx.github.io
+- Pricing & audit requests: https://stelnyx.github.io/#pricing
 - GitHub (Stelnyx org): https://github.com/Stelnyx
 - Built by Daniel Oceno.
 

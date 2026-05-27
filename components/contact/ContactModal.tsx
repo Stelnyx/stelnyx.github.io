@@ -43,48 +43,38 @@ export function ContactModal({ isOpen, onClose, context }: ContactModalProps) {
         : `Tell us about your project. We'll reply within a day with availability and next steps.`
       : "Drop us a line — we read everything and reply within a day.");
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (status === "sending") return;
-    setStatus("sending");
-    setErrorText("");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          company,
-          message,
-          product: context?.product ?? "",
-          tier: context?.tier ?? "",
-          source: context?.source ?? "stelnyx",
-        }),
-      });
-      const json = (await res.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
-      if (!res.ok || !json?.ok) {
-        setStatus("error");
-        setErrorText(json?.error ?? "Something went wrong. Try again or email hello@stelnyx.com directly.");
-        return;
-      }
-      setStatus("sent");
-      setName("");
-      setEmail("");
-      setCompany("");
-      setMessage("");
-    } catch {
-      setStatus("error");
-      setErrorText("Network error. Try again or email hello@stelnyx.com directly.");
-    }
+    const product = context?.product ?? "";
+    const tier = context?.tier ?? "";
+    const source = context?.source ?? "stelnyx";
+    const subject = product
+      ? `[Stelnyx · ${product}${tier ? ` · ${tier}` : ""}] ${name || email}`
+      : `[Stelnyx · contact] ${name || email}`;
+    const lines = [
+      `From: ${name || "(no name)"} <${email}>`,
+      company ? `Company: ${company}` : null,
+      product ? `Product: ${product}` : null,
+      tier ? `Tier: ${tier}` : null,
+      `Source: ${source}`,
+      "",
+      message,
+    ].filter(Boolean) as string[];
+    const href = `mailto:hello@stelnyx.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+    window.location.href = href;
+    setStatus("sent");
+    setName("");
+    setEmail("");
+    setCompany("");
+    setMessage("");
   }
 
   return (
     <Modal isOpen={isOpen} onClose={handleClose} title={title}>
       {status === "sent" ? (
         <div className="space-y-3">
-          <p className="text-[15px] text-stel-text-primary">Got it — message sent.</p>
-          <p className="text-[14px] text-stel-text-muted">We&apos;ll reply within a day. Check your spam folder if you don&apos;t see anything by tomorrow.</p>
+          <p className="text-[15px] text-stel-text-primary">Opening your mail app…</p>
+          <p className="text-[14px] text-stel-text-muted">If nothing opened, email <a className="underline" href="mailto:hello@stelnyx.com">hello@stelnyx.com</a> directly.</p>
           <button
             type="button"
             onClick={handleClose}

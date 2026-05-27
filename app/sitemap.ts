@@ -3,7 +3,7 @@ import { FEATURE_PUBLIC_REPOS } from "@/lib/features";
 
 export const dynamic = "force-static";
 
-const SITE_URL = "https://stelnyx.com";
+const SITE_URL = "https://stelnyx.github.io";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

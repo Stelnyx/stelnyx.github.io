@@ -70,4 +70,4 @@ User-agent: Diffbot
 Allow: /
 Disallow: /preview/
 
-Sitemap: https://stelnyx.com/sitemap.xml
+Sitemap: https://stelnyx.github.io/sitemap.xml
