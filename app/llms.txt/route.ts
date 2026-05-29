@@ -23,7 +23,7 @@ A senior engineer runs the scanner against your repo or site and walks you throu
 ## Other Stelnyx open-source tools
 
 - [SecGate](https://github.com/Stelnyx/SecGate): One command runs Semgrep, Gitleaks, osv-scanner, Trivy, and npm audit, normalizes findings, fails the pipeline on CRITICAL or HIGH. Aggregation is deterministic — same inputs produce JSON-byte-identical reports, locked by a determinism contract and golden snapshot tests. MIT. Published to npm as \`@stelnyx/secgate\`.
-- [Arbiter](https://github.com/Stelnyx/Arbiter): Sub-5ms agent guard layer — limits, schema validation, tool allowlists, cost tracking, loop detection. No LLM. MIT. Published to npm as \`@tinydarkforge/arbiter\`.
+- [Arbiter](https://github.com/Stelnyx/Arbiter): Sub-5ms agent guard layer — limits, schema validation, tool allowlists, cost tracking, loop detection. No LLM. MIT.
 - [Engram](https://github.com/Stelnyx/Engram): Memory ledger for AI systems with confidence scoring and MCP support. MIT.
 - [Intake](https://github.com/Stelnyx/Intake): Paste anything (Slack thread, bug report) and get a structured GitHub issue via local Ollama. MIT.
 

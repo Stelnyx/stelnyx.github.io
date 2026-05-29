@@ -99,8 +99,7 @@ const TOOLS: Product[] = [
     description:
       "Agent guard layer — enforces limits, validates schemas, checks tool allowlists, tracks cost, and detects loops. No LLM required. Deterministic and fast.",
     stack: ["Limits", "Schema validation", "Tool allowlist", "Cost tracking", "Loop detection"],
-    status: "MIT license — published to npm",
-    npm: "https://www.npmjs.com/package/@tinydarkforge/arbiter",
+    status: "MIT license — open source",
     github: "https://github.com/Stelnyx/Arbiter",
   },
 ];

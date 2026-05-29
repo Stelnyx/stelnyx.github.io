@@ -416,14 +416,14 @@ export default function RevenuePreviewPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
-                  href="mailto:daniel.oceno@gmail.com?subject=Stelnyx%20%E2%80%94%2020-min%20investor%20call&body=Hi%20Daniel%2C%0A%0ARead%20the%20revenue%20preview.%20Want%20to%20book%2020%20min%20to%20walk%20through%20it.%0A%0A%5Byour%20availability%5D%0A"
+                  href="mailto:hello@stelnyx.com?subject=Stelnyx%20%E2%80%94%2020-min%20investor%20call"
                   className="inline-flex items-center justify-center bg-stel-amber text-stel-bg font-semibold px-5 py-3 rounded-md text-[14px] hover:bg-amber-400 transition-colors duration-150"
                   style={{ minHeight: "44px" }}
                 >
                   Book 20-min call →
                 </a>
                 <a
-                  href="mailto:daniel.oceno@gmail.com?subject=Stelnyx%20%E2%80%94%20question"
+                  href="mailto:hello@stelnyx.com?subject=Stelnyx%20%E2%80%94%20question"
                   className="inline-flex items-center justify-center text-stel-text-primary border border-stel-border px-5 py-3 rounded-md text-[14px] font-medium hover:border-stel-border-bright transition-colors duration-150"
                   style={{ minHeight: "44px" }}
                 >
@@ -431,7 +431,7 @@ export default function RevenuePreviewPage() {
                 </a>
               </div>
               <p className="text-[12px] text-stel-text-faint mt-4">
-                Daniel Oceno · daniel.oceno@gmail.com · founder, sole IC
+                hello@stelnyx.com
               </p>
             </div>
 
