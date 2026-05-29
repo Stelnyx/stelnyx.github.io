@@ -39,7 +39,7 @@ export function ToolLanding({ data }: { data: ToolLandingData }) {
       source: `stelnyx · ${data.slug} · landing`,
       title: "Talk to founder",
       intro:
-        "15-minute call with Daniel. Tell us about your stack, what you're shipping, and what you'd want scored. We reply within a day.",
+        "15-minute call with our team. Tell us about your stack, what you're shipping, and what you'd want scored. We reply within a day.",
     });
   }
 

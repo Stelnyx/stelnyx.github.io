@@ -72,7 +72,7 @@ export function Hero() {
                     source: "stelnyx · hero",
                     title: "Talk to founder",
                     intro:
-                      "15-minute call with Daniel. Tell us about your stack, what you're shipping, and what you'd want scored. We reply within a day.",
+                      "15-minute call with our team. Tell us about your stack, what you're shipping, and what you'd want scored. We reply within a day.",
                   })
                 }
                 className="inline-flex items-center justify-center text-stel-text-primary border border-stel-border px-6 py-3.5 rounded-md hover:border-stel-border-bright hover:text-stel-text-primary transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stel-indigo-bright focus-visible:ring-offset-2 focus-visible:ring-offset-stel-bg cursor-pointer"
